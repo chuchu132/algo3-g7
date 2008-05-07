@@ -1,4 +1,4 @@
 
-public class Vendedor extends Autoparte{
+public class Vendedor {
 
 }
