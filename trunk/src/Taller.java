@@ -1,4 +1,4 @@
 
-public class Taller extends Autoparte{
+public class Taller {
 
 }

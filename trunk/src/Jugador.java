@@ -1,4 +1,4 @@
 
-public class Jugador extends Autoparte{
+public class Jugador {
 
 }

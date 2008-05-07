@@ -1,4 +1,4 @@
 
-public class Pista extends Autoparte{
+public class Pista {
 
 }
