@@ -1,4 +1,5 @@
 public class Motor extends Autoparte{
+	final private int CTE = 1;
 	private double fuerzaMaxima;
 	private int HP;
 	private int cilindros;
