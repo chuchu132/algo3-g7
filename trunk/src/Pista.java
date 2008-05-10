@@ -1,9 +1,18 @@
 
 public class Pista {
-
-	public double getCoeficienteAgarre() {
-		// TODO Auto-generated method stub
-		return 0;
+   private double coeficienteAgarre;
+   private double longitud;
+   
+   public Pista(double longitud, double coeficiente){
+	   this.coeficienteAgarre = coeficiente;
+	   this.longitud = longitud;
+   }
+   public double getCoeficienteAgarre() {
+		
+		return coeficienteAgarre;
 	}
-
+   public double getLongitud(){
+	   
+	   return longitud;
+   }
 }
