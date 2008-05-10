@@ -18,7 +18,7 @@ public class Auto{
 	
     
 	public void encender(){
-	   motor.encender(tanque);
+	   motor.encender();
 	}
 	
 	public void simular(double tiempo) { //en mm seg
