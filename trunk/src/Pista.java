@@ -12,7 +12,7 @@ public class Pista {
 		return coeficienteAgarre;
 	}
    public double getLongitud(){
-	   
+	
 	   return longitud;
    }
 }

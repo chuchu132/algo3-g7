@@ -19,7 +19,7 @@ public abstract class Autoparte {
 		return vidaUtil;
 	}
 	
-	public float getPeso(){
+	public double getPeso(){
 		return this.peso;
 	}
 	

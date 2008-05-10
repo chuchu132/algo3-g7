@@ -32,8 +32,9 @@ public class Auto{
 	}
 
 	private double getPesoTotal() {
-		// TODO Auto-generated method stub
-		return 0;
+		double pesoTemp= ( motor.getPeso() + caja.getPeso() + tanque.getPeso()+ carroceria.getPeso() + sistemaCombustion.getPeso() + (4*rueda.getPeso()) );
+		
+		return pesoTemp;
 	}
 	
 	

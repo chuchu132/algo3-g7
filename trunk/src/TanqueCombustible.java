@@ -8,7 +8,11 @@ public class TanqueCombustible extends Autoparte{
 	 * true si la carga fue normal 
 	 * false si revalso el rebalso
 	 * */
-    public boolean cargarCombustible(double cuanto,int oct){
+    public double getPeso(){
+    	return ( super.getPeso() + cantidadCombustible );
+    }
+	
+	public boolean cargarCombustible(double cuanto,int oct){
     	cantidadCombustible += cuanto;
     	octanage = oct;
     	if(cantidadCombustible > capacidadMaxima){
