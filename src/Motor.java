@@ -40,7 +40,7 @@ public class Motor extends Autoparte{
 		encendido = false;
 	}
 
-	public void acelerar (CajaVelocidades caja, long intervaloTiempo){
+	public void acelerar (CajaVelocidades caja, int intervaloTiempo){
 		int deltaRevoluciones;
 		int cambioActual;
 		acelerando = true;
