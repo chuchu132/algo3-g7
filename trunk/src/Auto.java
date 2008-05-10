@@ -62,7 +62,9 @@ public class Auto{
 	
 	}
 	
-	
+	public void subirCambio (){
+		motor.embragarSubir();
+	}
 	
 	
 
