@@ -66,6 +66,8 @@ public class Auto{
 		motor.embragarSubir();
 	}
 	
-	
+	public String getDetalles(){
+		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Posicion " + posicion);
+	}
 
 }
