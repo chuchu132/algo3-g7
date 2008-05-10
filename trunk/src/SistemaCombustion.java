@@ -18,7 +18,9 @@ public class SistemaCombustion extends Autoparte{
    }
   
    public TanqueCombustible desconectarTanque(){
-	   return tanque;
+	   TanqueCombustible tanqueTemp= tanque;
+	   tanque = null;
+	   return tanqueTemp;
    }
 	
    public boolean tieneCombustible(){
@@ -32,7 +34,7 @@ public class SistemaCombustion extends Autoparte{
    }
    
    public String getDetalles() {
-	   return( "Sistema de Combustion: " + tipo + "Plus de Potencia: "+ plusPotencia + super.getDetalles());
+	   return( " Sistema de Combustion: " + tipo + " Plus de Potencia: "+ plusPotencia + super.getDetalles());
 	}
    public double getPlus(){
 	   return plusPotencia;

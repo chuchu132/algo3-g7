@@ -51,7 +51,7 @@ public class TanqueCombustible extends Autoparte{
 	}
 
 	public String getDetalles(){
-		return (" Capacidad MAxima: " + capacidadMaxima + "Cantidad de Combustible: " + cantidadCombustible() );
+		return (" Capacidad Maxima: " + capacidadMaxima + " Cantidad de Combustible: " + cantidadCombustible() );
 		
 	}
 }
