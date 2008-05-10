@@ -39,21 +39,25 @@ public class Auto{
 	
 	public void simular(double tiempo) { 
 		
-    	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal(); 
+    	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal();
+    	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento, velocidad);
+		double fuerzaNeta;
+    	
+		fuerzaNeta = (velocidad > 0)? fuerzaPositiva - fuerzaRozamiento : fuerzaPositiva ;
 		
-		aceleracion = (this.getPesoTotal() * motor.getFuerzaInstantanea(caja, fuerzaRozamiento, velocidad))* motor.getVidaUtil();
+		aceleracion = (fuerzaNeta/getPesoTotal()) * motor.getVidaUtil();
 		velocidad += (aceleracion * tiempo)* (1 + carroceria.getPlusVelocidad());
 		posicion += velocidad * tiempo;
 		
 		motor.simular(tiempo); // quema comb en funcion del cambio y el motor
 	}
     
-	public void acelerar(int intervaloTiempo){
-		motor.acelerar(intervaloTiempo);
+	public void acelerar(double tiempo){
+		motor.acelerar(tiempo);
 	}
 	
-	public void desacelerar(int intervaloTiempo ){
-		motor.desacelerar(intervaloTiempo);
+	public void desacelerar(double tiempo ){
+		motor.desacelerar(tiempo);
 	}
 	
 	public void cargarCombustible(double litros, int octanage){
