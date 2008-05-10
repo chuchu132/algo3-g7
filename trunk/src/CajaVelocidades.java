@@ -10,13 +10,12 @@ public class CajaVelocidades extends Autoparte{
 		cambioActual = 0;
 		this.cantidadCambios = cantidadCambios;
 		relaciones = new int [cantidadCambios];
-			
+		
 		relaciones[0] = 0;
 		for(int i = 1; i < cantidadCambios; i++) 
 			relaciones[i] = ((cantidadCambios+1-i)/cantidadCambios ); 
-		
 	}
-	
+
 		
 	public void subirCambio () {
 		if(cambioActual < cantidadCambios)

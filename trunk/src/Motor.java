@@ -7,6 +7,7 @@ public class Motor extends Autoparte{
 	private boolean encendido;
 	private int revolucionesMax;
 	private int revolucionesActuales;
+	
 	private double fuerzaInstantanea;
 	private boolean acelerando;
 	private SistemaCombustion sistemaC;
@@ -19,10 +20,11 @@ public class Motor extends Autoparte{
 		this.cubicaje=cubicaje; 
 		this.fuerzaMaxima = HP * 250 + cilindros*cubicaje*1000;
 		this.encendido=false;
-		this.revolucionesMax = (int)(HP * 17 + 2800);
+		this.revolucionesMax = (int)(HP * 17 + 2800); // son los numeros para q a 800 hp = alrededor de 16000 y a 200hp alrededor d 6000
+		this.revolucionesActuales = 0;
 		this.fuerzaInstantanea = 0;
 		this.acelerando = false;
-		this.sistemaC = new SistemaCombustion(0,0,"Comun",0);	
+		this.sistemaC = new SistemaCombustion(0,0,"Comun",0);
 	}
 
 	
@@ -56,7 +58,7 @@ public class Motor extends Autoparte{
 		if(!sistemaC.quemarCombustible(cantidadCombustible)) apagar();
 	}
 
-	private void apagar() {
+	public void apagar() {
 		encendido = false;
 	}
 
@@ -67,17 +69,21 @@ public class Motor extends Autoparte{
 	}
 	
 	public void acelerar (int intervaloTiempo){
+
 		   acelerando = true;
 		   double deltaRevoluciones = obtenerDeltaRevoluciones(intervaloTiempo);
 		   if (revolucionesActuales + deltaRevoluciones < revolucionesMax){
 		   revolucionesActuales += deltaRevoluciones ;}
 		   else{ revolucionesActuales = revolucionesMax; }
+
 	}
 	
+
 	public void desacelerar(int intervaloTiempo){
 		acelerando = false;
-		revolucionesActuales -= obtenerDeltaRevoluciones(intervaloTiempo) ;; 
+		revolucionesActuales -= obtenerDeltaRevoluciones(intervaloTiempo) ;
 		if (revolucionesActuales < 800) {revolucionesActuales = 800; }
+
 	}
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, double velocidadInstantanea) {
