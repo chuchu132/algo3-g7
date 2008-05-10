@@ -26,6 +26,9 @@ public class Auto{
 		double fuerzaRozamiento = pista.getCoeficienteAgarre() * rueda.getCoeficienteAgarre() * this.getPesoTotal(); 
 		
 		aceleracion = this.getPesoTotal() * motor.getFuerzaInstantanea(caja, fuerzaRozamiento, velocidad);
+		velocidad += aceleracion * tiempo;
+		posicion += velocidad * tiempo;
+		
 	}
 
 	private double getPesoTotal() {
