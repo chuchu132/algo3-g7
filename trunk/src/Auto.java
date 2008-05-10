@@ -36,7 +36,7 @@ public class Auto{
 	
 	public void simular(double tiempo) { 
 		
-    	double fuerzaRozamiento = pista.getCoeficienteAgarre() * rueda.getCoeficienteAgarre() * this.getPesoTotal(); 
+    	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal(); 
 		
 		aceleracion = (this.getPesoTotal() * motor.getFuerzaInstantanea(caja, fuerzaRozamiento, velocidad))* motor.getVidaUtil();
 		velocidad += (aceleracion * tiempo)* (1 + carroceria.getPlusVelocidad());
@@ -68,6 +68,10 @@ public class Auto{
 	
 	public String getDetalles(){
 		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Posicion " + posicion);
+	}
+	
+	public void irAPista(Pista pista){
+		this.pista = pista;
 	}
 
 }
