@@ -1,6 +1,9 @@
 public abstract class Autoparte {
+	private float peso;
 	private float precio;
 	private float vidaUtil; // % de vida restante
+	
+	
 	
 	public String getDetalles(){
 		return ( " Precio: Algo$ " + precio + " , Vida Util: " + vidaUtil + " % ");
@@ -16,6 +19,9 @@ public abstract class Autoparte {
 		return vidaUtil;
 	}
 	
+	public float getPeso(){
+		return this.peso;
+	}
 	
 	
 }
