@@ -62,16 +62,16 @@ public class Motor extends Autoparte{
 		encendido = false;
 	}
 
-	public double obtenerDeltaRevoluciones(int intervaloTiempo){
+	public double obtenerDeltaRevoluciones(double tiempo){
 		
-		 return ( 4*intervaloTiempo * caja.obtenerRelacion()*HP*cubicaje); 
+		 return ( 4*tiempo * caja.obtenerRelacion()*HP*cubicaje); 
 	
 	}
 	
-	public void acelerar (int intervaloTiempo){
+	public void acelerar (double tiempo){
 
 		   acelerando = true;
-		   double deltaRevoluciones = obtenerDeltaRevoluciones(intervaloTiempo);
+		   double deltaRevoluciones = obtenerDeltaRevoluciones(tiempo);
 		   if (revolucionesActuales + deltaRevoluciones < revolucionesMax){
 		   revolucionesActuales += deltaRevoluciones ;}
 		   else{ revolucionesActuales = revolucionesMax; }
@@ -79,9 +79,9 @@ public class Motor extends Autoparte{
 	}
 	
 
-	public void desacelerar(int intervaloTiempo){
+	public void desacelerar(double tiempo){
 		acelerando = false;
-		revolucionesActuales -= obtenerDeltaRevoluciones(intervaloTiempo) ;
+		revolucionesActuales -= obtenerDeltaRevoluciones(tiempo) ;
 		if (revolucionesActuales < 800) {revolucionesActuales = 800; }
 
 	}
