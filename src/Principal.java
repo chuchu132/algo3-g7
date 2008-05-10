@@ -4,11 +4,11 @@ public class Principal {
 		
 		Motor miMotor = new Motor(150,6,200,250,300);
 		TanqueCombustible miTanque = new TanqueCombustible(20,70);
-	//	CajaVelocidades miCaja = new CajaVelocidades(6,100,100);
+		CajaVelocidades miCaja = new CajaVelocidades(6,100,100);
 		SistemaCombustion miSC = new SistemaCombustion(100,5,"Inyeccion",0.2);
         
 		miMotor.conectarTanque(miTanque);
-        
+		System.out.println(miMotor.getDetalles());
 		miMotor.encender();
 		if(miMotor.estaEncendido()) System.out.println("Prendido");
 		else System.out.println("Apagado");
@@ -21,8 +21,11 @@ public class Principal {
 		else System.out.println("Apagado");
 		System.out.println(miTanque.getDetalles());
 		
+		miMotor.cambiarSitemaCombustion(miSC);
+		System.out.println(miMotor.getDetalles());
 		
-	
+	    miMotor.conectarCaja(miCaja);
+	    
 	
 	
 	}

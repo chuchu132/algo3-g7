@@ -21,7 +21,7 @@ public class Auto{
 	   motor.encender();
 	}
 	
-	public void simular(double tiempo) { //en mm seg
+	public void simular(double tiempo) { //en seg
 		
 		double fuerzaRozamiento = pista.getCoeficienteAgarre() * rueda.getCoeficienteAgarre() * this.getPesoTotal(); 
 		
@@ -29,8 +29,12 @@ public class Auto{
 		velocidad += aceleracion * tiempo;
 		posicion += velocidad * tiempo;
 		
+		motor.simular(tiempo); // quema comb en funcion del cambio y el motor
 	}
-
+    
+	public void acelerar(){
+		
+	}
 	private double getPesoTotal() {
 		double pesoTemp= ( motor.getPeso() + caja.getPeso() + tanque.getPeso()+ carroceria.getPeso() + sistemaCombustion.getPeso() + (4*rueda.getPeso()) );
 		

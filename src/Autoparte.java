@@ -10,7 +10,7 @@ public abstract class Autoparte {
 	}
 	
 	public String getDetalles(){
-		return ( " Precio: Algo$ " + precio + " , Vida Util: " + vidaUtil + " % ");
+		return ( " Precio: Algo$ " + precio + " , Vida Util: " + (vidaUtil * 100 ) + " % ");
 	}
 	
 	public double getPrecio() {
