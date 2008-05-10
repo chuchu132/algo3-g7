@@ -6,7 +6,8 @@ public class CajaVelocidades extends Autoparte{
 	private int [] relaciones;
 	private int [] tiempodeFuerza;
 	
-	public CajaVelocidades (int cantidadCambios){
+	public CajaVelocidades (int cantidadCambios,double precio, double peso){
+		super(precio,peso,1);
 		cambioActual = 0;
 		this.cantidadCambios = cantidadCambios;
 		embragando = false;
@@ -15,7 +16,7 @@ public class CajaVelocidades extends Autoparte{
 		
 		relaciones[0] = 0;
 		for(int i = 1; i < cantidadCambios; i++) 
-			relaciones[i] = 1/ (i ^ 2);
+			relaciones[i] = (1/ (i ^ 2)); 
 		
 	}
 	
