@@ -19,9 +19,12 @@ public class Auto{
 	       
 		   this.motor = motor;
 		   this.caja = caja;
+		   this.tanque = tanque;
 		   this.motor.conectarCaja(caja);
 		   this.motor.conectarTanque(tanque);
-		   if( sistemaCombustion != null){motor.cambiarSitemaCombustion(sistemaCombustion);}
+		   if( sistemaCombustion != null){this.motor.cambiarSitemaCombustion(sistemaCombustion);}
+		   else { this.sistemaCombustion = new SistemaCombustion(0,0,"Comun de Fabrica",0);}
+		   this.sistemaCombustion.conectarTanque(tanque);
 		   this.carroceria = carroceria;
 		   this.rueda = rueda;
 		   	 
@@ -53,8 +56,8 @@ public class Auto{
 		motor.desacelerar(intervaloTiempo);
 	}
 	
-	public boolean cargarCombustible(double litros, int octanage){
-		return tanque.cargarCombustible(litros,octanage);
+	public void cargarCombustible(double litros, int octanage){
+		tanque.cargarCombustible(litros,octanage);
 	}
 	
 	public double getPesoTotal() {
