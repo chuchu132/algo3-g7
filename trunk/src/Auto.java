@@ -15,30 +15,45 @@ public class Auto{
 	private double aceleracion;
 	
 	
+	public Auto(Motor motor, CajaVelocidades caja,SistemaCombustion sistemaCombustion,Carroceria carroceria,TanqueCombustible tanque,Rueda rueda){
+	       
+		   this.motor = motor;
+		   this.caja = caja;
+		   if( sistemaCombustion != null){motor.cambiarSitemaCombustion(sistemaCombustion);}
+		   this.carroceria = carroceria;
+		   this.rueda = rueda;
+		   	 
+	}
 	
-    
-	public void encender(){
+    public void encender(){
 	   motor.encender();
 	}
 	
-	public void simular(double tiempo) { //en seg
+  
+  //en seg
+	
+	public void simular(double tiempo) { 
 		
-		double fuerzaRozamiento = pista.getCoeficienteAgarre() * rueda.getCoeficienteAgarre() * this.getPesoTotal(); 
+    	double fuerzaRozamiento = pista.getCoeficienteAgarre() * rueda.getCoeficienteAgarre() * this.getPesoTotal(); 
 		
-		aceleracion = this.getPesoTotal() * motor.getFuerzaInstantanea(caja, fuerzaRozamiento, velocidad);
-		velocidad += aceleracion * tiempo;
+		aceleracion = (this.getPesoTotal() * motor.getFuerzaInstantanea(caja, fuerzaRozamiento, velocidad))* motor.getVidaUtil();
+		velocidad += (aceleracion * tiempo)* (1 + carroceria.getPlusVelocidad());
 		posicion += velocidad * tiempo;
 		
 		motor.simular(tiempo); // quema comb en funcion del cambio y el motor
 	}
     
-	public void acelerar(){
-		
+	public void acelerar(int intervaloTiempo){
+		motor.acelerar(intervaloTiempo);
 	}
+	
+	public void desacelerar(int intervaloTiempo ){
+		motor.desacelerar(intervaloTiempo);
+	}
+	
 	private double getPesoTotal() {
-		double pesoTemp= ( motor.getPeso() + caja.getPeso() + tanque.getPeso()+ carroceria.getPeso() + sistemaCombustion.getPeso() + (4*rueda.getPeso()) );
-		
-		return pesoTemp;
+		return ( motor.getPeso() + caja.getPeso() + tanque.getPeso()+ carroceria.getPeso() + sistemaCombustion.getPeso() + (4*rueda.getPeso()) );
+	
 	}
 	
 	

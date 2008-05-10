@@ -26,6 +26,7 @@ public class Principal {
 		
 	    miMotor.conectarCaja(miCaja);
 	    
+	    
 	
 	
 	}

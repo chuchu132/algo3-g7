@@ -1,11 +1,9 @@
 public class Motor extends Autoparte{
 	
-	final private int CTE = 1;
 	private double fuerzaMaxima;
 	private int HP;
 	private int cilindros;
 	private double cubicaje; //en litros cm^3/1000
-	private double temperatura;
 	private boolean encendido;
 	private int revolucionesMax;
 	private int revolucionesActuales;
@@ -19,10 +17,9 @@ public class Motor extends Autoparte{
 		this.HP=HP;
 		this.cilindros=cilindros;
 		this.cubicaje=cubicaje; 
-		this.fuerzaMaxima = HP * 250 + cilindros*cubicaje;
-		this.temperatura = 0;
+		this.fuerzaMaxima = HP * 250 + cilindros*cubicaje*1000;
 		this.encendido=false;
-		this.revolucionesMax = (int)(HP * 17.647 + 2882.4);
+		this.revolucionesMax = (int)(HP * 17 + 2800);
 		this.fuerzaInstantanea = 0;
 		this.acelerando = false;
 		this.sistemaC = new SistemaCombustion(0,0,"Comun",0);	
@@ -63,20 +60,24 @@ public class Motor extends Autoparte{
 		encendido = false;
 	}
 
-	public void acelerar (int intervaloTiempo){
-		int deltaRevoluciones;
-		int cambioActual;
-		acelerando = true;
-		cambioActual = caja.getCambioActual();
-		deltaRevoluciones = revolucionesMax * intervaloTiempo / 1000 *  CTE; 
-		if (revolucionesActuales + deltaRevoluciones < revolucionesMax)
-			revolucionesActuales += deltaRevoluciones;
+	public double obtenerDeltaRevoluciones(int intervaloTiempo){
+		
+		 return ( 4*intervaloTiempo * caja.obtenerRelacion()*HP*cubicaje); 
+	
 	}
 	
-	public void desacelerar(int decrementoRevoluciones){
+	public void acelerar (int intervaloTiempo){
+		   acelerando = true;
+		   double deltaRevoluciones = obtenerDeltaRevoluciones(intervaloTiempo);
+		   if (revolucionesActuales + deltaRevoluciones < revolucionesMax){
+		   revolucionesActuales += deltaRevoluciones ;}
+		   else{ revolucionesActuales = revolucionesMax; }
+	}
+	
+	public void desacelerar(int intervaloTiempo){
 		acelerando = false;
-		revolucionesActuales -= decrementoRevoluciones; 
-		
+		revolucionesActuales -= obtenerDeltaRevoluciones(intervaloTiempo) ;; 
+		if (revolucionesActuales < 800) {revolucionesActuales = 800; }
 	}
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, double velocidadInstantanea) {
@@ -95,6 +96,7 @@ public class Motor extends Autoparte{
 	public boolean estaEncendido(){
 		return encendido;
 	}
+	
 	// tiempo en segundo
 	
     public void simular(double deltaTiempo){
@@ -102,7 +104,7 @@ public class Motor extends Autoparte{
       int cambio= caja.getCambioActual();
       
       if (cambio>0) { 
-         consumoInstantaneo =  (  (cilindros * cubicaje / 3600)* deltaTiempo ); // * ALGO ; 
+         consumoInstantaneo =  (  (cilindros * cubicaje / 3600)* deltaTiempo )* (1 / caja.obtenerRelacion());  ; 
       }
        else{
     	   consumoInstantaneo = (  (cilindros * cubicaje / 3600)* deltaTiempo );
@@ -115,6 +117,19 @@ public class Motor extends Autoparte{
 	public String getDetalles(){
 		return (" Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + sistemaC.getDetalles() );
 	}
-}
 
-	
+
+	public void embragarSubir(){
+		caja.subirCambio();
+		revolucionesActuales = (2 * revolucionesActuales / 5);
+		if(revolucionesActuales < 800){ revolucionesActuales = 800;}
+	}
+    
+	public void embragarBajar(){
+		caja.bajarCambio();
+		revolucionesActuales = (5 * revolucionesActuales / 2);
+		if(revolucionesActuales > revolucionesMax){ 
+			revolucionesActuales = revolucionesMax;
+			this.gastar(0.05);}
+	}
+}  
