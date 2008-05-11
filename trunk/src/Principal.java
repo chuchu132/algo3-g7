@@ -17,27 +17,31 @@ public class Principal {
 		System.out.println(miTanque.getDetalles());
 		miAuto.cargarCombustible(200,94);
 		 System.out.println(miTanque.getDetalles());
+		 
 		miAuto.encender();
 		miAuto.subirCambio();
+		
 		boolean termino= false;
+		
 		while(!termino){
 		
-		termino = !(miAuto.getPosicion() < unaPista.getLongitud());
-		miAuto.acelerar(0.1);
-		
-		try{
-		miAuto.simular(0.1);
-		}
-		catch (ProblemaTecnicoException e) {System.out.println(e.getProblema());
-		                                       termino= true;}
-		
-		System.out.println(miTanque.getDetalles());
-	    System.out.println(miMotor.getDetalles());
-		System.out.println( miAuto.getDetalles());
-	    System.out.println(" cambio actual: " + miCaja.getCambioActual());
-	    miAuto.subirCambio();
-	    System.out.println(" cambio actual:  " + miCaja.getCambioActual());
-		
+			termino = !(miAuto.getPosicion() < unaPista.getLongitud());
+			miAuto.acelerar(0.1);
+			
+			try{
+			miAuto.simular(0.1);
+			}
+			catch (ProblemaTecnicoException e) {System.out.println(e.getProblema());
+			                                       termino= true;}
+			
+			System.out.println(miTanque.getDetalles());
+		    System.out.println(miMotor.getDetalles());
+			System.out.println( miAuto.getDetalles());
+			System.out.println("\n");
+		    //System.out.println(" cambio actual: " + miCaja.getCambioActual());
+		    //miAuto.subirCambio();
+		    //System.out.println(" cambio actual:  " + miCaja.getCambioActual());
+			
 		}
 	    
 	    
