@@ -94,8 +94,8 @@ public class Motor extends Autoparte{
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, double velocidadInstantanea) {
 		if (acelerando == true){
 			if (revolucionesActuales >= 3/4*revolucionesMax)
-			fuerzaInstantanea = fuerzaRozamiento;
-			return fuerzaRozamiento;
+			{fuerzaInstantanea = fuerzaRozamiento;
+			return fuerzaRozamiento;}
 		}
 		else if (revolucionesActuales < 3/4*revolucionesMax)
 			fuerzaInstantanea = caja.obtenerRelacion()*fuerzaMaxima;
