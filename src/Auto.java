@@ -23,8 +23,7 @@ public class Auto{
 		   this.motor.conectarCaja(caja);
 		   this.motor.conectarTanque(tanque);
 		   if( sistemaCombustion != null){this.motor.cambiarSitemaCombustion(sistemaCombustion);}
-		   else { this.sistemaCombustion = new SistemaCombustion(0,0,"Comun de Fabrica",0);}
-		   this.sistemaCombustion.conectarTanque(tanque);
+		   this.sistemaCombustion = motor.getSistemaCombustion();
 		   this.carroceria = carroceria;
 		   this.rueda = rueda;
 		   	 

@@ -10,7 +10,7 @@ public class Principal {
 		Rueda unaRueda = new Rueda(100,20,4);
 		Pista unaPista = new Pista(100,2);
 		
-		Auto miAuto = new Auto(miMotor,miCaja,null,miCarroceria,miTanque,unaRueda);
+		Auto miAuto = new Auto(miMotor,miCaja,miSC,miCarroceria,miTanque,unaRueda);
 		
 		
 		miAuto.irAPista(unaPista);
@@ -43,8 +43,6 @@ public class Principal {
 		    //System.out.println(" cambio actual:  " + miCaja.getCambioActual());
 			
 		}
-	    
-	    
 		
 	
 	
