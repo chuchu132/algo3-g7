@@ -76,6 +76,7 @@ public class Auto{
 	public String getDetalles(){
 		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Posicion " + posicion);
 	}
+		
 	
 	public void irAPista(Pista pista){
 		this.pista = pista;
