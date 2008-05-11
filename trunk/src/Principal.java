@@ -17,7 +17,15 @@ public class Principal {
 		System.out.println(miTanque.getDetalles());
 		miAuto.cargarCombustible(200,94);
 		 System.out.println(miTanque.getDetalles());
+		for(int i=0; i < 7;i++){ 
+		  System.out.println(miCaja.obtenerRelacion());
+		  miCaja.subirCambio();}
 		 
+		for(int i=0; i < 7;i++){ 
+			  System.out.println(miCaja.obtenerRelacion());
+			  miCaja.bajarCambio();}
+			
+		double tiempo =0; 
 		miAuto.encender();
 		miAuto.subirCambio();
 		
@@ -30,6 +38,7 @@ public class Principal {
 			
 			try{
 			miAuto.simular(0.1);
+			tiempo+=0.1;
 			}
 			catch (ProblemaTecnicoException e) {System.out.println(e.getProblema());
 			                                       termino= true;}
@@ -37,14 +46,20 @@ public class Principal {
 			System.out.println(miTanque.getDetalles());
 		    System.out.println(miMotor.getDetalles());
 			System.out.println( miAuto.getDetalles());
+			System.out.println("tiempo trascurrido: " + tiempo);
 			System.out.println("\n");
-		    //System.out.println(" cambio actual: " + miCaja.getCambioActual());
-		    //miAuto.subirCambio();
-		    //System.out.println(" cambio actual:  " + miCaja.getCambioActual());
+		    System.out.println(" cambio actual: " + miCaja.getCambioActual());
+		    
+		    miAuto.subirCambio(); /* ojo aca cuando llegue a 6 cada vez cambie y quiera subir
+		                           * va a volver a poner 6 y las revoluciones caen a 800
+		                           * no es q ande mal falla la forma de probar
+		                           */ 
+		    
+		    System.out.println(" cambio actual:  " + miCaja.getCambioActual());
 			
 		}
 		
-	
+		System.out.println("tiempo total: " + tiempo);
 	
 	}
 }
