@@ -24,7 +24,7 @@ public class Motor extends Autoparte{
 		this.revolucionesActuales = 0;
 		this.fuerzaInstantanea = 0;
 		this.acelerando = false;
-		this.sistemaC = new SistemaCombustion(0,0,"Comun",0);
+		this.sistemaC = new SistemaCombustion(0,0,"Comun de Fabrica",0);;
 	}
 
 	
@@ -40,6 +40,10 @@ public class Motor extends Autoparte{
 	
 	public void conectarCaja(CajaVelocidades unaCaja){
 		caja = unaCaja;
+	}
+	
+    public SistemaCombustion getSistemaCombustion(){
+		return sistemaC;
 	}
 	
 	public CajaVelocidades cambiarCaja(CajaVelocidades otraCaja){
