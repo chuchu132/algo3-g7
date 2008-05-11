@@ -13,8 +13,7 @@ public class TanqueCombustible extends Autoparte{
 	}
 	
 	 public void cargarCombustible(double cuanto,int oct){
-		octanage = (int) ((octanage*(cantidadCombustible/(cantidadCombustible+cuanto)))
-					+  (oct*(cuanto/(cantidadCombustible+cuanto))));
+		octanage = (int) ((octanage*(cantidadCombustible/(cantidadCombustible+cuanto)))	+  (oct*(cuanto/(cantidadCombustible+cuanto))));
 		cantidadCombustible += cuanto;
     	if(cantidadCombustible > capacidadMaxima){
     		cantidadCombustible = capacidadMaxima;
