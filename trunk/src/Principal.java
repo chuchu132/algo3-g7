@@ -8,7 +8,7 @@ public class Principal {
 		SistemaCombustion miSC = new SistemaCombustion(100,5,"Inyeccion",0.2);
         Carroceria miCarroceria = new Carroceria(100,500,"Falcon 80",1,1);
 		Rueda unaRueda = new Rueda(100,20,4);
-		Pista unaPista = new Pista(100,2);
+		Pista unaPista = new Pista(10000,2);
 		
 		Auto miAuto = new Auto(miMotor,miCaja,miSC,miCarroceria,miTanque,unaRueda);
 		
@@ -24,7 +24,7 @@ public class Principal {
 		for(int i=0; i < 7;i++){ 
 			  System.out.println(miCaja.obtenerRelacion());
 			  miCaja.bajarCambio();}
-			
+		double delta = 1;	
 		double tiempo =0; 
 		miAuto.encender();
 		miAuto.subirCambio();
@@ -34,11 +34,11 @@ public class Principal {
 		while(!termino){
 		
 			termino = !(miAuto.getPosicion() < unaPista.getLongitud());
-			miAuto.acelerar(0.1);
+			miAuto.acelerar(delta);
 			
 			try{
-			miAuto.simular(0.1);
-			tiempo+=0.1;
+			miAuto.simular(delta);
+			tiempo+=delta;
 			}
 			catch (ProblemaTecnicoException e) {System.out.println(e.getProblema());
 			                                       termino= true;}
@@ -50,7 +50,8 @@ public class Principal {
 			System.out.println("\n");
 		    System.out.println(" cambio actual: " + miCaja.getCambioActual());
 		    
-		    miAuto.subirCambio(); /* ojo aca cuando llegue a 6 cada vez cambie y quiera subir
+		   // miAuto.subirCambio(); 
+		    /* ojo aca cuando llegue a 6 cada vez cambie y quiera subir
 		                           * va a volver a poner 6 y las revoluciones caen a 800
 		                           * no es q ande mal falla la forma de probar
 		                           */ 
