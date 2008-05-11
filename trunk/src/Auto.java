@@ -37,7 +37,8 @@ public class Auto{
   
   //en seg
 	
-	public void simular(double tiempo) { 
+	public void simular(double tiempo)
+	throws ProblemaTecnicoException{ 
 		
     	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal();
     	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento, velocidad);
@@ -50,6 +51,8 @@ public class Auto{
 		posicion += velocidad * tiempo;
 		
 		motor.simular(tiempo); // quema comb en funcion del cambio y el motor
+        
+		if( rueda.getVidaUtil() < 0.2 ){ throw new ProblemaTecnicoException("Neumatico Reventado");}	
 	}
     
 	public void acelerar(double tiempo){
