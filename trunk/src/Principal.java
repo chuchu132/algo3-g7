@@ -2,7 +2,7 @@
 public class Principal {
 	public static void main(String[] args) {
 		
-		Motor miMotor = new Motor(800,6,200,250,300);
+		Motor miMotor = new Motor(400,6,0.2,250,300);
 		TanqueCombustible miTanque = new TanqueCombustible(20,70);
 		CajaVelocidades miCaja = new CajaVelocidades(6,100,100);
 		SistemaCombustion miSC = new SistemaCombustion(100,5,"Inyeccion",0.2);
@@ -19,12 +19,16 @@ public class Principal {
 		 System.out.println(miTanque.getDetalles());
 		miAuto.encender();
 		miAuto.subirCambio();
+		
 		while(miAuto.getPosicion() < unaPista.getLongitud()){
+		
 		miAuto.acelerar(0.0001);
 		miAuto.simular(1);
 		System.out.println(miTanque.getDetalles());
 	    System.out.println( miAuto.getDetalles());
-		miAuto.subirCambio();
+	    System.out.println(" cambio actual: " + miCaja.getCambioActual());
+	    miAuto.subirCambio();
+	    System.out.println(" cambio actual:  " + miCaja.getCambioActual());
 		}
 	    
 	    
