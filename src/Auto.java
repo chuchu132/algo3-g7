@@ -80,5 +80,8 @@ public class Auto{
 	public void irAPista(Pista pista){
 		this.pista = pista;
 	}
-
+   public double getPosicion(){
+	   return this.posicion;
+   }
+   
 }
