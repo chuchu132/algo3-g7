@@ -93,7 +93,7 @@ public class Motor extends Autoparte{
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, double velocidadInstantanea) {
 		if (acelerando == true){
-			if (revolucionesActuales >= 3/4*revolucionesMax)
+			if (revolucionesActuales >= 3/4*revolucionesMax) //no esta funcionando
 			{fuerzaInstantanea = fuerzaRozamiento;
 			return fuerzaRozamiento;}
 		}
