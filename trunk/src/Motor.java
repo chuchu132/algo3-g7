@@ -93,17 +93,16 @@ public class Motor extends Autoparte{
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, double velocidadInstantanea) {
 		if (acelerando == true){
-			if (revolucionesActuales >= 3/4*revolucionesMax) //no esta funcionando
+			if ((int)revolucionesActuales >= (int)(3/4*revolucionesMax)) //no esta funcionando
 			{fuerzaInstantanea = fuerzaRozamiento;
 			return fuerzaRozamiento;}
+		
+		else {fuerzaInstantanea = caja.obtenerRelacion()*fuerzaMaxima;}
 		}
-		else if (revolucionesActuales < 3/4*revolucionesMax)
-			fuerzaInstantanea = caja.obtenerRelacion()*fuerzaMaxima;
-		else
-			fuerzaInstantanea = 0;
+		else{fuerzaInstantanea = 0;}
 		
 		return (fuerzaInstantanea * (1 + sistemaC.getPlus()) );
-	}
+	   }
 	
 	public boolean estaEncendido(){
 		return encendido;
