@@ -8,7 +8,7 @@ public class Principal {
 		SistemaCombustion miSC = new SistemaCombustion(100,5,"Inyeccion",0.2);
         Carroceria miCarroceria = new Carroceria(100,500,"Falcon 80",1,1);
 		Rueda unaRueda = new Rueda(100,20,4);
-		Pista unaPista = new Pista(10000,2);
+		Pista unaPista = new Pista(100,2);
 		
 		Auto miAuto = new Auto(miMotor,miCaja,miSC,miCarroceria,miTanque,unaRueda);
 		
@@ -24,7 +24,7 @@ public class Principal {
 		for(int i=0; i < 7;i++){ 
 			  System.out.println(miCaja.obtenerRelacion());
 			  miCaja.bajarCambio();}
-		double delta = 0.1;	
+		double delta = 1;	
 		double tiempo =0; 
 		miAuto.encender();
 		miAuto.subirCambio();

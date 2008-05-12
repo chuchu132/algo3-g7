@@ -48,9 +48,11 @@ public class Auto{
 		aceleracion = (fuerzaNeta/getPesoTotal()) * motor.getVidaUtil();
 		velocidad += (aceleracion * tiempo)* (1 + carroceria.getPlusVelocidad());
 		posicion += velocidad * tiempo;
-		
+		try{
 		motor.simular(tiempo); // quema comb en funcion del cambio y el motor
-        
+		}
+		catch(ProblemaTecnicoException e){throw e; }
+		
 		if( rueda.getVidaUtil() < 0.2 ){ throw new ProblemaTecnicoException("Neumatico Reventado");}	
 	}
     
@@ -73,6 +75,10 @@ public class Auto{
 	
 	public void subirCambio (){
 		motor.embragarSubir();
+	}
+	
+	public void bajarCambio(){
+		motor.embragarBajar();
 	}
 	
 	public String getDetalles(){
