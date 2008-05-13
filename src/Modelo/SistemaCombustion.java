@@ -9,7 +9,7 @@ public class SistemaCombustion extends Autoparte{
 	 * y ontenemos un 10% mas de potencia
 	 */ 
    public SistemaCombustion(double precio, double peso, String tipo, double plus){
-	   super(precio,peso,1);
+	   super(peso,precio,1);
 	   this.tipo = tipo;
 	   this.plusPotencia = plus;
    }
