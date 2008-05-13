@@ -38,10 +38,9 @@ public class TestMotor extends TestCase {
 		miMotor.conectarTanque(miTanque);
 		miTanque.cargarCombustible(95, 20);
 		miMotor.encender();
-		assertFalse(miMotor.estaEncendido());
+		assertTrue(miMotor.estaEncendido());
 		
 	}
 	
 	
 	}
-}
