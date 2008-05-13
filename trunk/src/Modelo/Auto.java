@@ -43,13 +43,13 @@ public class Auto{
 	throws ProblemaTecnicoException{ 
 		
     	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
-    	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento, velocidad);
-		double fuerzaNeta = (velocidad > 0)? fuerzaPositiva - fuerzaRozamiento : fuerzaPositiva;
+    	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento);
+		double fuerzaNeta = (fuerzaPositiva - fuerzaRozamiento >= 0)? (fuerzaPositiva - fuerzaRozamiento)* (1 + carroceria.getPlusVelocidad()) : 0;
     	
 		
 		
 		aceleracion = (fuerzaNeta/getPesoTotal()) * motor.getVidaUtil();
-		velocidad += (aceleracion * tiempo)* (1 + carroceria.getPlusVelocidad());
+		velocidad += (aceleracion * tiempo);
 		posicion += velocidad * tiempo;
 		
 		try {

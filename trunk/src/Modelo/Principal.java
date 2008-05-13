@@ -10,7 +10,7 @@ public class Principal {
 		SistemaCombustion miSC = new SistemaCombustion(100,5,"Inyeccion",0.05);
         Carroceria miCarroceria = new Carroceria(100,500,"Falcon 80",1,0);
 		Rueda unaRueda = new Rueda(100,20,0.9); //los coeficientes deben ser < 1
-		Pista unaPista = new Pista(100,0.8); //los coeficientes deben ser < 1
+		Pista unaPista = new Pista(100,0.1); //los coeficientes deben ser < 1
 		
 		Auto miAuto = new Auto(miMotor,miCaja,miSC,miCarroceria,miTanque,unaRueda);
 		
