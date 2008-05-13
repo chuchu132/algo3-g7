@@ -1,3 +1,4 @@
+package Modelo;
 
 public class CajaVelocidades extends Autoparte{
 	private int cambioActual;

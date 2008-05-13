@@ -1,3 +1,4 @@
+package Modelo;
 
 public class SistemaCombustion extends Autoparte{
     private TanqueCombustible tanque=null; 

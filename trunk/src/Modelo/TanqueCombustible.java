@@ -1,3 +1,4 @@
+package Modelo;
 
 public class TanqueCombustible extends Autoparte{
     
