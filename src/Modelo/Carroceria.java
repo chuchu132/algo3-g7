@@ -4,11 +4,8 @@ public class Carroceria extends Autoparte{
 	 private String modelo;
 	 private int color;
 	 private double plusVelocidad;
-	 /*
-	  * ej si vale 0.1 a la velocidad final del auto en cierto cambio
-	  * la multiplicamos x 1.1 y obtenemos 10% mas de velocidad.
-	  * */
-	public Carroceria(double precio,double peso, String modelo, int color, int plus ){
+	 
+	public Carroceria(double precio,double peso, String modelo, int color, double plus ){
 		super(precio,peso,1);
 		this.modelo= modelo;
 		this.color= color;
@@ -26,10 +23,8 @@ public class Carroceria extends Autoparte{
 		this.color = color;
 	}
 	public double getPlusVelocidad() {
-		return plusVelocidad;
+		return (plusVelocidad * super.getVidaUtil());
 	}
-	public void setPlusVelocidad(double plusVelocidad) {
-		this.plusVelocidad = plusVelocidad;
-	}
+	
 	
 }
