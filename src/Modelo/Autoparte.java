@@ -1,3 +1,4 @@
+package Modelo;
 public abstract class Autoparte {
 	private double peso;
 	private double precio;

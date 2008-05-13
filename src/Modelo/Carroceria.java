@@ -1,3 +1,4 @@
+package Modelo;
 
 public class Carroceria extends Autoparte{
 	 private String modelo;
