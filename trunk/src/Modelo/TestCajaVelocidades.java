@@ -7,19 +7,19 @@ public class TestCajaVelocidades extends TestCase {
  
  
  
- public void testGetCambioActual(){
+ public void testGetCambioActual(){// prueba que el cambio actual sea 0 cuando la caja no se uso
 	 miCaja= new CajaVelocidades(5,4,3);
 	 assertEquals(0,miCaja.getCambioActual());
  }
  
-public void testSubirCambio(){
+public void testSubirCambio(){// prueba que aumente el cambio actual
 	miCaja = new CajaVelocidades(5,4,3);
 	miCaja.subirCambio();
 	miCaja.subirCambio();
 	assertEquals(2,miCaja.getCambioActual());
 }
 
-public void testSubirCambio2(){
+public void testSubirCambio2(){// prueba que no suba mas cambios de los que tiene 
 	miCaja = new CajaVelocidades(3,4,3);
 	miCaja.subirCambio();
 	miCaja.subirCambio();
@@ -28,7 +28,7 @@ public void testSubirCambio2(){
 	assertEquals(3,miCaja.getCambioActual());
 }
 
-public void testBajarCambio(){
+public void testBajarCambio(){// prueba que baje el cambio
 	miCaja = new CajaVelocidades(5,4,3);
 	miCaja.subirCambio();
 	miCaja.subirCambio();
@@ -36,7 +36,7 @@ public void testBajarCambio(){
 	assertEquals(1,miCaja.getCambioActual());
 }
 
-public void testBajarCambio2(){
+public void testBajarCambio2(){//prueba que no baje mas cambios que 0
 	miCaja = new CajaVelocidades(5,4,3);
 	miCaja.subirCambio();
 	miCaja.bajarCambio();
@@ -44,7 +44,7 @@ public void testBajarCambio2(){
 	assertEquals(0,miCaja.getCambioActual());
 }
 
-public void testObtenerRelacion(){
+public void testObtenerRelacion(){//prueba la relacion de caja para una caja de 5 velocidades
 	miCaja = new CajaVelocidades(5,4,3);
 	assertEquals(0.0,miCaja.obtenerRelacion());
 	miCaja.subirCambio();
