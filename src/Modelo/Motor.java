@@ -70,17 +70,20 @@ public class Motor extends Autoparte{
 
 	public double obtenerDeltaRevoluciones(double tiempo){
 		
-		 return ( 4*tiempo * caja.obtenerRelacion()*HP*cubicaje); 
-	
+		 //return ( 10*tiempo * caja.obtenerRelacion()*HP*cubicaje); 
+		return tiempo * ((0.75 * revolucionesMax) / (4/caja.obtenerRelacion()) ) ; 
 	}
 	
 	public void acelerar (double tiempo){
 
 		   acelerando = true;
+		   
 		   double deltaRevoluciones = obtenerDeltaRevoluciones(tiempo);
 		   if (revolucionesActuales + deltaRevoluciones < revolucionesMax){
-		   revolucionesActuales += deltaRevoluciones ;}
-		   else{ revolucionesActuales = revolucionesMax; }
+			   revolucionesActuales += deltaRevoluciones ;
+		   } else {
+			   revolucionesActuales = revolucionesMax; 
+		   }
 
 	}
 	
@@ -94,15 +97,20 @@ public class Motor extends Autoparte{
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, double velocidadInstantanea) {
 		if (acelerando == true){
-			if ((int)revolucionesActuales >= (int)(3/4*revolucionesMax)) //no esta funcionando
-			{fuerzaInstantanea = fuerzaRozamiento;
-			return fuerzaRozamiento;}
-		
-		else {fuerzaInstantanea = caja.obtenerRelacion()*fuerzaMaxima;}
+			if ((int)revolucionesActuales >= (int)(0.75 * revolucionesMax)) {
+				fuerzaInstantanea = fuerzaRozamiento;
+			} else {
+				
+				fuerzaInstantanea = caja.obtenerRelacion()*fuerzaMaxima* (1 + sistemaC.getPlus());
+				//caso en que se acelera y le da un plus en funcion del sistema de Combustion
+			}
+		} else {
+			fuerzaInstantanea = -fuerzaRozamiento;
+			 //es el caso en que tiene velocidad y no se acelera
+									//entonces se frena
 		}
-		else{fuerzaInstantanea = 0;}
-		
-		return (fuerzaInstantanea * (1 + sistemaC.getPlus()) );
+
+		return fuerzaInstantanea;
 	   }
 	
 	public boolean estaEncendido(){
@@ -111,26 +119,31 @@ public class Motor extends Autoparte{
 	
 	// tiempo en segundo
 	
-    public void simular(double deltaTiempo)
-    throws ProblemaTecnicoException{
+    public void simular(double deltaTiempo) throws ProblemaTecnicoException {
     	
-      double consumoInstantaneo = 0;
-      int cambio= caja.getCambioActual();
+    	double consumoInstantaneo = 0;
+    	int cambio = caja.getCambioActual();
       
-      if (cambio>0) { 
-         consumoInstantaneo =  (  (cilindros * cubicaje / 3600)* deltaTiempo )* (1 / caja.obtenerRelacion());  ; 
-      }
-       else{
-    	   consumoInstantaneo = (  (cilindros * cubicaje / 3600)* deltaTiempo );
-    	   }
-       this.quemarCombustible(consumoInstantaneo);
+    	if (cambio > 0) { 
+    		consumoInstantaneo = ((cilindros * cubicaje / 3600)* deltaTiempo ) * (1 / caja.obtenerRelacion()); 
+    	}
+    	else {
+    	   consumoInstantaneo = ((cilindros * cubicaje / 3600)* deltaTiempo);
+    	}
+    	
+    	this.quemarCombustible(consumoInstantaneo);
        
-     if(!encendido){ throw new ProblemaTecnicoException("Sin Combustible");}
-     if(this.getVidaUtil() < 0.2){throw new ProblemaTecnicoException("Motor Fundido");}
-     }
+    	if(!encendido) { 
+    	   throw new ProblemaTecnicoException("Sin Combustible");
+    	}     
+     
+    	if(this.getVidaUtil() < 0.2) {
+    	   throw new ProblemaTecnicoException("Motor Fundido");
+    	}
+    }
 	
 	public String getDetalles(){
-		return (" Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + sistemaC.getDetalles() + "RMax: " + revolucionesMax + " Ract: " + revolucionesActuales);
+		return ("F inst = " + fuerzaInstantanea  + " Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + sistemaC.getDetalles() + "RMax: " + revolucionesMax + " Ract: " + revolucionesActuales);
 	}
 
 	public void embragarSubir(){

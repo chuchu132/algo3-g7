@@ -7,18 +7,38 @@ public class Principal {
 		Motor miMotor = new Motor(170,6,0.2,250,300);
 		TanqueCombustible miTanque = new TanqueCombustible(20,120);
 		CajaVelocidades miCaja = new CajaVelocidades(6,100,100);
-		SistemaCombustion miSC = new SistemaCombustion(100,5,"Inyeccion",0.2);
-        Carroceria miCarroceria = new Carroceria(100,500,"Falcon 80",1,1);
-		Rueda unaRueda = new Rueda(100,20,1);
-		Pista unaPista = new Pista(100,2);
+		SistemaCombustion miSC = new SistemaCombustion(100,5,"Inyeccion",0.05);
+        Carroceria miCarroceria = new Carroceria(100,500,"Falcon 80",1,0);
+		Rueda unaRueda = new Rueda(100,20,0.9); //los coeficientes deben ser < 1
+		Pista unaPista = new Pista(100,0.8); //los coeficientes deben ser < 1
 		
 		Auto miAuto = new Auto(miMotor,miCaja,miSC,miCarroceria,miTanque,unaRueda);
 		
 		
-		miAuto.irAPista(unaPista);
-		System.out.println(miTanque.getDetalles());
 		miAuto.cargarCombustible(200,94);
-		 System.out.println(miTanque.getDetalles());
+		miAuto.encender();
+		miAuto.irAPista(unaPista);
+		miAuto.subirCambio();
+		//miAuto.subirCambio();
+		
+	for(int i=0; i < 10; i++) {
+		miAuto.acelerar(1);
+		
+		try {
+			miAuto.simular(1);
+		} catch (ProblemaTecnicoException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(miAuto.getDetalles());
+		System.out.println(miMotor.getDetalles()+"\n");
+		
+	}	
+		//System.out.println(miTanque.getDetalles());
+		
+		// System.out.println(miTanque.getDetalles());
+		
+		/*
 		for(int i=0; i < 7;i++){ 
 		  System.out.println(miCaja.obtenerRelacion());
 		  miCaja.subirCambio();}
@@ -52,17 +72,13 @@ public class Principal {
 			System.out.println("\n");
 		    System.out.println(" cambio actual: " + miCaja.getCambioActual());
 		    
-		   // miAuto.subirCambio(); 
-		    /* ojo aca cuando llegue a 6 cada vez cambie y quiera subir
-		                           * va a volver a poner 6 y las revoluciones caen a 800
-		                           * no es q ande mal falla la forma de probar
-		                           */ 
-		    
+		   
 		    System.out.println(" cambio actual:  " + miCaja.getCambioActual());
 			
 		}
+	*/
 		
-		System.out.println("tiempo total: " + tiempo);
+		//System.out.println("tiempo total: " + tiempo);
 	
 	}
 }

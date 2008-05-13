@@ -17,7 +17,7 @@ public class Auto{
 	private double aceleracion;
 	
 	
-	public Auto(Motor motor, CajaVelocidades caja,SistemaCombustion sistemaCombustion,Carroceria carroceria,TanqueCombustible tanque,Rueda rueda){
+	public Auto(Motor motor, CajaVelocidades caja, SistemaCombustion sistemaCombustion, Carroceria carroceria,TanqueCombustible tanque,Rueda rueda){
 	       
 		   this.motor = motor;
 		   this.caja = caja;
@@ -28,6 +28,7 @@ public class Auto{
 		   this.sistemaCombustion = motor.getSistemaCombustion();
 		   this.carroceria = carroceria;
 		   this.rueda = rueda;
+		   
 		   	 
 	}
 	
@@ -41,17 +42,18 @@ public class Auto{
 	public void simular(double tiempo)
 	throws ProblemaTecnicoException{ 
 		
-    	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal();
+    	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
     	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento, velocidad);
-		double fuerzaNeta;
+		double fuerzaNeta = (velocidad > 0)? fuerzaPositiva - fuerzaRozamiento : fuerzaPositiva;
     	
-		fuerzaNeta = (velocidad > 0)? fuerzaPositiva - fuerzaRozamiento : fuerzaPositiva ;
+		
 		
 		aceleracion = (fuerzaNeta/getPesoTotal()) * motor.getVidaUtil();
 		velocidad += (aceleracion * tiempo)* (1 + carroceria.getPlusVelocidad());
 		posicion += velocidad * tiempo;
-		try{
-		motor.simular(tiempo); // quema comb en funcion del cambio y el motor
+		
+		try {
+			motor.simular(tiempo); // quema comb en funcion del cambio y el motor
 		}
 		catch(ProblemaTecnicoException e){throw e; }
 		
@@ -84,7 +86,7 @@ public class Auto{
 	}
 	
 	public String getDetalles(){
-		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Posicion " + posicion);
+		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Posicion " + posicion + " Peso: " + getPesoTotal());
 	}
 		
 	
