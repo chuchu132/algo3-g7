@@ -8,7 +8,7 @@ public class TestCarroceria extends TestCase {
  Carroceria miCarro;
  
   
- public void testGastar(){
+ public void testGastar(){// prueba el metodo gastar de autoparte
 	 miCarro = new Carroceria(100,700,"Torino",1,0.1);
 	 miCarro.gastar(0.1);
 	 assertTrue(0.89 < miCarro.getVidaUtil() && miCarro.getVidaUtil()<0.91);
@@ -16,7 +16,7 @@ public class TestCarroceria extends TestCase {
 	 assertTrue(0.44 < miCarro.getVidaUtil() && miCarro.getVidaUtil()<0.46);
 	 }
  
- public void testGetPlusVelocidad(){
+ public void testGetPlusVelocidad(){//prueba el metodo getPlusVelocidad antes y despues de gastar la carroceria 
 	 miCarro = new Carroceria(100,700,"Torino",1,0.1);
 	 assertEquals(0.1,miCarro.getPlusVelocidad());
 	 miCarro.gastar(0.1);
