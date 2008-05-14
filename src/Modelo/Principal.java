@@ -41,7 +41,7 @@ public class Principal {
 	
 	
 	
-	for(int i=0; i < 70; i++) {
+	for(int i=0; i < 15; i++) {
 		miAuto.desacelerar(1);
 		
 		try {
@@ -72,51 +72,58 @@ public class Principal {
 	}
 	
 	
-		//System.out.println(miTanque.getDetalles());
-		
-		// System.out.println(miTanque.getDetalles());
-		
-		/*
-		for(int i=0; i < 7;i++){ 
-		  System.out.println(miCaja.obtenerRelacion());
-		  miCaja.subirCambio();}
-		 
-		for(int i=0; i < 7;i++){ 
-			  System.out.println(miCaja.obtenerRelacion());
-			  miCaja.bajarCambio();}
-		double delta = 1;	
-		double tiempo =0; 
-		miAuto.encender();
-		miAuto.subirCambio();
-		
-		boolean termino= false;
-		
-		while(!termino){
-		
-			termino = !(miAuto.getPosicion() < unaPista.getLongitud());
-			miAuto.acelerar(delta);
-			
-			try{
-			miAuto.simular(delta);
-			tiempo+=delta;
-			}
-			catch (ProblemaTecnicoException e) {System.out.println(e.getProblema());
-			                                       termino= true;}
-			
-			System.out.println(miTanque.getDetalles());
-		    System.out.println(miMotor.getDetalles());
-			System.out.println( miAuto.getDetalles());
-			System.out.println("tiempo trascurrido: " + tiempo);
-			System.out.println("\n");
-		    System.out.println(" cambio actual: " + miCaja.getCambioActual());
-		    
-		   
-		    System.out.println(" cambio actual:  " + miCaja.getCambioActual());
-			
-		}
-	*/
-		
-		//System.out.println("tiempo total: " + tiempo);
+	System.out.println("******* SUBE CAMBIO Y ACELERA********");
+	miAuto.subirCambio();
 	
+	for(int i=0; i < 5; i++) {
+		miAuto.acelerar(1);
+		
+		try {
+			miAuto.simular(1);
+		} catch (ProblemaTecnicoException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(miAuto.getDetalles());
+		System.out.println(/*miMotor.getDetalles()+ */ "\n");
+		
 	}
+	
+	
+	System.out.println("******* SUBE CAMBIO Y ACELERA********");
+	miAuto.subirCambio();
+	
+	for(int i=0; i < 5; i++) {
+		miAuto.acelerar(1);
+		
+		try {
+			miAuto.simular(1);
+		} catch (ProblemaTecnicoException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(miAuto.getDetalles());
+		System.out.println(/*miMotor.getDetalles()+ */ "\n");
+		
+	}
+	
+	System.out.println("******* SUBE CAMBIO Y ACELERA********");
+	miAuto.subirCambio();
+	
+	for(int i=0; i < 15; i++) {
+		miAuto.acelerar(1);
+		
+		try {
+			miAuto.simular(1);
+		} catch (ProblemaTecnicoException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(miAuto.getDetalles());
+		System.out.println(/*miMotor.getDetalles()+ */ "\n");
+		
+	}
+	
+}
+	
 }

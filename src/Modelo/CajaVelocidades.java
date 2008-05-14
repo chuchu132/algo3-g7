@@ -39,4 +39,9 @@ public class CajaVelocidades extends Autoparte{
 	}
 
 
+	public void setCambio(int numeroCambio) {
+		cambioActual = numeroCambio;		
+	}
+
+
 }
