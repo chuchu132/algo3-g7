@@ -70,7 +70,9 @@ public class Auto{
 	}
 	
 	public void desacelerar(double tiempo ){
-		motor.desacelerar(tiempo, velocidad);
+		motor.desacelerar(tiempo);
+		if(velocidad == 0.0)
+			caja.setCambio(0);
 	}
 	
 	public void cargarCombustible(double litros, int octanage){

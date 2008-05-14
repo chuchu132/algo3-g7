@@ -97,14 +97,10 @@ public class Motor extends Autoparte{
 	}
 	
 
-	public void desacelerar(double tiempo, double velocidad){
+	public void desacelerar(double tiempo){
 		acelerando = false;
-		if(velocidad == 0.0)
-			caja.setCambio(0);
-		else {
-			revolucionesActuales -= obtenerDeltaRevoluciones(tiempo) ;
-			if (revolucionesActuales < 800) {revolucionesActuales = 800; }
-		}
+		revolucionesActuales -= obtenerDeltaRevoluciones(tiempo) ;
+		if (revolucionesActuales < 800) {revolucionesActuales = 800; }
 	}
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento) {
