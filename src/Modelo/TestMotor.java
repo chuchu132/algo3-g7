@@ -85,7 +85,7 @@ public class TestMotor extends TestCase {
 		assertTrue(miMotor.estaEncendido());
 	}
 	
-	public void testObtenerDeltaRevoluciones() {
+	public void testObtenerDeltaRevoluciones(){ //prueba como varian las revoluciones segun el cambio en un intervalo de tiempo
 		miTanque.cargarCombustible(10.1, 98);
 		miMotor.encender();
 		assertEquals(0.0,miMotor.obtenerDeltaRevoluciones(10));
@@ -96,6 +96,24 @@ public class TestMotor extends TestCase {
 		assertEquals(6975.0,miMotor.obtenerDeltaRevoluciones(10));
 		
 	}
+	
+	public void testAcelerar(){ // prueba como varian las revoluciones del Motor segun el tiempo de aceleracion y el cambio
+		
+		miTanque.cargarCombustible(10.1, 98);
+		miMotor.encender();	
+		miMotor.acelerar(1);
+		assertEquals(800,miMotor.getRevolucionesActuales() );
+		miCaja.subirCambio();
+		miMotor.acelerar(1);
+		assertEquals(1962,miMotor.getRevolucionesActuales() );
+		miCaja.subirCambio();
+		miCaja.subirCambio();
+		miMotor.acelerar(1);
+		assertEquals(2659,miMotor.getRevolucionesActuales() );
+		
+	}
+	
+	
 	
 	
 	}
