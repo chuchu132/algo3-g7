@@ -133,11 +133,15 @@ public class Motor extends Autoparte{
     	double consumoInstantaneo = 0;
     	int cambio = caja.getCambioActual();
       
+    	if(this.getVidaUtil() < 0.2) {
+     	   throw new ProblemaTecnicoException("Motor Fundido");
+     	}
+    	
     	if (cambio > 0) { 
-    		consumoInstantaneo = ((cilindros * cubicaje / 3600)* deltaTiempo ) * (1 / caja.obtenerRelacion()); 
+    		consumoInstantaneo = ((cilindros * cubicaje / 180)* deltaTiempo ) * (1 / caja.obtenerRelacion()); 
     	}
     	else {
-    	   consumoInstantaneo = ((cilindros * cubicaje / 3600)* deltaTiempo);
+    	   consumoInstantaneo = ((cilindros * cubicaje / 180)* deltaTiempo);
     	}
     	
     	this.quemarCombustible(consumoInstantaneo);
@@ -146,9 +150,7 @@ public class Motor extends Autoparte{
     	   throw new ProblemaTecnicoException("Sin Combustible");
     	}     
      
-    	if(this.getVidaUtil() < 0.2) {
-    	   throw new ProblemaTecnicoException("Motor Fundido");
-    	}
+    	
     }
 	
 	public String getDetalles(){
@@ -162,12 +164,13 @@ public class Motor extends Autoparte{
 	}
     
 	public void embragarBajar(){
-		if(caja.getCambioActual() != 0){
 		caja.bajarCambio();
+		if(caja.getCambioActual() != 0){
 		revolucionesActuales = (5 * revolucionesActuales / 2);
 		if(revolucionesActuales > revolucionesMax){ 
 			revolucionesActuales = revolucionesMax;
 			this.gastar(0.05);}
         	}
+		else{revolucionesActuales = 800;}
      	}
 	}
