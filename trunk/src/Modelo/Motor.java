@@ -28,8 +28,15 @@ public class Motor extends Autoparte{
 		this.sistemaC = new SistemaCombustion(0,0,"Comun de Fabrica",0);;
 	}
 
-	
-	
+		
+	public int getRevolucionesActuales() {
+		return revolucionesActuales;
+	}
+
+	public double getFuerzaInstantanea() {
+		return fuerzaInstantanea;
+	}
+
 	public void encender (){
 		encendido = sistemaC.quemarCombustible(0.1);
 	    if(encendido){revolucionesActuales = 800; }	
@@ -69,9 +76,11 @@ public class Motor extends Autoparte{
 	}
 
 	public double obtenerDeltaRevoluciones(double tiempo){
-		
-		 //return ( 10*tiempo * caja.obtenerRelacion()*HP*cubicaje); 
-		return tiempo * ((0.75 * revolucionesMax) / (4/caja.obtenerRelacion()) ) ; 
+		double relacion = caja.obtenerRelacion();
+		if(relacion == 0.0){return 0;}
+		else{		 
+			return tiempo * ((0.75 * revolucionesMax) / (4/relacion) ) ;
+		}
 	}
 	
 	public void acelerar (double tiempo){

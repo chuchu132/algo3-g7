@@ -5,15 +5,15 @@ import junit.framework.TestCase;
 public class TestCajaVelocidades extends TestCase {
  CajaVelocidades miCaja; 
  
- 
+ protected void setUp(){
+	 miCaja= new CajaVelocidades(5,4,3); 
+ }
  
  public void testGetCambioActual(){// prueba que el cambio actual sea 0 cuando la caja no se uso
-	 miCaja= new CajaVelocidades(5,4,3);
-	 assertEquals(0,miCaja.getCambioActual());
+	  assertEquals(0,miCaja.getCambioActual());
  }
  
 public void testSubirCambio(){// prueba que aumente el cambio actual
-	miCaja = new CajaVelocidades(5,4,3);
 	miCaja.subirCambio();
 	miCaja.subirCambio();
 	assertEquals(2,miCaja.getCambioActual());
@@ -29,7 +29,6 @@ public void testSubirCambio2(){// prueba que no suba mas cambios de los que tien
 }
 
 public void testBajarCambio(){// prueba que baje el cambio
-	miCaja = new CajaVelocidades(5,4,3);
 	miCaja.subirCambio();
 	miCaja.subirCambio();
 	miCaja.bajarCambio();
@@ -37,7 +36,6 @@ public void testBajarCambio(){// prueba que baje el cambio
 }
 
 public void testBajarCambio2(){//prueba que no baje mas cambios que 0
-	miCaja = new CajaVelocidades(5,4,3);
 	miCaja.subirCambio();
 	miCaja.bajarCambio();
 	miCaja.bajarCambio();
@@ -45,7 +43,6 @@ public void testBajarCambio2(){//prueba que no baje mas cambios que 0
 }
 
 public void testObtenerRelacion(){//prueba la relacion de caja para una caja de 5 velocidades
-	miCaja = new CajaVelocidades(5,4,3);
 	assertEquals(0.0,miCaja.obtenerRelacion());
 	miCaja.subirCambio();
 	assertEquals((5.0/5.0),miCaja.obtenerRelacion());
