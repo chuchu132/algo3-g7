@@ -21,6 +21,8 @@ public class Principal {
 		miAuto.subirCambio();
 		//miAuto.subirCambio();
 		
+		
+		System.out.println("******* ACELERA EN PRIMERA ********");
 	for(int i=0; i < 15; i++) {
 		miAuto.acelerar(1);
 		
@@ -39,7 +41,7 @@ public class Principal {
 	
 	
 	
-	for(int i=0; i < 10; i++) {
+	for(int i=0; i < 70; i++) {
 		miAuto.desacelerar(1);
 		
 		try {
