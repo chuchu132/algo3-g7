@@ -101,11 +101,14 @@ public class TestMotor extends TestCase {
 		
 		miTanque.cargarCombustible(10.1, 98);
 		miMotor.encender();	
+		
 		miMotor.acelerar(1);
 		assertEquals(800,miMotor.getRevolucionesActuales() );
+		
 		miCaja.subirCambio();
 		miMotor.acelerar(1);
 		assertEquals(1962,miMotor.getRevolucionesActuales() );
+		
 		miCaja.subirCambio();
 		miCaja.subirCambio();
 		miMotor.acelerar(1);
@@ -113,7 +116,43 @@ public class TestMotor extends TestCase {
 		
 	}
 	
-	
-	
-	
+    public void testDesacelerar(){// prueba acelerar en varios cambios y despues desacelerar
+    	miTanque.cargarCombustible(10.1, 98);
+		miMotor.encender();	
+		
+		miCaja.subirCambio();
+		miMotor.acelerar(3);
+		assertEquals(4287,miMotor.getRevolucionesActuales() );
+		
+		miMotor.desacelerar(1);
+		assertEquals(3124,miMotor.getRevolucionesActuales() );
+		
+		miCaja.subirCambio();
+		miMotor.acelerar(3);
+		assertEquals(5914,miMotor.getRevolucionesActuales() );
+		miMotor.desacelerar(3);
+		assertEquals(3124,miMotor.getRevolucionesActuales() );
+		miMotor.desacelerar(10);
+		assertEquals(800,miMotor.getRevolucionesActuales() );
+    }	
+    
+    	
+	public void testEmbragarSubir() {//prueba como caen las revolucioes al subir de cambio
+		miTanque.cargarCombustible(10.1, 98);
+		miMotor.encender();	
+		
+		miMotor.embragarSubir(); 
+		assertEquals(800,miMotor.getRevolucionesActuales() );
+		
+		miMotor.acelerar(3);
+		miMotor.embragarSubir();
+		assertEquals(1714,miMotor.getRevolucionesActuales() );
+		
 	}
+	
+	public void testEmbragarBajar() {//prueba como aumentan las revoluciones al bajar de cambio
+		miTanque.cargarCombustible(10.1, 98);
+		miMotor.encender();	
+	}
+	
+}
