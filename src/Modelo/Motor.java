@@ -162,10 +162,12 @@ public class Motor extends Autoparte{
 	}
     
 	public void embragarBajar(){
+		if(caja.getCambioActual() != 0){
 		caja.bajarCambio();
 		revolucionesActuales = (5 * revolucionesActuales / 2);
 		if(revolucionesActuales > revolucionesMax){ 
 			revolucionesActuales = revolucionesMax;
 			this.gastar(0.05);}
+        	}
+     	}
 	}
-}
