@@ -64,7 +64,7 @@ public class TestMotor extends TestCase {
 		assertFalse(miMotor.estaEncendido());
 	}
 	
-	public void testEnenderCon(){//prueba encender con combustible
+	public void testEncenderCon(){//prueba encender con combustible
 		miTanque.cargarCombustible(95, 20);
 		miMotor.encender();
 		assertTrue(miMotor.estaEncendido());
@@ -153,6 +153,88 @@ public class TestMotor extends TestCase {
 	public void testEmbragarBajar() {//prueba como aumentan las revoluciones al bajar de cambio
 		miTanque.cargarCombustible(10.1, 98);
 		miMotor.encender();	
+		
+		//Caja en 0
+		
+		miMotor.embragarBajar();// Vuelve a poner 0
+		assertEquals(800,miMotor.getRevolucionesActuales());
+		
+		miMotor.embragarSubir();//1era
+		miMotor.acelerar(2);
+		miMotor.embragarBajar();// pone punto muerto el motor cae a 800 siempre
+		assertEquals(800,miMotor.getRevolucionesActuales());
+		
+		miMotor.embragarSubir();//1era
+		miMotor.acelerar(2);
+		miMotor.embragarSubir();//2da
+		miMotor.acelerar(1);
+		miMotor.embragarBajar();//1era
+		assertEquals(5450,miMotor.getRevolucionesActuales());
+		
+		miMotor.embragarBajar();// 0
+		miMotor.embragarSubir();// 1era
+		miMotor.acelerar(2);
+		miMotor.embragarSubir();// 2da
+		miMotor.acelerar(2);
+		
+		assertTrue(miMotor.getVidaUtil() == 1);// vida util antes de forzar el motor
+		
+		miMotor.embragarBajar(); // 1era pero con el motor muy acelerado llega a rev Maximas se desgasta el motor.
+		assertEquals(6200,miMotor.getRevolucionesActuales());
+		
+		assertTrue(miMotor.getVidaUtil() < 1);// vida util despues de forzar el motor
 	}
+	
+	
+	
+	public void testSimular() { // prueba el consumo de combustible con el motor bien y con suficiente combustible en el tanque
+		miTanque.cargarCombustible(10.1, 98);
+		miMotor.encender();
+		
+		
+		miMotor.embragarSubir();
+		try{
+		miMotor.simular(10);
+		}
+		catch(ProblemaTecnicoException e){
+			fail("La excepcion no deberia haber sido lanzada");
+		}
+		
+		assertTrue(9.92 < miTanque.cantidadCombustible()&& miTanque.cantidadCombustible() < 9.94 );
+			
+	}
+	
+	public void testSimular2() { // prueba el consumo de combustible con el motor bien y sin suficiente combustible en el tanque
+		miTanque.cargarCombustible(0.13, 98);
+		miMotor.encender();
+		
+		
+		miMotor.embragarSubir();
+		try{
+		miMotor.simular(10);
+		fail("Deberia haber lanzado una excepcion");
+		}
+		catch(ProblemaTecnicoException e){
+			assertEquals("Sin Combustible",e.getProblema());
+			}
+		
+		}
+	
+	public void testSimular3(){// prueba simular con el motor fundido
+		
+		miMotor.gastar(0.9);
+		
+		miMotor.embragarSubir();
+		try{
+		miMotor.simular(10);
+		fail("Deberia haber lanzado una excepcion");
+		}
+		catch(ProblemaTecnicoException e){
+			assertEquals("Motor Fundido",e.getProblema());
+			}
+			
+	}
+		
+	
 	
 }
