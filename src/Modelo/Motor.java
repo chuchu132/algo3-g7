@@ -99,10 +99,10 @@ public class Motor extends Autoparte{
 		if (acelerando == true){
 			if ((int)revolucionesActuales >= (int)(0.75 * revolucionesMax)) {
 				fuerzaInstantanea = fuerzaRozamiento;
-				System.out.print("<");
+				//System.out.print("<");
 			} else {
 				fuerzaInstantanea = caja.obtenerRelacion()*fuerzaMaxima* (1 + sistemaC.getPlus());
-				System.out.print(">");
+				//System.out.print(">");
 				//caso en que se acelera y le da un plus en funcion del sistema de Combustion
 			}
 		} else {
