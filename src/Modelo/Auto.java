@@ -44,9 +44,14 @@ public class Auto{
 		
     	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
     	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento);
-		double fuerzaNeta = (fuerzaPositiva - fuerzaRozamiento >= 0)? (fuerzaPositiva - fuerzaRozamiento)* (1 + carroceria.getPlusVelocidad()) : 0;
+		double fuerzaNeta = 0.0; 
     	
 		
+		if(velocidad == 0 && aceleracion >= 0)
+			fuerzaNeta = fuerzaPositiva;
+		else
+			fuerzaNeta = fuerzaPositiva - fuerzaRozamiento;
+					
 		
 		aceleracion = (fuerzaNeta/getPesoTotal()) * motor.getVidaUtil();
 		velocidad += (aceleracion * tiempo);
