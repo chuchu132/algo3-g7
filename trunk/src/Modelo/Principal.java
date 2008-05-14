@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo; 
 
 
 public class Principal {
@@ -21,7 +21,7 @@ public class Principal {
 		miAuto.subirCambio();
 		//miAuto.subirCambio();
 		
-	for(int i=0; i < 10; i++) {
+	for(int i=0; i < 15; i++) {
 		miAuto.acelerar(1);
 		
 		try {
@@ -31,9 +31,45 @@ public class Principal {
 		}
 		
 		System.out.println(miAuto.getDetalles());
-		System.out.println(miMotor.getDetalles()+"\n");
+		System.out.println(/*miMotor.getDetalles()+ */ "\n");
 		
-	}	
+	}
+	
+	System.out.println("******* DESACELERA ********");
+	
+	
+	
+	for(int i=0; i < 10; i++) {
+		miAuto.desacelerar(1);
+		
+		try {
+			miAuto.simular(1);
+		} catch (ProblemaTecnicoException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(miAuto.getDetalles());
+		System.out.println(/*miMotor.getDetalles()+ */ "\n");
+		
+	}
+	System.out.println("******* SUBE CAMBIO Y ACELERA********");
+	miAuto.subirCambio();
+	
+	for(int i=0; i < 15; i++) {
+		miAuto.acelerar(1);
+		
+		try {
+			miAuto.simular(1);
+		} catch (ProblemaTecnicoException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(miAuto.getDetalles());
+		System.out.println(/*miMotor.getDetalles()+ */ "\n");
+		
+	}
+	
+	
 		//System.out.println(miTanque.getDetalles());
 		
 		// System.out.println(miTanque.getDetalles());

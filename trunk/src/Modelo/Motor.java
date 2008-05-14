@@ -106,7 +106,7 @@ public class Motor extends Autoparte{
 				//caso en que se acelera y le da un plus en funcion del sistema de Combustion
 			}
 		} else {
-			fuerzaInstantanea = -fuerzaRozamiento;
+			fuerzaInstantanea = 0;
 			 //es el caso en que tiene velocidad y no se acelera
 									//entonces se frena
 		}
@@ -160,4 +160,4 @@ public class Motor extends Autoparte{
 			revolucionesActuales = revolucionesMax;
 			this.gastar(0.05);}
 	}
-}  
+}
