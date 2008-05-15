@@ -4,18 +4,18 @@ package Modelo;
 public class Principal {
 	public static void main(String[] args) {
 		
-		Motor miMotor = new Motor(170,6,0.2,250,300);
-		TanqueCombustible miTanque = new TanqueCombustible(20,120);
-		CajaVelocidades miCaja = new CajaVelocidades(6,100,100);
-		SistemaCombustion miSC = new SistemaCombustion(100,5,"Inyeccion",0.05);
-        Carroceria miCarroceria = new Carroceria(100,500,"Falcon 80",1,0);
-		Rueda unaRueda = new Rueda(100,20,0.9); //los coeficientes deben ser < 1
-		Pista unaPista = new Pista(100,0.1); //los coeficientes deben ser < 1
 		
-		Auto miAuto = new Auto(miMotor,miCaja,miSC,miCarroceria,miTanque,unaRueda);
+		Motor miMotor = new Motor(200,6,0.2,1000,400);
+		Carroceria miCarro = new Carroceria(300,700,"Torino",1,0.1);
+		CajaVelocidades miCaja= new CajaVelocidades(5,200,80);
+		TanqueCombustible miTanque = new TanqueCombustible(100,70);
+		Rueda miRueda = new Rueda(100,20,0.9);
+		Auto miAuto =  new Auto(miMotor,miCaja,null,miCarro,miTanque,miRueda);
+		Pista unaPista = new Pista(100,0.1);
 		
 		
-		miAuto.cargarCombustible(200,94);
+		
+		miAuto.cargarCombustible(13.1,98);
 		miAuto.encender();
 		miAuto.irAPista(unaPista);
 		miAuto.subirCambio();

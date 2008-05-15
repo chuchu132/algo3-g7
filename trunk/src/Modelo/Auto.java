@@ -161,5 +161,13 @@ public class Auto{
 	   return (motor.getPrecio() + caja.getPrecio() + tanque.getPrecio() + sistemaCombustion.getPrecio() + carroceria.getPrecio() + (4* rueda.getPrecio()));
    }
 
+   public double getVelocidad() {
+		return velocidad;
+	}   
+   
+   public double getAceleracion() {
+	   return aceleracion;
+   }
+   
    
 }
