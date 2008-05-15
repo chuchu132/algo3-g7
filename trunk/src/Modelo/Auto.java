@@ -106,7 +106,8 @@ public class Auto{
    
    public Motor cambiarMotor(Motor otroMotor){
 	   Motor temp = this.motor;
-	   
+	   otroMotor.cambiarSitemaCombustion(temp.desconectarSistemaCombustion());
+	   otroMotor.conectarCaja(temp.cambiarCaja(null));
 	   this.motor = otroMotor;
 	   return temp;
    }
@@ -159,4 +160,6 @@ public class Auto{
    public double getPrecio(){
 	   return (motor.getPrecio() + caja.getPrecio() + tanque.getPrecio() + sistemaCombustion.getPrecio() + carroceria.getPrecio() + (4* rueda.getPrecio()));
    }
+
+   
 }
