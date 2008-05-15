@@ -6,7 +6,7 @@ public class SistemaCombustion extends Autoparte{
 	private double plusPotencia; 
 	/*
 	 * ej: si vale 0.1 a la potencia del motor la multiplicamos x 1,1
-	 * y ontenemos un 10% mas de potencia
+	 * y obtenemos un 10% mas de potencia
 	 */ 
    public SistemaCombustion(double precio, double peso, String tipo, double plus){
 	   super(peso,precio,1);

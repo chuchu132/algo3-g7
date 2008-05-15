@@ -18,12 +18,12 @@ public class Taller {
 		try{
 			autoActual = misAutos.get(auto);
 		}
-		catch (IndexOutOfBoundsException e){//VER q hacer x ahora nada
+		catch (IndexOutOfBoundsException e){//MUY PRONTO
 			autoActual = null;
 			}
 		}
 		
-	//public void elegirAutoparte
+
 	
 	
 	
