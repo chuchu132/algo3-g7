@@ -6,7 +6,13 @@ import junit.framework.TestCase;
 public class TestTanqueCombustible extends TestCase {
 	
 	TanqueCombustible miTanque;
+
 	
+public TestTanqueCombustible(String name) {
+		super(name);
+		
+	}
+
 protected void setUp(){
 	 miTanque = new TanqueCombustible(100,70);
 }

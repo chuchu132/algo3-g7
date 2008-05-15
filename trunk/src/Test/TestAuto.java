@@ -27,6 +27,12 @@ public class TestAuto extends TestCase {
 	Rueda otraRueda;
     Auto miAuto;
     
+    
+   	public TestAuto(String name) {
+		super(name);
+	}
+
+
 	protected void setUp(){
 		miSC = new SistemaCombustion(5,100,"Turbo",0.2);
 		miMotor = new Motor(200,6,0.2,1000,400);

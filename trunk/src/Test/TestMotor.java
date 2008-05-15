@@ -18,6 +18,12 @@ public class TestMotor extends TestCase {
 	SistemaCombustion otroSC;
 	SistemaCombustion miSCViejo;
 	
+		
+	public TestMotor(String name) {
+		super(name);
+		
+	}
+
 	protected void setUp(){
 		miMotor = new Motor(200,6,0.2,1000,400);
 		/*	PESO = 400
