@@ -11,7 +11,7 @@ public class Auto{
 	private TanqueCombustible tanque;
 	private Rueda rueda;
 	private Pista pista;
-	
+	private boolean acelerando;
 	private double posicion;
 	private double velocidad;
 	private double aceleracion;
@@ -28,7 +28,7 @@ public class Auto{
 		   this.sistemaCombustion = motor.getSistemaCombustion();
 		   this.carroceria = carroceria;
 		   this.rueda = rueda;
-		   
+		   this.acelerando = false;
 		   	 
 	}
 	
@@ -41,6 +41,10 @@ public class Auto{
 	
 	public void simular(double tiempo)
 	throws ProblemaTecnicoException{ 
+		
+		
+		if(this.acelerando){motor.acelerar(tiempo);}
+		else{motor.desacelerar(tiempo);}
 		
     	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
     	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento);
@@ -66,11 +70,11 @@ public class Auto{
 	}
     
 	public void acelerar(double tiempo){
-		motor.acelerar(tiempo);
+		this.acelerando= true;
 	}
 	
 	public void desacelerar(double tiempo ){
-		motor.desacelerar(tiempo);
+		acelerando = false;
 		if(velocidad == 0.0)
 			caja.setCambio(0);
 	}
