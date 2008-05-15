@@ -97,6 +97,21 @@ public class TestMotor extends TestCase {
 		
 	}
 	
+	
+	public void testFuerzaInstantanea(){
+		miTanque.cargarCombustible(10.1, 98);
+		miMotor.encender();
+		
+		assertEquals(0.0,miMotor.getFuerzaInstantanea(miCaja, 100));
+		
+		miCaja.subirCambio();
+		miMotor.acelerar(1);
+		assertEquals(6200.0,miMotor.getFuerzaInstantanea(miCaja, 100));
+		
+		miMotor.acelerar(3);
+		assertEquals(100.0,miMotor.getFuerzaInstantanea(miCaja, 100));
+	}
+	
 	public void testAcelerar(){ // prueba como varian las revoluciones del Motor segun el tiempo de aceleracion y el cambio
 		
 		miTanque.cargarCombustible(10.1, 98);

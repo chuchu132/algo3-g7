@@ -67,6 +67,12 @@ public class Motor extends Autoparte{
     	return sistemaViejo;
     }
 	
+    public SistemaCombustion desconectarSistemaCombustion(){
+    	SistemaCombustion temp = sistemaC;
+    	sistemaC = null;
+    	return temp;
+    }
+    
 	public void quemarCombustible (double cantidadCombustible) {
 		if(!sistemaC.quemarCombustible(cantidadCombustible)) apagar();
 	}
@@ -154,7 +160,7 @@ public class Motor extends Autoparte{
     }
 	
 	public String getDetalles(){
-		return ("F inst = " + fuerzaInstantanea  + " Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + sistemaC.getDetalles() + "RMax: " + revolucionesMax + " Ract: " + revolucionesActuales);
+		return (" Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + sistemaC.getDetalles() + "RMax: " + revolucionesMax );
 	}
 
 	public void embragarSubir(){
@@ -174,3 +180,5 @@ public class Motor extends Autoparte{
 		else{revolucionesActuales = 800;}
      	}
 	}
+
+    
