@@ -91,7 +91,7 @@ public class Motor extends Autoparte{
 		   if (revolucionesActuales + deltaRevoluciones < revolucionesMax){
 			   revolucionesActuales += (int)deltaRevoluciones ;
 		   } else {
-			   revolucionesActuales = (int) (0.75*revolucionesMax); 
+			   revolucionesActuales = (int) (revolucionesMax); 
 		   }
 
 	}

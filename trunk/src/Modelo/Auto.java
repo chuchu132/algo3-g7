@@ -106,6 +106,7 @@ public class Auto{
    
    public Motor cambiarMotor(Motor otroMotor){
 	   Motor temp = this.motor;
+	   
 	   this.motor = otroMotor;
 	   return temp;
    }
@@ -118,6 +119,9 @@ public class Auto{
    public TanqueCombustible cambiarTanque(TanqueCombustible otroTanque){
 	   TanqueCombustible temp = sistemaCombustion.desconectarTanque();
 	   motor.conectarTanque(otroTanque);
+	   otroTanque.cargarCombustible(temp.cantidadCombustible(), temp.getOctanage());
+	   temp.darCombustible(temp.cantidadCombustible());
+	   this.tanque = otroTanque;
 	   return temp;
    }
    
@@ -140,5 +144,19 @@ public class Auto{
 	   
    }
    
+   public boolean estaEncendido(){
+	   return motor.estaEncendido();
+   }
    
+   public double cantidadCombustible(){
+	   return tanque.cantidadCombustible();	   
+   }
+   
+   public int getRevoluciones(){
+		return motor.getRevolucionesActuales();
+	}
+   
+   public double getPrecio(){
+	   return (motor.getPrecio() + caja.getPrecio() + tanque.getPrecio() + sistemaCombustion.getPrecio() + carroceria.getPrecio() + (4* rueda.getPrecio()));
+   }
 }
