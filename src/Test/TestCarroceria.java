@@ -9,7 +9,12 @@ public class TestCarroceria extends TestCase {
  Carroceria miCarro;
  
   
- public void testGastar(){// prueba el metodo gastar de autoparte
+ public TestCarroceria(String name) {
+	super(name);
+	
+}
+
+public void testGastar(){// prueba el metodo gastar de autoparte
 	 miCarro = new Carroceria(100,700,"Torino",1,0.1);
 	 miCarro.gastar(0.1);
 	 assertTrue(0.89 < miCarro.getVidaUtil() && miCarro.getVidaUtil()<0.91);

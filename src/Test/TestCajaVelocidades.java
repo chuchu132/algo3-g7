@@ -6,7 +6,14 @@ import junit.framework.TestCase;
 public class TestCajaVelocidades extends TestCase {
  CajaVelocidades miCaja; 
  
- protected void setUp(){
+ 
+ 
+ public TestCajaVelocidades(String name) {
+	super(name);
+	
+}
+
+protected void setUp(){
 	 miCaja= new CajaVelocidades(5,4,3); 
  }
  

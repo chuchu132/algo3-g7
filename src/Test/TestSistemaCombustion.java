@@ -14,6 +14,12 @@ protected void setUp(){
 }
 
 	
+public TestSistemaCombustion(String name) {
+	super(name);
+	
+}
+
+
 public void testDesconectarTanque(){// prueba desconectar tanque antes de conectarlo
 
     try{
