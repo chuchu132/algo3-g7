@@ -69,11 +69,11 @@ public class Auto{
 		if( rueda.getVidaUtil() < 0.2 ){ throw new ProblemaTecnicoException("Neumatico Reventado");}	
 	}
     
-	public void acelerar(double tiempo){
+	public void acelerar(){
 		this.acelerando= true;
 	}
 	
-	public void desacelerar(double tiempo ){
+	public void desacelerar(){
 		acelerando = false;
 		if(velocidad == 0.0)
 			caja.setCambio(0);

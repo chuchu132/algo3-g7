@@ -102,7 +102,10 @@ public class TestAuto extends TestCase {
 		miAuto.cargarCombustible(13.1,98);
 		miAuto.encender();
 		miAuto.subirCambio();
-		miAuto.acelerar(1);
+		miAuto.acelerar();
+		try{
+		miAuto.simular(1);}
+		catch(ProblemaTecnicoException e){};		
 		assertEquals(1962,miAuto.getRevoluciones() );
 	}
 	
@@ -111,10 +114,16 @@ public class TestAuto extends TestCase {
 		miMotor.encender();	
 		
 		miAuto.subirCambio();
-		miAuto.acelerar(3);
+		miAuto.acelerar();
+		try{
+			miAuto.simular(3);}
+			catch(ProblemaTecnicoException e){};
 		assertEquals(4287,miAuto.getRevoluciones() );
 		
-		miAuto.desacelerar(1);
+		miAuto.desacelerar();
+		try{
+			miAuto.simular(1);}
+			catch(ProblemaTecnicoException e){};
 		assertEquals(3124,miAuto.getRevoluciones() );
 	}
 
@@ -151,7 +160,7 @@ public class TestAuto extends TestCase {
 		miAuto.cargarCombustible(13.1,98);
 		miAuto.encender();
 		miAuto.subirCambio();
-		miAuto.acelerar(1);
+		miAuto.acelerar();
 		try{ miAuto.simular(1);	     }
 	    catch (ProblemaTecnicoException e){ fail("No deberia lanzar una excepcion");}
 	    
