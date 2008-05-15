@@ -104,4 +104,41 @@ public class Auto{
 	   return this.posicion;
    }
    
+   public Motor cambiarMotor(Motor otroMotor){
+	   Motor temp = this.motor;
+	   this.motor = otroMotor;
+	   return temp;
+   }
+   
+   public CajaVelocidades cambiarCaja(CajaVelocidades otraCaja){
+	   CajaVelocidades temp = motor.cambiarCaja(otraCaja);
+	   return temp;
+   }
+   
+   public TanqueCombustible cambiarTanque(TanqueCombustible otroTanque){
+	   TanqueCombustible temp = sistemaCombustion.desconectarTanque();
+	   motor.conectarTanque(otroTanque);
+	   return temp;
+   }
+   
+   public Carroceria cambiarCarroceria(Carroceria otraCarroceria){
+	   Carroceria temp = this.carroceria;
+	   this.carroceria = otraCarroceria;
+	   return temp;
+   }
+   
+   public Rueda cambiarRueda(Rueda otraRueda){
+	   Rueda temp = this.rueda;
+	   this.rueda = otraRueda;
+	   return temp;
+   }
+   
+   public boolean estaCompleto(){
+	   if( motor != null &&  caja != null && tanque != null && sistemaCombustion != null && carroceria != null &&  rueda != null){
+		   return true;}
+	   else {return false;}
+	   
+   }
+   
+   
 }
