@@ -21,7 +21,7 @@ public class Motor extends Autoparte{
 		this.cubicaje=cubicaje; 
 		this.fuerzaMaxima = HP * 25 + cilindros*cubicaje*1000;
 		this.encendido=false;
-		this.revolucionesMax = (int)(HP * 17 + 2800); // son los numeros para q a 800 hp = alrededor de 16000 y a 200hp alrededor d 6000
+		this.revolucionesMax = (int)(HP * 17 + 2800); 
 		this.revolucionesActuales = 0;
 		this.fuerzaInstantanea = 0;
 		this.acelerando = false;
@@ -113,16 +113,14 @@ public class Motor extends Autoparte{
 		if (acelerando == true){
 			if ((int)revolucionesActuales >= (int)(0.75 * revolucionesMax)) {
 				fuerzaInstantanea = fuerzaRozamiento;
-				//System.out.print("<");
+				
 			} else {
 				fuerzaInstantanea = caja.obtenerRelacion()*fuerzaMaxima* (1 + sistemaC.getPlus());
-				//System.out.print(">");
-				//caso en que se acelera y le da un plus en funcion del sistema de Combustion
+				
 			}
 		} else {
 			fuerzaInstantanea = 0;
-			 //es el caso en que tiene velocidad y no se acelera
-									//entonces se frena
+			 
 		}
 
 		return fuerzaInstantanea;
