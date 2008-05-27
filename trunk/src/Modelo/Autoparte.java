@@ -5,12 +5,17 @@ import Excepciones.ProblemaTecnicoException;
 public abstract class Autoparte {
 	private double peso;
 	private double precio;
-	private double vidaUtil; // % de vida restante 1 = 100%
+	private long vidaUtil;
+	private long vidaUtilInicial;
 	
-	public Autoparte(double peso, double precio){
+	public Autoparte(double peso, double precio, long vidaUtilInicial){
 		this.peso = peso;
 		this.precio = precio;
-		this.vidaUtil = 1;
+		this.vidaUtil = this.vidaUtilInicial = vidaUtilInicial;
+	}
+	
+	public double getPorcentajeVidaUtil() {
+		return (vidaUtil*100)/vidaUtilInicial;
 	}
 	
 	public String toString(){
@@ -29,9 +34,9 @@ public abstract class Autoparte {
 	/**
 	 * Si se gasta el 10% pongo 0.10
 	 * */
-	public void gastar(double porcentage){
-		vidaUtil *= (1- porcentage);
-	}
+	//public void gastar(double porcentage){
+		//vidaUtil *= (1- porcentage);
+	//}
 	
 	public double getPeso(){
 		return this.peso;
