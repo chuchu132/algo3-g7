@@ -35,7 +35,10 @@ public abstract class Autoparte {
 	 * Si se gasta el 10% pongo 0.10
 	 * */
 	public void gastar(double desgaste){
-		vidaUtil -= desgaste;
+		if(vidaUtil - desgaste >= 0)
+			vidaUtil -= desgaste;
+		else
+			vidaUtil = 0;
 	}
 	
 	public double getPeso(){

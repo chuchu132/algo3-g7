@@ -15,13 +15,21 @@ public class Carrera {
 	}
 	
 	public void correr() {
+		long posicionAuto = 0;
 		
-		while(auto.getPosicion() <= pista.getLongitud()) {
+		while(posicionAuto <= pista.getLongitud()) {
 			try {
 				auto.simular(intervaloTiempo);
+				posicionAuto += auto.getDeltaAvance();
+				dibujarAuto(posicionAuto);
 			} catch (ProblemaTecnicoException e) {
 				e.printStackTrace();
 			}
 		}
 	}
+	
+	public void dibujarAuto(double posicion) {
+		
+	}
+	
 }
