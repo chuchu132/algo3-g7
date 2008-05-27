@@ -1,5 +1,13 @@
 package Modelo;
+
+import Excepciones.MotorFundidoException;
+import Excepciones.ProblemaTecnicoException;
+import Excepciones.TanqueVacioException;
+
 public class Motor extends Autoparte{
+	
+	private final int REVOLUCIONES_MINIMAS = 800;
+	private final double VIDA_UTIL_MINIMA = 0.2;
 	
 	private double fuerzaMaxima;
 	private int HP;
@@ -11,7 +19,7 @@ public class Motor extends Autoparte{
 	
 	private double fuerzaInstantanea;
 	private boolean acelerando;
-	private SistemaCombustion sistemaC;
+	private SistemaCombustion sistemaCombustion;
 	private CajaVelocidades caja;
 	
 	public Motor(int HP, int cilindros, double cubicaje, double precio, double peso){
@@ -25,7 +33,7 @@ public class Motor extends Autoparte{
 		this.revolucionesActuales = 0;
 		this.fuerzaInstantanea = 0;
 		this.acelerando = false;
-		this.sistemaC = new SistemaCombustion(0,0,"Comun de Fabrica",0);;
+		this.sistemaCombustion = new SistemaCombustion(0,0,"Comun de Fabrica",0);;
 	}
 
 		
@@ -38,12 +46,19 @@ public class Motor extends Autoparte{
 	}
 
 	public void encender (){
-		encendido = sistemaC.quemarCombustible(0.1);
-	    if(encendido){revolucionesActuales = 800; }	
+    
+		try{
+			sistemaCombustion.quemarCombustible(0.1);
+			revolucionesActuales = REVOLUCIONES_MINIMAS;
+		    encendido= true;
+		}
+		catch( TanqueVacioException e ){}
+		
+	    	
 	}
 	
 	public void conectarTanque(TanqueCombustible unTanque){
-		sistemaC.conectarTanque(unTanque);
+		sistemaCombustion.conectarTanque(unTanque);
 	}
 	
 	public void conectarCaja(CajaVelocidades unaCaja){
@@ -51,7 +66,7 @@ public class Motor extends Autoparte{
 	}
 	
     public SistemaCombustion getSistemaCombustion(){
-		return sistemaC;
+		return sistemaCombustion;
 	}
 	
 	public CajaVelocidades cambiarCaja(CajaVelocidades otraCaja){
@@ -61,22 +76,21 @@ public class Motor extends Autoparte{
 	}
 	
     public SistemaCombustion cambiarSitemaCombustion( SistemaCombustion otroSistema){
-    	SistemaCombustion sistemaViejo = sistemaC;
-    	otroSistema.conectarTanque(sistemaC.desconectarTanque());
-    	sistemaC=otroSistema;
+    	SistemaCombustion sistemaViejo = sistemaCombustion;
+    	otroSistema.conectarTanque(sistemaCombustion.desconectarTanque());
+    	sistemaCombustion=otroSistema;
     	return sistemaViejo;
     }
 	
     public SistemaCombustion desconectarSistemaCombustion(){
-    	SistemaCombustion temp = sistemaC;
-    	sistemaC = null;
+    	SistemaCombustion temp = sistemaCombustion;
+    	sistemaCombustion = null;
     	return temp;
     }
     
-	public void quemarCombustible (double cantidadCombustible) {
-		if(!sistemaC.quemarCombustible(cantidadCombustible)){
-			apagar();}
-		}
+	public void quemarCombustible (double cantidadCombustible) throws TanqueVacioException {
+		sistemaCombustion.quemarCombustible(cantidadCombustible);
+	}
 	
 	public void apagar() {
 		encendido = false;
@@ -108,8 +122,8 @@ public class Motor extends Autoparte{
 	public void desacelerar(double tiempo){
 		acelerando = false;
 		revolucionesActuales -= obtenerDeltaRevoluciones(tiempo) ;
-		if (revolucionesActuales < 800) {
-			revolucionesActuales = 800; }
+		if (revolucionesActuales < REVOLUCIONES_MINIMAS) {
+			revolucionesActuales = REVOLUCIONES_MINIMAS; }
 	}
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento) {
@@ -118,7 +132,7 @@ public class Motor extends Autoparte{
 				fuerzaInstantanea = fuerzaRozamiento;
 				
 			} else {
-				fuerzaInstantanea = caja.obtenerRelacion()*fuerzaMaxima* (1 + sistemaC.getPlus());
+				fuerzaInstantanea = caja.obtenerRelacion()*fuerzaMaxima* (1 + sistemaCombustion.getPlus());
 				
 			}
 		} else {
@@ -140,8 +154,8 @@ public class Motor extends Autoparte{
     	double consumoInstantaneo = 0;
     	int cambio = caja.getCambioActual();
       
-    	if(this.getVidaUtil() < 0.2) {
-     	   throw new ProblemaTecnicoException("Motor Fundido");
+    	if(this.getVidaUtil() < VIDA_UTIL_MINIMA) {
+     	   throw new MotorFundidoException();
      	}
     	
     	if (cambio > 0) { 
@@ -150,25 +164,23 @@ public class Motor extends Autoparte{
     	else {
     	   consumoInstantaneo = ((cilindros * cubicaje / 180)* deltaTiempo);
     	}
-    	
+    	// puede lanzar TanqueVacioException
     	this.quemarCombustible(consumoInstantaneo);
        
-    	if(!encendido) { 
-    	   throw new ProblemaTecnicoException("Sin Combustible");
-    	}     
+    	  
      
     	
     }
 	
 	public String getDetalles(){
-		return (" Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + sistemaC.getDetalles() + "RMax: " + revolucionesMax );
+		return (" Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + sistemaCombustion.getDetalles() + "RMax: " + revolucionesMax );
 	}
 
 	public void embragarSubir(){
 		caja.subirCambio();
 		revolucionesActuales = (2 * revolucionesActuales / 5);
-		if(revolucionesActuales < 800){ 
-			revolucionesActuales = 800;}
+		if(revolucionesActuales < REVOLUCIONES_MINIMAS){ 
+			revolucionesActuales = REVOLUCIONES_MINIMAS;}
 	}
     
 	public void embragarBajar(){
@@ -179,7 +191,7 @@ public class Motor extends Autoparte{
 			revolucionesActuales = revolucionesMax;
 			this.gastar(0.05);}
         	}
-		else{revolucionesActuales = 800;}
+		else{revolucionesActuales = REVOLUCIONES_MINIMAS;}
      	}
 	}
 

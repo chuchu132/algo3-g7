@@ -1,5 +1,8 @@
 package Modelo;
 
+import Excepciones.ProblemaTecnicoException;
+import Excepciones.TanqueVacioException;
+
 
 public class Auto{
 	
@@ -11,7 +14,7 @@ public class Auto{
 	private SistemaCombustion sistemaCombustion;
 	private Carroceria carroceria;
 	private TanqueCombustible tanque;
-	private Rueda rueda;
+	private TipoRueda rueda;
 	private Pista pista;
 	private boolean acelerando;
 	private double posicion;
@@ -19,7 +22,7 @@ public class Auto{
 	private double aceleracion;
 	
 	
-	public Auto(Motor motor, CajaVelocidades caja, SistemaCombustion sistemaCombustion, Carroceria carroceria,TanqueCombustible tanque,Rueda rueda){
+	public Auto(Motor motor, CajaVelocidades caja, SistemaCombustion sistemaCombustion, Carroceria carroceria,TanqueCombustible tanque,TipoRueda rueda){
 	       
 		   this.motor = motor;
 		   this.caja = caja;
@@ -70,8 +73,9 @@ public class Auto{
 		}
 		catch(ProblemaTecnicoException e){throw e; }
 		
+		// rueda.simular() 
 		if( rueda.getVidaUtil() < 0.2 ){
-			throw new ProblemaTecnicoException("Neumatico Reventado");}
+			throw new ProblemaTecnicoException();}
 	}
     
 	public void acelerar(){
@@ -130,8 +134,12 @@ public class Auto{
 	   TanqueCombustible temp = sistemaCombustion.desconectarTanque();
 	   motor.conectarTanque(otroTanque);
 	   otroTanque.cargarCombustible(temp.cantidadCombustible(), temp.getOctanage());
+	  try{
 	   temp.darCombustible(temp.cantidadCombustible());
-	   this.tanque = otroTanque;
+	  }
+	  catch(TanqueVacioException e){};
+	   
+	  this.tanque = otroTanque;
 	   return temp;
    }
    
@@ -141,8 +149,8 @@ public class Auto{
 	   return temp;
    }
    
-   public Rueda cambiarRueda(Rueda otraRueda){
-	   Rueda temp = this.rueda;
+   public TipoRueda cambiarRueda(TipoRueda otraRueda){
+	   TipoRueda temp = this.rueda;
 	   this.rueda = otraRueda;
 	   return temp;
    }

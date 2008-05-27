@@ -1,7 +1,7 @@
 package Test;
+import Excepciones.ProblemaTecnicoException;
 import Modelo.CajaVelocidades;
 import Modelo.Motor;
-import Modelo.ProblemaTecnicoException;
 import Modelo.SistemaCombustion;
 import Modelo.TanqueCombustible;
 import junit.framework.TestCase;

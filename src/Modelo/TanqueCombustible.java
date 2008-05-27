@@ -1,5 +1,7 @@
 package Modelo;
 
+import Excepciones.TanqueVacioException;
+
 public class TanqueCombustible extends Autoparte{
     
 	private double capacidadMaxima;
@@ -33,12 +35,13 @@ public class TanqueCombustible extends Autoparte{
     	return this.octanage;
     }
     
-	public void darCombustible(double cuanto) {
+	public void darCombustible(double cuanto) throws TanqueVacioException {
 		double segunOctanage = (cuanto*(2.0 - (octanage / 100.0)));
 		if(cantidadCombustible > segunOctanage ){
 			cantidadCombustible -= segunOctanage;
 		}else{
 			cantidadCombustible = 0.0;
+			throw new TanqueVacioException();
 		}
 		
 	}

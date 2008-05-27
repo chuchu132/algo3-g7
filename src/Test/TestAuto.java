@@ -1,12 +1,12 @@
 package Test;
 
+import Excepciones.ProblemaTecnicoException;
 import Modelo.Auto;
 import Modelo.CajaVelocidades;
 import Modelo.Carroceria;
 import Modelo.Motor;
 import Modelo.Pista;
-import Modelo.ProblemaTecnicoException;
-import Modelo.Rueda;
+import Modelo.TipoRueda;
 import Modelo.SistemaCombustion;
 import Modelo.TanqueCombustible;
 import junit.framework.TestCase;
@@ -23,8 +23,8 @@ public class TestAuto extends TestCase {
 	SistemaCombustion otroSC;
 	SistemaCombustion miSCViejo;
 	Carroceria miCarro;
-	Rueda miRueda;
-	Rueda otraRueda;
+	TipoRueda miRueda;
+	TipoRueda otraRueda;
     Auto miAuto;
     
     
@@ -39,7 +39,7 @@ public class TestAuto extends TestCase {
 		miCarro = new Carroceria(300,700,"Torino",1,0.1);
 		miCaja= new CajaVelocidades(5,200,80);
 		miTanque = new TanqueCombustible(100,70);
-		miRueda = new Rueda(100,20,0.9);
+		miRueda = new TipoRueda(100,20,0.9);
 		miAuto =  new Auto(miMotor,miCaja,null,miCarro,miTanque,miRueda);
 		Pista unaPista = new Pista(100,0.1);
 		miAuto.irAPista(unaPista);
@@ -147,7 +147,7 @@ public class TestAuto extends TestCase {
 	}
 	
 	public void testSimularConRuedasGastadas(){
-		otraRueda= new  Rueda(100,20,0.9);
+		otraRueda= new  TipoRueda(100,20,0.9);
 		otraRueda.gastar(0.79);
 		
 		try{ miAuto.simular(1);
