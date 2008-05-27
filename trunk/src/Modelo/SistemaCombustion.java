@@ -34,10 +34,14 @@ public class SistemaCombustion extends Autoparte{
 	   tanque.darCombustible(cantidadCombustible);
 	  }
    
-   public String getDetalles() {
-	   return( " Sistema de Combustion: " + tipo + " Plus de Potencia: "+ plusPotencia + super.getDetalles());
+   public String toString() {
+	   return( " Sistema de Combustion: " + tipo + " Plus de Potencia: "+ plusPotencia + super.toString());
 	}
    public double getPlus(){
 	   return plusPotencia;
    }
+   
+   public void simular(double tiempo) {
+		//CODIFICAR
+	}
 }

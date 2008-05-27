@@ -19,4 +19,8 @@ public class TipoRueda extends Autoparte{
 		return coeficienteAgarre;
 	}
     
+	public void simular(double tiempo) {
+		//CODIFICAR
+	}
+	
 }

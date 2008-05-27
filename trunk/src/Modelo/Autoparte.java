@@ -10,7 +10,7 @@ public abstract class Autoparte {
 		this.vidaUtil = 1;
 	}
 	
-	public String getDetalles(){
+	public String toString(){
 		return ( " Precio: Algo$ " + precio + " , Vida Util: " + (vidaUtil * 100 ) + " % ");
 	}
 	
@@ -33,6 +33,8 @@ public abstract class Autoparte {
 	public double getPeso(){
 		return this.peso;
 	}
+	
+	abstract public void simular(double tiempo);
 	
 	
 }
