@@ -172,7 +172,7 @@ public class Motor extends Autoparte{
     	
     }
 	
-	public String getDetalles(){
+	public String toString(){
 		return (" Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + sistemaCombustion.getDetalles() + "RMax: " + revolucionesMax );
 	}
 

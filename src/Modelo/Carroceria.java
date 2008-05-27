@@ -13,8 +13,8 @@ public class Carroceria extends Autoparte{
 		
 	}
 	  
-	public String getDetalles(){
-		return ("Carroceria: " + modelo + super.getDetalles());
+	public String toString(){
+		return ("Carroceria: " + modelo + super.toString());
 	}
 	public int getColor() {
 		return color;
@@ -24,6 +24,10 @@ public class Carroceria extends Autoparte{
 	}
 	public double getPlusVelocidad() {
 		return (plusVelocidad * super.getVidaUtil());
+	}
+	
+	public void simular(double tiempo) {
+		//CODIFICAR
 	}
 	
 	

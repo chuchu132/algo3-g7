@@ -54,8 +54,12 @@ public class TanqueCombustible extends Autoparte{
 		return cantidadCombustible == 0.0;
 	}
 
-	public String getDetalles(){
+	public String toString(){
 		return (" Capacidad Maxima: " + capacidadMaxima + " Cantidad de Combustible: " + cantidadCombustible() );
 		
+	}
+	
+	public void simular(double tiempo) {
+		//CODIFICAR
 	}
 }

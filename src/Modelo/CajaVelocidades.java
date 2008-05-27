@@ -43,5 +43,8 @@ public class CajaVelocidades extends Autoparte{
 		cambioActual = numeroCambio;		
 	}
 
+	public void simular(double tiempo) {
+		//CODIFICAR
+	}
 
 }
