@@ -5,8 +5,8 @@ public class Carroceria extends Autoparte{
 	 private int color;
 	 private double plusVelocidad;
 	 
-	public Carroceria(double precio,double peso, String modelo, int color, double plus ){
-		super(peso,precio);
+	public Carroceria(double precio,double peso, String modelo, int color, double plus, long vidaUtilInicial ){
+		super(peso,precio, vidaUtilInicial);
 		this.modelo= modelo;
 		this.color= color;
 		this.plusVelocidad= plus;

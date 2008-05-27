@@ -4,8 +4,8 @@ public class TipoRueda extends Autoparte{
    
 	double coeficienteAgarre;
     
-	public TipoRueda(double precio, double peso,double coeficiente){
-		super(peso,precio);
+	public TipoRueda(double precio, double peso,double coeficiente, long vidaUtilInicial){
+		super(peso,precio, vidaUtilInicial);
 		this.coeficienteAgarre = coeficiente;
 	}
 	

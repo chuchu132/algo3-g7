@@ -22,8 +22,8 @@ public class Motor extends Autoparte{
 	private SistemaCombustion sistemaCombustion;
 	private CajaVelocidades caja;
 	
-	public Motor(int HP, int cilindros, double cubicaje, double precio, double peso){
-		super(peso,precio);
+	public Motor(int HP, int cilindros, double cubicaje, double precio, double peso, long vidaUtilInicial){
+		super(peso,precio, vidaUtilInicial);
 		this.HP=HP;
 		this.cilindros=cilindros;
 		this.cubicaje=cubicaje; 
@@ -33,7 +33,7 @@ public class Motor extends Autoparte{
 		this.revolucionesActuales = 0;
 		this.fuerzaInstantanea = 0;
 		this.acelerando = false;
-		this.sistemaCombustion = new SistemaCombustion(0,0,"Comun de Fabrica",0);;
+		this.sistemaCombustion = new SistemaCombustion(0,0,"Comun de Fabrica",0,5);;
 	}
 
 		
