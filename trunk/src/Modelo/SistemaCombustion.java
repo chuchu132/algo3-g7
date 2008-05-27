@@ -1,5 +1,7 @@
 package Modelo;
 
+import Excepciones.TanqueVacioException;
+
 public class SistemaCombustion extends Autoparte{
     private TanqueCombustible tanque=null; 
 	private String tipo;
@@ -28,11 +30,9 @@ public class SistemaCombustion extends Autoparte{
 	   return !tanque.estaVacio();
    }
    
-   public boolean quemarCombustible(double cantidadCombustible){
+   public void quemarCombustible(double cantidadCombustible)throws TanqueVacioException{
 	   tanque.darCombustible(cantidadCombustible);
-	    if(tanque.estaVacio()){	return false;}
-	    else return true;
-   }
+	  }
    
    public String getDetalles() {
 	   return( " Sistema de Combustion: " + tipo + " Plus de Potencia: "+ plusPotencia + super.getDetalles());

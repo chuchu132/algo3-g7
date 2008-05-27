@@ -1,5 +1,7 @@
 package Modelo;
 
+import Excepciones.ProblemaTecnicoException;
+
 public class Carrera {
 	private Pista pista;
 	private Auto auto;
