@@ -88,8 +88,8 @@ public class TestAuto extends TestCase {
 		otroMotor = new Motor(170,6,0.2,1000,400);
 		miMotor.cambiarSitemaCombustion(miSC);
 		miAuto.cambiarMotor(otroMotor);
-		assertEquals(otroMotor.getSistemaCombustion().getDetalles(),miSC.getDetalles());
-		assertEquals(otroMotor.cambiarCaja(null).getDetalles(),miCaja.getDetalles());
+		assertEquals(otroMotor.getSistemaCombustion().toString(),miSC.toString());
+		assertEquals(otroMotor.cambiarCaja(null).toString(),miCaja.toString());
 	}
 	
 	public void testGetPeso(){

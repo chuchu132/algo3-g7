@@ -105,7 +105,7 @@ public class Auto{
 		motor.embragarBajar();
 	}
 	
-	public String getDetalles(){
+	public String toString(){
 		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Posicion " + posicion + " Peso: " + getPesoTotal());
 	}
 		
