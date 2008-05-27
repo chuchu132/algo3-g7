@@ -8,8 +8,8 @@ public class TanqueCombustible extends Autoparte{
     private double cantidadCombustible;
 	private int octanage;
 	
-	public TanqueCombustible(double precio,double capMax){
-		super((capMax/10.0),precio);
+	public TanqueCombustible(double precio,double capMax, long vidaUtilInicial){
+		super((capMax/10.0),precio, vidaUtilInicial);
 		this.capacidadMaxima = capMax;
 		this.cantidadCombustible = 0.0;
 		this.octanage= 94; // 94 - 100 valores posibles. A mayor octanage menos combustible gasta.

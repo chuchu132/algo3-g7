@@ -34,9 +34,9 @@ public abstract class Autoparte {
 	/**
 	 * Si se gasta el 10% pongo 0.10
 	 * */
-	//public void gastar(double porcentage){
-		//vidaUtil *= (1- porcentage);
-	//}
+	public void gastar(double desgaste){
+		vidaUtil -= desgaste;
+	}
 	
 	public double getPeso(){
 		return this.peso;
