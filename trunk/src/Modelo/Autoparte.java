@@ -4,10 +4,10 @@ public abstract class Autoparte {
 	private double precio;
 	private double vidaUtil; // % de vida restante 1 = 100%
 	
-	public Autoparte(double peso, double precio,double vidaUtil){
+	public Autoparte(double peso, double precio){
 		this.peso = peso;
 		this.precio = precio;
-		this.vidaUtil = vidaUtil;
+		this.vidaUtil = 1;
 	}
 	
 	public String getDetalles(){

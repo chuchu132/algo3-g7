@@ -7,7 +7,7 @@ public class CajaVelocidades extends Autoparte{
 	
 	
 	public CajaVelocidades (int cantidadCambios,double precio, double peso){
-		super(peso,precio,1);
+		super(peso,precio);
 		cambioActual = 0;
 		this.cantidadCambios = cantidadCambios;
 		relaciones = new double [cantidadCambios + 1];

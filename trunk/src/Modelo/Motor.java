@@ -15,7 +15,7 @@ public class Motor extends Autoparte{
 	private CajaVelocidades caja;
 	
 	public Motor(int HP, int cilindros, double cubicaje, double precio, double peso){
-		super(peso,precio,1);
+		super(peso,precio);
 		this.HP=HP;
 		this.cilindros=cilindros;
 		this.cubicaje=cubicaje; 
