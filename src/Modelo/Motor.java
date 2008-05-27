@@ -74,16 +74,18 @@ public class Motor extends Autoparte{
     }
     
 	public void quemarCombustible (double cantidadCombustible) {
-		if(!sistemaC.quemarCombustible(cantidadCombustible)) apagar();
-	}
-
+		if(!sistemaC.quemarCombustible(cantidadCombustible)){
+			apagar();}
+		}
+	
 	public void apagar() {
 		encendido = false;
 	}
 
 	public double obtenerDeltaRevoluciones(double tiempo){
 		double relacion = caja.obtenerRelacion();
-		if(relacion == 0.0){return 0;}
+		if(relacion == 0.0){
+			return 0;}
 		else{		 
 			return tiempo * ((0.75 * revolucionesMax) / (4/relacion) ) ;
 		}
@@ -106,7 +108,8 @@ public class Motor extends Autoparte{
 	public void desacelerar(double tiempo){
 		acelerando = false;
 		revolucionesActuales -= obtenerDeltaRevoluciones(tiempo) ;
-		if (revolucionesActuales < 800) {revolucionesActuales = 800; }
+		if (revolucionesActuales < 800) {
+			revolucionesActuales = 800; }
 	}
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento) {
@@ -164,7 +167,8 @@ public class Motor extends Autoparte{
 	public void embragarSubir(){
 		caja.subirCambio();
 		revolucionesActuales = (2 * revolucionesActuales / 5);
-		if(revolucionesActuales < 800){ revolucionesActuales = 800;}
+		if(revolucionesActuales < 800){ 
+			revolucionesActuales = 800;}
 	}
     
 	public void embragarBajar(){
