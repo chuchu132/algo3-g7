@@ -3,6 +3,8 @@ package Modelo;
 
 public class Auto{
 	
+	private final double  CERO = 0.0;
+	private final int PUNTO_MUERTO =0;
 	
 	private Motor  motor;
 	private CajaVelocidades caja;
@@ -50,16 +52,16 @@ public class Auto{
 		
     	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
     	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento);
-		double fuerzaNeta = (velocidad == 0 && aceleracion > 0)? fuerzaPositiva : fuerzaPositiva - fuerzaRozamiento; 
+		double fuerzaNeta = (velocidad == CERO && aceleracion > CERO)? fuerzaPositiva : fuerzaPositiva - fuerzaRozamiento; 
     						
 		
 		aceleracion = (fuerzaNeta/getPesoTotal()) * motor.getVidaUtil();
 		
-		if(velocidad + aceleracion * tiempo >= 0){
+		if(velocidad + aceleracion * tiempo >= CERO){
 			velocidad += (aceleracion * tiempo);}
 		else {
-			velocidad = 0;
-			aceleracion = 0;
+			velocidad = CERO;
+			aceleracion = CERO;
 		}
 		posicion += velocidad * tiempo;
 		
@@ -78,8 +80,8 @@ public class Auto{
 	
 	public void desacelerar(){
 		acelerando = false;
-		if(velocidad == 0.0)
-			caja.setCambio(0);
+		if(velocidad == CERO)
+			caja.setCambio( PUNTO_MUERTO );
 	}
 	
 	public void cargarCombustible(double litros, int octanage){
