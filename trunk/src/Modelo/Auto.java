@@ -24,7 +24,8 @@ public class Auto{
 		   this.tanque = tanque;
 		   this.motor.conectarCaja(caja);
 		   this.motor.conectarTanque(tanque);
-		   if( sistemaCombustion != null){this.motor.cambiarSitemaCombustion(sistemaCombustion);}
+		   if( sistemaCombustion != null){
+			   this.motor.cambiarSitemaCombustion(sistemaCombustion);}
 		   this.sistemaCombustion = motor.getSistemaCombustion();
 		   this.carroceria = carroceria;
 		   this.rueda = rueda;
@@ -43,7 +44,8 @@ public class Auto{
 	throws ProblemaTecnicoException{ 
 		
 		
-		if(this.acelerando){motor.acelerar(tiempo);}
+		if(this.acelerando){
+			motor.acelerar(tiempo);}
 		else{motor.desacelerar(tiempo);}
 		
     	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
@@ -53,8 +55,8 @@ public class Auto{
 		
 		aceleracion = (fuerzaNeta/getPesoTotal()) * motor.getVidaUtil();
 		
-		if(velocidad + aceleracion * tiempo >= 0)
-			velocidad += (aceleracion * tiempo);
+		if(velocidad + aceleracion * tiempo >= 0){
+			velocidad += (aceleracion * tiempo);}
 		else {
 			velocidad = 0;
 			aceleracion = 0;
@@ -66,7 +68,8 @@ public class Auto{
 		}
 		catch(ProblemaTecnicoException e){throw e; }
 		
-		if( rueda.getVidaUtil() < 0.2 ){ throw new ProblemaTecnicoException("Neumatico Reventado");}	
+		if( rueda.getVidaUtil() < 0.2 ){
+			throw new ProblemaTecnicoException("Neumatico Reventado");}
 	}
     
 	public void acelerar(){

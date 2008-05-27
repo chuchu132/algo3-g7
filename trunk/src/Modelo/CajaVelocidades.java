@@ -13,8 +13,8 @@ public class CajaVelocidades extends Autoparte{
 		relaciones = new double [cantidadCambios + 1];
 		
 		relaciones[0] = 0;
-		for(int i = 1; i < (cantidadCambios + 1); i++) 
-			relaciones[i] = ((double)(cantidadCambios+1-i)/cantidadCambios ); 
+		for(int i = 1; i < (cantidadCambios + 1); i++){ 
+			relaciones[i] = ((double)(cantidadCambios+1-i)/cantidadCambios );} 
 	}
 
 		
