@@ -17,7 +17,7 @@ public class Auto{
 	private TipoRueda rueda;
 	private Pista pista;
 	private boolean acelerando;
-	private double posicion;
+	private double deltaAvance;
 	private double velocidad;
 	private double aceleracion;
 	
@@ -66,7 +66,7 @@ public class Auto{
 			velocidad = CERO;
 			aceleracion = CERO;
 		}
-		posicion += velocidad * tiempo;
+		deltaAvance = velocidad * tiempo;
 		
 		try {
 			motor.simular(tiempo); // quema comb en funcion del cambio y el motor
@@ -106,16 +106,13 @@ public class Auto{
 	}
 	
 	public String toString(){
-		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Posicion " + posicion + " Peso: " + getPesoTotal());
+		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Avance " + deltaAvance + " Peso: " + getPesoTotal());
 	}
 		
 	
 	public void irAPista(Pista pista){
 		this.pista = pista;
 	}
-   public double getPosicion(){
-	   return this.posicion;
-   }
    
    public Motor cambiarMotor(Motor otroMotor){
 	   Motor temp = this.motor;
@@ -184,6 +181,10 @@ public class Auto{
    
    public double getAceleracion() {
 	   return aceleracion;
+   }
+
+   public double getDeltaAvance() {
+	   return deltaAvance;
    }
    
    
