@@ -1,6 +1,6 @@
 package Modelo;
 
-import Excepciones.ProblemaTecnicoException;
+//import Excepciones.ProblemaTecnicoException;
 
 public abstract class Autoparte {
 	private double peso;
@@ -45,7 +45,7 @@ public abstract class Autoparte {
 		return this.peso;
 	}
 	
-	abstract public void simular(double tiempo)throws ProblemaTecnicoException;
+	//abstract public void simular(double tiempo)throws ProblemaTecnicoException;
 	
 	
 }
