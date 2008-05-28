@@ -19,7 +19,7 @@ public class Carrera {
 		
 		while(posicionAuto <= pista.getLongitud()) {
 			try {
-				auto.simular(intervaloTiempo);
+				auto.simular(intervaloTiempo, pista);
 				posicionAuto += auto.getDeltaAvance();
 				dibujarAuto(posicionAuto);
 			} catch (ProblemaTecnicoException e) {

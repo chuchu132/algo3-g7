@@ -15,7 +15,7 @@ public class Auto{
 	private Carroceria carroceria;
 	private TanqueCombustible tanque;
 	private TipoRueda rueda;
-	private Pista pista;
+
 	private boolean acelerando;
 	private double deltaAvance;
 	private double velocidad;
@@ -41,11 +41,8 @@ public class Auto{
     public void encender(){
 	   motor.encender();
 	}
-	
-  
-  //en seg
-	
-	public void simular(double tiempo)
+		
+	public void simular(double tiempo, Pista pista)
 	throws ProblemaTecnicoException{ 
 		
 		
@@ -108,66 +105,61 @@ public class Auto{
 	public String toString(){
 		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Avance " + deltaAvance + " Peso: " + getPesoTotal());
 	}
-		
-	
-	public void irAPista(Pista pista){
-		this.pista = pista;
-	}
-   
-   public Motor cambiarMotor(Motor otroMotor){
+	   
+	public Motor cambiarMotor(Motor otroMotor){
 	   Motor temp = this.motor;
 	   otroMotor.cambiarSitemaCombustion(temp.desconectarSistemaCombustion());
 	   otroMotor.conectarCaja(temp.cambiarCaja(null));
 	   this.motor = otroMotor;
 	   return temp;
-   }
+	}
    
-   public CajaVelocidades cambiarCaja(CajaVelocidades otraCaja){
+	public CajaVelocidades cambiarCaja(CajaVelocidades otraCaja){
 	   CajaVelocidades temp = motor.cambiarCaja(otraCaja);
 	   return temp;
-   }
+	}
    
-   public TanqueCombustible cambiarTanque(TanqueCombustible otroTanque){
+	public TanqueCombustible cambiarTanque(TanqueCombustible otroTanque){
 	   TanqueCombustible temp = sistemaCombustion.desconectarTanque();
 	   motor.conectarTanque(otroTanque);
 	   otroTanque.cargarCombustible(temp.cantidadCombustible(), temp.getOctanage());
 	  try{
 	   temp.darCombustible(temp.cantidadCombustible());
-	  }
+	 }
 	  catch(TanqueVacioException e){};
 	   
 	  this.tanque = otroTanque;
 	   return temp;
    }
    
-   public Carroceria cambiarCarroceria(Carroceria otraCarroceria){
+	public Carroceria cambiarCarroceria(Carroceria otraCarroceria){
 	   Carroceria temp = this.carroceria;
 	   this.carroceria = otraCarroceria;
 	   return temp;
-   }
+	}
    
-   public TipoRueda cambiarRueda(TipoRueda otraRueda){
+	public TipoRueda cambiarRueda(TipoRueda otraRueda){
 	   TipoRueda temp = this.rueda;
 	   this.rueda = otraRueda;
 	   return temp;
-   }
-   
-   public boolean estaCompleto(){
+	}
+	
+	public boolean estaCompleto(){
 	   if( motor != null &&  caja != null && tanque != null && sistemaCombustion != null && carroceria != null &&  rueda != null){
 		   return true;}
 	   else {return false;}
 	   
-   }
+	}
    
-   public boolean estaEncendido(){
+	public boolean estaEncendido(){
 	   return motor.estaEncendido();
-   }
+	}
    
-   public double cantidadCombustible(){
+	public double cantidadCombustible(){
 	   return tanque.cantidadCombustible();	   
-   }
-   
-   public int getRevoluciones(){
+	}
+	   
+	public int getRevoluciones(){
 		return motor.getRevolucionesActuales();
 	}
    
