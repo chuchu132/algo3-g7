@@ -120,18 +120,28 @@ public class Auto{
 	}
    
 	public TanqueCombustible cambiarTanque(TanqueCombustible otroTanque){
-	   TanqueCombustible temp = sistemaCombustion.desconectarTanque();
-	   motor.conectarTanque(otroTanque);
-	   otroTanque.cargarCombustible(temp.cantidadCombustible(), temp.getOctanage());
-	  try{
-	   temp.darCombustible(temp.cantidadCombustible());
-	 }
-	  catch(TanqueVacioException e){};
+		TanqueCombustible temp = this.desconectarTanque();
+		this.conectarTanque(otroTanque);
+		otroTanque.cargarCombustible(temp.cantidadCombustible(), temp.getOctanage());
+		try {
+			temp.darCombustible(temp.cantidadCombustible());
+		}
+		catch(TanqueVacioException e){};
 	   
-	  this.tanque = otroTanque;
-	   return temp;
-   }
-   
+		this.tanque = otroTanque;
+		return temp;
+	}
+
+   	public void conectarTanque(TanqueCombustible unTanque){
+		tanque= unTanque;
+	}
+
+	public TanqueCombustible desconectarTanque(){
+	   TanqueCombustible tanqueTemp= tanque;
+	   tanque = null;
+	   return tanqueTemp;
+	}
+	
 	public Carroceria cambiarCarroceria(Carroceria otraCarroceria){
 	   Carroceria temp = this.carroceria;
 	   this.carroceria = otraCarroceria;

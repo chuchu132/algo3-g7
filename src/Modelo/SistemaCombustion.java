@@ -3,7 +3,6 @@ package Modelo;
 import Excepciones.TanqueVacioException;
 
 public class SistemaCombustion extends Autoparte{
-    private TanqueCombustible tanque=null; 
 	private String tipo;
 	private double plusPotencia; 
 	/*
@@ -15,28 +14,21 @@ public class SistemaCombustion extends Autoparte{
 	   this.tipo = tipo;
 	   this.plusPotencia = plus;
    }
-	
-   public void conectarTanque( TanqueCombustible unTanque){
-	   tanque= unTanque;
-   }
-  
-   public TanqueCombustible desconectarTanque(){
-	   TanqueCombustible tanqueTemp= tanque;
-	   tanque = null;
-	   return tanqueTemp;
-   }
-	
-   public boolean tieneCombustible(){
+
+   
+
+   public boolean tieneCombustible(TanqueCombustible tanque){
 	   return !tanque.estaVacio();
    }
    
-   public void quemarCombustible(double cantidadCombustible)throws TanqueVacioException{
+   public void quemarCombustible(double cantidadCombustible, TanqueCombustible tanque)throws TanqueVacioException{
 	   tanque.darCombustible(cantidadCombustible);
 	  }
    
    public String toString() {
 	   return( " Sistema de Combustion: " + tipo + " Plus de Potencia: "+ plusPotencia + super.toString());
 	}
+   
    public double getPlus(){
 	   return plusPotencia;
    }
