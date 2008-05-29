@@ -19,7 +19,7 @@ public class Motor extends Autoparte{
 	
 	private double fuerzaInstantanea;
 	private boolean acelerando;
-	private SistemaCombustion sistemaCombustion;
+	//private SistemaCombustion sistemaCombustion;
 	private CajaVelocidades caja;
 	
 	public Motor(int HP, int cilindros, double cubicaje, double precio, double peso, long vidaUtilInicial){
@@ -33,7 +33,7 @@ public class Motor extends Autoparte{
 		this.revolucionesActuales = 0;
 		this.fuerzaInstantanea = 0;
 		this.acelerando = false;
-		this.sistemaCombustion = new SistemaCombustion(0,0,"Comun de Fabrica",0,5);;
+		//this.sistemaCombustion = new SistemaCombustion(0,0,"Comun de Fabrica",0,5);;
 	}
 
 		
@@ -45,10 +45,10 @@ public class Motor extends Autoparte{
 		return fuerzaInstantanea;
 	}
 
-	public void encender (){
+	public void encender (SistemaCombustion sistemaCombustion, TanqueCombustible tanque){
     
 		try{
-			sistemaCombustion.quemarCombustible(0.1);
+			sistemaCombustion.quemarCombustible(0.1, tanque);
 			revolucionesActuales = REVOLUCIONES_MINIMAS;
 		    encendido= true;
 		}
@@ -57,17 +57,17 @@ public class Motor extends Autoparte{
 	    	
 	}
 	
-	public void conectarTanque(TanqueCombustible unTanque){
-		sistemaCombustion.conectarTanque(unTanque);
-	}
+
 	
 	public void conectarCaja(CajaVelocidades unaCaja){
 		caja = unaCaja;
 	}
 	
+	/*
     public SistemaCombustion getSistemaCombustion(){
 		return sistemaCombustion;
 	}
+	*/
 	
 	public CajaVelocidades cambiarCaja(CajaVelocidades otraCaja){
 		CajaVelocidades cajaVieja = caja;
