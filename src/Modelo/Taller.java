@@ -21,12 +21,5 @@ public class Taller {
 		catch (IndexOutOfBoundsException e){//MUY PRONTO
 			autoActual = null;
 			}
-		}
-		
-
-	
-	
-	
-	
-
+	}
 }

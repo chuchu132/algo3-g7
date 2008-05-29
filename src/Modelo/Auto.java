@@ -9,6 +9,12 @@ public class Auto{
 	private final double  CERO = 0.0;
 	private final int PUNTO_MUERTO =0;
 	
+	private final int DESACELERANDO = -1;
+	private final int FRENADO = 0;
+	private final int ACELERANDO = 1;
+	private final int MOTOR_FUNDIDO = -2;
+	
+	
 	private Motor  motor;
 	private CajaVelocidades caja;
 	private SistemaCombustion sistemaCombustion;
@@ -16,7 +22,7 @@ public class Auto{
 	private TanqueCombustible tanque;
 	private TipoRueda rueda;
 
-	private boolean acelerando;
+	private int estado;
 	private double deltaAvance;
 	private double velocidad;
 	private double aceleracion;
@@ -34,7 +40,7 @@ public class Auto{
 		   this.sistemaCombustion = sistemaCombustion;
 		   this.carroceria = carroceria;
 		   this.rueda = rueda;
-		   this.acelerando = false;
+		   this.estado = FRENADO;
 		   	 
 	}
 	
@@ -46,7 +52,7 @@ public class Auto{
 	throws ProblemaTecnicoException{ 
 		
 		
-		if(this.acelerando){
+		if(this.estado == ACELERANDO){
 			motor.acelerar(tiempo);}
 		else{motor.desacelerar(tiempo);}
 		
@@ -76,11 +82,11 @@ public class Auto{
 	}
     
 	public void acelerar(){
-		this.acelerando= true;
+		this.estado = ACELERANDO;
 	}
 	
 	public void desacelerar(){
-		acelerando = false;
+		this.estado = DESACELERANDO;
 		if(velocidad == CERO)
 			caja.setCambio( PUNTO_MUERTO );
 	}
