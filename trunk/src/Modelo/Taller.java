@@ -60,22 +60,22 @@ public class Taller {
 		else if (parte instanceof Carroceria){
 			unaParte = autoActual.cambiarCarroceria((Carroceria)parte);
 		}
-			else if (parte instanceof Motor){
-				unaParte = autoActual.cambiarMotor((Motor)parte);
-			}
+		else if (parte instanceof Motor){
+			unaParte = autoActual.cambiarMotor((Motor)parte);
+		}
 		
-				else if (parte instanceof TipoRueda){
-					unaParte = autoActual.cambiarRueda((TipoRueda)parte);
-				}
+		else if (parte instanceof TipoRueda){
+			unaParte = autoActual.cambiarRueda((TipoRueda)parte);
+		}
 		
-					else if (parte instanceof SistemaCombustion){
-						unaParte = autoActual.cambiarSitemaCombustion((SistemaCombustion)parte);
-					}
+		else if (parte instanceof SistemaCombustion){
+			unaParte = autoActual.cambiarSitemaCombustion((SistemaCombustion)parte);
+		}
 		
-						else if (parte instanceof TanqueCombustible){
-							unaParte = autoActual.cambiarTanque((TanqueCombustible)parte);
-						}
-							else throw new NotAutoparteException();
+		else if (parte instanceof TanqueCombustible){
+			unaParte = autoActual.cambiarTanque((TanqueCombustible)parte);
+		}
+		else throw new NotAutoparteException();
 		
 		try {
 			agregarAutoparte(unaParte);
