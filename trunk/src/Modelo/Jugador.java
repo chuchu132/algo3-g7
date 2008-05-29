@@ -15,6 +15,6 @@ public class Jugador {
 		plata = plataInicial;
 	}
 	
-
+	public solicitarListaAutosEnVenta 
 	
 }
