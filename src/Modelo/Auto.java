@@ -51,11 +51,6 @@ public class Auto{
 	public void simular(double tiempo, Pista pista)
 	throws ProblemaTecnicoException{ 
 		
-		
-		if(this.estado == ACELERANDO){
-			motor.acelerar(tiempo);}
-		else{motor.desacelerar(tiempo);}
-		
     	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
     	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento, sistemaCombustion);
 		double fuerzaNeta = (velocidad == CERO && aceleracion > CERO)? fuerzaPositiva : fuerzaPositiva - fuerzaRozamiento; 
@@ -70,9 +65,10 @@ public class Auto{
 			aceleracion = CERO;
 			this.estado = FRENADO;
 		}
+		
 		deltaAvance = velocidad * tiempo;
 		
-		motor.simular(tiempo, sistemaCombustion, tanque); // quema comb en funcion del cambio y el motor
+		motor.simular(tiempo, sistemaCombustion, tanque, estado); // quema comb en funcion del cambio y el motor
 		caja.simular (tiempo);
 		carroceria.simular (tiempo);
 		sistemaCombustion.simular(tiempo);
