@@ -7,7 +7,7 @@ import Excepciones.TanqueVacioException;
 public class Motor extends Autoparte{
 	
 	private final int REVOLUCIONES_MINIMAS = 800;
-	private final double VIDA_UTIL_MINIMA = 0.2;
+
 	
 	private double fuerzaMaxima;
 	private int HP;
@@ -129,7 +129,7 @@ public class Motor extends Autoparte{
     	double consumoInstantaneo = 0;
     	int cambio = caja.getCambioActual();
       
-    	if(this.getVidaUtil() < VIDA_UTIL_MINIMA) {
+    	if(this.getVidaUtil() < getVidaUtilMinima()) {
      	   throw new MotorFundidoException();
      	}
     	

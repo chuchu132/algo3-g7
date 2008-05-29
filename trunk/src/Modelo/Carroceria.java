@@ -1,9 +1,12 @@
 package Modelo;
 
+import Excepciones.ProblemaTecnicoException;
+
 public class Carroceria extends Autoparte{
 	 private String modelo;
 	 private int color;
 	 private double plusVelocidad;
+	 private double factorDeDesgaste = 0.001; 
 	 
 	public Carroceria(double precio,double peso, String modelo, int color, double plus, long vidaUtilInicial ){
 		super(peso,precio, vidaUtilInicial);
@@ -26,9 +29,13 @@ public class Carroceria extends Autoparte{
 		return (plusVelocidad * super.getVidaUtil());
 	}
 	
-	public void simular(double tiempo) {
-		//CODIFICAR
-	}
+	public void simular(double tiempo) throws ProblemaTecnicoException{
+		double desgaste = tiempo * factorDeDesgaste;
+		gastar(desgaste);
+		if (getPorcentajeVidaUtil()<getVidaUtilMinima()){
+			throw new ProblemaTecnicoException();}
+		}
+	
 	
 	
 }
