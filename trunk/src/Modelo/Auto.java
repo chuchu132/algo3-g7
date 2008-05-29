@@ -28,10 +28,10 @@ public class Auto{
 		   this.caja = caja;
 		   this.tanque = tanque;
 		   this.motor.conectarCaja(caja);
-		   this.motor.conectarTanque(tanque);
+		   this.conectarTanque(tanque);
 		   if( sistemaCombustion != null){
-			   this.motor.cambiarSitemaCombustion(sistemaCombustion);}
-		   this.sistemaCombustion = motor.getSistemaCombustion();
+			   this.cambiarSitemaCombustion(sistemaCombustion);}
+		   this.sistemaCombustion = sistemaCombustion;
 		   this.carroceria = carroceria;
 		   this.rueda = rueda;
 		   this.acelerando = false;
@@ -39,7 +39,7 @@ public class Auto{
 	}
 	
     public void encender(){
-	   motor.encender();
+	   motor.encender(sistemaCombustion, tanque);
 	}
 		
 	public void simular(double tiempo, Pista pista)
@@ -51,7 +51,7 @@ public class Auto{
 		else{motor.desacelerar(tiempo);}
 		
     	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
-    	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento);
+    	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento, sistemaCombustion);
 		double fuerzaNeta = (velocidad == CERO && aceleracion > CERO)? fuerzaPositiva : fuerzaPositiva - fuerzaRozamiento; 
     						
 		
@@ -66,7 +66,7 @@ public class Auto{
 		deltaAvance = velocidad * tiempo;
 		
 		try {
-			motor.simular(tiempo); // quema comb en funcion del cambio y el motor
+			motor.simular(tiempo, sistemaCombustion, tanque); // quema comb en funcion del cambio y el motor
 		}
 		catch(ProblemaTecnicoException e){throw e; }
 		
@@ -108,7 +108,6 @@ public class Auto{
 	   
 	public Motor cambiarMotor(Motor otroMotor){
 	   Motor temp = this.motor;
-	   otroMotor.cambiarSitemaCombustion(temp.desconectarSistemaCombustion());
 	   otroMotor.conectarCaja(temp.cambiarCaja(null));
 	   this.motor = otroMotor;
 	   return temp;
@@ -142,6 +141,18 @@ public class Auto{
 	   return tanqueTemp;
 	}
 	
+    public SistemaCombustion cambiarSitemaCombustion( SistemaCombustion otroSistema){
+    	SistemaCombustion viejoSistemaCombustion = this.sistemaCombustion;
+    	sistemaCombustion=otroSistema;
+    	return viejoSistemaCombustion;
+    }
+	
+    public SistemaCombustion desconectarSistemaCombustion(){
+    	SistemaCombustion temp = sistemaCombustion;
+    	sistemaCombustion = null;
+    	return temp;
+    }
+    
 	public Carroceria cambiarCarroceria(Carroceria otraCarroceria){
 	   Carroceria temp = this.carroceria;
 	   this.carroceria = otraCarroceria;
