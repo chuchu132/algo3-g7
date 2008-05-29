@@ -72,14 +72,14 @@ public class Auto{
 		}
 		deltaAvance = velocidad * tiempo;
 		
-		try {
-			motor.simular(tiempo, sistemaCombustion, tanque); // quema comb en funcion del cambio y el motor
-		}
-		catch(ProblemaTecnicoException e){throw e; }
+		motor.simular(tiempo, sistemaCombustion, tanque); // quema comb en funcion del cambio y el motor
+		caja.simular (tiempo);
+		carroceria.simular (tiempo);
+		sistemaCombustion.simular(tiempo);
+		tanque.simular(tiempo);
+		rueda.simular(tiempo);
+				
 		
-		// rueda.simular() 
-		if( rueda.getVidaUtil() < 0.2 ){
-			throw new ProblemaTecnicoException();}
 	}
     
 	public void acelerar(){
