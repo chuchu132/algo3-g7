@@ -9,6 +9,11 @@ public class Motor extends Autoparte{
 	private final int REVOLUCIONES_MINIMAS = 800;
 	private final double factorDeDesgaste = 0.01;
 	
+	private final int DESACELERANDO = -1;
+	private final int FRENADO = 0;
+	private final int ACELERANDO = 1;
+	private final int MOTOR_FUNDIDO = -2;
+	
 	private double fuerzaMaxima;
 	private int HP;
 	private int cilindros;
@@ -18,7 +23,7 @@ public class Motor extends Autoparte{
 	private int revolucionesActuales;
 	
 	private double fuerzaInstantanea;
-	private boolean acelerando;
+	private int estado;
 	//private SistemaCombustion sistemaCombustion;
 	private CajaVelocidades caja;
 	
@@ -32,7 +37,7 @@ public class Motor extends Autoparte{
 		this.revolucionesMax = (int)(HP * 17 + 2800); 
 		this.revolucionesActuales = 0;
 		this.fuerzaInstantanea = 0;
-		this.acelerando = false;
+		this.estado = FRENADO;
 		//this.sistemaCombustion = new SistemaCombustion(0,0,"Comun de Fabrica",0,5);;
 	}
 		
@@ -85,7 +90,7 @@ public class Motor extends Autoparte{
 	
 	public void acelerar (double tiempo){
 
-		   acelerando = true;
+		   estado = ACELERANDO;
 		   
 		   double deltaRevoluciones = obtenerDeltaRevoluciones(tiempo);
 		   if (revolucionesActuales + deltaRevoluciones < revolucionesMax){
@@ -97,14 +102,14 @@ public class Motor extends Autoparte{
 	}
 	
 	public void desacelerar(double tiempo){
-		acelerando = false;
+		estado = DESACELERANDO;
 		revolucionesActuales -= obtenerDeltaRevoluciones(tiempo) ;
 		if (revolucionesActuales < REVOLUCIONES_MINIMAS) {
 			revolucionesActuales = REVOLUCIONES_MINIMAS; }
 	}
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, SistemaCombustion sistemaCombustion) {
-		if (acelerando == true){
+		if (estado == ACELERANDO){
 			if ((int)revolucionesActuales >= (int)(0.75 * revolucionesMax)) {
 				fuerzaInstantanea = fuerzaRozamiento;
 				
@@ -124,15 +129,25 @@ public class Motor extends Autoparte{
 		return encendido;
 	}
 		
-    public void simular(double deltaTiempo, SistemaCombustion sistemaCombustion, TanqueCombustible tanqueCombustible) throws ProblemaTecnicoException {
+    public void simular(double deltaTiempo, SistemaCombustion sistemaCombustion, TanqueCombustible tanqueCombustible, int estado) throws ProblemaTecnicoException {
     	
     	double consumoInstantaneo = 0;
     	int cambio = caja.getCambioActual();
         double desgaste = deltaTiempo*(revolucionesActuales/revolucionesMax)*factorDeDesgaste;
         gastar(desgaste);
+        
     	if(this.getVidaUtil() < getVidaUtilMinima()) {
      	   throw new MotorFundidoException();
      	}
+    	
+    	this.estado = estado;
+    	
+		if(this.estado == ACELERANDO){
+			acelerar(deltaTiempo);
+		}
+		else if (this.estado == DESACELERANDO){
+			desacelerar(deltaTiempo);
+		}
     	
     	if (cambio > 0) { 
     		consumoInstantaneo = ((cilindros * cubicaje / 180)* deltaTiempo ) * (1 / caja.obtenerRelacion()); 
@@ -142,10 +157,7 @@ public class Motor extends Autoparte{
     	}
     	// puede lanzar TanqueVacioException
     	sistemaCombustion.quemarCombustible(consumoInstantaneo, tanqueCombustible);
-       
-    	  
-     
-    	
+     	
     }
 	
 	public String toString(){
