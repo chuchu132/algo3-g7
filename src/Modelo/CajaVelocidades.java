@@ -46,20 +46,20 @@ public class CajaVelocidades extends Autoparte{
 		cambioActual = numeroCambio;		
 	}
 
-	//ver si es necesario recibir tiempo aqui
 	
-	/*
+	// el desgaste es proporcional al tiempo
 	
-	public void simular(double tiempo, double revolucionesActuales) throws ProblemaTecnicoException{
+	
+	public void simular(double tiempo) throws ProblemaTecnicoException{
 		double desgaste;
-		desgaste = (tiempo * (factorDeDesgaste/revolucionesActuales));
+		desgaste = (tiempo * factorDeDesgaste);
 		gastar (desgaste);
 		if (getPorcentajeVidaUtil()<getVidaUtilMinima()){
 			   throw new ProblemaTecnicoException();}
 	}
-*/
+
 	
-	public void simular (double tiempo){};
+	
 }
 
 
