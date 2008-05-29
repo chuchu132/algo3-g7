@@ -1,9 +1,12 @@
 package Modelo;
 
+import Excepciones.ProblemaTecnicoException;
+
 public class CajaVelocidades extends Autoparte{
 	private int cambioActual;
 	private int cantidadCambios;
 	private double [] relaciones;
+	private double factorDeDesgaste = 0.1; 
 	
 	
 	public CajaVelocidades (int cantidadCambios,double precio, double peso, long vidaUtilInicial){
@@ -43,8 +46,21 @@ public class CajaVelocidades extends Autoparte{
 		cambioActual = numeroCambio;		
 	}
 
-	public void simular(double tiempo) {
-		//CODIFICAR
+	//ver si es necesario recibir tiempo aqui
+	
+	/*
+	
+	public void simular(double tiempo, double revolucionesActuales) throws ProblemaTecnicoException{
+		double desgaste;
+		desgaste = (tiempo * (factorDeDesgaste/revolucionesActuales));
+		gastar (desgaste);
+		if (getPorcentajeVidaUtil()<getVidaUtilMinima()){
+			   throw new ProblemaTecnicoException();}
 	}
-
+*/
+	
+	public void simular (double tiempo){};
 }
+
+
+

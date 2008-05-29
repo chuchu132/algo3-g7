@@ -1,5 +1,6 @@
 package Modelo;
 
+import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
 
 public class TanqueCombustible extends Autoparte{
@@ -7,6 +8,8 @@ public class TanqueCombustible extends Autoparte{
 	private double capacidadMaxima;
     private double cantidadCombustible;
 	private int octanage;
+	// costante utilizada para calcular el desgaste al ser utilizado
+	private double factorDeDesgaste = 0.001;
 	
 	public TanqueCombustible(double precio,double capMax, long vidaUtilInicial){
 		super((capMax/10.0),precio, vidaUtilInicial);
@@ -59,7 +62,13 @@ public class TanqueCombustible extends Autoparte{
 		
 	}
 	
-	public void simular(double tiempo) {
-		//CODIFICAR
+	public void simular(double tiempo) throws ProblemaTecnicoException{
+		/* el tanque se desgastara si tiene que hacer un mayor esfuerzo en 
+ 		 * obtener el combustible, es decir si no le queda mucho 
+ 		*/
+		double desgaste = tiempo * (factorDeDesgaste /(cantidadCombustible + 1));
+		gastar(desgaste);
+		 if (getPorcentajeVidaUtil()<getVidaUtilMinima()){
+			   throw new ProblemaTecnicoException();}
 	}
 }
