@@ -8,7 +8,7 @@ public abstract class Autoparte {
 	private long vidaUtil;
 	private long vidaUtilInicial;
 	private long porcentajeVidaUtil;
-	private final double vidaUtilMinima = 20;
+	private final double porcentajeVidaUtilMinima = 20; //en porcentaje
 	
 	public Autoparte(double peso, double precio, long vidaUtilInicial){
 		this.peso = peso;
@@ -22,7 +22,7 @@ public abstract class Autoparte {
 	}
 	
 	public double getVidaUtilMinima(){
-		return vidaUtilMinima;
+		return porcentajeVidaUtilMinima;
 	}
 	
 	public String toString(){

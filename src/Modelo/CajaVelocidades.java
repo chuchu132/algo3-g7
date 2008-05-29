@@ -6,7 +6,7 @@ public class CajaVelocidades extends Autoparte{
 	private int cambioActual;
 	private int cantidadCambios;
 	private double [] relaciones;
-	private double factorDeDesgaste = 0.1; 
+	private final double factorDeDesgaste = 0.1;
 	
 	
 	public CajaVelocidades (int cantidadCambios,double precio, double peso, long vidaUtilInicial){
