@@ -1,6 +1,7 @@
 package Modelo;
 
 import Excepciones.ProblemaTecnicoException;
+import Excepciones.RuedaRotaException;
 
 public class TipoRueda extends Autoparte{
    
@@ -31,7 +32,7 @@ public class TipoRueda extends Autoparte{
 		super.gastar(desgaste);
 		this.coeficienteAgarre *= (1-porcentage);
 		if( getVidaUtil() < getVidaUtilMinima() ){
-			throw new ProblemaTecnicoException();}
+			throw new RuedaRotaException();}
 	}
 	
 }
