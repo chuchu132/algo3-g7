@@ -68,6 +68,7 @@ public class Auto{
 		else {
 			velocidad = CERO;
 			aceleracion = CERO;
+			this.estado = FRENADO;
 		}
 		deltaAvance = velocidad * tiempo;
 		
