@@ -59,8 +59,6 @@ public class Auto{
 	throws ProblemaTecnicoException{ 
 		
     		
-		motor.simular(tiempo, sistemaCombustion, tanque, estado); // quema comb en funcion del cambio y el motor
-		
 		aceleracion = (getFuerzaNeta(pista)/getPesoTotal()) * motor.getVidaUtil();
 		
 		if(velocidad + aceleracion * tiempo >= CERO){
@@ -73,7 +71,7 @@ public class Auto{
 		
 		deltaAvance = velocidad * tiempo;
 		
-		
+		motor.simular(tiempo, sistemaCombustion, tanque, estado); // quema comb en funcion del cambio y el motor
 		caja.simular (tiempo);
 		carroceria.simular (tiempo);
 		sistemaCombustion.simular(tiempo);
