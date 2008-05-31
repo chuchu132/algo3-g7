@@ -47,16 +47,19 @@ public class Auto{
     public void encender(){
 	   motor.encender(sistemaCombustion, tanque);
 	}
+    
+    private double getFuerzaNeta(Pista pista){
+    	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
+    	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento, sistemaCombustion);
+		double fuerzaNeta = (velocidad == CERO && aceleracion > CERO)? fuerzaPositiva : fuerzaPositiva - fuerzaRozamiento; 
+     return fuerzaNeta;
+    }
 		
 	public void simular(double tiempo, Pista pista)
 	throws ProblemaTecnicoException{ 
 		
-    	double fuerzaRozamiento = pista.getCoeficienteAgarre() *  rueda.getCoeficienteAgarre() * this.getPesoTotal() * 9.8 ;
-    	double fuerzaPositiva = motor.getFuerzaInstantanea(caja, fuerzaRozamiento, sistemaCombustion);
-		double fuerzaNeta = (velocidad == CERO && aceleracion > CERO)? fuerzaPositiva : fuerzaPositiva - fuerzaRozamiento; 
-    						
-		
-		aceleracion = (fuerzaNeta/getPesoTotal()) * motor.getVidaUtil();
+    		
+		aceleracion = (getFuerzaNeta(pista)/getPesoTotal()) * motor.getVidaUtil();
 		
 		if(velocidad + aceleracion * tiempo >= CERO){
 			velocidad += (aceleracion * tiempo);}
