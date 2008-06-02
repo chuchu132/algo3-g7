@@ -1,5 +1,8 @@
 package Modelo;
 
+import Excepciones.NoAlcanzaDineroException;
+import Excepciones.NotAutoparteException;
+
 //import java.util.ArrayList;
 
 public class Jugador {
@@ -15,6 +18,32 @@ public class Jugador {
 		plata = plataInicial;
 	}
 	
-	public solicitarListaAutosEnVenta 
+	
+	
+	public void ComprarAutoparte(int numeroAutoparte) {
+		
+		Vendedor miVendedor = null;
+		
+		try {
+			miVendedor = new Vendedor();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+		try {
+			taller.agregarAutoparte((Autoparte)miVendedor.SolicitarCompraAutoparte(numeroAutoparte, plata));
+		} catch (NotAutoparteException e) {
+			e.printStackTrace();
+		} catch (NoAlcanzaDineroException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 }
