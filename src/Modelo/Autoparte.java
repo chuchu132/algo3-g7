@@ -7,12 +7,12 @@ import java.util.Observable;
 public abstract class Autoparte extends Observable {
 	private double peso;
 	private double precio;
-	private long vidaUtil;
-	private long vidaUtilInicial;
+	private float vidaUtil;
+	private float vidaUtilInicial;
 	private long porcentajeVidaUtil;
 	private final double porcentajeVidaUtilMinima = 20; //en porcentaje
 	
-	public Autoparte(double peso, double precio, long vidaUtilInicial){
+	public Autoparte(double peso, double precio, float vidaUtilInicial){
 		this.peso = peso;
 		this.precio = precio;
 		this.vidaUtil = this.vidaUtilInicial = vidaUtilInicial;
