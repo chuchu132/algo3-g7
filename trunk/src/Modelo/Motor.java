@@ -35,7 +35,7 @@ public class Motor extends Autoparte implements Observer{
 	private int cambioActual = 0;
 	private double relacionCaja = 0.0;
 		
-	public Motor(int HP, int cilindros, double cubicaje, double precio, double peso, long vidaUtilInicial){
+	public Motor(int HP, int cilindros, double cubicaje, double precio, double peso, float vidaUtilInicial){
 		super(peso,precio, vidaUtilInicial);
 		this.HP=HP;
 		this.cilindros=cilindros;

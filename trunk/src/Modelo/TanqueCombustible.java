@@ -11,7 +11,7 @@ public class TanqueCombustible extends Autoparte{
 	// costante utilizada para calcular el desgaste al ser utilizado
 	private final double factorDeDesgaste = 0.001;
 	
-	public TanqueCombustible(double precio,double capMax, long vidaUtilInicial){
+	public TanqueCombustible(double precio,double capMax, float vidaUtilInicial){
 		super((capMax/10.0),precio, vidaUtilInicial);
 		this.capacidadMaxima = capMax;
 		this.cantidadCombustible = 0.0;

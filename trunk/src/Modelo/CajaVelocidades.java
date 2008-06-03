@@ -9,7 +9,7 @@ public class CajaVelocidades extends Autoparte{
 	private final double factorDeDesgaste = 0.1;
 	
 	
-	public CajaVelocidades (int cantidadCambios,double precio, double peso, long vidaUtilInicial){
+	public CajaVelocidades (int cantidadCambios,double precio, double peso, float vidaUtilInicial){
 		super(peso,precio, vidaUtilInicial);
 		cambioActual = 0;
 		this.cantidadCambios = cantidadCambios;
