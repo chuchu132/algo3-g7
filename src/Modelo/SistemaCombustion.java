@@ -11,7 +11,7 @@ public class SistemaCombustion extends Autoparte{
 	 * ej: si vale 0.1 a la potencia del motor la multiplicamos x 1,1
 	 * y obtenemos un 10% mas de potencia
 	 */ 
-   public SistemaCombustion(double precio, double peso, String tipo, double plus, long vidaUtilInicial){
+   public SistemaCombustion(double precio, double peso, String tipo, double plus, float vidaUtilInicial){
 	   super(peso,precio, vidaUtilInicial);
 	   this.tipo = tipo;
 	   this.plusPotencia = plus;
