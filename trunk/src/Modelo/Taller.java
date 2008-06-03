@@ -87,4 +87,9 @@ public class Taller {
 		}
 				
 	}
+	
+	public void listarMisAutopartes() {
+		System.out.println(misAutopartes.toString());
+	}
+	
 }

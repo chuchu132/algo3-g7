@@ -16,13 +16,10 @@ public class Vendedor {
 	public Vendedor() {
 		armarLista();
 	}
-		
-	public ArrayList <Producto> solicitarListaDeAutopartes() {
-		return listaAutopartes;
-	}
-	
+			
 	public Autoparte SolicitarCompraAutoparte(int numeroProducto, double dineroDisponible) throws NoAlcanzaDineroException {
 		FabricaDeAutopartes fabricaAutopartes = null;
+		Autoparte AutoparteAux;
 		
 		Producto pAux;
 		pAux = (Producto)listaAutopartes.get(numeroProducto);
@@ -33,7 +30,9 @@ public class Vendedor {
 			fabricaAutopartes = new FabricaDeAutopartes();
 			
 			try {
-				return fabricaAutopartes.crearAutoparteNumero(numeroProducto);
+				AutoparteAux = fabricaAutopartes.crearAutoparteNumero(numeroProducto);
+				return AutoparteAux; 
+				
 			} catch (NumeroAutoparteInexistente e) {
 				e.printStackTrace();
 			}

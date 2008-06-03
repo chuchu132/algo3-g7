@@ -13,15 +13,15 @@ public class Jugador {
 	
 	//atributos
 	
-	private Taller taller;
-	private long plata;
+	private Taller miTaller;
+	private long miPlata;
 	private Vendedor miVendedor;
 	
 	//contructor
 	
 	public Jugador () {
-		taller = new Taller();
-		plata = plataInicial;
+		miTaller = new Taller();
+		miPlata = plataInicial;
 		miVendedor = new Vendedor();
 	}
 	
@@ -31,39 +31,20 @@ public class Jugador {
 	}
 	
 	public void ComprarAutoparte(int numeroAutoparte){
-		
-	}
-	
-	
-	/*
-	public void ComprarAutoparte(int numeroAutoparte) {
-		
-		Vendedor miVendedor = null;
-		
 		try {
-			miVendedor = new Vendedor();
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		
-		try {
-			taller.agregarAutoparte((Autoparte)miVendedor.SolicitarCompraAutoparte(numeroAutoparte, plata));
-		} catch (NotAutoparteException e) {
-			e.printStackTrace();
+			try {
+				miTaller.agregarAutoparte(miVendedor.SolicitarCompraAutoparte(numeroAutoparte, miPlata));
+			} catch (NotAutoparteException e) {
+				e.printStackTrace();
+			}
 		} catch (NoAlcanzaDineroException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
-*/
 	
+	public void listarMisAutopartes() {
+		miTaller.listarMisAutopartes();
+	}
 	
-	
-	
+		
 }
