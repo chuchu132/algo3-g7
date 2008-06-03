@@ -1,5 +1,6 @@
 package Test;
 import Excepciones.ProblemaTecnicoException;
+import Excepciones.TanqueVacioException;
 import Modelo.CajaVelocidades;
 import Modelo.Motor;
 import Modelo.SistemaCombustion;
@@ -12,7 +13,6 @@ public class TestMotor extends TestCase {
 	Motor miMotor;
 	TanqueCombustible miTanque;
 	CajaVelocidades miCaja;
-	CajaVelocidades otraCaja;
 	CajaVelocidades miCajaVieja;
 	SistemaCombustion miSC;
 	SistemaCombustion otroSC;
@@ -25,7 +25,7 @@ public class TestMotor extends TestCase {
 	}
 
 	protected void setUp(){
-		miMotor = new Motor(200,6,0.2,1000,400);
+		miMotor = new Motor(200,6,0.2,1000,400,1);
 		/*	PESO = 400
 		 *  HP= 200;
 		 *  cilindros = 6
@@ -38,8 +38,8 @@ public class TestMotor extends TestCase {
 		 *	acelerando = false
 		 *	sistemaC = new SistemaCombustion(0,0,"Comun de Fabrica",0);;
 		 */
-		miCaja = new CajaVelocidades(5,200,50);
-		miMotor.conectarCaja(miCaja);
+		miCaja = new CajaVelocidades(5,200,50,1);
+		miCaja.addObserver(this.miMotor);
 		/*RELACIONES:
 		 * 0 - 0
 		 * 1 - 1
@@ -49,56 +49,51 @@ public class TestMotor extends TestCase {
 		 * 5 - 1/5 
 		 * */
 		
-		otraCaja = new CajaVelocidades(6,200,50);
+		miSC = new SistemaCombustion(100,10,"Turbo",0.2,1);
+		otroSC = new SistemaCombustion(100,10,"Nitro",0.5,1);
 		
-		miSC = new SistemaCombustion(100,10,"Turbo",0.2);
-		otroSC = new SistemaCombustion(100,10,"Nitro",0.5);
-		
-		miTanque = new TanqueCombustible(50,50);
-		miMotor.conectarTanque(miTanque);
+		miTanque = new TanqueCombustible(50,50,1);
+	
 	
 	}
-	
-	public void testCambiarCaja(){// prueba que la caja que saco es la que habia puesto
 		
-		miCajaVieja = miMotor.cambiarCaja(otraCaja);
-		assertEquals(miCajaVieja,miCaja);
-    }
-	
-	public void testCambiarSistemaCombustion(){//prueba cambiar de sistema de combustion 2 veces y obtener e viejo
-		miSCViejo = miMotor.cambiarSitemaCombustion(miSC);
-		assertEquals(miSC,miMotor.cambiarSitemaCombustion(otroSC));
-	}
-	
+		
 	public void testEncenderSin(){//prueba encender sin combustible
-		miMotor.encender();
+		miMotor.encender(miSC,miTanque);
 		assertFalse(miMotor.estaEncendido());
 	}
 	
 	public void testEncenderCon(){//prueba encender con combustible
 		miTanque.cargarCombustible(95, 20);
-		miMotor.encender();
+		miMotor.encender(miSC,miTanque);
 		assertTrue(miMotor.estaEncendido());
 		
 	}
 	
 	public void testQuemarCombustibleSin(){//prueba que el motor se apague si se queda sin combutible
-	   	miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender();
-		miMotor.quemarCombustible(10);
-		assertFalse(miMotor.estaEncendido());
+	   	miTanque.cargarCombustible(0.1, 98);
+	   	miMotor.encender(miSC,miTanque);
+	   	try{
+		miMotor.simular(10,miSC,miTanque);
+	    fail();
+	   	}
+	   	catch (ProblemaTecnicoException e){assertTrue(true);}
+		
 	}
 	
 	public void testQuemarCombustibleCon(){//prueba que el motor siga prendido despues de quemar combustible
 		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender();
-		miMotor.quemarCombustible(5);
-		assertTrue(miMotor.estaEncendido());
-	}
+		miMotor.encender(miSC,miTanque);
+		try{
+			miMotor.quemarCombustible(8,miSC,miTanque);
+			assertTrue(true);
+		   	}
+		   	catch (TanqueVacioException e){ fail();}
+		}
 	
 	public void testObtenerDeltaRevoluciones(){ //prueba como varian las revoluciones segun el cambio en un intervalo de tiempo
 		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender();
+		miMotor.encender(miSC,miTanque);
 		assertEquals(0.0,miMotor.obtenerDeltaRevoluciones(10));
 		miCaja.subirCambio();
 		assertEquals(11625.0,miMotor.obtenerDeltaRevoluciones(10));
@@ -111,16 +106,16 @@ public class TestMotor extends TestCase {
 	
 	public void testFuerzaInstantanea(){
 		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender();
+		miMotor.encender(miSC,miTanque);
 		
-		assertEquals(0.0,miMotor.getFuerzaInstantanea(miCaja, 100));
+		assertEquals(0.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSC));
 		
 		miCaja.subirCambio();
 		miMotor.acelerar(1);
-		assertEquals(6200.0,miMotor.getFuerzaInstantanea(miCaja, 100));
+		assertEquals(6200.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSC));
 		
 		miMotor.acelerar(3);
-		assertEquals(100.0,miMotor.getFuerzaInstantanea(miCaja, 100));
+		assertEquals(100.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSC));
 	}
 	
 	public void testAcelerar(){ // prueba como varian las revoluciones del Motor segun el tiempo de aceleracion y el cambio
@@ -129,6 +124,7 @@ public class TestMotor extends TestCase {
 		miMotor.encender();	
 		
 		miMotor.acelerar(1);
+	
 		assertEquals(800,miMotor.getRevolucionesActuales() );
 		
 		miCaja.subirCambio();
