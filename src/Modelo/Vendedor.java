@@ -10,27 +10,27 @@ import Excepciones.NumeroAutoparteInexistente;
 
 public class Vendedor {
 
-	private ArrayList <Producto> listaAutopartes;
-
+	private ArrayList <Producto> listaProductosAutopartes;
+	FabricaDeAutopartes fabricaDeAutopartes;
 	
 	public Vendedor() {
-		armarLista();
+		fabricaDeAutopartes = new FabricaDeAutopartes();
+		listaProductosAutopartes =  fabricaDeAutopartes.armarLista();
 	}
 			
 	public Autoparte SolicitarCompraAutoparte(int numeroProducto, double dineroDisponible) throws NoAlcanzaDineroException {
-		FabricaDeAutopartes fabricaAutopartes = null;
-		Autoparte AutoparteAux;
 		
+		Autoparte AutoparteAux;
+	
 		Producto pAux;
-		pAux = (Producto)listaAutopartes.get(numeroProducto);
+		pAux = (Producto)listaProductosAutopartes.get(numeroProducto);
 		
 		if(dineroDisponible >= pAux.getPrecio()) {
 			
 			dineroDisponible -= pAux.getPrecio();
-			fabricaAutopartes = new FabricaDeAutopartes();
-			
+
 			try {
-				AutoparteAux = fabricaAutopartes.crearAutoparteNumero(numeroProducto);
+				AutoparteAux = fabricaDeAutopartes.crearAutoparteNumero(numeroProducto);
 				return AutoparteAux; 
 				
 			} catch (NumeroAutoparteInexistente e) {
@@ -41,26 +41,11 @@ public class Vendedor {
 		
 		return null;
 	}
-			
-	private void armarLista(){	
-		
-		Producto pAux;
-		
-		listaAutopartes = new ArrayList<Producto>();
-		
-		pAux = new Producto(0,"Carrocería","Carrocería 1", "copada", 2700);
-		listaAutopartes.add(pAux);
-		
-		pAux = new Producto(1,"Carrocería","Carrocería 2", "mas copada", 3000);
-		listaAutopartes.add(pAux);
-		
-		pAux = new Producto(2,"Ruedas","Ruedas 1", "no resbalan", 500);
-		listaAutopartes.add(pAux);
-	}
+
 
 	public void mostrarListaAutopartes() {
 		//acá utilizaría alguna función de la Vista
-		System.out.println(listaAutopartes.toString());		
+		System.out.println(listaProductosAutopartes.toString());		
 	}
 	
 	

@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.ArrayList;
+
 import Excepciones.NumeroAutoparteInexistente;
 
 public class FabricaDeAutopartes {
@@ -28,6 +30,27 @@ public class FabricaDeAutopartes {
 		}
 	}
 	
+	
+	public ArrayList<Producto> armarLista(){	
+		
+		ArrayList<Producto> listaAutopartes;
+		
+		Producto pAux;
+		
+		listaAutopartes = new ArrayList<Producto>();
+		
+		pAux = new Producto(0,"Carrocería","Carrocería 1", "copada", 2700);
+		listaAutopartes.add(pAux);
+		
+		pAux = new Producto(1,"Carrocería","Carrocería 2", "mas copada", 3000);
+		listaAutopartes.add(pAux);
+		
+		pAux = new Producto(2,"Ruedas","Ruedas 1", "no resbalan", 500);
+		listaAutopartes.add(pAux);
+		
+		return listaAutopartes;
+		
+	}
 	
 	
 	/*=================== CARROCERIAS ==========================*/
