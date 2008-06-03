@@ -102,8 +102,7 @@ public class TestMotor extends TestCase {
 		assertEquals(6975.0,miMotor.obtenerDeltaRevoluciones(10));
 		
 	}
-	
-	
+		
 	public void testFuerzaInstantanea(){
 		miTanque.cargarCombustible(10.1, 98);
 		miMotor.encender(miSC,miTanque);
@@ -112,7 +111,8 @@ public class TestMotor extends TestCase {
 		
 		miCaja.subirCambio();
 		miMotor.acelerar(1);
-		assertEquals(6200.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSC));
+		miMotor.estado = 1; //ACELERANDO
+		assertEquals(7440.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSC));
 		
 		miMotor.acelerar(3);
 		assertEquals(100.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSC));
@@ -121,7 +121,7 @@ public class TestMotor extends TestCase {
 	public void testAcelerar(){ // prueba como varian las revoluciones del Motor segun el tiempo de aceleracion y el cambio
 		
 		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender();	
+		miMotor.encender(miSC,miTanque);	
 		
 		miMotor.acelerar(1);
 	
@@ -140,7 +140,7 @@ public class TestMotor extends TestCase {
 	
     public void testDesacelerar(){// prueba acelerar en varios cambios y despues desacelerar
     	miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender();	
+    	miMotor.encender(miSC,miTanque);
 		
 		miCaja.subirCambio();
 		miMotor.acelerar(3);
@@ -161,12 +161,14 @@ public class TestMotor extends TestCase {
     	
 	public void testEmbragarSubir() {//prueba como caen las revolucioes al subir de cambio
 		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender();	
+		miMotor.encender(miSC,miTanque);
 		
+		miCaja.subirCambio();
 		miMotor.embragarSubir(); 
 		assertEquals(800,miMotor.getRevolucionesActuales() );
 		
 		miMotor.acelerar(3);
+		miCaja.subirCambio();
 		miMotor.embragarSubir();
 		assertEquals(1714,miMotor.getRevolucionesActuales() );
 		
@@ -174,46 +176,57 @@ public class TestMotor extends TestCase {
 	
 	public void testEmbragarBajar() {//prueba como aumentan las revoluciones al bajar de cambio
 		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender();	
+		miMotor.encender(miSC,miTanque);
 		
 		//Caja en 0
-		
+		miCaja.bajarCambio();
 		miMotor.embragarBajar();// Vuelve a poner 0
 		assertEquals(800,miMotor.getRevolucionesActuales());
 		
+		miCaja.subirCambio();
 		miMotor.embragarSubir();//1era
 		miMotor.acelerar(2);
+		miCaja.bajarCambio();
 		miMotor.embragarBajar();// pone punto muerto el motor cae a 800 siempre
 		assertEquals(800,miMotor.getRevolucionesActuales());
 		
+		miCaja.subirCambio();
 		miMotor.embragarSubir();//1era
 		miMotor.acelerar(2);
+		
+		miCaja.subirCambio();
 		miMotor.embragarSubir();//2da
 		miMotor.acelerar(1);
+		
+		miCaja.subirCambio();
 		miMotor.embragarBajar();//1era
 		assertEquals(5450,miMotor.getRevolucionesActuales());
 		
+		miCaja.bajarCambio();
 		miMotor.embragarBajar();// 0
+		
+		miCaja.subirCambio();
 		miMotor.embragarSubir();// 1era
 		miMotor.acelerar(2);
+		
+		miCaja.subirCambio();
 		miMotor.embragarSubir();// 2da
 		miMotor.acelerar(2);
 		
-		assertTrue(miMotor.getVidaUtil() == 1);// vida util antes de forzar el motor
-		
+		miCaja.bajarCambio();
 		miMotor.embragarBajar(); // 1era pero con el motor muy acelerado llega a rev Maximas se desgasta el motor.
 		assertEquals(6200,miMotor.getRevolucionesActuales());
 		
-		assertTrue(miMotor.getVidaUtil() < 1);// vida util despues de forzar el motor
+		assertTrue(miMotor.getPorcentajeVidaUtil() < 1);// vida util despues de forzar el motor 
 	}
 	
 	
 	
 	public void testSimular() { // prueba el consumo de combustible con el motor bien y con suficiente combustible en el tanque
 		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender();
+		miMotor.encender(miSC,miTanque);
 		
-		
+		miCaja.subirCambio();
 		miMotor.embragarSubir();
 		try{
 		miMotor.simular(10);

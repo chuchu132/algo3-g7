@@ -26,11 +26,14 @@ public class Motor extends Autoparte implements Observer{
 	private int revolucionesActuales;
 	
 	private double fuerzaInstantanea;
-	private int estado;
+	/** Estado va public para poder cambiarlo en los test sin tener que crear un auto.
+	 *  Pero en realidad, cuando el auto cambia su comportamiento le avisa al motor que lo esta  "mirando"
+	 *  y este cambia de estado. */
+	public int estado; 
 	
 	
 	/** cambioActual y relacionCaja guardan el estado de la caja en todo momento 
-	 * y la caja se encarga de actualizarlos cuando cambia de estado. 
+	 * y la caja se encarga de avisarle al motor cuando cambia de estado. 
 	 */
 	private int cambioActual = 0;
 	private double relacionCaja = 0.0;
@@ -88,13 +91,12 @@ public class Motor extends Autoparte implements Observer{
 	
 	public void acelerar (double tiempo){
 
-		     
-		   double deltaRevoluciones = obtenerDeltaRevoluciones(tiempo);
-		   if (revolucionesActuales + deltaRevoluciones < revolucionesMax){
-			   revolucionesActuales += (int)deltaRevoluciones ;
-		   } else {
-			   revolucionesActuales = (int) (revolucionesMax); 
-		   }
+		double deltaRevoluciones = obtenerDeltaRevoluciones(tiempo);
+		if (revolucionesActuales + deltaRevoluciones < revolucionesMax){
+			revolucionesActuales += (int)deltaRevoluciones ;
+		} else {
+			revolucionesActuales = (int) (revolucionesMax); 
+		}
 
 	}
 	
