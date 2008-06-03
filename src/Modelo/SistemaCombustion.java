@@ -6,8 +6,8 @@ import Excepciones.TanqueVacioException;
 public class SistemaCombustion extends Autoparte{
 	private String tipo;
 	private double plusPotencia; 
-	private final double factorDeDesgaste = 0.5;
-	/*
+	private final double factorDeDesgaste = 0.005;
+	 /*
 	 * ej: si vale 0.1 a la potencia del motor la multiplicamos x 1,1
 	 * y obtenemos un 10% mas de potencia
 	 */ 
@@ -36,7 +36,7 @@ public class SistemaCombustion extends Autoparte{
    }
    
    public void simular(double tiempo) throws ProblemaTecnicoException{
-	   double desgaste = tiempo/(getPorcentajeVidaUtil()-factorDeDesgaste);
+	   double desgaste = tiempo/(getPorcentajeVidaUtil()+factorDeDesgaste);
 	   gastar(desgaste);
 	   if (getPorcentajeVidaUtil()<getVidaUtilMinima()){
 		   throw new ProblemaTecnicoException();}
