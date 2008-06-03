@@ -11,7 +11,7 @@ import Excepciones.NumeroAutoparteInexistente;
 public class Vendedor {
 
 	private ArrayList <Producto> listaAutopartes;
-	
+
 	
 	public Vendedor() {
 		armarLista();
