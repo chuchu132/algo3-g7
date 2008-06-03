@@ -149,8 +149,14 @@ public class Motor extends Autoparte implements Observer{
     	else {
     	   consumoInstantaneo = ((cilindros * cubicaje / 180)* deltaTiempo);
     	}
-    	// puede lanzar TanqueVacioException
+    	// si no hay combustible apaga el motor y lanza la excepcion para avisar que hubo un problema
+    	try{
     	sistemaCombustion.quemarCombustible(consumoInstantaneo, tanqueCombustible);
+    	}
+    	catch(TanqueVacioException e){
+    		this.apagar();
+    		throw e;
+    	}
      	
     }
 	

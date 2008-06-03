@@ -18,11 +18,6 @@ public class SistemaCombustion extends Autoparte{
    }
 
    
-
-   public boolean tieneCombustible(TanqueCombustible tanque){
-	   return !tanque.estaVacio();
-   }
-   
    public void quemarCombustible(double cantidadCombustible, TanqueCombustible tanque)throws TanqueVacioException{
 	   tanque.darCombustible(cantidadCombustible);
 	  }
