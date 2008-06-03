@@ -1,5 +1,7 @@
 package Modelo;
 
+import Excepciones.NumeroAutoparteInexistente;
+
 public class FabricaDeAutopartes {
 	
 	/* Colores */
@@ -8,6 +10,17 @@ public class FabricaDeAutopartes {
 	private final int rojo = 1;
 	private final int verde = 2;
 	private final int gris = 3;
+	
+	
+	public Autoparte crearAutoparteNumero(int n) throws NumeroAutoparteInexistente {
+		switch (n) {
+			case 0: return crearCarroceriaTipo1();
+			case 1: return crearCarroceriaTipo2();
+			case 2: return crearTipoRuedaTipo1();
+			default:
+				 throw new NumeroAutoparteInexistente();
+		}
+	}
 	
 	
 	
