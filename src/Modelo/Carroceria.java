@@ -26,7 +26,7 @@ public class Carroceria extends Autoparte{
 		this.color = color;
 	}
 	public double getPlusVelocidad() {
-		return (plusVelocidad * super.getVidaUtil());
+		return (plusVelocidad * super.getPorcentajeVidaUtil());
 	}
 	
 	public void simular(double tiempo) throws ProblemaTecnicoException{

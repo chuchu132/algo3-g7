@@ -10,7 +10,7 @@ public abstract class Autoparte extends Observable {
 	private float vidaUtil;
 	private float vidaUtilInicial;
 	private long porcentajeVidaUtil;
-	private final double porcentajeVidaUtilMinima = 20; //en porcentaje
+	private final double porcentajeVidaUtilMinima = 0.2; //20% --> pongo 0.2
 	
 	public Autoparte(double peso, double precio, float vidaUtilInicial){
 		this.peso = peso;
@@ -20,7 +20,7 @@ public abstract class Autoparte extends Observable {
 	}
 	
 	public double getPorcentajeVidaUtil() {
-		return (vidaUtil*100)/vidaUtilInicial;
+		return (vidaUtil)/vidaUtilInicial;
 	}
 	
 	public double getVidaUtilMinima(){
@@ -28,7 +28,7 @@ public abstract class Autoparte extends Observable {
 	}
 	
 	public String toString(){
-		return ( " Precio: Algo$ " + precio + " , Vida Util: " + (vidaUtil * 100 ) + " % ");
+		return ( " Precio: Algo$ " + precio + " , Vida Util: " + (getPorcentajeVidaUtil() * 100 ) + " % ");
 	}
 	
 	public double getPrecio() {
