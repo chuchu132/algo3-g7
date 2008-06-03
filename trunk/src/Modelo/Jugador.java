@@ -19,7 +19,13 @@ public class Jugador {
 	}
 	
 	
+	public void pedirMostrarLista () {
+		
+	}
 	
+	public void ComprarAutoparte(int numeroAutoparte){
+		
+	}
 	
 	
 	/*
