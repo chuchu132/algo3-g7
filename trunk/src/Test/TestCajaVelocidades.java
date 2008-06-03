@@ -14,7 +14,7 @@ public class TestCajaVelocidades extends TestCase {
 }
 
 protected void setUp(){
-	 miCaja= new CajaVelocidades(5,4,3); 
+	 miCaja= new CajaVelocidades(5,4,3,100); 
  }
  
  public void testGetCambioActual(){// prueba que el cambio actual sea 0 cuando la caja no se uso
@@ -28,7 +28,7 @@ public void testSubirCambio(){// prueba que aumente el cambio actual
 }
 
 public void testSubirCambio2(){// prueba que no suba mas cambios de los que tiene 
-	miCaja = new CajaVelocidades(3,4,3);
+	miCaja = new CajaVelocidades(3,4,3,100);
 	miCaja.subirCambio();
 	miCaja.subirCambio();
 	miCaja.subirCambio();
