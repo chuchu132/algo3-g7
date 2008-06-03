@@ -46,17 +46,17 @@ public class Vendedor {
 		
 		/*carrocería tipo 1*/
 		mAux = fabrica.getMethod("crearCarroceriaTipo1", null);
-		pAux = new Producto(0,"Carrocería 1", "copada", 2700, mAux);
+		pAux = new Producto(0,"Carrocería","Carrocería 1", "copada", 2700, mAux);
 		listaAutopartes.add(pAux);
 		
 		/*carrocería tipo 2*/
 		mAux = fabrica.getMethod("crearCarroceriaTipo2", null);
-		pAux = new Producto(1,"Carrocería 2", "mas copada", 3000, mAux);
+		pAux = new Producto(1,"Carrocería","Carrocería 2", "mas copada", 3000, mAux);
 		listaAutopartes.add(pAux);
 		
 		/*Ruedas tipo 1*/
 		mAux = fabrica.getMethod("crearTipoRuedaTipo1", null);
-		pAux = new Producto(0,"Ruedas 1", "no resbalan", 500, mAux);
+		pAux = new Producto(2,"Ruedas","Ruedas 1", "no resbalan", 500, mAux);
 		listaAutopartes.add(pAux);
 	}
 	

@@ -1,16 +1,19 @@
 package Modelo;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class Producto {
 	private int numero;
 	private String nombre;
 	private String descripcion;
+	private String nombreAutoparte;
 	private double precio;
 	private Method contructor;
 	
+
 	//contructor
-	public Producto(int numero, String nombre, String descripcion,
+	public Producto(int numero, String nombreAutoparte, String nombre, String descripcion,
 			double precio, Method contructor) {
 		
 		this.numero = numero;
@@ -18,6 +21,7 @@ public class Producto {
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.contructor = contructor;
+		this.nombreAutoparte = nombreAutoparte;
 	}	
 	
 	//getters
@@ -55,8 +59,17 @@ public class Producto {
 
 	//métodos
 	
-	public Object construir() {
-		return "sdfd";
+	public Object construir() throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+		Object o = null;
+		return contructor.invoke(o , null);
+	}
+
+	public String getNombreAutoparte() {
+		return nombreAutoparte;
+	}
+
+	public void setNombreAutoparte(String nombreAutoparte) {
+		this.nombreAutoparte = nombreAutoparte;
 	}
 	
 	

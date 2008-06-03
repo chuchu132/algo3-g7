@@ -20,6 +20,9 @@ public class Jugador {
 	
 	
 	
+	
+	
+	/*
 	public void ComprarAutoparte(int numeroAutoparte) {
 		
 		Vendedor miVendedor = null;
@@ -45,5 +48,9 @@ public class Jugador {
 		
 		
 	}
+*/
+	
+	
+	
 	
 }
