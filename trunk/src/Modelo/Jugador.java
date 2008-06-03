@@ -1,26 +1,33 @@
 package Modelo;
 
+
 import Excepciones.NoAlcanzaDineroException;
 import Excepciones.NotAutoparteException;
 
 //import java.util.ArrayList;
 
 public class Jugador {
-
+	
+	//constantes
 	private final long plataInicial = 10000;
+	
+	//atributos
 	
 	private Taller taller;
 	private long plata;
+	private Vendedor miVendedor;
 	
+	//contructor
 	
 	public Jugador () {
 		taller = new Taller();
 		plata = plataInicial;
+		miVendedor = new Vendedor();
 	}
 	
 	
-	public void pedirMostrarLista () {
-		
+	public void pedirMostrarListaAutopartes () {
+		miVendedor.mostrarListaAutopartes();	
 	}
 	
 	public void ComprarAutoparte(int numeroAutoparte){
