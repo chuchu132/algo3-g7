@@ -1,5 +1,6 @@
 package Test;
 
+import Excepciones.TanqueVacioException;
 import Modelo.TanqueCombustible;
 import junit.framework.TestCase;
 
@@ -14,7 +15,7 @@ public TestTanqueCombustible(String name) {
 	}
 
 protected void setUp(){
-	 miTanque = new TanqueCombustible(100,70);
+	 miTanque = new TanqueCombustible(100,70,1);
 }
 	
  public void testEstaVacio(){
@@ -46,14 +47,21 @@ protected void setUp(){
  
  public void testDarCombustible(){// prueba que entregue combustible segun el  octanage
 	 miTanque.cargarCombustible(30,95);
+	 try{
 	 miTanque.darCombustible(10.0);
+	 }
+	 catch (TanqueVacioException e) {}
 	 assertEquals(19.5, miTanque.cantidadCombustible());
  }
  
  public void testDarCombustible2(){
 	 miTanque.cargarCombustible(30,95);
+	 try{
 	 miTanque.darCombustible(29.0);
-	 assertTrue(miTanque.estaVacio());
+	 fail();
+	 }
+	 catch (TanqueVacioException e){assertTrue(true);}
+	 
 	 
  }
  

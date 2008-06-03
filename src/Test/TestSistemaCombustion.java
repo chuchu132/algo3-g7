@@ -9,8 +9,8 @@ public class TestSistemaCombustion extends TestCase {
 	SistemaCombustion miSC;
 	 
 protected void setUp(){
-	miSC = new SistemaCombustion(5,100,"Turbo",0.2);
-	miTanque = new TanqueCombustible(50,70);
+	miSC = new SistemaCombustion(5,100,"Turbo",0.2,1);
+	miTanque = new TanqueCombustible(50,70,1);
 }
 
 	
