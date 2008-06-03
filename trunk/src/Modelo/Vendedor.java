@@ -46,7 +46,9 @@ public class Vendedor {
 	private void armarLista(){	
 		
 		Producto pAux;
-
+		
+		listaAutopartes = new ArrayList<Producto>();
+		
 		pAux = new Producto(0,"Carrocería","Carrocería 1", "copada", 2700);
 		listaAutopartes.add(pAux);
 		
