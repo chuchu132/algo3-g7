@@ -38,7 +38,7 @@ public class Jugador {
 				e.printStackTrace();
 			}
 		} catch (NoAlcanzaDineroException e) {
-			e.printStackTrace();
+			e.printStackTrace(); //Mensaje por la Vista que no alcanza la plata
 		}
 	}
 	

@@ -17,6 +17,12 @@ public class FabricaDeAutopartes {
 			case 0: return crearCarroceriaTipo1();
 			case 1: return crearCarroceriaTipo2();
 			case 2: return crearTipoRuedaTipo1();
+			case 3: return crearTipoRuedaTipo2();
+			case 4: return crearTipoRuedaTipo3();
+			case 5: return crearMotorTipo1();
+			case 6: return crearTanqueTipo1();
+			case 7: return crearSistemaTipo1();
+			case 8: return crearCajaTipo1();
 			default:
 				 throw new NumeroAutoparteInexistente();
 		}
