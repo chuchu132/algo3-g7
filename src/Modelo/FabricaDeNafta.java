@@ -1,5 +1,5 @@
 package Modelo;
-
+/* nada */
 import java.util.ArrayList;
 
 import Excepciones.TipoNaftaInexistenteException;
