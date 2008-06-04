@@ -96,5 +96,10 @@ public class Taller {
 	public void listarMisAutopartes() {
 		System.out.println(misAutopartes.toString());
 	}
+
+	public void listarMisAutos() {
+		System.out.println(misAutos.toString());
+		
+	}
 	
 }
