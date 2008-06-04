@@ -158,8 +158,9 @@ public class TestAuto extends TestCase {
 		try{ miAuto.simular(1,unaPista);	     }
 	    catch (ProblemaTecnicoException e){ fail("No deberia lanzar una excepcion");}
 	    
-	    assertTrue(3.95 < miAuto.getAceleracion() && miAuto.getAceleracion() < 3.97);
-		assertTrue(3.95 < miAuto.getVelocidad() && miAuto.getVelocidad() < 3.97);
+	    assertTrue(4.50 < miAuto.getAceleracion() && miAuto.getAceleracion() < 4.51);
+		assertTrue(4.50 < miAuto.getVelocidad() && miAuto.getVelocidad() < 4.51);
+	    
 	    
 	   		
 	}
