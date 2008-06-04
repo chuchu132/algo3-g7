@@ -23,11 +23,7 @@ public class FabricaDeAutos {
 		}
 	}
 	
-	
-	
-	
-	
-	
+
 	public Auto crearAutoTiopo1() {
 		
 		FabricaDeAutopartes fabrica = new FabricaDeAutopartes();

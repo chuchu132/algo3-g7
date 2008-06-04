@@ -1,6 +1,8 @@
 package Modelo;
 
 import java.util.ArrayList;
+
+import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;;
 public class Taller {
 	
@@ -14,8 +16,11 @@ public class Taller {
 		misAutos = new ArrayList<Auto>();
 	}
 	
-	public void agregarAuto(Auto newAuto){
-		 misAutos.add(newAuto);
+	public void agregarAuto(Auto newAuto) throws NotAutoException{
+		if (newAuto instanceof Auto)
+			misAutos.add(newAuto);
+		else
+			throw new NotAutoException();
 	}
 		
 	public void elegirAuto(int auto){
