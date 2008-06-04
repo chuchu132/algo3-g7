@@ -35,7 +35,7 @@ public class FabricaDeAutopartes {
 			case 16: return crearCajaTipo2();
 			case 17: return crearCajaTipo3();
 			default:
-				 throw new NumeroAutoparteInexistente();
+				 throw new NumeroAutoparteInexistenteException();
 		}
 	}
 	
