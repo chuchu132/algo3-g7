@@ -1,11 +1,11 @@
 package Modelo;
 
-import Excepciones.NumeroAutoInexistente;
-import Excepciones.NumeroAutoparteInexistente;
+import Excepciones.NumeroAutoInexistenteException;
+import Excepciones.NumeroAutoparteInexistenteException;
 
 public class FabricaDeAutos {
 
-	public Auto crearAutoNumero(int n) throws NumeroAutoInexistente {
+	public Auto crearAutoNumero(int n) throws NumeroAutoInexistenteException {
 		switch (n) {
 			case 0: return crearAutoTiopo1();
 			/*
@@ -19,7 +19,7 @@ public class FabricaDeAutos {
 			case 8: return crearCajaTipo1();
 			*/
 			default:
-				 throw new NumeroAutoInexistente();
+				 throw new NumeroAutoInexistenteException();
 		}
 	}
 	

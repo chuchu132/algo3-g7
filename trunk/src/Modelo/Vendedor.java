@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 import Excepciones.NoAlcanzaDineroException;
-import Excepciones.NumeroAutoparteInexistente;
+import Excepciones.NumeroAutoparteInexistenteException;
 
 
 public class Vendedor {
@@ -33,7 +33,7 @@ public class Vendedor {
 				AutoparteAux = fabricaDeAutopartes.crearAutoparteNumero(numeroProducto);
 				return AutoparteAux; 
 				
-			} catch (NumeroAutoparteInexistente e) {
+			} catch (NumeroAutoparteInexistenteException e) {
 				e.printStackTrace();
 			}
 		} else
