@@ -1,6 +1,6 @@
 package Excepciones;
 
-public class NumeroAutoparteInexistente extends Exception {
+public class NumeroAutoparteInexistenteException extends Exception {
 
 	private static final long serialVersionUID = 0L;
 
