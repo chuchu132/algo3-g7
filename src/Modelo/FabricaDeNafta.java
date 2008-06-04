@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 
-import Excepciones.TipoNaftaInexistente;
+import Excepciones.TipoNaftaInexistenteException;
 
 public class FabricaDeNafta  {
 	
@@ -11,7 +11,6 @@ public class FabricaDeNafta  {
 			case 0: return crearNaftaTipo1();
 			case 1: return crearNaftaTipo2();
 			case 2: return crearNaftaTipo3();
-			case 3: return crearNaftaTipo4();
 			default:
 				throw new TipoNaftaInexistente();
 		}
@@ -44,31 +43,25 @@ public class FabricaDeNafta  {
 	/*=================== NAFTAS ==========================*/
 	
 	/* Octanaje Nafta 1 */
-	private final String nombreTipo1 = "Nafta Tipo 1";
-	private final int octTipo1 = 5;
+	private final String nombreTipo1 = "Comun";
+	private final int octTipo1 = 91;
 	public Nafta crearNaftaTipo1(){
 		return new Nafta(nombreTipo1,octTipo1);
 	}
 	
 	/* Octanaje Nafta 2 */
-	private final String nombreTipo2 = "Nafta Tipo 2";
-	private final int octTipo2 = 3;
+	private final String nombreTipo2 = "Super";
+	private final int octTipo2 = 95;
 	public Nafta crearNaftaTipo2(){
 		return new Nafta(nombreTipo2,octTipo2);
 	}
 	
 	/* Octanaje Nafta 3 */
-	private final String nombreTipo3 = "Nafta Tipo 3";
-	private final int octTipo3 = 4;
+	private final String nombreTipo3 = "Extra";
+	private final int octTipo3 = 98;
 	public Nafta crearNaftaTipo3(){
 		return new Nafta(nombreTipo3,octTipo3);
 	}
 	
-	/* Octanaje Nafta 4 */
-	private final String nombreTipo4 = "Nafta Tipo 4";
-	private final int octTipo4 = 7;
-	public Nafta crearNaftaTipo4(){
-		return new Nafta(nombreTipo3,octTipo4);
-	}
 
 }
