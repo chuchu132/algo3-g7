@@ -4,6 +4,11 @@ public class Nafta {
 	private int octanaje;
 	private String nombre;
 	private double precio;
+	
+	public Nafta(String name,int oct){
+		octanaje = oct;
+		nombre = name;
+	}
 	public Nafta(String name,int oct,double cost){
 		octanaje = oct;
 		nombre = name;
