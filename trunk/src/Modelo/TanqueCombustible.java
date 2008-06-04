@@ -4,7 +4,10 @@ import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
 
 public class TanqueCombustible extends Autoparte{
-    
+   
+	private final int OCTANAGE_COMUN = 91;
+	private final int OCTANAGE_SUPER = 95;
+	private final int OCTANAGE_EXTRA = 98;
 	private double capacidadMaxima;
     private double cantidadCombustible;
 	private Nafta tipoNafta;
@@ -17,25 +20,51 @@ public class TanqueCombustible extends Autoparte{
 		this.cantidadCombustible = 0.0;
 		
 	}
+	/**
+	 * Este metodo recibe X cantidad de un Tipo de Combustible primero verifica que no rebalse el tanque,
+	 * luego hace un promedio para calcular el octanage resultante la cuenta es:  
+	 * OctInicial * VolInicial   +  OctanageDeX * X
+	 * ------------------------------------------------                   
+	 *                  (VolInicial + X)
+	 * Dependiendo de que valor toma la mezcla de Naftas se las estandariza.
+	 * */
 	
-	 public void cargarCombustible(double cuanto,Nafta nafta){
-		
-    	if(cantidadCombustible + cuanto  > capacidadMaxima){
-             cantidadCombustible = capacidadMaxima;
-    	   }
-    	else {
-    		cantidadCombustible += cuanto;
-    	}
-    	
-    	if( tipoNafta != null ) {
-    		if(nafta.getOctanaje()<= tipoNafta.getOctanaje() ){
-    			tipoNafta= new Nafta(nafta.getNombre(),nafta.getOctanaje());   			
-    		}
-    	}
-    	else{
-    		tipoNafta = new Nafta(nafta.getNombre(),nafta.getOctanaje());
-    	}
-	 }
+	
+	public void cargarCombustible(double cuanto,Nafta nafta){
+
+		if(cantidadCombustible + cuanto  > capacidadMaxima){
+			cuanto=(capacidadMaxima - cantidadCombustible);
+			cantidadCombustible = capacidadMaxima;
+		}
+		else {
+			cantidadCombustible += cuanto;
+		}
+
+		if( tipoNafta != null ) {
+			if(!estaVacio()){
+
+				int octanageResultante = (int) (  ((tipoNafta.getOctanaje()*cantidadCombustible)	+  (nafta.getOctanaje()*cuanto) )/(cantidadCombustible+cuanto) );
+
+				if(octanageResultante <= (OCTANAGE_COMUN + OCTANAGE_SUPER)/2 ){
+					tipoNafta= new Nafta("Comun",OCTANAGE_COMUN);
+				}
+				else{ 
+					if(octanageResultante < (OCTANAGE_SUPER + OCTANAGE_EXTRA)/2){
+						tipoNafta= new Nafta("Super",OCTANAGE_SUPER);
+					}
+					else{
+						tipoNafta= new Nafta("Extra",OCTANAGE_EXTRA);
+					}
+				}
+			}
+			else{
+				tipoNafta = new Nafta(nafta.getNombre(),nafta.getOctanaje());
+			}
+		}
+		else{
+			tipoNafta = new Nafta(nafta.getNombre(),nafta.getOctanaje());
+		}
+	}
     
     public double getPeso(){
     	return ( super.getPeso() + cantidadCombustible );
