@@ -2,6 +2,7 @@ package Modelo;
 
 
 import Excepciones.NoAlcanzaDineroException;
+import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;
 
 //import java.util.ArrayList;
@@ -30,11 +31,27 @@ public class Jugador {
 		miVendedor.mostrarListaAutopartes();	
 	}
 	
+	public void pedirMostrarListaAutos () {
+		miVendedor.mostrarListaAutos();	
+	}
+	
 	public void ComprarAutoparte(int numeroAutoparte){
 		try {
 			try {
 				miTaller.agregarAutoparte(miVendedor.SolicitarCompraAutoparte(numeroAutoparte, miPlata));
 			} catch (NotAutoparteException e) {
+				e.printStackTrace();
+			}
+		} catch (NoAlcanzaDineroException e) {
+			e.printStackTrace(); //Mensaje por la Vista que no alcanza la plata
+		}
+	}
+	
+	public void ComprarAuto(int numeroAuto){
+		try {
+			try {
+				miTaller.agregarAuto(miVendedor.SolicitarCompraAuto(numeroAuto, miPlata));
+			} catch (NotAutoException e) {
 				e.printStackTrace();
 			}
 		} catch (NoAlcanzaDineroException e) {
