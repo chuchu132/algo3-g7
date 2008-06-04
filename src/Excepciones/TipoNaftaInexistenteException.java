@@ -1,6 +1,6 @@
 package Excepciones;
 
-public class TipoNaftaInexistente extends Exception {
+public class TipoNaftaInexistenteException extends Exception {
 
 	private static final long serialVersionUID = 0L;
 	
