@@ -7,7 +7,7 @@ public class TanqueCombustible extends Autoparte{
     
 	private double capacidadMaxima;
     private double cantidadCombustible;
-	private int octanage;
+	private Nafta tipoNafta;
 	// costante utilizada para calcular el desgaste al ser utilizado
 	private final double factorDeDesgaste = 0.001;
 	
@@ -15,18 +15,25 @@ public class TanqueCombustible extends Autoparte{
 		super((capMax/10.0),precio, vidaUtilInicial);
 		this.capacidadMaxima = capMax;
 		this.cantidadCombustible = 0.0;
-		this.octanage= 94; // 94 - 100 valores posibles. A mayor octanage menos combustible gasta.
+		
 	}
 	
-	 public void cargarCombustible(double cuanto,int oct){
+	 public void cargarCombustible(double cuanto,Nafta nafta){
 		
     	if(cantidadCombustible + cuanto  > capacidadMaxima){
-    		octanage = (int) ((octanage*(cantidadCombustible/(capacidadMaxima)))	+  (oct*(1 - (cantidadCombustible/capacidadMaxima))));
-    		cantidadCombustible = capacidadMaxima;
+             cantidadCombustible = capacidadMaxima;
     	   }
     	else {
-    		octanage = (int) ((octanage*(cantidadCombustible/(cantidadCombustible+cuanto)))	+  (oct*(cuanto/(cantidadCombustible+cuanto))));
     		cantidadCombustible += cuanto;
+    	}
+    	
+    	if( tipoNafta != null ) {
+    		if(nafta.getOctanaje()<= tipoNafta.getOctanaje() ){
+    			tipoNafta= new Nafta(nafta.getNombre(),nafta.getOctanaje());   			
+    		}
+    	}
+    	else{
+    		tipoNafta = new Nafta(nafta.getNombre(),nafta.getOctanaje());
     	}
 	 }
     
@@ -34,18 +41,23 @@ public class TanqueCombustible extends Autoparte{
     	return ( super.getPeso() + cantidadCombustible );
     }
 	
-    public int getOctanage(){
-    	return this.octanage;
+    public Nafta getTipoNafta(){
+    	return this.tipoNafta;
     }
     
 	public void darCombustible(double cuanto) throws TanqueVacioException {
-		double segunOctanage = (cuanto*(2.0 - (octanage / 100.0)));
+	 if(!estaVacio()){	
+		double segunOctanage = (cuanto*(2.0 - (tipoNafta.getOctanaje()/ 100.0)));
 		if(cantidadCombustible > segunOctanage ){
 			cantidadCombustible -= segunOctanage;
 		}else{
 			cantidadCombustible = 0.0;
 			throw new TanqueVacioException();
 		}
+	 }
+	 else{
+		 throw new TanqueVacioException();
+	 }
 		
 	}
 	
