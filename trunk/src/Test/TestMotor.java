@@ -1,8 +1,10 @@
 package Test;
+import Excepciones.MotorFundidoException;
 import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
 import Modelo.CajaVelocidades;
 import Modelo.Motor;
+import Modelo.Nafta;
 import Modelo.SistemaCombustion;
 import Modelo.TanqueCombustible;
 import junit.framework.TestCase;
@@ -13,11 +15,8 @@ public class TestMotor extends TestCase {
 	Motor miMotor;
 	TanqueCombustible miTanque;
 	CajaVelocidades miCaja;
-	CajaVelocidades miCajaVieja;
-	SistemaCombustion miSC;
-	SistemaCombustion otroSC;
-	SistemaCombustion miSCViejo;
-	
+	SistemaCombustion miSistemaCombustion;
+    Nafta nafta;
 		
 	public TestMotor(String name) {
 		super(name);
@@ -49,32 +48,32 @@ public class TestMotor extends TestCase {
 		 * 5 - 1/5 
 		 * */
 		
-		miSC = new SistemaCombustion(100,10,"Turbo",0.2,1);
-		otroSC = new SistemaCombustion(100,10,"Nitro",0.5,1);
-		
+		miSistemaCombustion = new SistemaCombustion(100,10,"Turbo",0.2,1);
 		miTanque = new TanqueCombustible(50,50,1);
-	
+	    
 	
 	}
 		
 		
 	public void testEncenderSin(){//prueba encender sin combustible
-		miMotor.encender(miSC,miTanque);
+		miMotor.encender(miSistemaCombustion,miTanque);
 		assertFalse(miMotor.estaEncendido());
 	}
 	
 	public void testEncenderCon(){//prueba encender con combustible
-		miTanque.cargarCombustible(95, 20);
-		miMotor.encender(miSC,miTanque);
+		nafta = new Nafta("Nafta de Prueba",95);
+		miTanque.cargarCombustible(20,nafta);
+		miMotor.encender(miSistemaCombustion,miTanque);
 		assertTrue(miMotor.estaEncendido());
 		
 	}
 	
 	public void testQuemarCombustibleSin(){//prueba que el motor se apague si se queda sin combutible
-	   	miTanque.cargarCombustible(0.1, 98);
-	   	miMotor.encender(miSC,miTanque);
+		nafta = new Nafta("Nafta de Prueba",98);
+		miTanque.cargarCombustible(0.1, nafta);
+	   	miMotor.encender(miSistemaCombustion,miTanque);
 	   	try{
-		miMotor.simular(10,miSC,miTanque);
+		miMotor.simular(10,miSistemaCombustion,miTanque);
 	    fail();
 	   	}
 	   	catch (ProblemaTecnicoException e){assertTrue(true);}
@@ -82,18 +81,20 @@ public class TestMotor extends TestCase {
 	}
 	
 	public void testQuemarCombustibleCon(){//prueba que el motor siga prendido despues de quemar combustible
-		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender(miSC,miTanque);
+		nafta = new Nafta("Nafta de Prueba",98);
+		miTanque.cargarCombustible(10.1, nafta);
+		miMotor.encender(miSistemaCombustion,miTanque);
 		try{
-			miMotor.quemarCombustible(8,miSC,miTanque);
+			miMotor.quemarCombustible(8,miSistemaCombustion,miTanque);
 			assertTrue(true);
 		   	}
 		   	catch (TanqueVacioException e){ fail();}
 		}
 	
 	public void testObtenerDeltaRevoluciones(){ //prueba como varian las revoluciones segun el cambio en un intervalo de tiempo
-		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender(miSC,miTanque);
+		nafta = new Nafta("Nafta de Prueba",98);
+		miTanque.cargarCombustible(10.1, nafta);
+		miMotor.encender(miSistemaCombustion,miTanque);
 		assertEquals(0.0,miMotor.obtenerDeltaRevoluciones(10));
 		miCaja.subirCambio();
 		assertEquals(11625.0,miMotor.obtenerDeltaRevoluciones(10));
@@ -104,24 +105,25 @@ public class TestMotor extends TestCase {
 	}
 		
 	public void testFuerzaInstantanea(){
-		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender(miSC,miTanque);
+		nafta = new Nafta("Nafta de Prueba",98);
+		miTanque.cargarCombustible(10.1, nafta);
+		miMotor.encender(miSistemaCombustion,miTanque);
 		
-		assertEquals(0.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSC));
+		assertEquals(0.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSistemaCombustion));
 		
 		miCaja.subirCambio();
 		miMotor.acelerar(1);
 		miMotor.estado = 1; //ACELERANDO
-		assertEquals(7440.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSC));
+		assertEquals(7440.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSistemaCombustion));
 		
 		miMotor.acelerar(3);
-		assertEquals(100.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSC));
+		assertEquals(100.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSistemaCombustion));
 	}
 	
 	public void testAcelerar(){ // prueba como varian las revoluciones del Motor segun el tiempo de aceleracion y el cambio
-		
-		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender(miSC,miTanque);	
+		nafta = new Nafta("Nafta de Prueba",98);
+		miTanque.cargarCombustible(10.1, nafta);
+		miMotor.encender(miSistemaCombustion,miTanque);	
 		
 		miMotor.acelerar(1);
 	
@@ -139,8 +141,9 @@ public class TestMotor extends TestCase {
 	}
 	
     public void testDesacelerar(){// prueba acelerar en varios cambios y despues desacelerar
-    	miTanque.cargarCombustible(10.1, 98);
-    	miMotor.encender(miSC,miTanque);
+    	nafta = new Nafta("Nafta de Prueba",98);
+    	miTanque.cargarCombustible(10.1, nafta);
+    	miMotor.encender(miSistemaCombustion,miTanque);
 		
 		miCaja.subirCambio();
 		miMotor.acelerar(3);
@@ -160,8 +163,9 @@ public class TestMotor extends TestCase {
     
     	
 	public void testEmbragarSubir() {//prueba como caen las revolucioes al subir de cambio
-		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender(miSC,miTanque);
+		nafta = new Nafta("Nafta de Prueba",98);
+		miTanque.cargarCombustible(10.1, nafta);
+		miMotor.encender(miSistemaCombustion,miTanque);
 		
 		miCaja.subirCambio();
 		miMotor.embragarSubir(); 
@@ -175,8 +179,9 @@ public class TestMotor extends TestCase {
 	}
 	
 	public void testEmbragarBajar() {//prueba como aumentan las revoluciones al bajar de cambio
-		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender(miSC,miTanque);
+		nafta = new Nafta("Nafta de Prueba",98);
+		miTanque.cargarCombustible(10.1, nafta);
+		miMotor.encender(miSistemaCombustion,miTanque);
 		
 		//Caja en 0
 		miCaja.bajarCambio();
@@ -223,13 +228,14 @@ public class TestMotor extends TestCase {
 	
 	
 	public void testSimular() { // prueba el consumo de combustible con el motor bien y con suficiente combustible en el tanque
-		miTanque.cargarCombustible(10.1, 98);
-		miMotor.encender(miSC,miTanque);
+		nafta = new Nafta("Nafta de Prueba",98);
+		miTanque.cargarCombustible(10.1, nafta);
+		miMotor.encender(miSistemaCombustion,miTanque);
 		
 		miCaja.subirCambio();
 		miMotor.embragarSubir();
 		try{
-		miMotor.simular(10);
+		miMotor.simular(10,miSistemaCombustion,miTanque);
 		}
 		catch(ProblemaTecnicoException e){
 			fail("La excepcion no deberia haber sido lanzada");
@@ -240,17 +246,18 @@ public class TestMotor extends TestCase {
 	}
 	
 	public void testSimular2() { // prueba el consumo de combustible con el motor bien y sin suficiente combustible en el tanque
-		miTanque.cargarCombustible(0.13, 98);
-		miMotor.encender();
+		nafta = new Nafta("Nafta de Prueba",98);
+		miTanque.cargarCombustible(0.13, nafta);
+		miMotor.encender(miSistemaCombustion,miTanque);
 		
 		
 		miMotor.embragarSubir();
 		try{
-		miMotor.simular(10);
+	    miMotor.simular(10,miSistemaCombustion,miTanque);
 		fail("Deberia haber lanzado una excepcion");
 		}
 		catch(ProblemaTecnicoException e){
-			assertEquals("Sin Combustible",e.getProblema());
+			 	assertTrue(e instanceof TanqueVacioException);
 			}
 		
 		}
@@ -261,11 +268,11 @@ public class TestMotor extends TestCase {
 		
 		miMotor.embragarSubir();
 		try{
-		miMotor.simular(10);
+		miMotor.simular(10,miSistemaCombustion,miTanque);
 		fail("Deberia haber lanzado una excepcion");
 		}
 		catch(ProblemaTecnicoException e){
-			assertEquals("Motor Fundido",e.getProblema());
+			assertTrue(e instanceof MotorFundidoException);
 			}
 			
 	}
