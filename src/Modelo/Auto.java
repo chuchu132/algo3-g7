@@ -99,8 +99,8 @@ public class Auto extends Observable{
 	    notifyObservers();
 	}
 	
-	public void cargarCombustible(double litros, int octanage){
-		tanque.cargarCombustible(litros,octanage);
+	public void cargarCombustible(double litros, Nafta nafta){
+		tanque.cargarCombustible(litros,nafta);
 	}
 	
 	public double getPesoTotal() {
@@ -132,15 +132,17 @@ public class Auto extends Observable{
    
 	public CajaVelocidades cambiarCaja(CajaVelocidades otraCaja){
 	   CajaVelocidades temp = this.caja;
+	   caja.deleteObservers();
+	   otraCaja.addObserver(motor);
 	   this.caja = otraCaja;
-	   caja.addObserver(motor);
+	   
 	   return temp;
 	}
    
 	public TanqueCombustible cambiarTanque(TanqueCombustible otroTanque){
 		TanqueCombustible temp = this.desconectarTanque();
 		this.conectarTanque(otroTanque);
-		otroTanque.cargarCombustible(temp.cantidadCombustible(), temp.getOctanage());
+		otroTanque.cargarCombustible(temp.cantidadCombustible(), temp.getTipoNafta());
 		try {
 			temp.darCombustible(temp.cantidadCombustible());
 		}

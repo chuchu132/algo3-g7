@@ -31,7 +31,7 @@ public class SistemaCombustion extends Autoparte{
    }
    
    public void simular(double tiempo) throws ProblemaTecnicoException{
-	   double desgaste = tiempo/(getPorcentajeVidaUtil()+factorDeDesgaste);
+	   double desgaste = tiempo*factorDeDesgaste;
 	   gastar(desgaste);
 	   if (getPorcentajeVidaUtil()<getVidaUtilMinima()){
 		   throw new ProblemaTecnicoException();}
