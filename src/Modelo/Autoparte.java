@@ -9,7 +9,6 @@ public abstract class Autoparte extends Observable {
 	private double precio;
 	private float vidaUtil;
 	private float vidaUtilInicial;
-	private long porcentajeVidaUtil;
 	private final double porcentajeVidaUtilMinima = 0.2; //20% --> pongo 0.2
 	
 	public Autoparte(double peso, double precio, float vidaUtilInicial){

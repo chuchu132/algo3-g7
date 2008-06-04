@@ -9,7 +9,7 @@ import Excepciones.TanqueVacioException;
 
 public class Motor extends Autoparte implements Observer{
 	
-	private final int REVOLUCIONES_MINIMAS = 800;
+	public final static int REVOLUCIONES_MINIMAS = 800; //es static porque es comun para todos los motores
 	private final double factorDeDesgaste = 0.01;
 	
 	private final int DESACELERANDO = -1;
@@ -56,6 +56,10 @@ public class Motor extends Autoparte implements Observer{
 		return revolucionesActuales;
 	}
 
+	public int getRevolucionesMaximas(){
+		return revolucionesMax;
+	}
+	
 	public double getFuerzaInstantanea() {
 		return fuerzaInstantanea;
 	}
@@ -96,6 +100,7 @@ public class Motor extends Autoparte implements Observer{
 			revolucionesActuales += (int)deltaRevoluciones ;
 		} else {
 			revolucionesActuales = (int) (revolucionesMax); 
+			this.notifyObservers();
 		}
 
 	}
@@ -103,7 +108,9 @@ public class Motor extends Autoparte implements Observer{
 	public void desacelerar(double tiempo){
 		revolucionesActuales -= obtenerDeltaRevoluciones(tiempo) ;
 		if (revolucionesActuales < REVOLUCIONES_MINIMAS) {
-			revolucionesActuales = REVOLUCIONES_MINIMAS; }
+			revolucionesActuales = REVOLUCIONES_MINIMAS; 
+			this.notifyObservers();
+		}
 	}
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, SistemaCombustion sistemaCombustion) {

@@ -35,6 +35,9 @@ public class Auto extends Observable{
 		   this.motor = motor;
 		   this.addObserver(motor);
 		   this.caja = caja;
+		   if(caja instanceof CajaAutomatica){
+			   motor.addObserver((CajaAutomatica)this.caja);
+		   }
 		   this.tanque = tanque;
 		   caja.addObserver(this.motor);
 		   this.conectarTanque(tanque);
@@ -126,6 +129,9 @@ public class Auto extends Observable{
 	   Motor temp = this.motor;
 	   caja.deleteObserver(motor);
 	   caja.addObserver(otroMotor);
+	   if(caja instanceof CajaAutomatica){
+		   otroMotor.addObserver((CajaAutomatica)this.caja);
+	   }
        this.motor = otroMotor;
 	   return temp;
 	}
@@ -134,6 +140,9 @@ public class Auto extends Observable{
 	   CajaVelocidades temp = this.caja;
 	   caja.deleteObservers();
 	   otraCaja.addObserver(motor);
+	   if(otraCaja instanceof CajaAutomatica){
+		   this.motor.addObserver((CajaAutomatica)otraCaja);
+	   }
 	   this.caja = otraCaja;
 	   
 	   return temp;
