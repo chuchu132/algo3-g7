@@ -32,10 +32,7 @@ public class FabricaDeNafta  {
 		
 		naftaAux = new Nafta(nombreTipo3,octTipo3);
 		listaNafta.add(naftaAux);
-		
-		naftaAux = new Nafta (nombreTipo4,octTipo4);
-		listaNafta.add(naftaAux);
-		
+	
 		return listaNafta; 
 		
 	}
