@@ -12,7 +12,7 @@ public class FabricaDeNafta  {
 			case 1: return crearNaftaTipo2();
 			case 2: return crearNaftaTipo3();
 			default:
-				throw new TipoNaftaInexistente();
+				throw new TipoNaftaInexistenteException();
 		}
 	}
 	
