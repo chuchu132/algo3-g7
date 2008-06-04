@@ -63,5 +63,9 @@ public class Jugador {
 		miTaller.listarMisAutopartes();
 	}
 	
+	public void listarMisAutos() {
+		miTaller.listarMisAutos();
+	}
+	
 		
 }
