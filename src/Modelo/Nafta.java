@@ -3,9 +3,11 @@ package Modelo;
 public class Nafta {
 	private int octanaje;
 	private String nombre;
-	public Nafta(String name,int oct){
+	private double precio;
+	public Nafta(String name,int oct,double cost){
 		octanaje = oct;
 		nombre = name;
+		precio = cost;
 	}	
 	
 	public int getOctanaje(){
@@ -14,5 +16,9 @@ public class Nafta {
 	
 	public String getNombre(){
 		return nombre;
+	}
+	
+	public double getPrecio(){
+		return precio;
 	}
 }

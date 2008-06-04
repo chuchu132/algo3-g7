@@ -7,19 +7,25 @@ import java.util.ArrayList;
 import Excepciones.NoAlcanzaDineroException;
 import Excepciones.NumeroAutoInexistenteException;
 import Excepciones.NumeroAutoparteInexistenteException;
+import Excepciones.TipoNaftaInexistenteException;
 
 
 public class Vendedor {
 
 	private ArrayList <Producto> listaProductosAutopartes;
 	private ArrayList <Producto> listaProductosAutos;
+	private ArrayList <Nafta> listaNafta;
 	
 	FabricaDeAutopartes fabricaDeAutopartes;
 	FabricaDeAutos fabricaDeAutos;
+	FabricaDeNafta fabricaDeNafta;
 	
 	public Vendedor() {
 		fabricaDeAutopartes = new FabricaDeAutopartes();
 		listaProductosAutopartes =  fabricaDeAutopartes.armarLista();
+		
+		fabricaDeNafta = new FabricaDeNafta();
+		listaNafta = fabricaDeNafta.armarLista();
 		
 		fabricaDeAutos = new FabricaDeAutos();
 		listaProductosAutos =  fabricaDeAutos.armarLista();
@@ -51,15 +57,43 @@ public class Vendedor {
 
 
 	public void mostrarListaAutopartes() {
-		//acá utilizaría alguna función de la Vista
+		//aca utilizaria alguna funcion de la Vista
 		System.out.println(listaProductosAutopartes.toString());		
 	}
 
 	public void mostrarListaAutos() {
-		//acá utilizaría alguna función de la Vista
+		//aca utilizaria alguna funcion de la Vista
 		System.out.println(listaProductosAutos.toString());
 	}
-
+	
+	public void mostrarListaNafta() {
+		//aca utilizaria alguna funcion de la Vista
+		System.out.println(listaNafta.toString());
+	}
+	
+	public Nafta SolicitarCompraNafta(int numeroNafta,double litros, long dineroDisponible) throws NoAlcanzaDineroException {
+		Nafta naftaAux;
+		
+		Nafta nAux;
+		
+		nAux = listaNafta.get(numeroNafta);
+		
+		if (dineroDisponible >= (litros * nAux.getPrecio())) {
+			
+			dineroDisponible -= ( litros *nAux.getPrecio());
+			
+			try {
+				naftaAux = fabricaDeNafta.crearNaftaTipo(numeroNafta);
+				return naftaAux;
+			} catch (TipoNaftaInexistenteException e){
+				e.printStackTrace();
+			}
+		} else 
+			throw new NoAlcanzaDineroException();
+		return null;
+		
+	}
+	
 	public Auto SolicitarCompraAuto(int numeroAuto, long dineroDisponible) throws NoAlcanzaDineroException {
 		Auto autoAux;
 		
