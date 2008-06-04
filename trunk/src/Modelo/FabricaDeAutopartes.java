@@ -16,15 +16,24 @@ public class FabricaDeAutopartes {
 	
 	public Autoparte crearAutoparteNumero(int n) throws NumeroAutoparteInexistente {
 		switch (n) {
-			case 0: return crearCarroceriaTipo1();
-			case 1: return crearCarroceriaTipo2();
-			case 2: return crearTipoRuedaTipo1();
-			case 3: return crearTipoRuedaTipo2();
-			case 4: return crearTipoRuedaTipo3();
-			case 5: return crearMotorTipo1();
-			case 6: return crearTanqueTipo1();
-			case 7: return crearSistemaTipo1();
-			case 8: return crearCajaTipo1();
+			case  0: return crearCarroceriaTipo1();
+			case  1: return crearCarroceriaTipo2();
+			case  2: return crearCarroceriaTipo3();
+			case  3: return crearTipoRuedaTipo1();
+			case  4: return crearTipoRuedaTipo2();
+			case  5: return crearTipoRuedaTipo3();
+			case  6: return crearMotorTipo1();
+			case  7: return crearMotorTipo2();
+			case  8: return crearMotorTipo3();
+			case  9: return crearTanqueTipo1();
+			case 10: return crearTanqueTipo2();
+			case 11: return crearTanqueTipo3();
+			case 12: return crearSistemaTipo1();
+			case 13: return crearSistemaTipo2();
+			case 14: return crearSistemaTipo3();
+			case 15: return crearCajaTipo1();
+			case 16: return crearCajaTipo2();
+			case 17: return crearCajaTipo3();
 			default:
 				 throw new NumeroAutoparteInexistente();
 		}
