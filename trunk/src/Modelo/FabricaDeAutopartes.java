@@ -14,7 +14,7 @@ public class FabricaDeAutopartes {
 	private final int gris = 3;
 	
 	
-	public Autoparte crearAutoparteNumero(int n) throws NumeroAutoparteInexistente {
+	public Autoparte crearAutoparteNumero(int n) throws NumeroAutoparteInexistenteException {
 		switch (n) {
 			case  0: return crearCarroceriaTipo1();
 			case  1: return crearCarroceriaTipo2();
