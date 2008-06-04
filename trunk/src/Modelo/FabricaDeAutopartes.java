@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 
-import Excepciones.NumeroAutoparteInexistente;
+import Excepciones.NumeroAutoparteInexistenteException;
 
 public class FabricaDeAutopartes {
 	

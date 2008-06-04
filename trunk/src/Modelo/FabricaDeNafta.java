@@ -6,7 +6,7 @@ import Excepciones.TipoNaftaInexistenteException;
 
 public class FabricaDeNafta  {
 	
-	public Nafta crearNaftaTipo(int n) throws TipoNaftaInexistente{
+	public Nafta crearNaftaTipo(int n) throws TipoNaftaInexistenteException{
 		switch (n) {
 			case 0: return crearNaftaTipo1();
 			case 1: return crearNaftaTipo2();
