@@ -4,6 +4,7 @@ package Modelo;
 import Excepciones.NoAlcanzaDineroException;
 import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;
+import Excepciones.TipoNaftaInexistenteException;
 
 //import java.util.ArrayList;
 
@@ -34,6 +35,24 @@ public class Jugador {
 	public void pedirMostrarListaAutos () {
 		miVendedor.mostrarListaAutos();	
 	}
+	
+	public void pedirMostrarListaNafta(){
+		miVendedor.mostrarListaNafta();
+	}
+	
+	/* HAY QUE VER CUAL ES EL ERROR ACA */
+	
+	/*
+	public void ComprarNafta(int numeroNafta,double cantidadLitros){
+	    try {
+	    	
+	    		miTaller.cargarNafta(cantidadLitros, miVendedor.SolicitarCompraNafta(numeroNafta, cantidadLitros, miPlata));
+	    } catch (NoAlcanzaDineroException e){
+	        e.printStackTrace(); //Mensaje por la Vista que no alcanza la plata
+	    }
+	
+	}
+	*/
 	
 	public void ComprarAutoparte(int numeroAutoparte){
 		try {
