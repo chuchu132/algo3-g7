@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Excepciones.NumeroAutoInexistenteException;
 import Excepciones.NumeroAutoparteInexistenteException;
 
-public class FabricaDeAutos {
+public class FabricaDeAutos extends FabricaDeProductos {
 
 	public Auto crearAutoNumero(int n) throws NumeroAutoInexistenteException {
 		switch (n) {
