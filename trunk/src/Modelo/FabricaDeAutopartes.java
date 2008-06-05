@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Excepciones.NumeroAutoparteInexistenteException;
 
-public class FabricaDeAutopartes {
+public class FabricaDeAutopartes extends FabricaDeProductos{
 	
 	/* Colores */
 	
@@ -40,7 +40,7 @@ public class FabricaDeAutopartes {
 	}
 	
 	
-	public ArrayList<Producto> armarLista(){	
+	public ArrayList<Producto> armarLista2(){	
 		
 		ArrayList<Producto> listaAutopartes;
 		

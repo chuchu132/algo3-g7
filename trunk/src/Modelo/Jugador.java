@@ -42,17 +42,15 @@ public class Jugador {
 	
 	/* HAY QUE VER CUAL ES EL ERROR ACA */
 	
-	/*
+	
 	public void ComprarNafta(int numeroNafta,double cantidadLitros){
 	    try {
-	    	
-	    		miTaller.cargarNafta(cantidadLitros, miVendedor.SolicitarCompraNafta(numeroNafta, cantidadLitros, miPlata));
+	    		miTaller.cargarNaftaAlAutoActual(cantidadLitros, miVendedor.SolicitarCompraNafta(numeroNafta, cantidadLitros, miPlata));
 	    } catch (NoAlcanzaDineroException e){
 	        e.printStackTrace(); //Mensaje por la Vista que no alcanza la plata
 	    }
-	
 	}
-	*/
+	
 	
 	public void ComprarAutoparte(int numeroAutoparte){
 		try {

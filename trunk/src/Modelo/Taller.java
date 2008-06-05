@@ -48,12 +48,11 @@ public class Taller {
 		}
 	}
 	
-	/*
-	public void cargarNafta(double litros,Nafta nafta){
-		
+	/* HAY Q VERIFICAR SI autoAcutual == null */
+	public void cargarNaftaAlAutoActual(double litros,Nafta nafta){
 		autoActual.cargarCombustible(litros, nafta);
 	}
-	*/
+
 	
 	public void agregarAutoparte(Autoparte parte)throws NotAutoparteException{
 		if (parte instanceof Autoparte){
