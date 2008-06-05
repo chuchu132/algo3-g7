@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Excepciones.TipoNaftaInexistenteException;
 
-public class FabricaDeNafta  {
+public class FabricaDeNafta extends FabricaDeProductos {
 	
 	public Nafta crearNaftaTipo(int n) throws TipoNaftaInexistenteException{
 		switch (n) {
@@ -16,13 +16,13 @@ public class FabricaDeNafta  {
 		}
 	}
 	
-	public ArrayList<Nafta> armarLista(){
+	public ArrayList<Producto> armarLista(){
 		
-		ArrayList<Nafta> listaNafta;
+		ArrayList<Producto> listaNafta;
 		
 		Nafta naftaAux;
 		
-		listaNafta = new ArrayList<Nafta>();
+		listaNafta = new ArrayList<Producto>();
 		
 		naftaAux = new Nafta(nombreTipo1,octTipo1,precioTipo1);
 		listaNafta.add(naftaAux);
