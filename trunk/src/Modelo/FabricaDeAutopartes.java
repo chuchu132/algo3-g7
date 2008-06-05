@@ -40,8 +40,8 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 	}
 	
 	
-	public ArrayList<Producto> armarLista2(){	
-		
+	public ArrayList<Producto> armarLista() {
+
 		ArrayList<Producto> listaAutopartes;
 		
 		Producto pAux;
@@ -122,6 +122,7 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 
 		return listaAutopartes;
 	}
+	
 	
 	
 	/*=================== CARROCERIAS ==========================*/
@@ -408,6 +409,8 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 									precioCajaVelocidadesTipo3, pesoCajaVelocidadesTipo3,
 									vidaUtilCajaVelocidadesTipo3);
 	}
+
+
 	
 	
 }

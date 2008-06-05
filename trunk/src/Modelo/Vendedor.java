@@ -14,7 +14,7 @@ public class Vendedor {
 
 	private ArrayList <Producto> listaProductosAutopartes;
 	private ArrayList <Producto> listaProductosAutos;
-	private ArrayList <Nafta> listaNafta;
+	private ArrayList <Producto> listaNafta;
 	
 	FabricaDeAutopartes fabricaDeAutopartes;
 	FabricaDeAutos fabricaDeAutos;
@@ -74,13 +74,13 @@ public class Vendedor {
 	public Nafta SolicitarCompraNafta(int numeroNafta,double litros, long dineroDisponible) throws NoAlcanzaDineroException {
 		Nafta naftaAux;
 		
-		Nafta nAux;
+		Producto pAux;
 		
-		nAux = listaNafta.get(numeroNafta);
+		pAux = listaNafta.get(numeroNafta);
 		
-		if (dineroDisponible >= (litros * nAux.getPrecio())) {
+		if (dineroDisponible >= (litros * pAux.getPrecio())) {
 			
-			dineroDisponible -= ( litros *nAux.getPrecio());
+			dineroDisponible -= ( litros *pAux.getPrecio());
 			
 			try {
 				naftaAux = fabricaDeNafta.crearNaftaTipo(numeroNafta);
