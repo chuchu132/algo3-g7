@@ -4,26 +4,10 @@ import java.util.ArrayList;
 
 import Excepciones.NumeroAutoInexistenteException;
 import Excepciones.NumeroAutoparteInexistenteException;
+import Excepciones.ProductoInexistenteException;
 
-public class FabricaDeAutos extends FabricaDeProductos {
+public class FabricaDeAutos extends FabricaDeProductosVendibles {
 
-	public Auto crearAutoNumero(int n) throws NumeroAutoInexistenteException {
-		switch (n) {
-			case 0: return crearAutoTipo1();
-			case 1: return crearAutoTipo2();
-			/*
-			case 2: return crearTipoRuedaTipo1();
-			case 3: return crearTipoRuedaTipo2();
-			case 4: return crearTipoRuedaTipo3();
-			case 5: return crearMotorTipo1();
-			case 6: return crearTanqueTipo1();
-			case 7: return crearSistemaTipo1();
-			case 8: return crearCajaTipo1();
-			*/
-			default:
-				 throw new NumeroAutoInexistenteException();
-		}
-	}
 	
 	public ArrayList<Producto> armarLista(){	
 		
@@ -40,6 +24,28 @@ public class FabricaDeAutos extends FabricaDeProductos {
 		pAux = new Producto(1,tipoAuto,nombreAutoTipo2,
 						descripcionAutoTipo2,precioAutoTipo2);
 		return listaAutos;
+	}
+	
+
+	public Vendible crearProductoNumero(int n)
+			throws ProductoInexistenteException {
+		
+		switch (n) {
+			case 0: return crearAutoTipo1();
+			case 1: return crearAutoTipo2();
+			/*
+			case 2: return crearTipoRuedaTipo1();
+			case 3: return crearTipoRuedaTipo2();
+			case 4: return crearTipoRuedaTipo3();
+			case 5: return crearMotorTipo1();
+			case 6: return crearTanqueTipo1();
+			case 7: return crearSistemaTipo1();
+			case 8: return crearCajaTipo1();
+			*/
+			default:
+				throw new ProductoInexistenteException();
+	}
+
 	}
 	
 	/* ======================== AUTOS ==================== */
@@ -70,10 +76,10 @@ public class FabricaDeAutos extends FabricaDeProductos {
 	private final String nombreAutoTipo2 = "Match 5";
 	private final double precioAutoTipo2 = 30000;
 	
-	public Auto crearAutoTipo2() {
+	private Auto crearAutoTipo2() {
 		FabricaDeAutopartes fabrica = new FabricaDeAutopartes();
 		
-		Motor motorAutoTipo2 = fabrica.crearMotorTipo3();
+		Motor motorAutoTipo2 =  fabrica.crearMotorTipo3();
 		CajaVelocidades cajaAutoTipo2 = fabrica.crearCajaTipo1();
 		SistemaCombustion sistamaCombustionAutoTipo2 = fabrica.crearSistemaTipo3();
 		Carroceria carroceriaAutoTipo2 = fabrica.crearCarroceriaTipo1();
@@ -86,5 +92,9 @@ public class FabricaDeAutos extends FabricaDeProductos {
 	
 		
 	}
+
+
+
+
 }
 

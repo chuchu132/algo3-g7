@@ -6,7 +6,7 @@ import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
 
 
-public class Auto extends Observable{
+public class Auto extends Observable implements Vendible{
 
 	private final double  CERO = 0.0;
 	private final int PUNTO_MUERTO =0;

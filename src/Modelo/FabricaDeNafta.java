@@ -2,20 +2,12 @@ package Modelo;
 
 import java.util.ArrayList;
 
+import Excepciones.ProductoInexistenteException;
 import Excepciones.TipoNaftaInexistenteException;
 
-public class FabricaDeNafta extends FabricaDeProductos {
+public class FabricaDeNafta extends FabricaDeProductosVendibles {
 	
-	public Nafta crearNaftaTipo(int n) throws TipoNaftaInexistenteException{
-		switch (n) {
-			case 0: return crearNaftaTipo1();
-			case 1: return crearNaftaTipo2();
-			case 2: return crearNaftaTipo3();
-			default:
-				throw new TipoNaftaInexistenteException();
-		}
-	}
-	
+
 	public ArrayList<Producto> armarLista(){
 		
 		ArrayList<Producto> listaNafta;
@@ -37,6 +29,20 @@ public class FabricaDeNafta extends FabricaDeProductos {
 		
 	}
 	
+	public Vendible crearProductoNumero(int n)
+			throws ProductoInexistenteException {
+
+		switch (n) {
+			case 0: return crearNaftaTipo1();
+			case 1: return crearNaftaTipo2();
+			case 2: return crearNaftaTipo3();
+			default:
+				throw new ProductoInexistenteException();
+		}		
+	}
+
+	
+	
 	/*=================== NAFTAS ==========================*/
 	private final String tipoNafta = "Nafta";
 	/* Octanaje Nafta 1 */
@@ -44,7 +50,8 @@ public class FabricaDeNafta extends FabricaDeProductos {
 	private final int octTipo1 = 91;
 	private final double precioTipo1 = 3;
 	private final String descripcionTipo1 = "la nafta de más bajo octanaje";
-	public Nafta crearNaftaTipo1(){
+	
+	private Nafta crearNaftaTipo1(){
 		return new Nafta(nombreTipo1,octTipo1,precioTipo1);
 	}
 	
@@ -53,7 +60,8 @@ public class FabricaDeNafta extends FabricaDeProductos {
 	private final int octTipo2 = 95;
 	private final double precioTipo2 = 3.5;
 	private final String descripcionTipo2 = "un buen combustible";
-	public Nafta crearNaftaTipo2(){
+	
+	private Nafta crearNaftaTipo2(){
 		return new Nafta(nombreTipo2,octTipo2,precioTipo2);
 	}
 	
@@ -62,9 +70,13 @@ public class FabricaDeNafta extends FabricaDeProductos {
 	private final int octTipo3 = 98;
 	private final double precioTipo3 = 5;
 	private final String descripcionTipo3 ="la nafta de mejor octanaje";
-	public Nafta crearNaftaTipo3(){
+	
+	private Nafta crearNaftaTipo3(){
 		return new Nafta(nombreTipo3,octTipo3,precioTipo3);
 	}
+
+
+
 	
 
 }
