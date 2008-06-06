@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Nafta {
+public class Nafta implements Vendible{
 	private int octanaje;
 	private String nombre;
 	private double precio;

@@ -4,7 +4,7 @@ import java.util.Observable;
 
 //import Excepciones.ProblemaTecnicoException;
 
-public abstract class Autoparte extends Observable {
+public abstract class Autoparte extends Observable implements Vendible {
 	private double peso;
 	private double precio;
 	private float vidaUtil;

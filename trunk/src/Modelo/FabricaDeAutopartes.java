@@ -3,8 +3,9 @@ package Modelo;
 import java.util.ArrayList;
 
 import Excepciones.NumeroAutoparteInexistenteException;
+import Excepciones.ProductoInexistenteException;
 
-public class FabricaDeAutopartes extends FabricaDeProductos{
+public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	
 	/* Colores */
 	
@@ -14,31 +15,7 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 	private final int gris = 3;
 	
 	
-	public Autoparte crearAutoparteNumero(int n) throws NumeroAutoparteInexistenteException {
-		switch (n) {
-			case  0: return crearCarroceriaTipo1();
-			case  1: return crearCarroceriaTipo2();
-			case  2: return crearCarroceriaTipo3();
-			case  3: return crearTipoRuedaTipo1();
-			case  4: return crearTipoRuedaTipo2();
-			case  5: return crearTipoRuedaTipo3();
-			case  6: return crearMotorTipo1();
-			case  7: return crearMotorTipo2();
-			case  8: return crearMotorTipo3();
-			case  9: return crearTanqueTipo1();
-			case 10: return crearTanqueTipo2();
-			case 11: return crearTanqueTipo3();
-			case 12: return crearSistemaTipo1();
-			case 13: return crearSistemaTipo2();
-			case 14: return crearSistemaTipo3();
-			case 15: return crearCajaTipo1();
-			case 16: return crearCajaTipo2();
-			case 17: return crearCajaTipo3();
-			default:
-				 throw new NumeroAutoparteInexistenteException();
-		}
-	}
-	
+
 	
 	public ArrayList<Producto> armarLista() {
 
@@ -123,7 +100,32 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 		return listaAutopartes;
 	}
 	
-	
+	public Vendible crearProductoNumero(int n)
+	throws ProductoInexistenteException {
+
+		switch (n) {
+			case  0: return crearCarroceriaTipo1();
+			case  1: return crearCarroceriaTipo2();
+			case  2: return crearCarroceriaTipo3();
+			case  3: return crearTipoRuedaTipo1();
+			case  4: return crearTipoRuedaTipo2();
+			case  5: return crearTipoRuedaTipo3();
+			case  6: return crearMotorTipo1();
+			case  7: return crearMotorTipo2();
+			case  8: return crearMotorTipo3();
+			case  9: return crearTanqueTipo1();
+			case 10: return crearTanqueTipo2();
+			case 11: return crearTanqueTipo3();
+			case 12: return crearSistemaTipo1();
+			case 13: return crearSistemaTipo2();
+			case 14: return crearSistemaTipo3();
+			case 15: return crearCajaTipo1();
+			case 16: return crearCajaTipo2();
+			case 17: return crearCajaTipo3();
+			default:
+				 throw new ProductoInexistenteException();
+		}
+}	
 	
 	/*=================== CARROCERIAS ==========================*/
 	private final String parteCarroceria = "Carroceria";
@@ -136,6 +138,7 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 	private final double plusCarroceriaTipo1 = 0.1;
 	private final long vidaUtilCarroceriaTipo1 = 10000;
 	private final String descripcionCarroceriaTipo1 = "copada";
+	
 	public Carroceria crearCarroceriaTipo1() {
 		return new Carroceria(precioCarroceriaTipo1, pesoCarroceriaTipo1,
 							  modeloCarroceriaTipo1, colorCarroceriaTipo1,
@@ -150,7 +153,7 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 	private final int colorCarroceriaTipo2 = verde;
 	private final double plusCarroceriaTipo2 = 0.13;
 	private final long vidaUtilCarroceriaTipo2 = 12000;
-	public final String descripcionCarroceriaTipo2 = "mas copada";
+	private final String descripcionCarroceriaTipo2 = "mas copada";
 	
 	public Carroceria crearCarroceriaTipo2() {
 		return new Carroceria(precioCarroceriaTipo2, pesoCarroceriaTipo2,
@@ -166,7 +169,7 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 	private final int colorCarroceriaTipo3 = blanco;
 	private final double plusCarroceriaTipo3 = 0.09;
 	private final long vidaUtilCarroceriaTipo3 = 9500;
-	public final String descripcionCarroceriaTipo3 = "buena onda";
+	private final String descripcionCarroceriaTipo3 = "buena onda";
 	
 	public Carroceria crearCarroceriaTipo3() {
 		return new Carroceria(precioCarroceriaTipo3, pesoCarroceriaTipo3,
@@ -175,7 +178,7 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 	}
 	
 	/*=================== TIPORUEDAS ==========================*/
-	private final String parteRuedas = "Ruedas";
+	public final String parteRuedas = "Ruedas";
 	/* Caracteristicas RuedasTipo1 */
 	
 	private final String nombreTipoRuedaTipo1 = "Ruedas 1";
@@ -409,6 +412,10 @@ public class FabricaDeAutopartes extends FabricaDeProductos{
 									precioCajaVelocidadesTipo3, pesoCajaVelocidadesTipo3,
 									vidaUtilCajaVelocidadesTipo3);
 	}
+
+
+
+
 
 
 	
