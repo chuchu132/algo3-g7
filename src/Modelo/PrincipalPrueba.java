@@ -7,11 +7,11 @@ public class PrincipalPrueba {
 	 */
 	public static void main(String[] args) {
 		Jugador miJugador = new Jugador();
-		
+		/*
 		miJugador.pedirMostrarListaAutopartes();
 		miJugador.ComprarAutoparte(0);
 		miJugador.listarMisAutopartes();
-
+	*/
 	}
 
 }
