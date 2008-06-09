@@ -23,6 +23,7 @@ public class Jugador {
 	
 	private Taller miTaller;
 	private long miPlata;
+	private double litrosParaCargar;
 	
 	//contructor
 	
@@ -30,7 +31,16 @@ public class Jugador {
 		miTaller = new Taller();
 		miPlata = plataInicial;
 	}
-		
+	
+	public double getLitrosParaCargar() {
+		return litrosParaCargar;
+	}
+	
+	//lo llamaria el controlador
+	public void setLitrosParaCargar(double litrosParaCargar) {
+		this.litrosParaCargar = litrosParaCargar;
+	}
+
 	public void  comprarProducto (int tipoProducto, int numero) {
 		Vendedor miVendedor = new Vendedor();
 		Vendible vAux;
@@ -51,7 +61,7 @@ public class Jugador {
 					e.printStackTrace();
 				}
 		case(NAFTAS): //ver aca el tema de los ltros
-			miTaller.cargarNaftaAlAutoActual(3, (Nafta)vAux);
+			miTaller.cargarNaftaAlAutoActual(litrosParaCargar, (Nafta)vAux);
 			
 		}
 	}
