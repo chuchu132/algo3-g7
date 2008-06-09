@@ -5,9 +5,7 @@ import Excepciones.TanqueVacioException;
 
 public class TanqueCombustible extends Autoparte{
    
-	private final int OCTANAGE_COMUN = 91;
-	private final int OCTANAGE_SUPER = 95;
-	private final int OCTANAGE_EXTRA = 98;
+	
 	private double capacidadMaxima;
     private double cantidadCombustible;
 	private Nafta tipoNafta;
@@ -44,26 +42,14 @@ public class TanqueCombustible extends Autoparte{
 			if(!estaVacio()){
 
 				int octanageResultante = (int) (  ((tipoNafta.getOctanaje()*cantidadCombustible)	+  (nafta.getOctanaje()*cuanto) )/(cantidadCombustible+cuanto) );
-
-				if(octanageResultante <= (OCTANAGE_COMUN + OCTANAGE_SUPER)/2 ){
-					tipoNafta= new Nafta("Comun",OCTANAGE_COMUN);
-				}
-				else{ 
-					if(octanageResultante < (OCTANAGE_SUPER + OCTANAGE_EXTRA)/2){
-						tipoNafta= new Nafta("Super",OCTANAGE_SUPER);
-					}
-					else{
-						tipoNafta= new Nafta("Extra",OCTANAGE_EXTRA);
-					}
-				}
+				tipoNafta = new Nafta("hibrida",octanageResultante);
+			
 			}
 			else{
 				tipoNafta = new Nafta(nafta.getNombre(),nafta.getOctanaje());
 			}
 		}
-		else{
-			tipoNafta = new Nafta(nafta.getNombre(),nafta.getOctanaje());
-		}
+		
 	}
     
     public double getPeso(){
@@ -101,6 +87,10 @@ public class TanqueCombustible extends Autoparte{
 	public String toString(){
 		return (" Capacidad Maxima: " + capacidadMaxima + " Cantidad de Combustible: " + cantidadCombustible() );
 		
+	}
+	
+	public void vaciarTanque(){
+		this.cantidadCombustible = 0;
 	}
 	
 	public void simular(double tiempo) throws ProblemaTecnicoException{

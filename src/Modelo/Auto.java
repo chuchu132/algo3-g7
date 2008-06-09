@@ -105,7 +105,11 @@ public class Auto extends Observable implements Vendible{
 	public void cargarCombustible(double litros, Nafta nafta){
 		tanque.cargarCombustible(litros,nafta);
 	}
-
+	
+	public void vaciarTanque(){
+		tanque.vaciarTanque();
+	}
+	
 	public double getPesoTotal() {
 		return ( motor.getPeso() + caja.getPeso() + tanque.getPeso()+ carroceria.getPeso() + sistemaCombustion.getPeso() + (4*rueda.getPeso()) );
 

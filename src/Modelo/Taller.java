@@ -52,6 +52,10 @@ public class Taller {
 	public void cargarNaftaAlAutoActual(double litros,Nafta nafta){
 		autoActual.cargarCombustible(litros, nafta);
 	}
+	
+	public void vaciarTanqueAutoActual(){
+		autoActual.vaciarTanque();
+	}
 
 	
 	public void agregarAutoparte(Autoparte parte)throws NotAutoparteException{
