@@ -65,7 +65,11 @@ public class Jugador {
 			
 		}
 	}
-
+	
+	public void vaciarTanque(){
+		miTaller.vaciarTanqueAutoActual();
+	}
+	
 	public void restarDinero(double precio) throws NoAlcanzaDineroException {
 		if(miPlata - precio >= 0)
 			miPlata -= precio;
