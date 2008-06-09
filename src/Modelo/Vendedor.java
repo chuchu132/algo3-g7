@@ -38,9 +38,14 @@ public class Vendedor {
 	public Vendible solicitarProducto(int numero, int tipoProducto, Jugador unJugador) {
 		Producto pAux = listaDeProductos[tipoProducto].get(numero);
 		Vendible vAux = null;
+		double precioProducto;
+		
+		precioProducto = pAux.getPrecio();
+		if (tipoProducto == NAFTAS) 
+			precioProducto *= unJugador.getLitrosParaCargar();
 		
 		try {
-			unJugador.restarDinero(pAux.getPrecio());
+			unJugador.restarDinero(precioProducto);
 		} catch (NoAlcanzaDineroException e) {
 			e.printStackTrace();
 		}
