@@ -60,7 +60,7 @@ public class Jugador {
 				} catch (NotAutoException e) {
 					e.printStackTrace();
 				}
-		case(NAFTAS): //ver aca el tema de los ltros
+		case(NAFTAS): 
 			miTaller.cargarNaftaAlAutoActual(litrosParaCargar, (Nafta)vAux);
 			
 		}
