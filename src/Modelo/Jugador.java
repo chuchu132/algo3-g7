@@ -35,7 +35,7 @@ public class Jugador {
 	public double getLitrosParaCargar() {
 		return litrosParaCargar;
 	}
-	
+
 	//lo llamaria el controlador
 	public void setLitrosParaCargar(double litrosParaCargar) {
 		this.litrosParaCargar = litrosParaCargar;
