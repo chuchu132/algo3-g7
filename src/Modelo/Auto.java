@@ -241,5 +241,7 @@ public class Auto extends Observable implements Vendible{
 	public int getEstado() {
 		return estado;
 	}
-
+	public int getColor(){
+		return carroceria.getColor();
+	}
 }
