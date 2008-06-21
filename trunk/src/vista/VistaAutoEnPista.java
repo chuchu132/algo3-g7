@@ -14,10 +14,9 @@ protected int x,y;
 
 protected String[] spriteNames;
 
-protected int currentFrame;
+protected int fotogramaActual;
 
-protected int frameSpeed;
-protected int t;
+
 protected Auto auto;
 protected Escenario escenario;
 protected SpriteCache spriteCache;
@@ -25,12 +24,21 @@ protected SpriteCache spriteCache;
 public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	         this.escenario = escenario;
 	         spriteCache = escenario.getSpriteCache();
-	         currentFrame = 0;
+	         fotogramaActual = 0;
+	         String modelo = auto.getModelo();
+	         spriteNames[0] = ( modelo + "/acelerando.jpg");
+	         spriteNames[1] = ( modelo + "/frenando.jpg");
 	        }	        
 	    
 	       
 	       public void paint(Graphics g){
-	         g.drawImage( spriteCache.getSprite(spriteNames[currentFrame]), x,y, escenario );
+	    	   if(auto.getEstado() == 1){
+	    		   fotogramaActual = 1 ;
+	    		}
+	    	   else{
+	    		   fotogramaActual = 0;
+	    	   }
+	         g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), x,y, escenario );
 	       }
 	       
 	       public int getX()  { return x; }
@@ -39,16 +47,6 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	       public int getY() { return y; }
 	       public void setY(int i) { y = i; }
 	       
-	       	       
-	       public void setSpriteNames(String[] names) { 
-	         spriteNames = names;
-	        
-	         for (int i = 0; i < names.length; i++ ) {
-	         BufferedImage image = spriteCache.getSprite(spriteNames[i]);
-	         
-	       }     
-	      }
-
 }
 
 

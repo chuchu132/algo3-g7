@@ -28,7 +28,9 @@ public class Carroceria extends Autoparte{
 	public double getPlusVelocidad() {
 		return (plusVelocidad * super.getPorcentajeVidaUtil());
 	}
-	
+	public String getModelo(){
+		return modelo;
+	}
 	public void simular(double tiempo) throws ProblemaTecnicoException{
 		double desgaste = tiempo * factorDeDesgaste;
 		gastar(desgaste);
