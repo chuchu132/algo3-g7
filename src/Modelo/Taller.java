@@ -112,4 +112,7 @@ public class Taller {
 		
 	}
 	
+	public Auto getAutoActual(){
+		return autoActual;
+	}
 }

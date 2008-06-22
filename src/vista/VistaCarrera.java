@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.util.Observable;
+import java.util.Observer;
 
 
 import javax.swing.JFrame;
@@ -22,7 +24,7 @@ import Recursos.SpriteCache;
 
 
 
-public class VistaCarrera extends Canvas {
+public class VistaCarrera extends Canvas implements Observer{
     private VistaPista vistaPista;
     private VistaAutoEnPista vistaAutoPrincipal;
     private VistaAutoEnPista vistaAutoSecundario;
@@ -69,6 +71,12 @@ public void pintarCarrera(){
 	vistaPista.setVelocidadFotograma((int)Math.round(principal.getVelocidad()));
     vistaPista.pintar(g);
     vistaAutoPrincipal.pintar(g);
+	
+}
+
+@Override
+public void update(Observable arg0, Object arg1) {
+	pintarCarrera();
 	
 }
 
