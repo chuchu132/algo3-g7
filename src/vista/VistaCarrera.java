@@ -11,6 +11,8 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controlador.ControladorAuto;
+
 import Modelo.Auto;
 import Modelo.Carrera;
 import Modelo.Pista;
@@ -31,10 +33,10 @@ public class VistaCarrera extends Canvas {
 	
 	
 	
-public VistaCarrera(Auto auto1, Auto auto2,Pista unaPista, Escenario escenario,Carrera picada){
+public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,Pista unaPista, Escenario escenario,Carrera picada){
 	
-	principal = auto1;
-	secundario = auto2;
+	principal = controlador1.getAutoControlado();
+	secundario = controlador2.getAutoControlado();
 	vistaAutoPrincipal = new VistaAutoEnPista(escenario,principal);
 	vistaAutoSecundario = new VistaAutoEnPista(escenario,secundario);
 	vistaPista = new VistaPista(escenario,unaPista);
@@ -58,7 +60,7 @@ public VistaCarrera(Auto auto1, Auto auto2,Pista unaPista, Escenario escenario,C
 
 	ventana.setResizable(false);
 	setFocusable(true);
-
+    addKeyListener(controlador1);
 		
 }
 
