@@ -8,7 +8,7 @@ import controlador.ControladorAuto;
 import vista.Escenario;
 import vista.VistaCarrera;
 
-public class PrincipalPrueba implements Escenario{
+public class PrincipalPrueba  implements Escenario{
 	private Motor miMotor;
 	
 	private TanqueCombustible miTanque;
@@ -45,8 +45,9 @@ public class PrincipalPrueba implements Escenario{
 		
 	}
 	
-	public void pinta(){
-		vistaCarrera.pintarCarrera();
+	public void paint(){
+		vistaCarrera.mostrarCarrera();
+        
 	}
 	
     public void run(){
@@ -76,7 +77,13 @@ public class PrincipalPrueba implements Escenario{
 		PrincipalPrueba prueba = new  PrincipalPrueba();
 		
 		for(int i=0;i<100000000;i++){
-			prueba.pinta();
+			prueba.paint();
+			try{
+				Thread.sleep(REFRESH);
+			   
+			}
+			catch(InterruptedException e){}
+			
 		}
 		
 		//prueba.run();

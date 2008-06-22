@@ -70,7 +70,7 @@ public void pintarCarrera(){
 	vistaPista.setVelocidadFotograma((int)Math.round(principal.getVelocidad()));
     vistaPista.pintar(g);
     vistaAutoPrincipal.pintar(g);
-	
+    	
 }
 
 @Override
@@ -79,6 +79,14 @@ public void update(Observable arg0, Object arg1) {
 	
 }
 
+public void paint(Graphics g) {
+    g.drawImage(buffer,0,0,this);
+	     }
+
+public void mostrarCarrera(){
+	pintarCarrera();
+	paint(getGraphics());
 	
+}
 
 }

@@ -62,7 +62,7 @@ public class VistaPista {
 	 
 	 public void pintar(Graphics g){
 		 actualizarFotograma();
-		 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), 0,0, escenario );
+		 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]),0,0, escenario );
 	 }
 	 
 
