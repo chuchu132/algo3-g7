@@ -2,15 +2,17 @@ package vista;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Modelo.Auto;
+import Modelo.Carrera;
 import Modelo.Pista;
 
 import Recursos.SoundCache;
@@ -19,23 +21,23 @@ import Recursos.SpriteCache;
 
 
 public class VistaCarrera extends Canvas {
-
+    private VistaPista vistaPista;
     private VistaAutoEnPista vistaAutoPrincipal;
     private VistaAutoEnPista vistaAutoSecundario;
     private SpriteCache spriteCache;
 	private SoundCache soundCache;
 	private BufferedImage buffer;
 	private Auto principal,secundario;
-	private Pista pista;
 	
 	
-public VistaCarrera(Auto auto1, Auto auto2,Pista unaPista, Escenario escenario){
+	
+public VistaCarrera(Auto auto1, Auto auto2,Pista unaPista, Escenario escenario,Carrera picada){
 	
 	principal = auto1;
 	secundario = auto2;
 	vistaAutoPrincipal = new VistaAutoEnPista(escenario,principal);
 	vistaAutoSecundario = new VistaAutoEnPista(escenario,secundario);
-	
+	vistaPista = new VistaPista(escenario,unaPista);
 	soundCache = new SoundCache();	     
 	spriteCache = new SpriteCache();
 	
@@ -57,13 +59,14 @@ public VistaCarrera(Auto auto1, Auto auto2,Pista unaPista, Escenario escenario){
 	ventana.setResizable(false);
 	setFocusable(true);
 
-	
-	
-	
-	
-	
-	
-	
+		
+}
+
+public void pintarCarrera(){
+	Graphics g = buffer.getGraphics();
+	vistaPista.setVelocidadFotograma((int)Math.round(principal.getVelocidad()));
+    vistaPista.pintar(g);
+    vistaAutoPrincipal.pintar(g);
 	
 }
 

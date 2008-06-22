@@ -6,7 +6,7 @@ public class Carrera {
 	private Pista pista;
 	private Auto auto;
 	private double intervaloTiempo;
-	
+	private long posicionAuto = 0;
 	
 	public Carrera (Pista pista, Auto auto, double intervaloTiempo) {
 		this.pista = pista;
@@ -15,21 +15,21 @@ public class Carrera {
 	}
 	
 	public void correr() {
-		long posicionAuto = 0;
+		
 		
 		while(posicionAuto <= pista.getLongitud()) {
 			try {
 				auto.simular(intervaloTiempo, pista);
 				posicionAuto += auto.getDeltaAvance();
-				dibujarAuto(posicionAuto);
+				
 			} catch (ProblemaTecnicoException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 	
-	public void dibujarAuto(double posicion) {
-		
+	public long getPosicionAuto(){
+		return posicionAuto;
 	}
 	
 }
