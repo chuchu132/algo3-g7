@@ -23,7 +23,7 @@ public class VistaPista {
          fotogramaActual = 0;
          velocidadFotograma = 1;
          t=0;
-         
+         spriteNames = new String[FOTOGRAMAS];
 		 if(pista.getCoeficienteAgarre() < 0.33){
 				dirFondo = "nieve/";
 				}
@@ -46,10 +46,13 @@ public class VistaPista {
 	  * */
 	 private void actualizarFotograma(){
 		    t++;
-			  if (t % velocidadFotograma == 0){
+		if(velocidadFotograma !=0){
+		    if (t % velocidadFotograma == 0){
 			    t=0;
 			    fotogramaActual = (fotogramaActual + 1) % spriteNames.length;
 		       }
+		}
+		
 	}
 	 
 	 

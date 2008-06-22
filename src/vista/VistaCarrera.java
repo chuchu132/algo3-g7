@@ -28,8 +28,7 @@ public class VistaCarrera extends Canvas implements Observer{
     private VistaPista vistaPista;
     private VistaAutoEnPista vistaAutoPrincipal;
     private VistaAutoEnPista vistaAutoSecundario;
-    private SpriteCache spriteCache;
-	private SoundCache soundCache;
+ 	private SoundCache soundCache;
 	private BufferedImage buffer;
 	private Auto principal,secundario;
 	
@@ -43,7 +42,7 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
 	vistaAutoSecundario = new VistaAutoEnPista(escenario,secundario);
 	vistaPista = new VistaPista(escenario,unaPista);
 	soundCache = new SoundCache();	     
-	spriteCache = new SpriteCache();
+	
 	
 	buffer = new BufferedImage(Escenario.WIDTH,Escenario.HEIGHT, BufferedImage.TYPE_INT_RGB);
 	JFrame ventana = new JFrame("CARRERA");
