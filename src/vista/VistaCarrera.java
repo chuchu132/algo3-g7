@@ -20,17 +20,27 @@ import Recursos.SpriteCache;
 
 public class VistaCarrera extends Canvas {
 
-	private SpriteCache spriteCache;
+    private VistaAutoEnPista vistaAutoPrincipal;
+    private VistaAutoEnPista vistaAutoSecundario;
+    private SpriteCache spriteCache;
 	private SoundCache soundCache;
 	private BufferedImage buffer;
-	private ArrayList<Auto> cooredores;
+	private Auto principal,secundario;
 	private Pista pista;
 	
-public VistaCarrera(ArrayList<Auto> listaCorredores,Pista unaPista){
+	
+public VistaCarrera(Auto auto1, Auto auto2,Pista unaPista, Escenario escenario){
+	
+	principal = auto1;
+	secundario = auto2;
+	vistaAutoPrincipal = new VistaAutoEnPista(escenario,principal);
+	vistaAutoSecundario = new VistaAutoEnPista(escenario,secundario);
+	
 	soundCache = new SoundCache();	     
 	spriteCache = new SpriteCache();
+	
 	buffer = new BufferedImage(Escenario.WIDTH,Escenario.HEIGHT, BufferedImage.TYPE_INT_RGB);
-	JFrame ventana = new JFrame("Autitos");
+	JFrame ventana = new JFrame("CARRERA");
 	JPanel panel = (JPanel) ventana.getContentPane();
 	setBounds(0,0,Escenario.WIDTH,Escenario.HEIGHT);
 	panel.setPreferredSize(new Dimension(Escenario.WIDTH,Escenario.HEIGHT));
@@ -47,6 +57,16 @@ public VistaCarrera(ArrayList<Auto> listaCorredores,Pista unaPista){
 	ventana.setResizable(false);
 	setFocusable(true);
 
+	
+	
+	
+	
+	
+	
+	
+	
 }
+
+	
 
 }
