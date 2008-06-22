@@ -21,11 +21,11 @@ private SpriteCache spriteCache;
  
 public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	         this.escenario = escenario;
+	         this.auto= auto;
 	         spriteCache = escenario.getSpriteCache();
 	         fotogramaActual = 0;
 	         String modelo = auto.getModelo();
-	         spriteNames[0] = ( modelo + "/acelerando.jpg");
-	         spriteNames[1] = ( modelo + "/frenando.jpg");
+	         spriteNames = new String[]{modelo + "/acelerando.jpg",modelo + "/frenando.jpg"};
 	        }	        
 	    
 	       

@@ -8,9 +8,9 @@ import Recursos.SpriteCache;
 public interface Escenario extends ImageObserver  {
 
 	 public static final int PLAY_HEIGHT = 543; 
-	 public final int WIDTH = 1220;
-	 public final int HEIGHT = 600;
-	 public final int REFRESH = 10;
+	 public final int WIDTH = 640;
+	 public final int HEIGHT = 480;
+	 public final int REFRESH = 50;
 	
 	 public SpriteCache getSpriteCache();
 	 public SoundCache getSoundCache();

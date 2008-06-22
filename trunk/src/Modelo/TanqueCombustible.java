@@ -30,14 +30,6 @@ public class TanqueCombustible extends Autoparte{
 	
 	public void cargarCombustible(double cuanto,Nafta nafta){
 
-		if(cantidadCombustible + cuanto  > capacidadMaxima){
-			cuanto=(capacidadMaxima - cantidadCombustible);
-			cantidadCombustible = capacidadMaxima;
-		}
-		else {
-			cantidadCombustible += cuanto;
-		}
-
 		if( tipoNafta != null ) {
 			if(!estaVacio()){
 
@@ -47,7 +39,21 @@ public class TanqueCombustible extends Autoparte{
 			}
 			else{
 				tipoNafta = new Nafta(nafta.getNombre(),nafta.getOctanaje());
-			}
+			}		
+		
+		
+		if(cantidadCombustible + cuanto  > capacidadMaxima){
+			cuanto=(capacidadMaxima - cantidadCombustible);
+			cantidadCombustible = capacidadMaxima;
+		}
+		else {
+			cantidadCombustible += cuanto;
+		}
+
+		
+		}
+		else{
+			tipoNafta = new Nafta(nafta.getNombre(),nafta.getOctanaje());
 		}
 		
 	}
