@@ -13,8 +13,9 @@ public class VistaAutoEnPista {
 private int x,y;
 private String[] spriteNames;
 private int fotogramaActual;
-
-
+private final int MANO_DERECHA = 430;
+private final int MANO_IZQUIERDA =240;
+private final int ABAJO = 450;
 private Auto auto;
 private Escenario escenario;
 private SpriteCache spriteCache;
@@ -31,12 +32,12 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	       
 	       public void pintar(Graphics g){
 	    	   if(auto.getEstado() == 1){
-	    		   fotogramaActual = 1 ;
+	    		   fotogramaActual = 0 ;
 	    		}
 	    	   else{
 	    		   fotogramaActual = 0;
 	    	   }
-	         g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), x,y, escenario );
+	         g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), MANO_DERECHA ,ABAJO, escenario );
 	         
 	       }
 	       
