@@ -77,5 +77,10 @@ public class Jugador {
 			throw new NoAlcanzaDineroException();
 	}
 	
+	
+	public Taller getTaller(){
+		return miTaller;
+	}
+	
 		
 }

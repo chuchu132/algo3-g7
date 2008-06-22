@@ -13,6 +13,8 @@ public class VistaAutoEnPista {
 private int x,y;
 private String[] spriteNames;
 private int fotogramaActual;
+
+
 private Auto auto;
 private Escenario escenario;
 private SpriteCache spriteCache;

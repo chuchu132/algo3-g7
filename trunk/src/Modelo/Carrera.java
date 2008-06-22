@@ -1,8 +1,10 @@
 package Modelo;
 
+import java.util.Observable;
+
 import Excepciones.ProblemaTecnicoException;
 
-public class Carrera {
+public class Carrera extends Observable{
 	private Pista pista;
 	private Auto auto;
 	private double intervaloTiempo;
@@ -21,7 +23,7 @@ public class Carrera {
 			try {
 				auto.simular(intervaloTiempo, pista);
 				posicionAuto += auto.getDeltaAvance();
-				
+				notifyObservers();
 			} catch (ProblemaTecnicoException e) {
 				e.printStackTrace();
 			}
