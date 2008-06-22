@@ -1,7 +1,7 @@
 package vista;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+
 
 import Modelo.Auto;
 import Recursos.SpriteCache;
@@ -10,16 +10,12 @@ import Recursos.SpriteCache;
 
 public class VistaAutoEnPista {
 
-protected int x,y;
-
-protected String[] spriteNames;
-
-protected int fotogramaActual;
-
-
-protected Auto auto;
-protected Escenario escenario;
-protected SpriteCache spriteCache;
+private int x,y;
+private String[] spriteNames;
+private int fotogramaActual;
+private Auto auto;
+private Escenario escenario;
+private SpriteCache spriteCache;
  
 public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	         this.escenario = escenario;
@@ -31,7 +27,7 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	        }	        
 	    
 	       
-	       public void paint(Graphics g){
+	       public void pintar(Graphics g){
 	    	   if(auto.getEstado() == 1){
 	    		   fotogramaActual = 1 ;
 	    		}
@@ -39,6 +35,7 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	    		   fotogramaActual = 0;
 	    	   }
 	         g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), x,y, escenario );
+	         
 	       }
 	       
 	       public int getX()  { return x; }
