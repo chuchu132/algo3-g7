@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -10,7 +12,7 @@ public class VistaOpcionesCarrera extends JFrame {
 	
 	private final int ANCHO = 350;
 	private final int ALTO = 60;
-	JCheckBox velocidad,estado,posicion;
+	JCheckBox velocidad,estado,combustible;
 	
 	public VistaOpcionesCarrera() {
 	 Container contenedor = getContentPane();
@@ -20,8 +22,8 @@ public class VistaOpcionesCarrera extends JFrame {
 	 contenedor.add(velocidad);
 	 estado = new JCheckBox("Estado");
 	 contenedor.add(estado);
-	 posicion = new JCheckBox("Posicion");
-	 contenedor.add(posicion);
+	 combustible = new JCheckBox("Combustible");
+	 contenedor.add(combustible);
 	 
 	 setSize(ANCHO,ALTO);
 	 setVisible(true);
@@ -31,5 +33,15 @@ public class VistaOpcionesCarrera extends JFrame {
 	 setLocation(Escenario.WIDTH,0);
 	}
 	
+	public class ControladorOpcionesCarrera implements ItemListener{
+
+		public void itemStateChanged(ItemEvent e) {
+			if(e.getSource() == velocidad){
+				
+			}
+			
+		}
+		
+	}
 	
 }

@@ -46,7 +46,7 @@ protected void setUp(){
  public void testCargarCombustible3(){ //prueba el octanage resultante de mezclar 2 tipos de combustibles
 	 miTanque.cargarCombustible(30,naftaComun);
 	 miTanque.cargarCombustible(40,naftaSuper);
-	 assertEquals("Comun",miTanque.getTipoNafta().getNombre());
+	 assertEquals("hibrida",miTanque.getTipoNafta().getNombre());
  }
  
  public void testDarCombustible(){// prueba que entregue combustible segun el  octanage

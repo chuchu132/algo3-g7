@@ -114,6 +114,11 @@ public class Auto extends Observable implements Vendible{
 		return ( motor.getPeso() + caja.getPeso() + tanque.getPeso()+ carroceria.getPeso() + sistemaCombustion.getPeso() + (4*rueda.getPeso()) );
 
 	}
+	
+	public double getPorcentageVidaUtilGeneral(){
+		return ( ( motor.getPorcentajeVidaUtil() + caja.getPorcentajeVidaUtil() + tanque.getPorcentajeVidaUtil()+ carroceria.getPorcentajeVidaUtil() + sistemaCombustion.getPorcentajeVidaUtil() + (4*rueda.getPorcentajeVidaUtil() ) ) / 9 );
+		
+	}
 
 	public void subirCambio (){
 		if (!(caja instanceof  CajaAutomatica)) {

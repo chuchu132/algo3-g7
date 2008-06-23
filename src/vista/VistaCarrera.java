@@ -58,7 +58,7 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
 			System.exit(0);
 		}
 	});
-
+    
 	ventana.setResizable(false);
 	setFocusable(true);
     addKeyListener(controlador1);
