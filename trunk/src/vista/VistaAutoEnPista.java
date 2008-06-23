@@ -1,8 +1,9 @@
 package vista;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
-
-
+import java.awt.Graphics2D;
 import Modelo.Auto;
 import Recursos.SpriteCache;
 
@@ -19,6 +20,7 @@ private final int ABAJO = 450;
 private Auto auto;
 private Escenario escenario;
 private SpriteCache spriteCache;
+private boolean velocidad,estado,posicion= false;
  
 public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	         this.escenario = escenario;
@@ -28,16 +30,28 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	         String modelo = auto.getModelo();
 	         spriteNames = new String[]{modelo + "/acelerando.jpg",modelo + "/frenando.jpg"};
 	        }	        
-	    
-	       
-	       public void pintar(Graphics g){
-	    	   if(auto.getEstado() == 1){
+	      
+           private void actualizarFotograma(){
+        	   if(auto.getEstado() == 1){
 	    		   fotogramaActual = 0 ;
 	    		}
 	    	   else{
-	    		   fotogramaActual = 0;
+	    		   fotogramaActual = 1;
 	    	   }
-	         g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), MANO_DERECHA ,ABAJO, escenario );
+           }
+	       
+           private void mostrarVelocidad( Graphics h){
+        	   Graphics2D g = (Graphics2D) h;
+       		g.setPaint(Color.red);
+       		g.setFont(new Font("Arial",Font.BOLD,20));
+       		g.drawString("Velocidad " + Math.round(auto.getVelocidad()) ,50,Escenario.ZONA_INFO);
+        	   
+           }
+           
+           public void pintar(Graphics g){
+        	 mostrarVelocidad(g);
+        	 actualizarFotograma(); 
+	    	 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), MANO_DERECHA ,ABAJO, escenario );
 	         
 	       }
 	       

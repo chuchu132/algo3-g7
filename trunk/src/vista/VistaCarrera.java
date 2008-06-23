@@ -20,7 +20,7 @@ import Modelo.Carrera;
 import Modelo.Pista;
 
 import Recursos.SoundCache;
-import Recursos.SpriteCache;
+
 
 
 
@@ -31,7 +31,7 @@ public class VistaCarrera extends Canvas implements Observer{
  	private SoundCache soundCache;
 	private BufferedImage buffer;
 	private Auto principal,secundario;
-	
+
 	
 	
 public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,Pista unaPista, Escenario escenario,Carrera picada){
@@ -62,10 +62,10 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
 	ventana.setResizable(false);
 	setFocusable(true);
     addKeyListener(controlador1);
-		
+	mostrarCarrera();
 }
 
-public void pintarCarrera(){
+private void pintarCarrera(){
 	Graphics g = buffer.getGraphics();
 	vistaPista.setVelocidadFotograma((int)Math.round(principal.getVelocidad()));
     vistaPista.pintar(g);
@@ -75,7 +75,7 @@ public void pintarCarrera(){
 
 @Override
 public void update(Observable arg0, Object arg1) {
-	pintarCarrera();
+	mostrarCarrera();
 	
 }
 
