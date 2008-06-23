@@ -22,9 +22,9 @@ private final int ABAJO = 450;
 private Auto auto;
 private Escenario escenario;
 private SpriteCache spriteCache;
-private boolean velocidad = true;
-private boolean estado = true;
-private boolean combustible = true;
+private boolean velocidad = false;
+private boolean estado = false;
+private boolean combustible = false;
  
 public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	         this.escenario = escenario;

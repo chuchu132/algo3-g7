@@ -8,13 +8,17 @@ import java.awt.event.ItemListener;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
-public class VistaOpcionesCarrera extends JFrame {
+public class VistaOpcionesAutoEnCarrera extends JFrame {
 	
 	private final int ANCHO = 350;
 	private final int ALTO = 60;
+	private VistaAutoEnPista vistaAuto;
+	private ControladorOpcionesCarrera controlador;
 	JCheckBox velocidad,estado,combustible;
 	
-	public VistaOpcionesCarrera() {
+	public VistaOpcionesAutoEnCarrera(VistaAutoEnPista vistaAutoEnPista) {
+	
+	 vistaAuto = vistaAutoEnPista;
 	 Container contenedor = getContentPane();
 	 contenedor.setLayout(new  FlowLayout());
 	 
@@ -25,6 +29,12 @@ public class VistaOpcionesCarrera extends JFrame {
 	 combustible = new JCheckBox("Combustible");
 	 contenedor.add(combustible);
 	 
+	 controlador = new ControladorOpcionesCarrera();
+	 
+	 velocidad.addItemListener(controlador);
+	 combustible.addItemListener(controlador);
+	 estado.addItemListener(controlador);
+	 
 	 setSize(ANCHO,ALTO);
 	 setVisible(true);
 	 setResizable(false);
@@ -33,15 +43,23 @@ public class VistaOpcionesCarrera extends JFrame {
 	 setLocation(Escenario.WIDTH,0);
 	}
 	
-	public class ControladorOpcionesCarrera implements ItemListener{
+	private class ControladorOpcionesCarrera implements ItemListener{
 
 		public void itemStateChanged(ItemEvent e) {
 			if(e.getSource() == velocidad){
+				vistaAuto.setVelocidad(	velocidad.isSelected()?	true: false);
+				}
+			if(e.getSource() == estado){
+				vistaAuto.setEstado(estado.isSelected()? true: false);
+				}
+			if(e.getSource() == combustible){
+				vistaAuto.setCombustible(combustible.isSelected()? true : false);
+				}
 				
 			}
 			
 		}
 		
-	}
-	
 }
+	
+

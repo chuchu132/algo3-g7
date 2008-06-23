@@ -28,10 +28,11 @@ public class VistaCarrera extends Canvas implements Observer{
     private VistaPista vistaPista;
     private VistaAutoEnPista vistaAutoPrincipal;
     private VistaAutoEnPista vistaAutoSecundario;
- 	private SoundCache soundCache;
+    private VistaOpcionesAutoEnCarrera vistaOpcionesAutoPrincipal;
+    private SoundCache soundCache;
 	private BufferedImage buffer;
 	private Auto principal,secundario;
-
+ 
 	
 	
 public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,Pista unaPista, Escenario escenario,Carrera picada){
@@ -41,6 +42,7 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
 	vistaAutoPrincipal = new VistaAutoEnPista(escenario,principal);
 	vistaAutoSecundario = new VistaAutoEnPista(escenario,secundario);
 	vistaPista = new VistaPista(escenario,unaPista);
+	vistaOpcionesAutoPrincipal = new VistaOpcionesAutoEnCarrera(vistaAutoPrincipal);
 	soundCache = new SoundCache();	     
 	
 	
