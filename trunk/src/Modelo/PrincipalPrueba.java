@@ -77,7 +77,7 @@ public class PrincipalPrueba  implements Escenario{
 		
 		PrincipalPrueba prueba = new  PrincipalPrueba();
 		
-		//prueba.run();
+		prueba.run();
 			
 		}
 		

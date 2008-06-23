@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.text.DecimalFormat;
+
 import Modelo.Auto;
 import Recursos.SpriteCache;
 
@@ -20,7 +22,9 @@ private final int ABAJO = 450;
 private Auto auto;
 private Escenario escenario;
 private SpriteCache spriteCache;
-private boolean velocidad,estado,posicion= false;
+private boolean velocidad = true;
+private boolean estado = true;
+private boolean combustible = true;
  
 public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	         this.escenario = escenario;
@@ -42,24 +46,63 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	       
            private void mostrarVelocidad( Graphics h){
         	   Graphics2D g = (Graphics2D) h;
-       		g.setPaint(Color.red);
-       		g.setFont(new Font("Arial",Font.BOLD,20));
-       		g.drawString("Velocidad " + Math.round(auto.getVelocidad()) ,50,Escenario.ZONA_INFO);
-        	   
+       		g.setPaint(Color.white);
+       		g.setFont(new Font("Arial",Font.BOLD,18));
+       		g.drawString("Velocidad " + Math.round(auto.getVelocidad()) ,5, Escenario.ZONA_INFO - 44);
+       		
            }
            
+           private void mostrarEstado(Graphics h){
+        	   Graphics2D g = (Graphics2D) h;
+          		g.setPaint(Color.white);
+          		g.setFont(new Font("Arial",Font.BOLD,18));
+          		DecimalFormat porcentage = new DecimalFormat("0.00");
+          		g.drawString("Estado " + porcentage.format(auto.getPorcentageVidaUtilGeneral()*100) + " %",5, Escenario.ZONA_INFO -22);  
+        	   
+           }
+         
+           private void mostrarCombustible(Graphics h){
+        	   Graphics2D g = (Graphics2D) h;
+         		g.setPaint(Color.white);
+         		g.setFont(new Font("Arial",Font.BOLD,18));
+         		DecimalFormat cantidad = new DecimalFormat("0.00");
+         		g.drawString("Combustible " + cantidad.format(auto.cantidadCombustible()) + " L",5, Escenario.ZONA_INFO);  
+           }
+           
+           
            public void pintar(Graphics g){
-        	 mostrarVelocidad(g);
+        	 if(velocidad){
+        	 mostrarVelocidad(g);}
+        	 if(estado){
+        		 mostrarEstado(g);}
+        	 if(combustible){
+        	   mostrarCombustible(g);
+        		 }
+        	         	 
         	 actualizarFotograma(); 
 	    	 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), MANO_DERECHA ,ABAJO, escenario );
-	         
-	       }
+        	 } 
+	       
 	       
 	       public int getX()  { return x; }
 	       public void setX(int i) { x = i; }
 	     
 	       public int getY() { return y; }
 	       public void setY(int i) { y = i; }
+
+		
+		public void setVelocidad(boolean velocidad) {
+			this.velocidad = velocidad;
+		}
+		
+		public void setEstado(boolean estado) {
+			this.estado = estado;
+		}
+		
+		public void setCombustible(boolean combustible) {
+			this.combustible = combustible;
+		}
+	       
 	       
 }
 

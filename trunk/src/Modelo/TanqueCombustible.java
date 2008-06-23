@@ -54,6 +54,13 @@ public class TanqueCombustible extends Autoparte{
 		}
 		else{
 			tipoNafta = new Nafta(nafta.getNombre(),nafta.getOctanaje());
+			if(cantidadCombustible + cuanto  > capacidadMaxima){
+				cuanto=(capacidadMaxima - cantidadCombustible);
+				cantidadCombustible = capacidadMaxima;
+			}
+			else {
+				cantidadCombustible += cuanto;
+			}
 		}
 		
 	}
