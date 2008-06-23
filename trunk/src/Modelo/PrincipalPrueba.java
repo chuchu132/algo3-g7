@@ -7,7 +7,7 @@ import Recursos.SpriteCache;
 import controlador.ControladorAuto;
 import vista.Escenario;
 import vista.VistaCarrera;
-import vista.VistaOpcionesCarrera;
+
 
 public class PrincipalPrueba  implements Escenario{
 	
@@ -27,12 +27,9 @@ public class PrincipalPrueba  implements Escenario{
 
 	private ControladorAuto controlAuto;
 	private VistaCarrera vistaCarrera;
-	private VistaOpcionesCarrera vistaOpciones;
+	
 	
 	public PrincipalPrueba(){
-		
-		vistaOpciones = new VistaOpcionesCarrera();
-		
 		
 		spriteCache = new SpriteCache();
 		miSistemaCombustion = new SistemaCombustion(5,100,"Turbo",0.2,1);
