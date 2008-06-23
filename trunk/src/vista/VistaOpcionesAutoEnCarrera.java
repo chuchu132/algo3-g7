@@ -6,9 +6,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 
-public class VistaOpcionesAutoEnCarrera extends JFrame {
+public class VistaOpcionesAutoEnCarrera extends JDialog {
 	
 	private final int ANCHO = 350;
 	private final int ALTO = 100;
@@ -36,7 +37,7 @@ public class VistaOpcionesAutoEnCarrera extends JFrame {
 	 combustible.addItemListener(controlador);
 	 estado.addItemListener(controlador);
 	 cambioActual.addItemListener(controlador);
-	 
+	 setModal(true);
 	 setSize(ANCHO,ALTO);
 	 setVisible(true);
 	 setResizable(false);
