@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 public class VistaOpcionesAutoEnCarrera extends JFrame {
 	
 	private final int ANCHO = 350;
-	private final int ALTO = 60;
+	private final int ALTO = 100;
 	private VistaAutoEnPista vistaAuto;
 	private ControladorOpcionesCarrera controlador;
 	JCheckBox velocidad,estado,combustible,cambioActual;
@@ -39,7 +39,7 @@ public class VistaOpcionesAutoEnCarrera extends JFrame {
 	 
 	 setSize(ANCHO,ALTO);
 	 setVisible(true);
-	 setResizable(true);
+	 setResizable(false);
 	 setTitle("OPCIONES DE CARRERA");
 	 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	 setLocation(Escenario.WIDTH,0);
