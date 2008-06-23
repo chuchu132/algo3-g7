@@ -7,7 +7,7 @@ import Recursos.SpriteCache;
 
 public interface Escenario extends ImageObserver  {
 
-	 public static final int PLAY_HEIGHT = 543; 
+	 public static final int ZONA_INFO = 543; 
 	 public final int WIDTH = 675;
 	 public final int HEIGHT = 550;
 	 public final int REFRESH = 50;
