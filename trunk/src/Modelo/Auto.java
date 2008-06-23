@@ -249,4 +249,8 @@ public class Auto extends Observable implements Vendible{
 	public String getModelo(){
 		return carroceria.getModelo();
 	}
+	
+	public int getCambioActual(){
+		return caja.getCambioActual();
+	}
 }
