@@ -25,7 +25,8 @@ private SpriteCache spriteCache;
 private boolean velocidad = false;
 private boolean estado = false;
 private boolean combustible = false;
- 
+private boolean cambioActual = false;
+
 public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 	         this.escenario = escenario;
 	         this.auto= auto;
@@ -48,8 +49,15 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
         	   Graphics2D g = (Graphics2D) h;
        		g.setPaint(Color.white);
        		g.setFont(new Font("Arial",Font.BOLD,18));
-       		g.drawString("Velocidad " + Math.round(auto.getVelocidad()) ,5, Escenario.ZONA_INFO - 44);
+       		g.drawString("Velocidad " + Math.round(auto.getVelocidad()) ,Escenario.WIDTH - 150, 22);
        		
+           }
+           
+           private void mostrarCambioActual( Graphics h){
+        	   Graphics2D g = (Graphics2D) h;
+          		g.setPaint(Color.white);
+          		g.setFont(new Font("Arial",Font.BOLD,18));
+          		g.drawString("Cambio Actual " + auto.getCambioActual(),Escenario.WIDTH - 150,  44);
            }
            
            private void mostrarEstado(Graphics h){
@@ -78,6 +86,9 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
         	 if(combustible){
         	   mostrarCombustible(g);
         		 }
+        	 if(cambioActual){
+        		 mostrarCambioActual(g);
+        	 }
         	         	 
         	 actualizarFotograma(); 
 	    	 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), MANO_DERECHA ,ABAJO, escenario );
@@ -101,6 +112,26 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 		
 		public void setCombustible(boolean combustible) {
 			this.combustible = combustible;
+		}
+
+		public boolean isVelocidad() {
+			return velocidad;
+		}
+
+		public boolean isEstado() {
+			return estado;
+		}
+
+		public boolean isCombustible() {
+			return combustible;
+		}
+
+		public boolean isCambioActual() {
+			return cambioActual;
+		}
+
+		public void setCambioActual(boolean cambioActual) {
+			this.cambioActual = cambioActual;
 		}
 	       
 	       
