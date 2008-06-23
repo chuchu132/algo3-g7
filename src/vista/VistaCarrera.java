@@ -60,6 +60,7 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
 	panel.setPreferredSize(new Dimension(Escenario.WIDTH,Escenario.HEIGHT));
 	panel.setLayout(null);
 	panel.add(this);
+	
 	ventana.setBounds(0,0,Escenario.WIDTH,Escenario.HEIGHT);
 	ventana.setVisible(true);
 	ventana.addWindowListener( new WindowAdapter() {
