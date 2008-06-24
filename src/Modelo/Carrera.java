@@ -44,11 +44,11 @@ public class Carrera extends Observable{
 					double posicionAux = getPosicion(corredor) + autoTemp.getDeltaAvance();
 				    posiciones.remove(corredor);
 				    posiciones.add(corredor, new Double(posicionAux));
-			     	
+			     	System.out.println("Auto "+ corredor + " " + autoTemp.toString());
 			     	 corredor++;
 			    }
 				try{
-				Thread.sleep(1);
+				Thread.sleep((long)intervaloTiempo/1000);
 				}
 				catch (InterruptedException e) {				
 					e.printStackTrace();

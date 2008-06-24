@@ -16,12 +16,14 @@ public class Vendedor {
 	private ArrayList <Producto> listaDeProductos[];
 	private FabricaDeProductosVendibles[] fabricaDe; 
 	
-	private final int AUTOPARTES = 0;
-	private final int AUTOS = 1;
-	private final int NAFTAS = 2;
+	public static final int AUTOPARTES = 0;
+	public static  final int AUTOS = 1;
+	public static final int NAFTAS = 2;
 	private int CANTIDAD_FABRICAS = 3;
 		
 	public Vendedor() {
+		fabricaDe= new FabricaDeProductosVendibles[CANTIDAD_FABRICAS];
+		listaDeProductos = new  ArrayList[CANTIDAD_FABRICAS];
 		fabricaDe[AUTOPARTES] = new FabricaDeAutopartes();
 		fabricaDe[AUTOS] = new FabricaDeAutos();
 		fabricaDe[NAFTAS] = new FabricaDeNafta();

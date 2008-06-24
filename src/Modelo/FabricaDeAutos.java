@@ -2,8 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 
-import Excepciones.NumeroAutoInexistenteException;
-import Excepciones.NumeroAutoparteInexistenteException;
+
 import Excepciones.ProductoInexistenteException;
 
 public class FabricaDeAutos extends FabricaDeProductosVendibles {
@@ -23,6 +22,7 @@ public class FabricaDeAutos extends FabricaDeProductosVendibles {
 		
 		pAux = new Producto(1,tipoAuto,nombreAutoTipo2,
 						descripcionAutoTipo2,precioAutoTipo2);
+		listaAutos.add(pAux);
 		return listaAutos;
 	}
 	
