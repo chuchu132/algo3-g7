@@ -42,7 +42,7 @@ public class PrincipalPrueba  implements Escenario{
 	    miAuto.cargarCombustible(1000, new Nafta("Nafta de Prueba",98));
 	    miAuto.encender();
 	    unaPista = new Pista(1000,0.7);
-		picada = new Carrera(unaPista,miAuto,0.01);
+		//picada = new Carrera(unaPista,miAuto,0.01);
 		controlAuto = new ControladorAuto(miAuto);
 		vistaCarrera = new VistaCarrera(controlAuto,controlAuto,unaPista,this,picada);
 		picada.addObserver(vistaCarrera);
