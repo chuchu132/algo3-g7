@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import controlador.ControladorCompraAuto;
+import controlador.ControladorCompraAutoparte;
 
 
 
@@ -102,12 +103,13 @@ public class VistaCompra extends JDialog {
 		listaAutoparteVendedor.setFixedCellWidth(ANCHO_LISTA);
 		panelAutopartes.add(new JScrollPane(listaAutoparteVendedor));
 		
-		botonCompraAutoparte = new JButton("Comprar");
 		
 		listaAutoparteComprador = new JList();
 		listaAutoparteComprador.setVisibleRowCount(FILAS_LISTA);
 		listaAutoparteComprador.setFixedCellWidth(ANCHO_LISTA);
 		
+		botonCompraAutoparte = new JButton("Comprar");
+		botonCompraAutoparte.addActionListener(new ControladorCompraAutoparte(listaAutoparteVendedor,jugador, listaAutoparteComprador));
 		
 		
 		panelAutopartes.add(botonCompraAutoparte);
@@ -152,7 +154,7 @@ private String[] getListaDe(int tipoProducto){
 	int i=0;
 	while (it.hasNext()) {
 		Producto producto = (Producto) it.next();
-		listaNombreProducto[i]= producto.getNombre();
+		listaNombreProducto[i]= (producto.getNombre() + " Algo$ " + producto.getPrecio());
 		i++;
 	}
 	return listaNombreProducto;

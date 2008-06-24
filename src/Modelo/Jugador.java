@@ -43,7 +43,7 @@ public class Jugador {
 		this.litrosParaCargar = litrosParaCargar;
 	}
 
-	public void  comprarProducto (int tipoProducto, int numero) {
+	public void  comprarProducto (int tipoProducto, int numero) throws NoAlcanzaDineroException {
 		Vendedor miVendedor = new Vendedor();
 		Vendible vAux;
 		
@@ -55,15 +55,15 @@ public class Jugador {
 					miTaller.agregarAutoparte((Autoparte) vAux);
 				} catch (NotAutoparteException e) {
 					e.printStackTrace();
-				}
+				}break;
 		case(AUTOS):
 			try {
 					miTaller.agregarAuto((Auto)vAux);
 				} catch (NotAutoException e) {
 					e.printStackTrace();
-				}
+				}break;
 		case(NAFTAS): 
-			miTaller.cargarNaftaAlAutoActual(litrosParaCargar, (Nafta)vAux);
+			miTaller.cargarNaftaAlAutoActual(litrosParaCargar, (Nafta)vAux);break;
 			
 		}
 	}

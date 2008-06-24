@@ -37,7 +37,7 @@ public class Vendedor {
 		return listaDeProductos[tipoProducto];
 	}
 	
-	public Vendible solicitarProducto(int numero, int tipoProducto, Jugador unJugador) {
+	public Vendible solicitarProducto(int numero, int tipoProducto, Jugador unJugador) throws NoAlcanzaDineroException {
 		Producto pAux = listaDeProductos[tipoProducto].get(numero);
 		Vendible vAux = null;
 		double precioProducto;
@@ -46,11 +46,9 @@ public class Vendedor {
 		if (tipoProducto == NAFTAS) 
 			precioProducto *= unJugador.getLitrosParaCargar();
 		
-		try {
+		
 			unJugador.restarDinero(precioProducto);
-		} catch (NoAlcanzaDineroException e) {
-			e.printStackTrace();
-		}
+		
 		
 		try {
 			vAux = fabricaDe[tipoProducto].crearProductoNumero(numero);
