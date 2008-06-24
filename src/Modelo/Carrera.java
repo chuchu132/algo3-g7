@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 
 import Excepciones.ProblemaTecnicoException;
@@ -15,26 +16,40 @@ public class Carrera extends Observable{
 		this.pista = pista;
 		this.autos = autos;
 		this.intervaloTiempo = intervaloTiempo;
+		this.posiciones = new ArrayList<Double>();
 		autos.add(0,autoJugador);
+		posiciones.add(new Double(0.0));
+		for(int i = 1; i<autos.size();i++){
+			posiciones.add(i,new Double(0.0));
+			}
 	}
 	
 	public void correr() {
 	     			
 		while(!llegoAlguien()) {
-			
-				for(int corredor = 0; corredor < autos.size();corredor++){
-					Auto autoTemp = autos.get(corredor);
+			int corredor = 0;
+			Iterator< Auto> it = autos.iterator(); 
+				while(it.hasNext()){
+					Auto autoTemp = it.next();
+				   
 					try {
+					Thread.sleep(100);
 					autoTemp.simular(intervaloTiempo, pista);
 					}
 					catch (ProblemaTecnicoException e) {
-						e.printStackTrace();
-						autos.remove(corredor);// ver q pasa si el auto q explota es el del jugador
-					}
+						                                  e.printStackTrace();
+						                                  autos.remove(corredor);// ver q pasa si el auto q explota es el del jugador
+					                                      } 
+					catch (InterruptedException e) {
+						
+														e.printStackTrace();
+													}
+					
 					double posicionAux = getPosicion(corredor) + autoTemp.getDeltaAvance();
 				    posiciones.remove(corredor);
 				    posiciones.add(corredor, new Double(posicionAux));
 			     	notifyObservers();
+			     	 corredor++;
 			    }
 				
 		}
@@ -45,7 +60,7 @@ public class Carrera extends Observable{
 		try{
 			return (posiciones.get(corredor)).doubleValue();
 		}
-		catch (IndexOutOfBoundsException e) {
+		catch (Exception e) {
 			return 0.0;
 		}
 	}	
