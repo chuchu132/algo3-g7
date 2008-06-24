@@ -44,7 +44,7 @@ public class Carrera extends Observable{
 					double posicionAux = getPosicion(corredor) + autoTemp.getDeltaAvance();
 				    posiciones.remove(corredor);
 				    posiciones.add(corredor, new Double(posicionAux));
-			     	notifyObservers();
+			     	
 			     	 corredor++;
 			    }
 				try{
@@ -53,6 +53,7 @@ public class Carrera extends Observable{
 				catch (InterruptedException e) {				
 					e.printStackTrace();
 				}
+				notifyObservers();
 		}
 	}
 	

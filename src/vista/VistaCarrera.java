@@ -47,7 +47,7 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
 	vistaAutoSecundario = new VistaAutoEnPista(escenario,secundario);
 	vistaPista = new VistaPista(escenario,unaPista);
 	soundCache = new SoundCache();	     
-	
+	picada.addObserver(this);
 	
 	buffer = new BufferedImage(Escenario.WIDTH,Escenario.HEIGHT, BufferedImage.TYPE_INT_RGB);
 	JFrame ventana = new JFrame("CARRERA");
