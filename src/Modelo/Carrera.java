@@ -24,7 +24,7 @@ public class Carrera extends Observable{
 			}
 	}
 	
-	public void correr() {
+	public synchronized void correr() {
 	     			
 		while(!llegoAlguien()) {
 			int corredor = 0;
@@ -33,25 +33,26 @@ public class Carrera extends Observable{
 					Auto autoTemp = it.next();
 				   
 					try {
-					Thread.sleep(100);
+					
 					autoTemp.simular(intervaloTiempo, pista);
 					}
 					catch (ProblemaTecnicoException e) {
 						                                  e.printStackTrace();
 						                                  autos.remove(corredor);// ver q pasa si el auto q explota es el del jugador
 					                                      } 
-					catch (InterruptedException e) {
-						
-														e.printStackTrace();
-													}
-					
+										
 					double posicionAux = getPosicion(corredor) + autoTemp.getDeltaAvance();
 				    posiciones.remove(corredor);
 				    posiciones.add(corredor, new Double(posicionAux));
 			     	notifyObservers();
 			     	 corredor++;
 			    }
-				
+				try{
+				Thread.sleep(1);
+				}
+				catch (InterruptedException e) {				
+					e.printStackTrace();
+				}
 		}
 	}
 	

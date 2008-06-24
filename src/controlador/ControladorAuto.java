@@ -26,6 +26,7 @@ public class ControladorAuto implements KeyListener{
 		case KeyEvent.VK_UP : auto.acelerar(); break;
 		case KeyEvent.VK_RIGHT : auto.subirCambio(); break;
 		case KeyEvent.VK_LEFT : auto.bajarCambio(); break;
+		
 		}
 	}
 
