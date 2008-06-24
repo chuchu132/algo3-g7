@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 import Recursos.SoundCache;
 import Recursos.SpriteCache;
@@ -27,7 +28,7 @@ public class PrincipalPrueba  implements Escenario{
 
 	private ControladorAuto controlAuto;
 	private VistaCarrera vistaCarrera;
-	
+    private ArrayList<Auto> corredores;	
 	
 	public PrincipalPrueba(){
 		
@@ -42,7 +43,8 @@ public class PrincipalPrueba  implements Escenario{
 	    miAuto.cargarCombustible(1000, new Nafta("Nafta de Prueba",98));
 	    miAuto.encender();
 	    unaPista = new Pista(1000,0.7);
-		//picada = new Carrera(unaPista,miAuto,0.01);
+   	    corredores = new ArrayList<Auto>();
+	    picada = new Carrera(unaPista,corredores,miAuto,0.01);
 		controlAuto = new ControladorAuto(miAuto);
 		vistaCarrera = new VistaCarrera(controlAuto,controlAuto,unaPista,this,picada);
 		picada.addObserver(vistaCarrera);
@@ -74,7 +76,7 @@ public class PrincipalPrueba  implements Escenario{
 		
 		PrincipalPrueba prueba = new  PrincipalPrueba();
 		
-	//	prueba.run();
+	    prueba.run();
 			
 		}
 		
