@@ -135,7 +135,7 @@ public class Auto extends Observable implements Vendible{
 	}
 
 	public String toString(){
-		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Avance " + deltaAvance + " Peso: " + getPesoTotal());
+		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Avance " + deltaAvance + "cambio " + caja.getCambioActual());
 	}
 
 	public Motor cambiarMotor(Motor otroMotor){

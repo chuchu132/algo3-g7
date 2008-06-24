@@ -1,17 +1,19 @@
 package Modelo;
 
 
+import java.util.ArrayList;
+
 import Excepciones.NoAlcanzaDineroException;
 import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;
-import Excepciones.TipoNaftaInexistenteException;
+
 
 //import java.util.ArrayList;
 
 public class Jugador {
 	
 	//constantes
-	private final long plataInicial = 10000;
+	private final long plataInicial = 100000;
 	
 	private final int AUTOPARTES = 0;
 	private final int AUTOS = 1;
@@ -82,5 +84,9 @@ public class Jugador {
 		return miTaller;
 	}
 	
-		
+   public ArrayList<Producto> solicitarListaDe(int tipoProducto){
+	   Vendedor vendedor = new Vendedor();
+	   return vendedor.getListaDeProductosDe(tipoProducto);
+	   
+   }		
 }

@@ -2,7 +2,7 @@ package Modelo;
 /* nada */
 import java.util.ArrayList;
 
-import Excepciones.NumeroAutoparteInexistenteException;
+
 import Excepciones.ProductoInexistenteException;
 
 public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
@@ -12,9 +12,9 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	private final int blanco = 0;
 	private final int rojo = 1;
 	private final int verde = 2;
-	private final int gris = 3;
 	
 	
+	public FabricaDeAutopartes(){}
 
 	
 	public ArrayList<Producto> armarLista() {
