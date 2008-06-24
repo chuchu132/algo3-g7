@@ -11,30 +11,33 @@ public class Carrera extends Observable{
 	private double intervaloTiempo;
 	private ArrayList<Double> posiciones;
 	
-	public Carrera (Pista pista, ArrayList<Auto> autos, double intervaloTiempo) {
+	public Carrera (Pista pista, ArrayList<Auto> autos,Auto autoJugador, double intervaloTiempo) {
 		this.pista = pista;
 		this.autos = autos;
 		this.intervaloTiempo = intervaloTiempo;
+		autos.add(0,autoJugador);
 	}
 	
 	public void correr() {
-				
+	     			
 		while(!llegoAlguien()) {
-			try {
+			
 				for(int corredor = 0; corredor < autos.size();corredor++){
 					Auto autoTemp = autos.get(corredor);
+					try {
 					autoTemp.simular(intervaloTiempo, pista);
-				    double posicionAux = getPosicion(corredor) + autoTemp.getDeltaAvance();
+					}
+					catch (ProblemaTecnicoException e) {
+						e.printStackTrace();
+						autos.remove(corredor);// ver q pasa si el auto q explota es el del jugador
+					}
+					double posicionAux = getPosicion(corredor) + autoTemp.getDeltaAvance();
 				    posiciones.remove(corredor);
 				    posiciones.add(corredor, new Double(posicionAux));
-				notifyObservers();
-			}
-			}
-			catch (ProblemaTecnicoException e) {
-				e.printStackTrace();
-			}
+			     	notifyObservers();
+			    }
+				
 		}
-		
 	}
 	
 	
