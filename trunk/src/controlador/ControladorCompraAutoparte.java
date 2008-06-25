@@ -23,11 +23,14 @@ public class ControladorCompraAutoparte implements ActionListener {
 	
 	
 	public void actionPerformed(ActionEvent arg0) {
-		
+		int item = listaAutopartesVendedor.getSelectedIndex();
 		try {
+		
+		  if(item>=0){
 			jugador.comprarProducto(Vendedor.AUTOPARTES, listaAutopartesVendedor.getSelectedIndex());
 			listaAutopartesComprador.setListData(listaAutopartesVendedor.getSelectedValues());
-		} catch (NoAlcanzaDineroException e) {
+		  }
+		 } catch (NoAlcanzaDineroException e) {
 			
 			JOptionPane.showMessageDialog(null, "NO ALCANZA EL DINERO", "Compra Cancelada", JOptionPane.ERROR_MESSAGE);
 		}
