@@ -10,7 +10,7 @@ import Excepciones.TanqueVacioException;
 public class Motor extends Autoparte implements Observer{
 	
 	public final static int REVOLUCIONES_MINIMAS = 800; //es static porque es comun para todos los motores
-	private final double factorDeDesgaste = 0.01;
+	private final double factorDeDesgaste = 0.001;
 	
 	private final int DESACELERANDO = -1;
 	private final int FRENADO = 0;
@@ -43,7 +43,7 @@ public class Motor extends Autoparte implements Observer{
 		this.HP=HP;
 		this.cilindros=cilindros;
 		this.cubicaje=cubicaje; 
-		this.fuerzaMaxima = HP * 25 + cilindros*cubicaje*1000;
+		this.fuerzaMaxima = HP * 50 + cilindros*cubicaje*1000;
 		this.encendido=false;
 		this.revolucionesMax = (int)(HP * 17 + 2800); 
 		this.revolucionesActuales = 0;
@@ -115,7 +115,7 @@ public class Motor extends Autoparte implements Observer{
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, SistemaCombustion sistemaCombustion) {
 		if (estado == ACELERANDO){
-			if ((int)revolucionesActuales >= (int)(0.75 * revolucionesMax)) {
+			if ((int)revolucionesActuales >= (int)(0.90 * revolucionesMax)) {
 				fuerzaInstantanea = fuerzaRozamiento;
 				
 			} else {
