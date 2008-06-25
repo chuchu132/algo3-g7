@@ -63,6 +63,7 @@ public class Carrera extends Observable{
 				catch (InterruptedException e) {				
 					e.printStackTrace();
 				}
+				setChanged();
 				notifyObservers();
 				tiempo+=intervaloTiempo;
 		}
