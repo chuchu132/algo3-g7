@@ -1,5 +1,9 @@
 package Modelo;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 import Excepciones.ProblemaTecnicoException;
 
 public class Carroceria extends Autoparte{
@@ -31,6 +35,7 @@ public class Carroceria extends Autoparte{
 	public String getModelo(){
 		return modelo;
 	}
+	
 	public void simular(double tiempo) throws ProblemaTecnicoException{
 		double desgaste = tiempo * factorDeDesgaste;
 		gastar(desgaste);
@@ -38,6 +43,15 @@ public class Carroceria extends Autoparte{
 			throw new ProblemaTecnicoException();}
 		}
 	
+	public Element serialize(){
+		Document document = DocumentHelper.createDocument();
+		Element carroceria = document.addElement("carroceria");
+		this.grabar(carroceria);
+		carroceria.addAttribute("modelo",modelo);
+		carroceria.addAttribute("color",Integer.toString(this.getColor()));
+		carroceria.addAttribute("plusVelocidad",Double.toString(this.getPlusVelocidad()));
+		return carroceria;
+	}
 	
 	
 }

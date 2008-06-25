@@ -3,6 +3,10 @@ package Modelo;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 import Excepciones.MotorFundidoException;
 import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
@@ -206,6 +210,21 @@ public class Motor extends Autoparte implements Observer{
 		}
 	}
 	
+	public Element serialize(){
+		Document document = DocumentHelper.createDocument();
+		Element motor = document.addElement("motor");
+		this.grabar(motor);
+		motor.addAttribute("fuerzaMaxima",Double.toString(fuerzaMaxima));
+		motor.addAttribute("HP",Integer.toString(HP));
+		motor.addAttribute("cilindros",Integer.toString(cilindros));
+		motor.addAttribute("cubicaje",Double.toString(cubicaje));
+		motor.addAttribute("encendido",Boolean.toString(this.estaEncendido()));
+		motor.addAttribute("revolucionesMax",Integer.toString(this.getRevolucionesMaximas()));
+		motor.addAttribute("revolucionesActuales",Integer.toString(this.getRevolucionesActuales()));
+		motor.addAttribute("fuerzaInstantanea",Double.toString(this.getFuerzaInstantanea()));
+		motor.addAttribute("estado",Integer.toString(estado));
+		return motor;
+	}
 }
 
     
