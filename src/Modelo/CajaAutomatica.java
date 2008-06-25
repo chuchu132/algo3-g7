@@ -3,6 +3,10 @@ package Modelo;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 public class CajaAutomatica extends CajaVelocidades implements Observer{
 
 
@@ -44,7 +48,17 @@ public class CajaAutomatica extends CajaVelocidades implements Observer{
 		
 
 		}
-
+		
+	public Element serialize(){
+		Document document = DocumentHelper.createDocument();
+		Element cajaVelocidades = document.addElement("cajaAutomatica");
+		this.grabar(cajaVelocidades);
+		cajaVelocidades.addAttribute("cambioActual",Integer.toString(this.getCambioActual()));
+		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(this.getCantidadCambios()));
+		Element relacionesAux = cajaVelocidades.addElement("relaciones");
+		guardarRelaciones(relacionesAux);
+		return cajaVelocidades;
+	}
 	
 
 }
