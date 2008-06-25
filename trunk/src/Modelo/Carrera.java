@@ -25,7 +25,7 @@ public class Carrera extends Observable{
 	}
 	
 	public synchronized void correr() {
-	     			
+	    float tiempo=0; 			
 		while(!llegoAlguien()) {
 			int corredor = 0;
 			Iterator< Auto> it = autos.iterator(); 
@@ -45,15 +45,17 @@ public class Carrera extends Observable{
 				    posiciones.remove(corredor);
 				    posiciones.add(corredor, new Double(posicionAux));
 			     	System.out.println("Auto "+ corredor + " " + autoTemp.toString());
-			     	 corredor++;
+			     	System.out.println(" POS:" + posicionAux + " tiempo: " + tiempo);
+			     	corredor++;
 			    }
 				try{
-				Thread.sleep((long)intervaloTiempo/1000);
+				Thread.sleep(10);
 				}
 				catch (InterruptedException e) {				
 					e.printStackTrace();
 				}
 				notifyObservers();
+				tiempo+=intervaloTiempo;
 		}
 	}
 	
