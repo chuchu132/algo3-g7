@@ -1,5 +1,9 @@
 package Modelo;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 import Excepciones.ProblemaTecnicoException;
 import Excepciones.RuedaRotaException;
 
@@ -35,5 +39,13 @@ public class TipoRueda extends Autoparte{
 		if( getVidaUtil() < getVidaUtilMinima() ){
 			throw new RuedaRotaException();}
 	}
+	
+	   public Element serialize(){
+			Document document = DocumentHelper.createDocument();
+			Element ruedas = document.addElement("tipoRueda");
+			this.grabar(ruedas);
+			ruedas.addAttribute("coeficienteAgarre",Double.toString(this.getCoeficienteAgarre()));
+			return ruedas;
+		}
 	
 }
