@@ -9,7 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import controlador.ControladorCompra;
+import controlador.ControladorBotonCambiarAutoparte;
+import controlador.ControladorBotonCompra;
 
 import Modelo.Jugador;
 
@@ -34,13 +35,14 @@ public class VistaTaller extends JFrame{
 		panelBotones = new JPanel();
 		panelBotones.setLayout(new GridLayout(CANTIDAD_BOTONES,1));
 		botonComprar = new JButton("Comprar");
-		botonComprar.addActionListener(new ControladorCompra(propietario));
+		botonComprar.addActionListener(new ControladorBotonCompra(propietario));
 		
 		panelBotones.add(botonComprar);
 		
 		
 		botonCambiarAutoparte = new JButton("Cambiar Autoparte");
-		botonCambiarAutoparte.setMnemonic('C');
+		botonCambiarAutoparte.addActionListener(new ControladorBotonCambiarAutoparte(propietario));
+		
 		panelBotones.add(botonCambiarAutoparte);
 		
 		botonCambiarAuto = new JButton("Cambiar Auto");
@@ -63,7 +65,7 @@ public class VistaTaller extends JFrame{
 	public static void main(String[] args) {
 		Jugador ale = new Jugador();
 		VistaTaller ventana = new VistaTaller(ale);
-		 VistaCambiarAutoparte ventana2 = new VistaCambiarAutoparte(ale);
+		 
 		
 	}
 
