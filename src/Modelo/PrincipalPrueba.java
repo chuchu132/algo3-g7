@@ -15,7 +15,7 @@ public class PrincipalPrueba  implements Escenario{
 	
 	private Motor miMotor;
 	private TanqueCombustible miTanque;
-	private CajaVelocidades miCaja;
+	private CajaAutomatica miCaja;
 	private SistemaCombustion miSistemaCombustion;
 	private Carroceria miCarro;
 	private TipoRueda miRueda;
@@ -36,7 +36,7 @@ public class PrincipalPrueba  implements Escenario{
 		miSistemaCombustion = new SistemaCombustion(5,100,"Turbo",0.2,1);
 		miMotor = new Motor(200,6,0.2,1000,400,1);
 		miCarro = new Carroceria(300,700,"Torino",1,0.1,1);
-		miCaja= new CajaVelocidades(5,200,80,1);
+		miCaja= new CajaAutomatica(5,200,80,1);
 		miTanque = new TanqueCombustible(1000,70,1);
 		miRueda = new TipoRueda(100,20,0.9,1);
 		miAuto =  new Auto(miMotor,miCaja,miSistemaCombustion,miCarro,miTanque,miRueda);

@@ -12,6 +12,15 @@ public class Carrera extends Observable{
 	private double intervaloTiempo;
 	private ArrayList<Double> posiciones;
 	
+	/** El auto del jugador va siempre en la posicion 0 de los arrays
+	 * de esta forma cuando qeremos saber la pos de nuestro auto buscamos el corredor 0.
+	 * 
+	 * @param pista
+	 * @param autos
+	 * @param autoJugador
+	 * @param intervaloTiempo
+	 */
+	
 	public Carrera (Pista pista, ArrayList<Auto> autos,Auto autoJugador, double intervaloTiempo) {
 		this.pista = pista;
 		this.autos = autos;

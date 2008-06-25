@@ -37,6 +37,7 @@ public class Auto extends Observable implements Vendible{
 		this.caja = caja;
 		if(caja instanceof CajaAutomatica){
 			motor.addObserver((CajaAutomatica)this.caja);
+			
 		}
 		this.tanque = tanque;
 		caja.addObserver(this.motor);
