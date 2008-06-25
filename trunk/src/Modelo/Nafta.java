@@ -1,5 +1,9 @@
 package Modelo;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 public class Nafta implements Vendible{
 	private int octanaje;
 	private String nombre;
@@ -25,5 +29,14 @@ public class Nafta implements Vendible{
 	
 	public double getPrecio(){
 		return precio;
+	}
+	
+	public Element serialize(){
+		Document document = DocumentHelper.createDocument();
+		Element nafta = document.addElement("nafta");
+		nafta.addAttribute("octanaje",Integer.toString(this.getOctanaje()));
+		nafta.addAttribute("nombre",this.getNombre());
+		nafta.addAttribute("precio",Double.toString(this.getPrecio()));
+		return nafta;
 	}
 }
