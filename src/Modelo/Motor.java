@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -181,7 +182,8 @@ public class Motor extends Autoparte implements Observer{
     }
 	
 	public String toString(){
-		return (" Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + "RMax: " + revolucionesMax );
+		DecimalFormat porcentage = new DecimalFormat("0.00");
+		return ("Motor:  Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + "Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %" );
 	}
 
 	public void embragarSubir(){

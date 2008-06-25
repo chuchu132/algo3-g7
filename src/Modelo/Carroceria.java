@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.text.DecimalFormat;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -19,9 +21,10 @@ public class Carroceria extends Autoparte{
 		this.plusVelocidad= plus;
 		
 	}
-	  
+
 	public String toString(){
-		return ("Carroceria: " + modelo + super.toString());
+	  DecimalFormat porcentage = new DecimalFormat("0.00");
+		return ("Carroceria: " + modelo + "Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %");
 	}
 	public int getColor() {
 		return color;

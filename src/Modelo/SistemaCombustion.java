@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.text.DecimalFormat;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -27,9 +29,10 @@ public class SistemaCombustion extends Autoparte{
 	  }
    
    public String toString() {
-	   return( " Sistema de Combustion: " + tipo + " Plus de Potencia: "+ plusPotencia + super.toString());
+	   DecimalFormat porcentage = new DecimalFormat("0.00");
+	   return( " Sistema de Combustion: " + tipo + " Plus de Potencia: "+ plusPotencia +" Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %" );
 	}
-   
+  
    public double getPlus(){
 	   return plusPotencia;
    }
