@@ -1,5 +1,9 @@
 package Modelo;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
 
@@ -115,4 +119,13 @@ public class TanqueCombustible extends Autoparte{
 		 if (getPorcentajeVidaUtil()<getVidaUtilMinima()){
 			   throw new ProblemaTecnicoException();}
 	}
+	
+	 public Element serialize(){
+			Document document = DocumentHelper.createDocument();
+			Element tanqueCombustible = document.addElement("tanqueCombustible");
+			this.grabar(tanqueCombustible);
+			tanqueCombustible.addAttribute("capacidadMaxima",Double.toString(capacidadMaxima));
+			sistemaCombustion.addAttribute("plusPotencia",Double.toString(this.getPlus()));
+			return sistemaCombustion;
+		}
 }

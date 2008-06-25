@@ -1,5 +1,9 @@
 package Modelo;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
 
@@ -35,5 +39,14 @@ public class SistemaCombustion extends Autoparte{
 	   gastar(desgaste);
 	   if (getPorcentajeVidaUtil()<getVidaUtilMinima()){
 		   throw new ProblemaTecnicoException();}
+	}
+   
+   public Element serialize(){
+		Document document = DocumentHelper.createDocument();
+		Element sistemaCombustion = document.addElement("sistemaCombustion");
+		this.grabar(sistemaCombustion);
+		sistemaCombustion.addAttribute("tipo",tipo);
+		sistemaCombustion.addAttribute("plusPotencia",Double.toString(this.getPlus()));
+		return sistemaCombustion;
 	}
 }
