@@ -125,7 +125,9 @@ public class TanqueCombustible extends Autoparte{
 			Element tanqueCombustible = document.addElement("tanqueCombustible");
 			this.grabar(tanqueCombustible);
 			tanqueCombustible.addAttribute("capacidadMaxima",Double.toString(capacidadMaxima));
-			sistemaCombustion.addAttribute("plusPotencia",Double.toString(this.getPlus()));
-			return sistemaCombustion;
+			tanqueCombustible.addAttribute("cantidadCombustible",Double.toString(this.cantidadCombustible()));
+			Element nafta = tipoNafta.serialize();
+			tanqueCombustible.add(nafta);
+			return tanqueCombustible;
 		}
 }
