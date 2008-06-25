@@ -17,6 +17,7 @@ import javax.swing.ListSelectionModel;
 
 import controlador.ControladorCompraAuto;
 import controlador.ControladorCompraAutoparte;
+import controlador.ControladorCompraNafta;
 
 
 
@@ -132,13 +133,12 @@ public class VistaCompra extends JDialog {
 		listaNaftaVendedor.setFixedCellWidth(ANCHO_LISTA);
 		panelNafta.add(new JScrollPane(listaNaftaVendedor));
 		
-		botonCompraNafta = new JButton("Comprar");
-		
 		listaNaftaComprador = new JList();
 		listaNaftaComprador.setVisibleRowCount(FILAS_LISTA);
 		listaNaftaComprador.setFixedCellWidth(ANCHO_LISTA);
 		
-	
+		botonCompraNafta = new JButton("Comprar");
+		botonCompraNafta.addActionListener(new ControladorCompraNafta(listaNaftaVendedor,jugador, listaNaftaComprador));
 		
 		panelNafta.add(botonCompraNafta);
 		panelNafta.add(new JScrollPane(listaNaftaComprador));
