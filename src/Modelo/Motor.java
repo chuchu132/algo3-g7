@@ -12,7 +12,8 @@ import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
 
 public class Motor extends Autoparte implements Observer{
-	
+	public final static double COEF_BAJAR_CAMBIO = 2.5;
+	public final static double COEF_SUBIR_CAMBIO = 0.4;
 	public final static int REVOLUCIONES_MINIMAS = 800; //es static porque es comun para todos los motores
 	private final double factorDeDesgaste = 0.001;
 	
@@ -59,6 +60,10 @@ public class Motor extends Autoparte implements Observer{
 	public int getRevolucionesActuales() {
 		return revolucionesActuales;
 	}
+	
+	public void setRevolucionesActuales(int revoluciones){
+		this.revolucionesActuales = revoluciones;
+	}
 
 	public int getRevolucionesMaximas(){
 		return revolucionesMax;
@@ -91,7 +96,7 @@ public class Motor extends Autoparte implements Observer{
 	public double obtenerDeltaRevoluciones(double tiempo){
 	
 		if(relacionCaja == 0.0){
-			return 0;}
+			return tiempo * (0.75 * revolucionesMax);}
 		else{		 
 			return tiempo * ((0.75 * revolucionesMax) / (4/relacionCaja) ) ;
 		}
@@ -104,8 +109,9 @@ public class Motor extends Autoparte implements Observer{
 			revolucionesActuales += (int)deltaRevoluciones ;
 		} else {
 			revolucionesActuales = (int) (revolucionesMax); 
-			this.notifyObservers();
 		}
+		setChanged();
+		this.notifyObservers();
 
 	}
 	
@@ -113,8 +119,9 @@ public class Motor extends Autoparte implements Observer{
 		revolucionesActuales -= obtenerDeltaRevoluciones(tiempo) ;
 		if (revolucionesActuales < REVOLUCIONES_MINIMAS) {
 			revolucionesActuales = REVOLUCIONES_MINIMAS; 
-			this.notifyObservers();
-		}
+			}
+		setChanged();
+		this.notifyObservers();
 	}
 	
 	public double getFuerzaInstantanea (CajaVelocidades caja, double fuerzaRozamiento, SistemaCombustion sistemaCombustion) {
@@ -179,7 +186,7 @@ public class Motor extends Autoparte implements Observer{
 
 	public void embragarSubir(){
 		
-		revolucionesActuales = (2 * revolucionesActuales / 5);
+		revolucionesActuales = (int)( revolucionesActuales * COEF_SUBIR_CAMBIO);
 		if(revolucionesActuales < REVOLUCIONES_MINIMAS){ 
 			revolucionesActuales = REVOLUCIONES_MINIMAS;}
 	}
@@ -187,7 +194,7 @@ public class Motor extends Autoparte implements Observer{
 	public void embragarBajar(){
 		
 		if(cambioActual != 0){
-		revolucionesActuales = (5 * revolucionesActuales / 2);
+		revolucionesActuales = (int)(revolucionesActuales * COEF_BAJAR_CAMBIO);
 		if(revolucionesActuales > revolucionesMax){ 
 			revolucionesActuales = revolucionesMax;
 			this.gastar(0.05);}

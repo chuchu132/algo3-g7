@@ -19,23 +19,31 @@ public class CajaAutomatica extends CajaVelocidades implements Observer{
 	public void setCambio(int numeroCambio) {}
 
 	public void update(Observable o, Object arg) {
-		if(o instanceof Motor){
-			if( ((Motor)o).getRevolucionesActuales() > 0.75* ((Motor)o).getRevolucionesMaximas() ){
+		int revActualesMotor  = ((Motor)o).getRevolucionesActuales();
+		
+			if( revActualesMotor > (0.90* ((Motor)o).getRevolucionesMaximas() )){
 			 	if(super.getCambioActual()!= cantidadCambios){
 				super.subirCambio();
+				((Motor)o).setRevolucionesActuales((int)(revActualesMotor*Motor.COEF_SUBIR_CAMBIO));
 			 	}
 			}
 			else{
-				if(((Motor)o).getRevolucionesActuales() == Motor.REVOLUCIONES_MINIMAS){
+				if(revActualesMotor == Motor.REVOLUCIONES_MINIMAS){
 				   if(super.getCambioActual() != 0){
 					super.bajarCambio();
+					((Motor)o).setRevolucionesActuales((int)(revActualesMotor*Motor.COEF_BAJAR_CAMBIO));
 				   }
 				}
+				else{
+					if(super.getCambioActual() == 0){
+						super.subirCambio();
+					}
+				}
 			}
+		
 
 		}
 
-	}
-
+	
 
 }
