@@ -2,6 +2,10 @@ package Modelo;
 
 import java.util.Observable;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 //import Excepciones.ProblemaTecnicoException;
 
 public abstract class Autoparte extends Observable implements Vendible {
@@ -51,6 +55,14 @@ public abstract class Autoparte extends Observable implements Vendible {
 	
 	public double getPeso(){
 		return this.peso;
+	}
+	
+	public void grabar(Element autoParte){
+		autoParte.addAttribute("peso",Double.toString(this.getPeso()));
+		autoParte.addAttribute("precio",Double.toString(this.getPrecio()));
+		autoParte.addAttribute("vidaUtil",Float.toString(vidaUtil));
+		autoParte.addAttribute("vidaUtilInicial",Float.toString(vidaUtilInicial));
+		autoParte.addAttribute("vidaUtilMinima",Double.toString(this.getVidaUtilMinima()));
 	}
 	
 	//abstract public void simular(double tiempo)throws ProblemaTecnicoException;

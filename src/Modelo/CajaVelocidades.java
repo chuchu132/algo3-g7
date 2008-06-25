@@ -1,6 +1,12 @@
 package Modelo;
 
 import Excepciones.ProblemaTecnicoException;
+import org.dom4j.Element;
+import org.dom4j.Document;
+
+import org.dom4j.*;
+import org.dom4j.io.*;
+
 
 public class CajaVelocidades extends Autoparte{
 	private int cambioActual;
@@ -62,8 +68,20 @@ public class CajaVelocidades extends Autoparte{
 			   throw new ProblemaTecnicoException();}
 	}
 
+	public Element serialize(){
+		Document document = DocumentHelper.createDocument();
+		Element cajaVelocidades = document.addElement("cajaVelocidades");
+		this.grabar(cajaVelocidades);
+		cajaVelocidades.addAttribute("cambioActual",Integer.toString(this.getCambioActual()));
+		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(cantidadCambios));
+		Element relacionesAux = cajaVelocidades.addElement("relaciones");
+		for (double doble : this.relaciones) {
+			relacionesAux.addAttribute("double",Double.toString(doble));
+		}
+		return cajaVelocidades;
+	}
 	
-	
+		
 }
 
 
