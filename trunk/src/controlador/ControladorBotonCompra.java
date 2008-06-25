@@ -7,11 +7,11 @@ import vista.VistaCompra;
 
 import Modelo.Jugador;
 
-public class ControladorCompra implements ActionListener{
+public class ControladorBotonCompra implements ActionListener{
 
 	private Jugador jugador;
 	
-	public ControladorCompra(Jugador jugador) {
+	public ControladorBotonCompra(Jugador jugador) {
 		this.jugador = jugador;
 		}
 	
