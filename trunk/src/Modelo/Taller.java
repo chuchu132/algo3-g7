@@ -2,6 +2,10 @@ package Modelo;
 
 import java.util.ArrayList;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;;
 public class Taller {
@@ -115,4 +119,36 @@ public class Taller {
 	public Auto getAutoActual(){
 		return autoActual;
 	}
+	
+	public Element serialize(){
+		Document document = DocumentHelper.createDocument();
+		Element taller = document.addElement("taller");
+		Element autos = taller.addElement("autos");
+		for (Auto auto : this.misAutos) {
+			autos.add(auto.serialize());
+		}
+		
+		Element autoPartes = taller.addElement("autopartes");
+		for (Autoparte autoparte : this.misAutopartes){
+			if (autoparte instanceof CajaAutomatica)
+				autoPartes.add(((CajaAutomatica) autoparte).serialize());
+			if (autoparte instanceof CajaVelocidades)
+				autoPartes.add(((CajaVelocidades) autoparte).serialize());
+			if (autoparte instanceof Carroceria)
+				autoPartes.add(((Carroceria) autoparte).serialize());
+			if (autoparte instanceof Motor)
+				autoPartes.add(((Motor) autoparte).serialize());
+			if (autoparte instanceof SistemaCombustion)
+				autoPartes.add(((SistemaCombustion) autoparte).serialize());
+			if (autoparte instanceof TanqueCombustible)
+				autoPartes.add(((TanqueCombustible) autoparte).serialize());
+			if (autoparte instanceof TipoRueda)
+				autoPartes.add(((TipoRueda) autoparte).serialize());
+		}
+		
+		taller.add(this.getAutoActual().serialize());
+		
+		return taller;
+	}
+	
 }
