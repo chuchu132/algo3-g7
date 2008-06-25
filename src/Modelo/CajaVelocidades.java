@@ -55,7 +55,10 @@ public class CajaVelocidades extends Autoparte{
 	public void setCambio(int numeroCambio) {
 		cambioActual = numeroCambio;		
 	}
-
+    
+	public int getCantidadCambios(){
+		return cantidadCambios;
+	}
 	
 	// el desgaste es proporcional al tiempo
 	
