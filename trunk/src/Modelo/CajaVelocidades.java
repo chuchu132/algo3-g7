@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.text.DecimalFormat;
+
 import Excepciones.ProblemaTecnicoException;
 import org.dom4j.Element;
 import org.dom4j.Document;
@@ -26,7 +28,11 @@ public class CajaVelocidades extends Autoparte{
 			relaciones[i] = ((double)(cantidadCambios+1-i)/cantidadCambios );} 
 	}
 
-		
+	public String toString(){
+		DecimalFormat porcentage = new DecimalFormat("0.00");
+		return ("Caja " + cantidadCambios + " Velocidades." + " Vida Util: " + porcentage.format(super.getPorcentajeVidaUtil()) + " %.");
+	}
+	
 	public void subirCambio () {
 		if(cambioActual < cantidadCambios){
 			cambioActual++;

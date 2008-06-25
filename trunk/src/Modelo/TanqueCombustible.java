@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.text.DecimalFormat;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -101,8 +103,9 @@ public class TanqueCombustible extends Autoparte{
 		return cantidadCombustible == 0.0;
 	}
 
-	public String toString(){
-		return (" Capacidad Maxima: " + capacidadMaxima + " Cantidad de Combustible: " + cantidadCombustible() );
+	public String toString(){ 
+		DecimalFormat porcentage = new DecimalFormat("0.00");
+		return ("Tanque Combustible de " + capacidadMaxima + "L " + "Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %" );
 		
 	}
 	

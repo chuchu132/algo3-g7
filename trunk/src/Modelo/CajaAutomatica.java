@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,7 +18,11 @@ public class CajaAutomatica extends CajaVelocidades implements Observer{
         
 
 	}
-
+	public String toString(){
+		DecimalFormat porcentage = new DecimalFormat("0.00");
+		return ("Caja Automatica. " + "Vida Util: " + porcentage.format(this.getPorcentajeVidaUtil())+ "%" );
+	}
+	
 	public void subirCambio(){} 
 	public void bajarCambio(){}
 	public void setCambio(int numeroCambio) {}

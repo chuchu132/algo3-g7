@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.text.DecimalFormat;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -39,6 +41,11 @@ public class TipoRueda extends Autoparte{
 		if( getVidaUtil() < getVidaUtilMinima() ){
 			throw new RuedaRotaException();}
 	}
+	
+	public String toString(){
+		  DecimalFormat porcentage = new DecimalFormat("0.00");
+			return ("Ruedas: Coficiente de Agarre: " + porcentage.format(getCoeficienteAgarre())  + " Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %");
+		}
 	
 	   public Element serialize(){
 			Document document = DocumentHelper.createDocument();
