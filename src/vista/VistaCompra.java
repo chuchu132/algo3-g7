@@ -69,7 +69,7 @@ public class VistaCompra extends JDialog {
 		listaAutosVendedor = new JList(getListaDe(Vendedor.AUTOS));
 		listaAutosVendedor.setVisibleRowCount(FILAS_LISTA);
 		listaAutosVendedor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaAutosVendedor.setVisibleRowCount(FILAS_LISTA);
+	
 		listaAutosVendedor.setFixedCellWidth(ANCHO_LISTA);
 		panelAutos.add(new JScrollPane(listaAutosVendedor));
 		
@@ -100,7 +100,7 @@ public class VistaCompra extends JDialog {
 		listaAutoparteVendedor = new JList(getListaDe(Vendedor.AUTOPARTES));
 		listaAutoparteVendedor.setVisibleRowCount(FILAS_LISTA);
 		listaAutoparteVendedor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaAutoparteVendedor.setVisibleRowCount(FILAS_LISTA);
+		
 		listaAutoparteVendedor.setFixedCellWidth(ANCHO_LISTA);
 		panelAutopartes.add(new JScrollPane(listaAutoparteVendedor));
 		
@@ -129,7 +129,7 @@ public class VistaCompra extends JDialog {
 		listaNaftaVendedor = new JList(getListaDe(Vendedor.NAFTAS));
 		listaNaftaVendedor.setVisibleRowCount(FILAS_LISTA);
 		listaNaftaVendedor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaNaftaVendedor.setVisibleRowCount(FILAS_LISTA);
+		
 		listaNaftaVendedor.setFixedCellWidth(ANCHO_LISTA);
 		panelNafta.add(new JScrollPane(listaNaftaVendedor));
 		
