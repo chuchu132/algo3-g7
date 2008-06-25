@@ -20,7 +20,7 @@ public class CajaAutomatica extends CajaVelocidades implements Observer{
 
 	public void update(Observable o, Object arg) {
 		if(o instanceof Motor){
-			if( ((Motor)o).getRevolucionesActuales() == ((Motor)o).getRevolucionesMaximas() ){
+			if( ((Motor)o).getRevolucionesActuales() > 0.75* ((Motor)o).getRevolucionesMaximas() ){
 			 	if(super.getCambioActual()!= cantidadCambios){
 				super.subirCambio();
 			 	}
