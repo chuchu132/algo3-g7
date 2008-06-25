@@ -63,6 +63,7 @@ public class VistaTaller extends JFrame{
 	public static void main(String[] args) {
 		Jugador ale = new Jugador();
 		VistaTaller ventana = new VistaTaller(ale);
+		 VistaCambiarAutoparte ventana2 = new VistaCambiarAutoparte(ale);
 		
 	}
 
