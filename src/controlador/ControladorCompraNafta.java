@@ -25,15 +25,18 @@ public class ControladorCompraNafta implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		String valorTemp;
 		try {
-			valorTemp=JOptionPane.showInputDialog(null,"Cantidad de litros:","Comprar Nafta",JOptionPane.QUESTION_MESSAGE);
 			int item = listaNaftasVendedor.getSelectedIndex();
+			if( item>=0){
+			valorTemp=JOptionPane.showInputDialog(null,"Cantidad de litros:","Comprar Nafta",JOptionPane.QUESTION_MESSAGE);
 			
-			if(valorTemp!= null && item>=0){
+			
+			if(valorTemp!= null){
 		
 			jugador.setLitrosParaCargar(Double.parseDouble(valorTemp));
 			jugador.comprarProducto(Vendedor.AUTOPARTES, listaNaftasVendedor.getSelectedIndex());
 			listaNaftasComprador.setListData(listaNaftasVendedor.getSelectedValues());
 			} 
+		}
 		}
 		catch (NoAlcanzaDineroException e) {
 			
