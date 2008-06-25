@@ -71,9 +71,9 @@ public class CajaVelocidades extends Autoparte{
 			   throw new ProblemaTecnicoException();}
 	}
 	
-	public void guardarRelaciones(Element relaciones){
+	public void guardarRelaciones(Element relacionesAux){
 		for (double doble : this.relaciones) {
-			relaciones.addAttribute("double",Double.toString(doble));
+			relacionesAux.addAttribute("double",Double.toString(doble));
 		}
 	}
 	public Element serialize(){

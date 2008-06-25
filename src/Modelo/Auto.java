@@ -5,6 +5,9 @@ import java.util.Observable;
 import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 
 public class Auto extends Observable implements Vendible{
 
@@ -254,4 +257,25 @@ public class Auto extends Observable implements Vendible{
 	public int getCambioActual(){
 		return caja.getCambioActual();
 	}
+	
+	public Element serialize(){
+		Document document = DocumentHelper.createDocument();
+		Element auto = document.addElement("auto");
+		auto.add(this.motor.serialize());
+		if (caja instanceof CajaAutomatica)
+			auto.add(((CajaAutomatica) this.caja).serialize());
+		else auto.add(this.caja.serialize());
+		auto.add(this.sistemaCombustion.serialize());
+		auto.add(this.carroceria.serialize());
+		auto.add(this.tanque.serialize());
+		auto.add(this.rueda.serialize());
+		auto.addAttribute("estado",Integer.toString(this.getEstado()));
+		auto.addAttribute("deltaAvance",Double.toString(this.getDeltaAvance()));
+		auto.addAttribute("velocidad",Double.toString(this.getVelocidad()));
+		auto.addAttribute("aceleracion",Double.toString(this.getAceleracion()));
+		return auto;
+		
+	}
+		
+	
 }

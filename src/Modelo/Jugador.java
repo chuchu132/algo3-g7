@@ -3,6 +3,10 @@ package Modelo;
 
 import java.util.ArrayList;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
 import Excepciones.NoAlcanzaDineroException;
 import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;
@@ -88,5 +92,15 @@ public class Jugador {
 	   Vendedor vendedor = new Vendedor();
 	   return vendedor.getListaDeProductosDe(tipoProducto);
 	   
-   }		
+   }	
+   
+   public Element serialize(){
+	   Document document = DocumentHelper.createDocument();
+	   Element jugador = document.addElement("jugador");
+	   jugador.add(this.getTaller().serialize());
+	   jugador.addAttribute("miPlata",Long.toString(this.miPlata));
+	   jugador.addAttribute("litrosParaCargar",Double.toString(this.getLitrosParaCargar()));
+	   return jugador;
+	   
+   }
 }
