@@ -25,10 +25,9 @@ public class VistaTaller extends JFrame{
 	private JButton botonCambiarAutoparte;
 	private JButton botonComprar;
 	private JPanel panelBotones;
-	private Jugador propietario;
+	
 	
 	public VistaTaller (Jugador propietario) {
-		this.propietario = propietario;
 		
 		setTitle("TALLER");
 		Container panel = getContentPane();

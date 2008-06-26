@@ -25,12 +25,12 @@ public class ControladorCambiarAutoparte  extends Observable  implements ActionL
 
 	
 	public void actionPerformed(ActionEvent e) {
-		ArrayList<Autoparte> lista = jugador.getTaller().getListaDeMisAutopartes();
+		
 		int item = listaAutopartes.getSelectedIndex();
 		
 		if(item >=0 ){
 		   try{
-			jugador.getTaller().cambiarParte(lista.get(item));
+			jugador.getTaller().cambiarParte(item);
 			setChanged();
 			notifyObservers();
 		   }
