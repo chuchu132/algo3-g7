@@ -103,7 +103,6 @@ public class Jugador {
 	   Element jugador = document.addElement("jugador");
 	   jugador.add(this.getTaller().serialize());
 	   jugador.addAttribute("miPlata",Long.toString(this.miPlata));
-	   jugador.addAttribute("litrosParaCargar",Double.toString(this.getLitrosParaCargar()));
 	   return jugador;
 	   
    }

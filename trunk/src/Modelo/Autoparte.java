@@ -62,7 +62,6 @@ public abstract class Autoparte extends Observable implements Vendible {
 		autoParte.addAttribute("precio",Double.toString(this.getPrecio()));
 		autoParte.addAttribute("vidaUtil",Float.toString(vidaUtil));
 		autoParte.addAttribute("vidaUtilInicial",Float.toString(vidaUtilInicial));
-		autoParte.addAttribute("vidaUtilMinima",Double.toString(this.getVidaUtilMinima()));
 	}
 	
 	//abstract public void simular(double tiempo)throws ProblemaTecnicoException;

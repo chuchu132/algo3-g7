@@ -269,10 +269,6 @@ public class Auto extends Observable implements Vendible{
 		auto.add(this.carroceria.serialize());
 		auto.add(this.tanque.serialize());
 		auto.add(this.rueda.serialize());
-		auto.addAttribute("estado",Integer.toString(this.getEstado()));
-		auto.addAttribute("deltaAvance",Double.toString(this.getDeltaAvance()));
-		auto.addAttribute("velocidad",Double.toString(this.getVelocidad()));
-		auto.addAttribute("aceleracion",Double.toString(this.getAceleracion()));
 		return auto;
 		
 	}
