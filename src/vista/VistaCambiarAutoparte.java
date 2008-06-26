@@ -75,11 +75,10 @@ public class VistaCambiarAutoparte extends JDialog implements Observer{
 		return listaNombreAutoparte;
 	}
 
-	private JPanel crearPanel(){
-		
-	}
+	
 	
 	public void update(Observable o, Object arg) {
-		listaAutopartes = new JList(getListaAutopartes());		
+		listaAutopartes = new JList(getListaAutopartes());	
+		this.repaint();
 	}
 }
