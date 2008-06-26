@@ -11,7 +11,7 @@ import Excepciones.NoAlcanzaDineroException;
 import Modelo.Jugador;
 import Modelo.Vendedor;
 
-public class ControladorCompraAuto extends Observable implements ActionListener {
+public class ControladorCompraAuto implements ActionListener {
 
 	private Jugador jugador;
 	private JList listaAutosVendedor;
@@ -31,8 +31,7 @@ public class ControladorCompraAuto extends Observable implements ActionListener 
 		  if(item>=0){
 			jugador.comprarProducto(Vendedor.AUTOS, item);
 			listaAutosComprador.setListData(listaAutosVendedor.getSelectedValues());
-			setChanged();
-			notifyObservers();
+			
 	     	}
 		} catch (NoAlcanzaDineroException e) {
 			

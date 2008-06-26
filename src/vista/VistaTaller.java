@@ -34,15 +34,14 @@ public class VistaTaller extends JFrame{
 		Container panel = getContentPane();
 		panelBotones = new JPanel();
 		panelBotones.setLayout(new GridLayout(CANTIDAD_BOTONES,1));
+		
 		botonComprar = new JButton("Comprar");
 		botonComprar.addActionListener(new ControladorBotonCompra(propietario));
-		
 		panelBotones.add(botonComprar);
 		
 		
 		botonCambiarAutoparte = new JButton("Cambiar Autoparte");
 		botonCambiarAutoparte.addActionListener(new ControladorBotonCambiarAutoparte(propietario));
-		
 		panelBotones.add(botonCambiarAutoparte);
 		
 		botonCambiarAuto = new JButton("Cambiar Auto");

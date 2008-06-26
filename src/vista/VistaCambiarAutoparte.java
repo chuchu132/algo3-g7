@@ -15,6 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import sun.awt.geom.AreaOp.AddOp;
+
+import controlador.ControladorBotonCambiarAutoparte;
+import controlador.ControladorCambiarAutoparte;
+
 import Modelo.Autoparte;
 import Modelo.Jugador;
 
@@ -44,6 +49,8 @@ public class VistaCambiarAutoparte extends JDialog implements Observer{
 		panel.add(new JScrollPane(listaAutopartes));
 		
 		botonCambiar =  new JButton("Cambiar");
+		botonCambiar.addActionListener(new ControladorCambiarAutoparte(jugador,listaAutopartes,this));
+		
 		panel.add(botonCambiar);
 	    
 		contenedor.add(panel);

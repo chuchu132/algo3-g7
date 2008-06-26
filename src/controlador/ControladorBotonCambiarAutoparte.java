@@ -12,6 +12,7 @@ public class ControladorBotonCambiarAutoparte implements ActionListener {
   
 	 public ControladorBotonCambiarAutoparte(Jugador jugador){
 		 this.jugador = jugador;
+		 
 	 }
 
 	public void actionPerformed(ActionEvent arg0) {
