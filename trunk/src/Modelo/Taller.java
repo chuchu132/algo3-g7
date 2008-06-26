@@ -23,8 +23,12 @@ public class Taller {
 	public void agregarAuto(Auto newAuto) throws NotAutoException{
 		if (newAuto instanceof Auto)
 			misAutos.add(newAuto);
-		else
+		else{
 			throw new NotAutoException();
+			}
+		if(autoActual == null){
+			autoActual=newAuto;
+		}
 	}
 		
 	public void elegirAuto(int auto){
