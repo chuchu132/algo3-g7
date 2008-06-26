@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import controlador.ControladorBotonCambiarAutoparte;
 import controlador.ControladorBotonCompra;
 
+import Modelo.Auto;
 import Modelo.Jugador;
 
 public class VistaTaller extends JFrame{
@@ -21,7 +22,7 @@ public class VistaTaller extends JFrame{
 	
 	private JButton botonCarrera;
 	private JButton botonVerPista;
-	private JButton botonCambiarAuto;
+	private JButton botonElegirAuto;
 	private JButton botonCambiarAutoparte;
 	private JButton botonComprar;
 	private JPanel panelBotones;
@@ -43,15 +44,15 @@ public class VistaTaller extends JFrame{
 		botonCambiarAutoparte.addActionListener(new ControladorBotonCambiarAutoparte(propietario));
 		panelBotones.add(botonCambiarAutoparte);
 		
-		botonCambiarAuto = new JButton("Cambiar Auto");
-		panelBotones.add(botonCambiarAuto);
+		botonElegirAuto = new JButton("Elegir Auto");
+		panelBotones.add(botonElegirAuto);
 		
 		botonVerPista = new JButton("Ver Pista");
 		panelBotones.add(botonVerPista);
 		
 		botonCarrera = new JButton(" Correr");
 		panelBotones.add(botonCarrera);
-		
+
 		panel.add(panelBotones,BorderLayout.WEST);
 		
 			setBounds(0, 0, ANCHO_VENTANA,ALTO_VENTANA);
@@ -60,6 +61,8 @@ public class VistaTaller extends JFrame{
 		
 	}
 
+		
+	
 	public static void main(String[] args) {
 		Jugador ale = new Jugador();
 		VistaTaller ventana = new VistaTaller(ale);
