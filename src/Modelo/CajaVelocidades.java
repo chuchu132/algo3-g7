@@ -30,7 +30,7 @@ public class CajaVelocidades extends Autoparte{
 
 	public String toString(){
 		DecimalFormat porcentage = new DecimalFormat("0.00");
-		return ("Caja " + cantidadCambios + " Velocidades." + " Vida Util: " + porcentage.format(super.getPorcentajeVidaUtil()) + " %.");
+		return ("Caja " + cantidadCambios + " Velocidades." + " Vida Util: " + porcentage.format(100*super.getPorcentajeVidaUtil()) + " %.");
 	}
 	
 	public void subirCambio () {

@@ -24,7 +24,7 @@ public class Carroceria extends Autoparte{
 
 	public String toString(){
 	  DecimalFormat porcentage = new DecimalFormat("0.00");
-		return ("Carroceria: " + modelo + "Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %");
+		return ("Carroceria: " + modelo + " Vida Util: " + porcentage.format(100*getPorcentajeVidaUtil())+ " %");
 	}
 	public int getColor() {
 		return color;

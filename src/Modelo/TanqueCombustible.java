@@ -107,7 +107,7 @@ public class TanqueCombustible extends Autoparte{
 
 	public String toString(){ 
 		DecimalFormat porcentage = new DecimalFormat("0.00");
-		return ("Tanque Combustible de " + capacidadMaxima + "L " + "Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %" );
+		return ("Tanque Combustible de " + capacidadMaxima + " L " + " Vida Util: " + porcentage.format(100*getPorcentajeVidaUtil())+ " %" );
 		
 	}
 	

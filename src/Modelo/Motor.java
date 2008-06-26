@@ -183,7 +183,7 @@ public class Motor extends Autoparte implements Observer{
 	
 	public String toString(){
 		DecimalFormat porcentage = new DecimalFormat("0.00");
-		return ("Motor:  Potencia: " + HP + " Cilindrada: " + (cilindros * cubicaje) + "Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %" );
+		return ("Motor:  Potencia: " + HP + "HP Cilindrada: " + (cilindros * cubicaje) + "L Vida Util: " + porcentage.format(100*getPorcentajeVidaUtil())+ " %" );
 	}
 
 	public void embragarSubir(){

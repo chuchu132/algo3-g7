@@ -30,7 +30,7 @@ public class SistemaCombustion extends Autoparte{
    
    public String toString() {
 	   DecimalFormat porcentage = new DecimalFormat("0.00");
-	   return( " Sistema de Combustion: " + tipo + " Plus de Potencia: "+ plusPotencia +" Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %" );
+	   return( " Sist. de Combustion: " + tipo + " Plus de Potencia: "+ plusPotencia +" Vida Util: " + porcentage.format(100*getPorcentajeVidaUtil())+ " %" );
 	}
   
    public double getPlus(){

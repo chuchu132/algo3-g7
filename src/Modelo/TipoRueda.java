@@ -44,7 +44,7 @@ public class TipoRueda extends Autoparte{
 	
 	public String toString(){
 		  DecimalFormat porcentage = new DecimalFormat("0.00");
-			return ("Ruedas: Coficiente de Agarre: " + porcentage.format(getCoeficienteAgarre())  + " Vida Util: " + porcentage.format(getPorcentajeVidaUtil())+ " %");
+			return ("Ruedas: Coficiente de Agarre: " + porcentage.format(getCoeficienteAgarre())  + " Vida Util: " + porcentage.format(100*getPorcentajeVidaUtil())+ " %");
 		}
 	
 	   public Element serialize(){
