@@ -88,6 +88,10 @@ public class Jugador {
 		return miTaller;
 	}
 	
+	public long getPlata() {
+		return miPlata;
+	}
+	
    public ArrayList<Producto> solicitarListaDe(int tipoProducto){
 	   Vendedor vendedor = new Vendedor();
 	   return vendedor.getListaDeProductosDe(tipoProducto);

@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controlador.ControladorBotonCambiarAutoparte;
@@ -26,12 +27,19 @@ public class VistaTaller extends JFrame{
 	private JButton botonCambiarAutoparte;
 	private JButton botonComprar;
 	private JPanel panelBotones;
+	private JLabel labelDinero;
+	private JPanel panelDerecho;
 	
 	
 	public VistaTaller (Jugador propietario) {
 		
+		/* titulo ventana */
 		setTitle("TALLER");
+		
+		/* contenedor de la ventana general */
 		Container panel = getContentPane();
+		
+		/* Botonera izquierda */
 		panelBotones = new JPanel();
 		panelBotones.setLayout(new GridLayout(CANTIDAD_BOTONES,1));
 		
@@ -50,11 +58,22 @@ public class VistaTaller extends JFrame{
 		botonVerPista = new JButton("Ver Pista");
 		panelBotones.add(botonVerPista);
 		
-		botonCarrera = new JButton(" Correr");
+		botonCarrera = new JButton("Correr");
 		panelBotones.add(botonCarrera);
 
-		panel.add(panelBotones,BorderLayout.WEST);
+		/* panel derecho */
+		panelDerecho = new JPanel();
+		panelDerecho.setLayout(new GridLayout(5,1));
 		
+		labelDinero = new JLabel();
+		labelDinero.setText("PLATA: " + propietario.getPlata() + "Algo$     ");
+		panelDerecho.add(labelDinero);
+		
+		/* ubicacion de los paneles */
+		panel.add(panelBotones,BorderLayout.WEST);
+		panel.add(panelDerecho, BorderLayout.EAST);
+		
+		/* seteos generales ed la ventana */
 			setBounds(0, 0, ANCHO_VENTANA,ALTO_VENTANA);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
