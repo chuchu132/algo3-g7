@@ -40,23 +40,8 @@ public class Taller {
 			}
 	}
 	
-	public void elegirAutoparte (int parte){
-		try{
-			Autoparte p;
-			p = misAutopartes.get(parte);
-			try {
-				cambiarParte(p);
-			}
-			catch (NotAutoparteException e){
-				// completar...
-			}
-		}
-		catch (IndexOutOfBoundsException e){
-			
-		}
-	}
+		
 	
-	/* HAY Q VERIFICAR SI autoAcutual == null */
 	public void cargarNaftaAlAutoActual(double litros,Nafta nafta){
 		autoActual.cargarCombustible(litros, nafta);
 	}
@@ -73,9 +58,12 @@ public class Taller {
 		else throw new NotAutoparteException();
 	}
 	
-	public void cambiarParte(Autoparte parte)throws NotAutoparteException{
-		
+	public void cambiarParte(int indice)throws NotAutoparteException{
+		Autoparte parte;
 		Autoparte unaParte;
+		try{
+		 parte = misAutopartes.remove(indice);
+				
 		
 		if (parte instanceof CajaVelocidades){
 			unaParte = autoActual.cambiarCaja((CajaVelocidades)parte);
@@ -100,14 +88,11 @@ public class Taller {
 		}
 		else throw new NotAutoparteException();
 		
-		try {
+		
 			agregarAutoparte(unaParte);
 		}
-		catch (NotAutoparteException e){
-			
-			parte = null;
-			
-		}
+		catch (IndexOutOfBoundsException e) {}
+		
 				
 	}
 	
