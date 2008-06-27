@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import controlador.ControladorBotonCambiarAutoparte;
 import controlador.ControladorBotonCompra;
@@ -66,7 +67,9 @@ public class VistaTaller extends JFrame{
 		panelDerecho.setLayout(new GridLayout(5,1));
 		
 		labelDinero = new JLabel();
-		labelDinero.setText("PLATA: " + propietario.getPlata() + "Algo$     ");
+		labelDinero.setText("Algo$  " + propietario.getPlata()+ "  ");
+		labelDinero.setHorizontalAlignment(SwingConstants.RIGHT);
+		labelDinero.setVerticalAlignment(SwingConstants.TOP);
 		panelDerecho.add(labelDinero);
 		
 		/* ubicacion de los paneles */
