@@ -38,8 +38,7 @@ public class ControladorAuto implements KeyListener{
 	
 	public void keyTyped(KeyEvent e) {
 		switch (e.getKeyCode()) {
-		//case KeyEvent.VK_RIGHT : auto.subirCambio(); break;
-		//case KeyEvent.VK_LEFT : auto.bajarCambio(); break;
+		
 		}
 	}
 	
