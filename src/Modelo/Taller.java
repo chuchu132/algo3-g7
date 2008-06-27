@@ -39,7 +39,6 @@ public class Taller {
 			autoActual = null;
 			}
 	}
-	
 		
 	
 	public void cargarNaftaAlAutoActual(double litros,Nafta nafta){
