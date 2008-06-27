@@ -2,8 +2,10 @@ package vista;
 
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,6 +16,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+
+import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
 
 import sun.awt.geom.AreaOp.AddOp;
 
@@ -33,32 +37,21 @@ public class VistaCambiarAutoparte extends JDialog implements Observer{
 	private final int ANCHO_LISTA = 400;
 	private Jugador jugador;
 	private JList listaAutopartes;
-
-	public VistaCambiarAutoparte(Jugador jugador) {
+    private JPanel panel;
+	
+    public VistaCambiarAutoparte(Jugador jugador) {
 		this.jugador = jugador;
 		Container contenedor = getContentPane();
-		JPanel panel = new JPanel();
-		JButton botonCambiar;
-				
-		listaAutopartes = new JList(getListaAutopartes());
-		listaAutopartes.setVisibleRowCount(FILAS_LISTA);
-		listaAutopartes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaAutopartes.setFixedCellWidth(ANCHO_LISTA);
 		
-		panel.setLayout(new FlowLayout());
-		panel.add(new JScrollPane(listaAutopartes));
 		
-		botonCambiar =  new JButton("Cambiar");
-		botonCambiar.addActionListener(new ControladorCambiarAutoparte(jugador,listaAutopartes,this));
-		
-		panel.add(botonCambiar);
+		panel = crearPanel();
 	    
 		contenedor.add(panel);
 	    
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    setModal(true);
 		setSize(ANCHO_VENTANA, ALTO_VENTANA);
-		setResizable(true);
+		setResizable(false);
 	    setVisible(true);
 	}
 	
@@ -78,7 +71,30 @@ public class VistaCambiarAutoparte extends JDialog implements Observer{
 	
 	
 	public void update(Observable o, Object arg) {
-		listaAutopartes = new JList(getListaAutopartes());	
+		this.getContentPane().removeAll();
+		this.getContentPane().add(crearPanel());		
 		this.repaint();
+		this.show();
 	}
+	
+   private JPanel crearPanel(){
+	   JList listaAutopartes;
+	   JButton botonCambiar;
+	   JPanel panel = new JPanel();
+	   
+		listaAutopartes = new JList(getListaAutopartes());
+		listaAutopartes.setVisibleRowCount(FILAS_LISTA);
+		listaAutopartes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaAutopartes.setFixedCellWidth(ANCHO_LISTA);
+		
+		panel.setLayout(new FlowLayout());
+		panel.add(new JScrollPane(listaAutopartes));
+		
+		botonCambiar =  new JButton("Cambiar");
+		botonCambiar.addActionListener(new ControladorCambiarAutoparte(jugador,listaAutopartes,this));
+		
+		panel.add(botonCambiar);
+	  
+	   return panel;
+   }
 }
