@@ -48,8 +48,7 @@ public class VistaCompra extends JDialog {
 		
 		contenedor.add(panelDePaneles,BorderLayout.CENTER);
 		
-	
-		setTitle("COMPRA");
+	    setTitle("COMPRA");
 		setModal(true);
 		setSize(ANCHO_VENTANA, ALTO_VENTANA);
 		setResizable(true);

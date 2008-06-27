@@ -49,7 +49,7 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
         	   Graphics2D g = (Graphics2D) h;
        		g.setPaint(Color.white);
        		g.setFont(new Font("Arial",Font.BOLD,18));
-       		g.drawString("Velocidad " + Math.round(auto.getVelocidad()) ,Escenario.WIDTH - 150, 22);
+       		g.drawString("Velocidad " + Math.round(auto.getVelocidad()*3.6)+ " Km/h" ,Escenario.WIDTH - 180, 22);
        		
            }
            
@@ -57,7 +57,7 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
         	   Graphics2D g = (Graphics2D) h;
           		g.setPaint(Color.white);
           		g.setFont(new Font("Arial",Font.BOLD,18));
-          		g.drawString("Cambio Actual " + auto.getCambioActual(),Escenario.WIDTH - 150,  44);
+          		g.drawString("Cambio Actual " + auto.getCambioActual(),Escenario.WIDTH - 180,  44);
            }
            
            private void mostrarEstado(Graphics h){

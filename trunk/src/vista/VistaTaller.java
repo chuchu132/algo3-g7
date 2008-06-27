@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import controlador.ControladorBotonCambiarAutoparte;
 import controlador.ControladorBotonCompra;
 
-import Modelo.Auto;
+
 import Modelo.Jugador;
 
 public class VistaTaller extends JFrame{
@@ -77,6 +77,7 @@ public class VistaTaller extends JFrame{
 			setBounds(0, 0, ANCHO_VENTANA,ALTO_VENTANA);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		
 	}
 
