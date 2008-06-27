@@ -51,7 +51,7 @@ public class VistaCompra extends JDialog {
 	    setTitle("COMPRA");
 		setModal(true);
 		setSize(ANCHO_VENTANA, ALTO_VENTANA);
-		setResizable(true);
+		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			
