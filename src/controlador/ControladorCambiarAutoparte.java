@@ -34,7 +34,9 @@ public class ControladorCambiarAutoparte  extends Observable  implements ActionL
 			setChanged();
 			notifyObservers();
 		   }
-		   catch (NotAutoparteException ex){}
+		   catch (NotAutoparteException ex){
+			   ex.printStackTrace();
+		   }
 		}
 		
 		
