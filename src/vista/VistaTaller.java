@@ -78,6 +78,7 @@ public class VistaTaller extends JFrame implements Observer{
 		
 		imagenAuto = new JLabel();
 		panelDerecho.add(imagenAuto,BorderLayout.CENTER);
+		panelDerecho.setBackground(Color.WHITE);
 		setImagenAuto();		
 		/* ubicacion de los paneles */
 		panel.add(panelBotones,BorderLayout.WEST);
