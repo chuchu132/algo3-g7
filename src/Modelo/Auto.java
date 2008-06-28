@@ -139,7 +139,8 @@ public class Auto extends Observable implements Vendible{
 	}
 
 	public String toString(){
-		return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Avance " + deltaAvance + "cambio " + caja.getCambioActual() + "rev act " +  motor.getRevolucionesActuales());
+		//return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Avance " + deltaAvance + "cambio " + caja.getCambioActual() + "rev act " +  motor.getRevolucionesActuales());
+		return "Auto: " + carroceria.getModelo() + ". Vida Útil: " + getPorcentageVidaUtilGeneral() + "%"; 
 	}
 
 	public Motor cambiarMotor(Motor otroMotor){
