@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 //import controlador.ControladorBotonCambiarAuto;
 import controlador.ControladorBotonCambiarAutoparte;
 import controlador.ControladorBotonCompra;
+import controlador.ControladorBotonElegirAuto;
 
 
 import Modelo.Jugador;
@@ -66,7 +67,7 @@ public class VistaTaller extends JFrame{
 		panelBotones.add(botonCambiarAutoparte);
 		
 		botonElegirAuto = new JButton("Elegir Auto");
-	//	botonElegirAuto.addActionListener(new ControladorBotonCambiarAuto(propietario));
+		botonElegirAuto.addActionListener(new ControladorBotonElegirAuto(propietario));
 		panelBotones.add(botonElegirAuto);
 		
 		botonVerPista = new JButton("Ver Pista");

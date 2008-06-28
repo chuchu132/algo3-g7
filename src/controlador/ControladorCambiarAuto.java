@@ -7,9 +7,6 @@ import java.util.Observable;
 import javax.swing.JList;
 
 import vista.VistaCambiarAuto;
-import vista.VistaCambiarAutoparte;
-import Excepciones.NoExisteAutoException;
-import Excepciones.NotAutoparteException;
 import Modelo.Jugador;
 
 public class ControladorCambiarAuto extends Observable implements ActionListener {
@@ -20,7 +17,7 @@ public class ControladorCambiarAuto extends Observable implements ActionListener
 	public ControladorCambiarAuto(Jugador jugador,JList listaAutoprates,VistaCambiarAuto vista) {
 		this.jugador = jugador;
 		this.listaAutopartes = listaAutoprates;
-		this.addObserver(vista);
+
 	}
 
 	
