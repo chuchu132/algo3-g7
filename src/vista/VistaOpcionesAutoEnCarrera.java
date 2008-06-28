@@ -2,27 +2,39 @@ package vista;
 
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 public class VistaOpcionesAutoEnCarrera extends JDialog {
 	
-	private final int ANCHO = 350;
-	private final int ALTO = 100;
+	private final int ANCHO = 150;
+	private final int ALTO = 250;
 	private VistaAutoEnPista vistaAuto;
 	private ControladorOpcionesCarrera controlador;
-	JCheckBox velocidad,estado,combustible,cambioActual;
+	private JCheckBox velocidad,estado,combustible,cambioActual;
+	private JButton botonAceptar;
 	
 	public VistaOpcionesAutoEnCarrera(VistaAutoEnPista vistaAutoEnPista) {
 	
 	 vistaAuto = vistaAutoEnPista;
 	 Container contenedor = getContentPane();
-	 contenedor.setLayout(new  FlowLayout());
+	 contenedor.setLayout(new  GridLayout(5,1));
 	 
+	 botonAceptar = new JButton("Aceptar");
+	 botonAceptar.addActionListener( new ActionListener(){
+
+			public void actionPerformed(ActionEvent arg0) {
+					cerrarVentana();
+			}
+	 });
 	 velocidad = new JCheckBox("Velocidad",vistaAuto.isVelocidad());
 	 contenedor.add(velocidad);
 	 estado = new JCheckBox("Estado",vistaAuto.isEstado());
@@ -31,6 +43,9 @@ public class VistaOpcionesAutoEnCarrera extends JDialog {
 	 contenedor.add(combustible);
 	 cambioActual = new JCheckBox("Cambio Actual",vistaAuto.isCambioActual());
 	 contenedor.add(cambioActual);
+	 
+	 contenedor.add(botonAceptar);
+	 
 	 controlador = new ControladorOpcionesCarrera();
 	 
 	 velocidad.addItemListener(controlador);
@@ -39,11 +54,16 @@ public class VistaOpcionesAutoEnCarrera extends JDialog {
 	 cambioActual.addItemListener(controlador);
 	 setModal(true);
 	 setSize(ANCHO,ALTO);
-	 setVisible(true);
 	 setResizable(false);
-	 setTitle("OPCIONES DE CARRERA");
+	 setTitle("DATOS");
 	 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	 setLocation(Escenario.WIDTH,0);
+	 setLocation(0,0);
+	 setVisible(true);
+	}
+	
+	private void cerrarVentana() {
+		this.dispose();
+		
 	}
 	
 	private class ControladorOpcionesCarrera implements ItemListener{

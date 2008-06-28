@@ -1,21 +1,30 @@
 package vista;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Event;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.net.ssl.SSLEngineResult.Status;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.WindowConstants;
 
 import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
 
@@ -42,7 +51,7 @@ public class VistaCambiarAutoparte extends JDialog implements Observer{
     public VistaCambiarAutoparte(Jugador jugador) {
 		this.jugador = jugador;
 		Container contenedor = getContentPane();
-		
+		setTitle("CAMBIAR AUTOPARTE");
 		
 		panel = crearPanel();
 	    
@@ -52,6 +61,7 @@ public class VistaCambiarAutoparte extends JDialog implements Observer{
 	    setModal(true);
 		setSize(ANCHO_VENTANA, ALTO_VENTANA);
 		setResizable(false);
+		
 	    setVisible(true);
 	}
 	
@@ -76,24 +86,43 @@ public class VistaCambiarAutoparte extends JDialog implements Observer{
 		this.repaint();
 		this.show();
 	}
+   private void cerrarVentana(){
+	   this.dispose();
+   }	
 	
    private JPanel crearPanel(){
 	   JList listaAutopartes;
-	   JButton botonCambiar;
+	   JButton botonCambiar,botonSalir;
 	   JPanel panel = new JPanel();
-	   
-		listaAutopartes = new JList(getListaAutopartes());
+	   JPanel panelBotones = new JPanel();
+	   JLabel etiqueta = new JLabel("Seleccione una Autoparte: ");
+		
+	    listaAutopartes = new JList(getListaAutopartes());
 		listaAutopartes.setVisibleRowCount(FILAS_LISTA);
 		listaAutopartes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaAutopartes.setFixedCellWidth(ANCHO_LISTA);
 		
-		panel.setLayout(new FlowLayout());
-		panel.add(new JScrollPane(listaAutopartes));
+		panel.setLayout(new BorderLayout());
+		panelBotones.setLayout(new FlowLayout());
+		
+		panel.add(etiqueta,BorderLayout.NORTH);
+		panel.add(new JScrollPane(listaAutopartes),BorderLayout.CENTER);
 		
 		botonCambiar =  new JButton("Cambiar");
 		botonCambiar.addActionListener(new ControladorCambiarAutoparte(jugador,listaAutopartes,this));
 		
-		panel.add(botonCambiar);
+		botonSalir = new JButton("Salir");
+		botonSalir.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent e) {
+							 cerrarVentana();
+			}
+			
+		});
+		
+		panelBotones.add(botonCambiar);
+		panelBotones.add(botonSalir);
+		
+		panel.add(panelBotones, BorderLayout.SOUTH);
 	  
 	   return panel;
    }
