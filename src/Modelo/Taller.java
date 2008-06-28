@@ -92,7 +92,9 @@ public class Taller {
 			agregarAutoparte(unaParte);
 		}
 		catch (IndexOutOfBoundsException e) {}
-		
+		catch (NullPointerException e2){
+			  throw new NoExisteAutoException();
+		}
 				
 	}
 	
