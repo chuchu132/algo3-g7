@@ -59,7 +59,7 @@ public class Taller {
 	}
 	
 	public void cambiarParte(int indice)throws NotAutoparteException,NoExisteAutoException{
-		Autoparte parte;
+		Autoparte parte = null;
 		Autoparte unaParte;
 		try{
 		 parte = misAutopartes.remove(indice);
@@ -93,6 +93,7 @@ public class Taller {
 		}
 		catch (IndexOutOfBoundsException e) {}
 		catch (NullPointerException e2){
+			misAutopartes.add(indice, parte);
 			  throw new NoExisteAutoException();
 		}
 				

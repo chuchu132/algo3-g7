@@ -1,15 +1,21 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,23 +31,29 @@ import Modelo.Jugador;
 import Modelo.Producto;
 import Modelo.Vendedor;
 
-public class VistaCompra extends JDialog {
-	private final int CANTIDAD_PANELES = 3;
+public class VistaCompra extends JDialog implements Observer {
+	private final int CANTIDAD_PANELES = 4;
 	private final int FILAS_LISTA = 5;
 	private final int ALTO_VENTANA = 480;
 	private final int ANCHO_VENTANA = 640;
 	
 	private final int ANCHO_LISTA = 200;
 	private Jugador jugador;
-		 
+	private JLabel labelDinero;
+	
 	public VistaCompra(Jugador jugador){
 		this.jugador = jugador;
 		Container contenedor = getContentPane();
 		JPanel panelDePaneles = new JPanel();
+		
+		labelDinero = new JLabel();
+		
 		panelDePaneles.setLayout(new GridLayout(CANTIDAD_PANELES,1));
 		
-		//opciones ventana principal.
 		
+		//opciones ventana principal.
+		setLabelPlata(labelDinero);
+		panelDePaneles.add(labelDinero);
 		panelDePaneles.add(panelAutos());
 		panelDePaneles.add(panelAutopartes());
 		panelDePaneles.add(panelNafta());
@@ -64,6 +76,8 @@ public class VistaCompra extends JDialog {
 		JButton botonCompraAuto;
 		JPanel panelAutos = new JPanel();
 		panelAutos.setLayout(new FlowLayout());
+		
+		jugador.addObserver(this);
 		
 		listaAutosVendedor = new JList(getListaDe(Vendedor.AUTOS));
 		listaAutosVendedor.setVisibleRowCount(FILAS_LISTA);
@@ -145,6 +159,15 @@ public class VistaCompra extends JDialog {
 		return panelNafta;
 	}
 	
+	private void  setLabelPlata(JLabel etiquetaDinero){
+	
+		DecimalFormat formatoPlata = new DecimalFormat("0.00");
+		etiquetaDinero.setText("Algo$ " + formatoPlata.format(jugador.getPlata()));
+		etiquetaDinero.setFont(new Font("Monospaced",Font.BOLD,30));
+		etiquetaDinero.setVerticalAlignment(JLabel.CENTER);
+		etiquetaDinero.setHorizontalAlignment(JLabel.CENTER);
+				
+	}
 	
 private String[] getListaDe(int tipoProducto){
 	ArrayList<Producto> listaTemp = jugador.solicitarListaDe(tipoProducto);
@@ -157,6 +180,14 @@ private String[] getListaDe(int tipoProducto){
 		i++;
 	}
 	return listaNombreProducto;
+}
+
+
+
+public void update(Observable o, Object arg) {
+	setLabelPlata(this.labelDinero);
+	repaint();
+	show();
 }
 	
 }
