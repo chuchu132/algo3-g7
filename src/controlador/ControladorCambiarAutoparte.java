@@ -33,6 +33,7 @@ public class ControladorCambiarAutoparte  extends Observable  implements ActionL
 		if(item >=0 ){
 		   try{
 			jugador.getTaller().cambiarParte(item);
+			System.out.println("error");
 			setChanged();
 			notifyObservers();
 		   }

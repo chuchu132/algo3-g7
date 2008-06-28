@@ -56,7 +56,7 @@ public class VistaTaller extends JFrame{
 		panelBotones.add(botonCambiarAutoparte);
 		
 		botonElegirAuto = new JButton("Elegir Auto");
-		botonElegirAuto.addActionListener(new ControladorBotonCambiarAuto(propietario));
+	//	botonElegirAuto.addActionListener(new ControladorBotonCambiarAuto(propietario));
 		panelBotones.add(botonElegirAuto);
 		
 		botonVerPista = new JButton("Ver Pista");
