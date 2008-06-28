@@ -2,15 +2,27 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+
+import controlador.ControladorCambiarAuto;
+import controlador.ControladorCambiarAutoparte;
 
 import Modelo.Auto;
 import Modelo.Jugador;
@@ -18,7 +30,7 @@ import Modelo.Producto;
 import Modelo.Taller;
 import Modelo.Vendedor;
 
-public class VistaCambiarAuto extends JFrame{
+public class VistaCambiarAuto extends JDialog implements Observer{
 	
 	private final int ANCHO_VENTANA = 640;
 	private final int ALTO_VENTANA = 480;
@@ -26,7 +38,8 @@ public class VistaCambiarAuto extends JFrame{
 	private final int ANCHO_LISTA = 200;
 	
 	private Jugador jugador;
-	private JList listaAutos;
+	//private JList listaAutos;
+	private JPanel panel;
 	
 	
 	public VistaCambiarAuto(Jugador jugador) {
@@ -36,24 +49,63 @@ public class VistaCambiarAuto extends JFrame{
 		setTitle("Cambio de Auto");
 		
 		/* contenedor de la ventana general y seteo*/
-		Container panel = getContentPane();
-		panel.setLayout(new GridLayout(1,2));
+		Container contenedor = getContentPane();
+		panel = crearPanel();
+	    
+		contenedor.add(panel);
+		
+		/* seteos generales ed la ventana */
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	    setModal(true);
+		setSize(ANCHO_VENTANA, ALTO_VENTANA);
+		setResizable(false);
+		
+	    setVisible(true);
+				
+		
+		
+
+	}
+
+	private JPanel crearPanel(){
+		
+		JList listaAutos;
+		JButton botonCambiar,botonSalir;
+		JPanel panel = new JPanel();
+		JPanel panelBotones = new JPanel();
+		JLabel etiqueta = new JLabel("Seleccione un Auto: ");
 		
 		/* Lista */
 		listaAutos = new JList(getListaDeAutos());
 		listaAutos.setVisibleRowCount(FILAS_LISTA);
 		listaAutos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaAutos.setFixedCellWidth(ANCHO_LISTA);
-		panel.add(new JScrollPane(listaAutos), BorderLayout.CENTER);
 		
+		panel.setLayout(new BorderLayout());
+		panelBotones.setLayout(new FlowLayout());
 		
-		/* seteos generales ed la ventana */
-		setBounds(0, 0, ANCHO_VENTANA,ALTO_VENTANA);
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
+		panel.add(etiqueta,BorderLayout.NORTH);
+		panel.add(new JScrollPane(listaAutos),BorderLayout.CENTER);
+		
+		botonCambiar =  new JButton("Cambiar");
+		botonCambiar.addActionListener(new ControladorCambiarAuto(jugador,listaAutos,this));
+		
+		botonSalir = new JButton("Salir");
+		botonSalir.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent e) {
+							 cerrarVentana();
+			}
+			
+		});
+		
+		panelBotones.add(botonCambiar);
+		panelBotones.add(botonSalir);
+		
+		panel.add(panelBotones, BorderLayout.SOUTH);
+	  
+	   return panel;
 	}
-
+	
 	private String[] getListaDeAutos(){
 		Taller taller = jugador.getTaller();
 		
@@ -78,7 +130,15 @@ public class VistaCambiarAuto extends JFrame{
 	 
 	}
 	
-	
+	   private void cerrarVentana(){
+		   this.dispose();
+	   }
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 }
