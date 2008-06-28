@@ -57,9 +57,7 @@ public class VistaCambiarAuto extends JDialog {
 		
 	    setVisible(true);
 				
-		
-		
-
+	
 	}
 
 		
