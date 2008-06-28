@@ -81,7 +81,7 @@ public class VistaTaller extends JFrame implements Observer{
 		setImagenAuto();		
 		/* ubicacion de los paneles */
 		panel.add(panelBotones,BorderLayout.WEST);
-		panel.add(panelDerecho, BorderLayout.EAST);
+		panel.add(panelDerecho, BorderLayout.CENTER);
 		
 		/* seteos generales ed la ventana */
 			setBounds(0, 0, ANCHO_VENTANA,ALTO_VENTANA);
@@ -93,10 +93,10 @@ public class VistaTaller extends JFrame implements Observer{
 	
 	public void setImagenAuto(){
 		SpriteCache cargadorImagen = new SpriteCache();
-		Icon imagen;
+		ImageIcon imagen;
 		try{
 		String ruta = propietario.getTaller().getAutoActual().getModelo();
-		imagen = new ImageIcon((Image) cargadorImagen.getSprite(ruta + "/fondo.jpg"));
+		imagen = new ImageIcon(cargadorImagen.getSprite(ruta + "/fondo.jpg"));
 		imagenAuto.setIcon(imagen);
 		}
 		catch( NullPointerException e){

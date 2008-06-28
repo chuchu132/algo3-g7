@@ -38,9 +38,6 @@ public class ControladorCompraAuto implements ActionListener {
 			
 			JOptionPane.showMessageDialog(null, "NO ALCANZA EL DINERO", "Compra Cancelada", JOptionPane.ERROR_MESSAGE);
 		}
-		catch(NoExisteAutoException e2){
-			JOptionPane.showMessageDialog(null,"Ud. no posee un auto.", "Error", JOptionPane.WARNING_MESSAGE);}
-		
 	}
 
 }

@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
+
 import controlador.ControladorCompraAuto;
 import controlador.ControladorCompraAutoparte;
 import controlador.ControladorCompraNafta;
@@ -32,7 +34,7 @@ import Modelo.Producto;
 import Modelo.Vendedor;
 
 public class VistaCompra extends JDialog implements Observer {
-	private final int CANTIDAD_PANELES = 4;
+	private final int CANTIDAD_PANELES = 3;
 	private final int FILAS_LISTA = 5;
 	private final int ALTO_VENTANA = 480;
 	private final int ANCHO_VENTANA = 640;
@@ -45,21 +47,27 @@ public class VistaCompra extends JDialog implements Observer {
 		this.jugador = jugador;
 		Container contenedor = getContentPane();
 		JPanel panelDePaneles = new JPanel();
+		JPanel panelSuperior = new JPanel();
+		JPanel panelInferior = new JPanel();
 		
 		jugador.addObserver(this);
 		labelDinero = new JLabel();
 		
-		panelDePaneles.setLayout(new GridLayout(CANTIDAD_PANELES,1));
-		
+		panelDePaneles.setLayout(new BorderLayout());
+		panelSuperior.setLayout(new BorderLayout());
+		panelInferior.setLayout(new GridLayout(CANTIDAD_PANELES,1));
 		
 		//opciones ventana principal.
 		setLabelPlata(labelDinero);
-		panelDePaneles.add(labelDinero);
-		panelDePaneles.add(panelAutos());
-		panelDePaneles.add(panelAutopartes());
-		panelDePaneles.add(panelNafta());
+		panelSuperior.add(labelDinero,BorderLayout.CENTER);
+		panelInferior.add(panelAutos());
+		panelInferior.add(panelAutopartes());
+		panelInferior.add(panelNafta());
 		
-		contenedor.add(panelDePaneles,BorderLayout.CENTER);
+		panelDePaneles.add(panelSuperior,BorderLayout.NORTH);
+		panelDePaneles.add(panelInferior,BorderLayout.CENTER);
+		
+		contenedor.add(panelDePaneles);
 		
 	    setTitle("COMPRA");
 		setModal(true);
@@ -76,7 +84,15 @@ public class VistaCompra extends JDialog implements Observer {
 		JList listaAutosComprador;
 		JButton botonCompraAuto;
 		JPanel panelAutos = new JPanel();
-		panelAutos.setLayout(new FlowLayout());
+		JPanel panelAutosSuperior = new JPanel();
+		JPanel panelAutosInferior = new JPanel();
+		JLabel etiqueta = new JLabel("  Seleccione un Auto: ");
+		
+		panelAutos.setLayout(new BorderLayout());
+		panelAutosInferior.setLayout(new FlowLayout());
+		panelAutosSuperior.setLayout(new BorderLayout());
+		
+		panelAutosSuperior.add(etiqueta,BorderLayout.WEST);
 		
 		
 		listaAutosVendedor = new JList(getListaDe(Vendedor.AUTOS));
@@ -84,7 +100,7 @@ public class VistaCompra extends JDialog implements Observer {
 		listaAutosVendedor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	
 		listaAutosVendedor.setFixedCellWidth(ANCHO_LISTA);
-		panelAutos.add(new JScrollPane(listaAutosVendedor));
+		panelAutosInferior.add(new JScrollPane(listaAutosVendedor));
 		
 		listaAutosComprador = new JList();
 		listaAutosComprador.setVisibleRowCount(FILAS_LISTA);
@@ -94,11 +110,12 @@ public class VistaCompra extends JDialog implements Observer {
 		botonCompraAuto = new JButton("Comprar");
 		botonCompraAuto.addActionListener(new ControladorCompraAuto(listaAutosVendedor,jugador, listaAutosComprador));
 		
+		panelAutosInferior.add(botonCompraAuto);
+		panelAutosInferior.add(new JScrollPane(listaAutosComprador));
 		
+		panelAutos.add(panelAutosSuperior,BorderLayout.NORTH);
+		panelAutos.add(panelAutosInferior,BorderLayout.SOUTH);
 		
-		panelAutos.add(botonCompraAuto);
-		panelAutos.add(new JScrollPane(listaAutosComprador));
-		 
 		return panelAutos;
 		
 	}
@@ -107,15 +124,22 @@ public class VistaCompra extends JDialog implements Observer {
 		 JList listaAutoparteVendedor;
 		 JList listaAutoparteComprador;
 		 JButton botonCompraAutoparte;
-		JPanel panelAutopartes = new JPanel();
-		panelAutopartes.setLayout(new FlowLayout());
+		 JPanel panelAutopartes = new JPanel();
+		 JPanel panelAutopartesSuperior = new JPanel();
+		 JPanel panelAutopartesInferior = new JPanel();
+		 JLabel etiqueta = new JLabel("  Seleccione una Autoparte: ");
+		
+		panelAutopartes.setLayout(new BorderLayout());
+		panelAutopartesSuperior.setLayout(new BorderLayout());
+		panelAutopartesSuperior.add(etiqueta,BorderLayout.WEST);
+		panelAutopartesInferior.setLayout(new FlowLayout());
 				
 		listaAutoparteVendedor = new JList(getListaDe(Vendedor.AUTOPARTES));
 		listaAutoparteVendedor.setVisibleRowCount(FILAS_LISTA);
 		listaAutoparteVendedor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		listaAutoparteVendedor.setFixedCellWidth(ANCHO_LISTA);
-		panelAutopartes.add(new JScrollPane(listaAutoparteVendedor));
+		
 		
 		
 		listaAutoparteComprador = new JList();
@@ -125,9 +149,11 @@ public class VistaCompra extends JDialog implements Observer {
 		botonCompraAutoparte = new JButton("Comprar");
 		botonCompraAutoparte.addActionListener(new ControladorCompraAutoparte(listaAutoparteVendedor,jugador, listaAutoparteComprador));
 		
-		
-		panelAutopartes.add(botonCompraAutoparte);
-		panelAutopartes.add(new JScrollPane(listaAutoparteComprador));
+		panelAutopartesInferior.add(new JScrollPane(listaAutoparteVendedor));
+		panelAutopartesInferior.add(botonCompraAutoparte);
+		panelAutopartesInferior.add(new JScrollPane(listaAutoparteComprador));
+		panelAutopartes.add(panelAutopartesSuperior,BorderLayout.NORTH);
+		panelAutopartes.add(panelAutopartesInferior,BorderLayout.SOUTH);
 		
 		return panelAutopartes;
 	}
@@ -137,14 +163,22 @@ public class VistaCompra extends JDialog implements Observer {
 		JList listaNaftaComprador;
 		JButton botonCompraNafta;
 		JPanel panelNafta = new JPanel();
-		panelNafta.setLayout(new FlowLayout());
-				
+		JPanel panelNaftaSuperior = new JPanel();
+		JPanel panelnaftaInferior = new JPanel();
+		JLabel etiqueta = new JLabel("  Seleccione un Tipo de Nafta: ");
+		
+		panelNafta.setLayout(new BorderLayout());
+		panelNaftaSuperior.setLayout(new BorderLayout());
+		panelNaftaSuperior.add(etiqueta,BorderLayout.WEST);
+		
+		panelnaftaInferior.setLayout(new FlowLayout());
+		
 		listaNaftaVendedor = new JList(getListaDe(Vendedor.NAFTAS));
 		listaNaftaVendedor.setVisibleRowCount(FILAS_LISTA);
 		listaNaftaVendedor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		listaNaftaVendedor.setFixedCellWidth(ANCHO_LISTA);
-		panelNafta.add(new JScrollPane(listaNaftaVendedor));
+		panelnaftaInferior.add(new JScrollPane(listaNaftaVendedor));
 		
 		listaNaftaComprador = new JList();
 		listaNaftaComprador.setVisibleRowCount(FILAS_LISTA);
@@ -153,8 +187,11 @@ public class VistaCompra extends JDialog implements Observer {
 		botonCompraNafta = new JButton("Comprar");
 		botonCompraNafta.addActionListener(new ControladorCompraNafta(listaNaftaVendedor,jugador, listaNaftaComprador));
 		
-		panelNafta.add(botonCompraNafta);
-		panelNafta.add(new JScrollPane(listaNaftaComprador));
+		panelnaftaInferior.add(botonCompraNafta);
+		panelnaftaInferior.add(new JScrollPane(listaNaftaComprador));
+		
+		panelNafta.add(panelNaftaSuperior,BorderLayout.NORTH);
+		panelNafta.add(panelnaftaInferior,BorderLayout.SOUTH);
 		
 		return panelNafta;
 	}

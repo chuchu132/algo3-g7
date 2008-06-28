@@ -46,16 +46,15 @@ public class Vendedor {
 		if (tipoProducto == NAFTAS) 
 			precioProducto *= unJugador.getLitrosParaCargar();
 		
-		
-			unJugador.restarDinero(precioProducto);
-		
-		
 		try {
+			unJugador.restarDinero(precioProducto);
+				
 			vAux = fabricaDe[tipoProducto].crearProductoNumero(numero);
 		} catch (ProductoInexistenteException e) {
-			e.printStackTrace();
+			 unJugador.sumarDinero(precioProducto);
 		}
-		return vAux; //acá llega solo cuando el try funco?? sino va al catch?
+		
+		return vAux; 
 		
 	}
 	
