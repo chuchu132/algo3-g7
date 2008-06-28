@@ -33,16 +33,13 @@ public class Taller extends Observable{
 		}
 	}
 		
-	public void elegirAuto(int auto) throws NoExisteAutoException{
+	public void elegirAuto(int auto){
 		try{
 			autoActual = misAutos.get(auto);
 		}
 		catch (IndexOutOfBoundsException e){
 			autoActual = null;
 			}
-		if(autoActual == null){
-			throw new NoExisteAutoException();
-		}
 	}
 		
 	

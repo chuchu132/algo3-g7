@@ -15,15 +15,14 @@ import Excepciones.NotAutoparteException;
 import Modelo.Autoparte;
 import Modelo.Jugador;
 
-public class ControladorCambiarAutoparte  implements ActionListener {
-	private Jugador jugador;
-	private JList listaAutopartes;
-	private VistaCambiarAutoparte vista;
+public class ControladorCambiarAutoparte  extends Observable  implements ActionListener {
+	Jugador jugador;
+	JList listaAutopartes;
 	
 	public ControladorCambiarAutoparte(Jugador jugador,JList listaAutoprates,VistaCambiarAutoparte vista) {
 		this.jugador = jugador;
 		this.listaAutopartes = listaAutoprates;
-		this.vista=vista;
+		this.addObserver(vista);
 	}
 
 	
@@ -34,7 +33,9 @@ public class ControladorCambiarAutoparte  implements ActionListener {
 		if(item >=0 ){
 		   try{
 			jugador.getTaller().cambiarParte(item);
-			vista.resetearLista();			
+			System.out.println("error");
+			setChanged();
+			notifyObservers();
 		   }
 		   catch (NotAutoparteException ex){
 			   ex.printStackTrace();
