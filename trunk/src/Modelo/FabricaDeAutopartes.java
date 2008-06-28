@@ -146,10 +146,10 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	}
 	
 	/* Características CarroceríaTipo2 */
-	private final String nombreCarroceriaTipo2 = "Porche Cayman S";
+	private final String nombreCarroceriaTipo2 = "Porsche Cayman S";
 	private final double precioCarroceriaTipo2 = 8000;
 	private final double pesoCarroceriaTipo2 = 2500;
-	private final String modeloCarroceriaTipo2 = "Porche Cayman S";
+	private final String modeloCarroceriaTipo2 = "Porsche Cayman S";
 	private final int colorCarroceriaTipo2 = verde;
 	private final double plusCarroceriaTipo2 = 0.13;
 	private final long vidaUtilCarroceriaTipo2 = 12000;

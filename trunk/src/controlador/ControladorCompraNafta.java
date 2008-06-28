@@ -23,7 +23,7 @@ public class ControladorCompraNafta implements ActionListener{
 		}
 	
 	
-	public void actionPerformed(ActionEvent arg0) {
+/*	public void actionPerformed(ActionEvent arg0) {
 		String valorTemp;
 		try {
 			int item = listaNaftasVendedor.getSelectedIndex();
@@ -34,12 +34,11 @@ public class ControladorCompraNafta implements ActionListener{
 			if(valorTemp!= null){
 		
 			jugador.setLitrosParaCargar(Double.parseDouble(valorTemp));
+				
 			try {
 				jugador.comprarProducto(Vendedor.NAFTAS, listaNaftasVendedor.getSelectedIndex());
 			} catch (NoExisteAutoException e) {
-				JOptionPane.showMessageDialog(null, "El valor ingresado no es un numero.","ERROR DE FORMATO", JOptionPane.ERROR_MESSAGE);
-				actionPerformed(arg0);
-				
+				JOptionPane.showMessageDialog(null,"Ud. no posee un auto.", "Error", JOptionPane.WARNING_MESSAGE);
 			}
 			listaNaftasComprador.setListData(listaNaftasVendedor.getSelectedValues());
 			} 
@@ -53,5 +52,39 @@ public class ControladorCompraNafta implements ActionListener{
 			
 	}
 
+	//
+	
+}*/
+
+public void actionPerformed(ActionEvent arg0) {
+	String valorTemp;
+	if(jugador.getTaller().getAutoActual() != null){
+			int item = listaNaftasVendedor.getSelectedIndex();
+			if( item>=0){
+				valorTemp=JOptionPane.showInputDialog(null,"Cantidad de litros:","Comprar Nafta",JOptionPane.QUESTION_MESSAGE);
+			
+			
+				if(valorTemp!= null){
+					try{
+						jugador.setLitrosParaCargar(Double.parseDouble(valorTemp));
+						jugador.comprarProducto(Vendedor.NAFTAS, listaNaftasVendedor.getSelectedIndex());
+						listaNaftasComprador.setListData(listaNaftasVendedor.getSelectedValues());
+					} 
+					catch (NoAlcanzaDineroException e) {
+						JOptionPane.showMessageDialog(null, "NO ALCANZA EL DINERO", "Compra Cancelada", JOptionPane.ERROR_MESSAGE);
+						}
+					catch (NumberFormatException e2){
+						JOptionPane.showMessageDialog(null, "El valor ingresado no es un numero.","ERROR DE FORMATO", JOptionPane.ERROR_MESSAGE);
+						actionPerformed(arg0);} 
+				}
+		 }
+	}
+	else {
+		JOptionPane.showMessageDialog(null,"Ud. no posee un auto.", "Error", JOptionPane.WARNING_MESSAGE);
+	}
+}
+
 
 }
+
+

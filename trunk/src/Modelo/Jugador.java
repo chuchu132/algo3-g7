@@ -49,7 +49,7 @@ public class Jugador extends Observable{
 		this.litrosParaCargar = litrosParaCargar;
 	}
 
-	public void  comprarProducto (int tipoProducto, int numero) throws NoAlcanzaDineroException, NoExisteAutoException {
+	public void  comprarProducto (int tipoProducto, int numero) throws NoAlcanzaDineroException{
 		Vendedor miVendedor = new Vendedor();
 		Vendible vAux;
 		
@@ -83,13 +83,20 @@ public class Jugador extends Observable{
 	public void restarDinero(double precio) throws NoAlcanzaDineroException {
 		if(miPlata - precio >= 0){
 			miPlata -= precio;
-		   setChanged();
-	       notifyObservers();
+			setChanged();
+		       notifyObservers();
 	       }
 		else
 			throw new NoAlcanzaDineroException();
 	}
 	
+	public void sumarDinero(double dinero){
+	 if(dinero>=0.0){	
+		miPlata += dinero;
+		setChanged();
+	    notifyObservers();
+	 }
+	}
 	
 	public Taller getTaller(){
 		return miTaller;
