@@ -22,7 +22,7 @@ public class ControladorCambiarAutoparte  extends Observable  implements ActionL
 	public ControladorCambiarAutoparte(Jugador jugador,JList listaAutoprates,VistaCambiarAutoparte vista) {
 		this.jugador = jugador;
 		this.listaAutopartes = listaAutoprates;
-		this.addObserver(vista);
+	
 	}
 
 	

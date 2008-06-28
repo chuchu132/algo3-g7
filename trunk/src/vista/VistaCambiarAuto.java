@@ -144,16 +144,5 @@ public class VistaCambiarAuto extends JDialog {
 		   
 	   }
 	
-	
-	public static void main(String[] args) {
-		Jugador ale = new Jugador();
-		VistaCambiarAuto ventana = new VistaCambiarAuto(ale);
-	 
-	}
-	
-	  
-
-	
-
-	
+			
 }
