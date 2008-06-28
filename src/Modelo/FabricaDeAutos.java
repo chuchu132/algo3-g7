@@ -82,7 +82,7 @@ public class FabricaDeAutos extends FabricaDeProductosVendibles {
 		Motor motorAutoTipo2 =  fabrica.crearMotorTipo3();
 		CajaVelocidades cajaAutoTipo2 = fabrica.crearCajaTipo1();
 		SistemaCombustion sistamaCombustionAutoTipo2 = fabrica.crearSistemaTipo3();
-		Carroceria carroceriaAutoTipo2 = fabrica.crearCarroceriaTipo1();
+		Carroceria carroceriaAutoTipo2 = fabrica.crearCarroceriaTipo2();
 		TanqueCombustible tanqueAutoTipo2 = fabrica.crearTanqueTipo3();
 		TipoRueda tipoRuedaAutoTipo2 = fabrica.crearTipoRuedaTipo2();
 		
