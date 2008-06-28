@@ -130,10 +130,10 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	/*=================== CARROCERIAS ==========================*/
 	private final String parteCarroceria = "Carroceria";
 	/* Características CarroceríaTipo1 */
-	private final String nombreCarroceriaTipo1 = "Carroceria 1";
+	private final String nombreCarroceriaTipo1 = "Ferrari F430";
 	private final double precioCarroceriaTipo1 = 6000;
 	private final double pesoCarroceriaTipo1 = 3000;
-	private final String modeloCarroceriaTipo1 = "Tipo 1";
+	private final String modeloCarroceriaTipo1 = "Ferrari F430";
 	private final int colorCarroceriaTipo1 = rojo;
 	private final double plusCarroceriaTipo1 = 0.1;
 	private final long vidaUtilCarroceriaTipo1 = 10000;
@@ -146,10 +146,10 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	}
 	
 	/* Características CarroceríaTipo2 */
-	private final String nombreCarroceriaTipo2 = "Carroceria 2";
+	private final String nombreCarroceriaTipo2 = "Porche Cayman S";
 	private final double precioCarroceriaTipo2 = 8000;
 	private final double pesoCarroceriaTipo2 = 2500;
-	private final String modeloCarroceriaTipo2 = "Tipo 2";
+	private final String modeloCarroceriaTipo2 = "Porche Cayman S";
 	private final int colorCarroceriaTipo2 = verde;
 	private final double plusCarroceriaTipo2 = 0.13;
 	private final long vidaUtilCarroceriaTipo2 = 12000;
@@ -162,10 +162,10 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	}
 	
 	/* Características CarroceríaTipo3 */
-	private final String nombreCarroceriaTipo3 = "Carroceria 3";
+	private final String nombreCarroceriaTipo3 = "Lamborghini Gallardo";
 	private final double precioCarroceriaTipo3 = 5000;
 	private final double pesoCarroceriaTipo3 = 3200;
-	private final String modeloCarroceriaTipo3 = "Tipo 3";
+	private final String modeloCarroceriaTipo3 = "Lamborghini Gallardo";
 	private final int colorCarroceriaTipo3 = blanco;
 	private final double plusCarroceriaTipo3 = 0.09;
 	private final long vidaUtilCarroceriaTipo3 = 9500;

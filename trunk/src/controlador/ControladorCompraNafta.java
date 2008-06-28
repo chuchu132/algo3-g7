@@ -7,6 +7,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import Excepciones.NoAlcanzaDineroException;
+import Excepciones.NoExisteAutoException;
 import Modelo.Jugador;
 import Modelo.Vendedor;
 
@@ -33,20 +34,23 @@ public class ControladorCompraNafta implements ActionListener{
 			if(valorTemp!= null){
 		
 			jugador.setLitrosParaCargar(Double.parseDouble(valorTemp));
-			jugador.comprarProducto(Vendedor.NAFTAS, listaNaftasVendedor.getSelectedIndex());
+			try {
+				jugador.comprarProducto(Vendedor.NAFTAS, listaNaftasVendedor.getSelectedIndex());
+			} catch (NoExisteAutoException e) {
+				JOptionPane.showMessageDialog(null, "El valor ingresado no es un numero.","ERROR DE FORMATO", JOptionPane.ERROR_MESSAGE);
+				actionPerformed(arg0);
+				
+			}
 			listaNaftasComprador.setListData(listaNaftasVendedor.getSelectedValues());
 			} 
-		}
+		 }
 		}
 		catch (NoAlcanzaDineroException e) {
 			
 			JOptionPane.showMessageDialog(null, "NO ALCANZA EL DINERO", "Compra Cancelada", JOptionPane.ERROR_MESSAGE);
 		}
-		catch (NumberFormatException eN){
-			JOptionPane.showMessageDialog(null, "El valor ingresado no es un numero.","ERROR DE FORMATO", JOptionPane.ERROR_MESSAGE);
-			actionPerformed(arg0);
-		}
-	
+			
+			
 	}
 
 
