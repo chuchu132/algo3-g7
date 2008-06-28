@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
-import controlador.ControladorCambiarAuto;
+//import controlador.ControladorCambiarAuto;
 import controlador.ControladorCambiarAutoparte;
 
 import Modelo.Auto;
@@ -88,7 +88,7 @@ public class VistaCambiarAuto extends JDialog implements Observer{
 		panel.add(new JScrollPane(listaAutos),BorderLayout.CENTER);
 		
 		botonCambiar =  new JButton("Cambiar");
-		botonCambiar.addActionListener(new ControladorCambiarAuto(jugador,listaAutos,this));
+		//botonCambiar.addActionListener(new ControladorCambiarAuto(jugador,listaAutos,this));
 		
 		botonSalir = new JButton("Salir");
 		botonSalir.addActionListener(new ActionListener(){

@@ -33,7 +33,7 @@ public class ControladorCompraNafta implements ActionListener{
 			if(valorTemp!= null){
 		
 			jugador.setLitrosParaCargar(Double.parseDouble(valorTemp));
-			jugador.comprarProducto(Vendedor.AUTOPARTES, listaNaftasVendedor.getSelectedIndex());
+			jugador.comprarProducto(Vendedor.NAFTAS, listaNaftasVendedor.getSelectedIndex());
 			listaNaftasComprador.setListData(listaNaftasVendedor.getSelectedValues());
 			} 
 		}

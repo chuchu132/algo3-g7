@@ -2,6 +2,7 @@ package Modelo;
 
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -14,7 +15,7 @@ import Excepciones.NotAutoparteException;
 
 //import java.util.ArrayList;
 
-public class Jugador {
+public class Jugador extends Observable{
 	
 	//constantes
 	private final long plataInicial = 100000;
@@ -70,6 +71,8 @@ public class Jugador {
 			miTaller.cargarNaftaAlAutoActual(litrosParaCargar, (Nafta)vAux);break;
 			
 		}
+		
+		
 	}
 	
 	public void vaciarTanque(){
@@ -77,8 +80,11 @@ public class Jugador {
 	}
 	
 	public void restarDinero(double precio) throws NoAlcanzaDineroException {
-		if(miPlata - precio >= 0)
+		if(miPlata - precio >= 0){
 			miPlata -= precio;
+		   setChanged();
+	       notifyObservers();
+	       }
 		else
 			throw new NoAlcanzaDineroException();
 	}
