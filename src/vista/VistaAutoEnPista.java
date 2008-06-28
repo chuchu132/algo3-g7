@@ -16,9 +16,9 @@ public class VistaAutoEnPista {
 private int x,y;
 private String[] spriteNames;
 private int fotogramaActual;
-private final int MANO_DERECHA = 430;
-private final int MANO_IZQUIERDA =240;
-private final int ABAJO = 450;
+private final int CENTRO = 290;
+
+private final int ABAJO = 380;
 private Auto auto;
 private Escenario escenario;
 private SpriteCache spriteCache;
@@ -91,7 +91,7 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
         	 }
         	         	 
         	 actualizarFotograma(); 
-	    	 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), MANO_DERECHA ,ABAJO, escenario );
+	    	 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), CENTRO ,ABAJO, escenario );
         	 } 
 	       
 	       

@@ -9,6 +9,7 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
 import Excepciones.NoAlcanzaDineroException;
+import Excepciones.NoExisteAutoException;
 import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;
 
@@ -48,7 +49,7 @@ public class Jugador extends Observable{
 		this.litrosParaCargar = litrosParaCargar;
 	}
 
-	public void  comprarProducto (int tipoProducto, int numero) throws NoAlcanzaDineroException {
+	public void  comprarProducto (int tipoProducto, int numero) throws NoAlcanzaDineroException, NoExisteAutoException {
 		Vendedor miVendedor = new Vendedor();
 		Vendible vAux;
 		

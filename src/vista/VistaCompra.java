@@ -46,6 +46,7 @@ public class VistaCompra extends JDialog implements Observer {
 		Container contenedor = getContentPane();
 		JPanel panelDePaneles = new JPanel();
 		
+		jugador.addObserver(this);
 		labelDinero = new JLabel();
 		
 		panelDePaneles.setLayout(new GridLayout(CANTIDAD_PANELES,1));
@@ -77,7 +78,6 @@ public class VistaCompra extends JDialog implements Observer {
 		JPanel panelAutos = new JPanel();
 		panelAutos.setLayout(new FlowLayout());
 		
-		jugador.addObserver(this);
 		
 		listaAutosVendedor = new JList(getListaDe(Vendedor.AUTOS));
 		listaAutosVendedor.setVisibleRowCount(FILAS_LISTA);
@@ -186,8 +186,8 @@ private String[] getListaDe(int tipoProducto){
 
 public void update(Observable o, Object arg) {
 	setLabelPlata(this.labelDinero);
-	repaint();
-	show();
+	//repaint();
+	//show();
 }
 	
 }

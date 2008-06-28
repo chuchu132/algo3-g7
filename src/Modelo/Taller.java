@@ -42,8 +42,14 @@ public class Taller {
 	}
 		
 	
-	public void cargarNaftaAlAutoActual(double litros,Nafta nafta){
+	public void cargarNaftaAlAutoActual(double litros,Nafta nafta)throws NoExisteAutoException{
+		try{
 		autoActual.cargarCombustible(litros, nafta);
+		}
+		catch(NullPointerException e){throw new NoExisteAutoException();}
+		
+		
+		
 	}
 	
 	public void vaciarTanqueAutoActual(){

@@ -4,8 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.util.Observable;
+import java.util.Observer;
 
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,8 +23,9 @@ import controlador.ControladorBotonCompra;
 
 
 import Modelo.Jugador;
+import Recursos.SpriteCache;
 
-public class VistaTaller extends JFrame{
+public class VistaTaller extends JFrame implements Observer{
 	private final int CANTIDAD_BOTONES = 5;
 	private final int ANCHO_VENTANA = 640;
 	private final int ALTO_VENTANA = 480;
@@ -31,10 +37,12 @@ public class VistaTaller extends JFrame{
 	private JButton botonComprar;
 	private JPanel panelBotones;
 	private JPanel panelDerecho;
-	
-	
+	private JLabel imagenAuto ;
+	private Jugador propietario;
 	public VistaTaller (Jugador propietario) {
 		
+		this.propietario = propietario;
+		this.propietario.addObserver(this);
 		/* titulo ventana */
 		setTitle("TALLER");
 		
@@ -66,9 +74,11 @@ public class VistaTaller extends JFrame{
 
 		/* panel derecho */
 		panelDerecho = new JPanel();
-		panelDerecho.setLayout(new GridLayout(5,1));
-
-				
+		panelDerecho.setLayout(new BorderLayout());
+		
+		imagenAuto = new JLabel();
+		panelDerecho.add(imagenAuto,BorderLayout.CENTER);
+		setImagenAuto();		
 		/* ubicacion de los paneles */
 		panel.add(panelBotones,BorderLayout.WEST);
 		panel.add(panelDerecho, BorderLayout.EAST);
@@ -80,6 +90,26 @@ public class VistaTaller extends JFrame{
 		setResizable(false);
 		
 	}
+	
+	public void setImagenAuto(){
+		SpriteCache cargadorImagen = new SpriteCache();
+		Icon imagen;
+		try{
+		String ruta = propietario.getTaller().getAutoActual().getModelo();
+		imagen = new ImageIcon((Image) cargadorImagen.getSprite(ruta + "/fondo.jpg"));
+		imagenAuto.setIcon(imagen);
+		}
+		catch( NullPointerException e){
+			imagen = new ImageIcon((Image) cargadorImagen.getSprite("nada.jpg"));
+			imagenAuto.setIcon(imagen);
+		}
+		
+		
+	}
+	
+	public void update(Observable o, Object arg) {
+		setImagenAuto();
+	}
 
 		
 	
@@ -89,5 +119,6 @@ public class VistaTaller extends JFrame{
 		 
 		
 	}
+
 
 }

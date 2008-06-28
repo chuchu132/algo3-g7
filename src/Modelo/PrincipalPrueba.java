@@ -35,7 +35,9 @@ public class PrincipalPrueba  implements Escenario{
 		spriteCache = new SpriteCache();
 		miSistemaCombustion = new SistemaCombustion(5,100,"Turbo",0.2,1);
 		miMotor = new Motor(200,6,0.2,1000,400,1);
-		miCarro = new Carroceria(300,700,"Torino",1,0.1,1);
+		//miCarro = new Carroceria(300,700,"Porche Cayman S",1,0.1,1);
+		miCarro = new Carroceria(300,700,"Ferrari F430",1,0.1,1);
+		//miCarro = new Carroceria(300,700,"Lamborghini Gallardo",1,0.1,1);
 		miCaja= new CajaVelocidades(5,200,80,1);
 		miTanque = new TanqueCombustible(1000,70,1);
 		miRueda = new TipoRueda(100,20,0.9,1);
