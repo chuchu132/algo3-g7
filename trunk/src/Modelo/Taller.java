@@ -6,6 +6,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
+import Excepciones.NoExisteAutoException;
 import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;;
 public class Taller {
@@ -35,7 +36,7 @@ public class Taller {
 		try{
 			autoActual = misAutos.get(auto);
 		}
-		catch (IndexOutOfBoundsException e){//MUY PRONTO
+		catch (IndexOutOfBoundsException e){
 			autoActual = null;
 			}
 	}
@@ -57,7 +58,7 @@ public class Taller {
 		else throw new NotAutoparteException();
 	}
 	
-	public void cambiarParte(int indice)throws NotAutoparteException{
+	public void cambiarParte(int indice)throws NotAutoparteException,NoExisteAutoException{
 		Autoparte parte;
 		Autoparte unaParte;
 		try{
