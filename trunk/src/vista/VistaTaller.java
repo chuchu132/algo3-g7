@@ -25,7 +25,7 @@ import controlador.ControladorBotonCompra;
 import Modelo.Jugador;
 import Recursos.SpriteCache;
 
-public class VistaTaller extends JFrame implements Observer{
+public class VistaTaller extends JFrame{
 	private final int CANTIDAD_BOTONES = 5;
 	private final int ANCHO_VENTANA = 640;
 	private final int ALTO_VENTANA = 480;
@@ -41,8 +41,11 @@ public class VistaTaller extends JFrame implements Observer{
 	private Jugador propietario;
 	public VistaTaller (Jugador propietario) {
 		
+		ControladorVistaTaller controladorVistaTaller = new ControladorVistaTaller();
+		
 		this.propietario = propietario;
-		this.propietario.addObserver(this);
+		this.propietario.addObserver(controladorVistaTaller);
+		this.propietario.getTaller().addObserver(controladorVistaTaller);
 		/* titulo ventana */
 		setTitle("TALLER");
 		
@@ -108,9 +111,17 @@ public class VistaTaller extends JFrame implements Observer{
 		
 	}
 	
-	public void update(Observable o, Object arg) {
-		setImagenAuto();
+	private class ControladorVistaTaller implements Observer {
+
+		
+		public void update(Observable arg0, Object arg1) {
+			setImagenAuto();
+
+		}
+
 	}
+	
+	
 
 		
 	

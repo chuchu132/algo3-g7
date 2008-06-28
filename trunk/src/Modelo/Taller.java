@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -9,7 +10,7 @@ import org.dom4j.Element;
 import Excepciones.NoExisteAutoException;
 import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;;
-public class Taller {
+public class Taller extends Observable{
 	
 	ArrayList<Auto> misAutos;
 	ArrayList<Autoparte> misAutopartes;
@@ -87,11 +88,14 @@ public class Taller {
 		
 		else if (parte instanceof TanqueCombustible){
 			unaParte = autoActual.cambiarTanque((TanqueCombustible)parte);
+					
 		}
 		else throw new NotAutoparteException();
 		
 		
 			agregarAutoparte(unaParte);
+			setChanged();
+			notifyObservers();
 		}
 		catch (IndexOutOfBoundsException e) {}
 		catch (NullPointerException e2){
