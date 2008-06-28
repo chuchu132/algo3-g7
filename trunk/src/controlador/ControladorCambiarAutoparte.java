@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import vista.VistaCambiarAutoparte;
 
+import Excepciones.NoExisteAutoException;
 import Excepciones.NotAutoparteException;
 import Modelo.Autoparte;
 import Modelo.Jugador;
@@ -36,7 +38,11 @@ public class ControladorCambiarAutoparte  extends Observable  implements ActionL
 		   }
 		   catch (NotAutoparteException ex){
 			   ex.printStackTrace();
-		   }
+		   } catch (NoExisteAutoException ex2) {
+			 
+			   JOptionPane.showMessageDialog(null,"Ud. no posee un auto.", "Error", JOptionPane.WARNING_MESSAGE);
+		}
+		   
 		}
 		
 		
