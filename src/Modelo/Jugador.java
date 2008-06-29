@@ -2,6 +2,7 @@ package Modelo;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 
 import org.dom4j.Document;
@@ -122,4 +123,15 @@ public class Jugador extends Observable{
 	   return jugador;
 	   
    }
+
+public Jugador deserialize(Element elemJugador) {
+	Iterator it = elemJugador.elementIterator();
+	
+	Element elemTaller = (Element) it.next();
+	Element elemPlata = (Element) it.next();
+	
+	this.miTaller.deserialize(elemTaller);
+	miPlata = (Long.parseLong( elemPlata.attribute(1).getValue()));
+	return null;
+}
 }
