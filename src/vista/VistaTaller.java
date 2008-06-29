@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 //import controlador.ControladorBotonCambiarAuto;
+import controlador.ControladorBotonAbandonar;
 import controlador.ControladorBotonCambiarAutoparte;
 import controlador.ControladorBotonCompra;
 import controlador.ControladorBotonElegirAuto;
@@ -85,6 +86,7 @@ public class VistaTaller extends JFrame{
 		
 		botonAbandonar = new JButton("Abandonar Juego");
 		panelBotones.add(botonAbandonar);
+		botonAbandonar.addActionListener(new ControladorBotonAbandonar(this));
 
 		/* panel derecho */
 		panelDerecho = new JPanel();
