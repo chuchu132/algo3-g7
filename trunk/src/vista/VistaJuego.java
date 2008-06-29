@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controlador.ControladorBotonNuevo;
+
 import Modelo.Jugador;
 import Recursos.SpriteCache;
 
@@ -40,6 +42,7 @@ public class VistaJuego extends JFrame{
 
 		
 		panelBotones.add(botonNuevo);
+		botonNuevo.addActionListener( new ControladorBotonNuevo(this));
 		panelBotones.add(botonCargar);
 		panelBotones.add(botonSalir);
 		
@@ -64,5 +67,12 @@ private void setImagenFondo(){
 	imagen = new ImageIcon(cargadorImagen.getSprite("main.jpg"));
 	imagenFondo.setIcon(imagen);
 }
+
+public static void main(String[] args) {
+	
+	VistaJuego juego = new VistaJuego(); 
+	
+}
+
 
 }
