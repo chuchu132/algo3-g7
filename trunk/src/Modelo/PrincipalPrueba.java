@@ -44,7 +44,7 @@ public class PrincipalPrueba  implements Escenario{
 		miAuto =  new Auto(miMotor,miCaja,miSistemaCombustion,miCarro,miTanque,miRueda);
 	    miAuto.cargarCombustible(1000, new Nafta("Nafta de Prueba",98));
 	    miAuto.encender();
-	    unaPista = new Pista(1000,0.6);
+	    unaPista = new Pista(1000,0.5);
    	    corredores = new ArrayList<Auto>();
 	    picada = new Carrera(unaPista,corredores,miAuto,100);
 		controlAuto = new ControladorAuto(miAuto);

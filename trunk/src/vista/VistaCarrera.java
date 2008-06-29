@@ -90,10 +90,9 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
     		vistaPista.setVelocidadFotograma(4);
     	if ((vel > 90)&& (vel<120))
     		vistaPista.setVelocidadFotograma(3);
-    	if ((vel>120)&& (vel<160))
+    	if (vel>120)
     		vistaPista.setVelocidadFotograma(2);
-    	if (vel>160)
-    		vistaPista.setVelocidadFotograma(1);
+    	
     				
     	vistaPista.pintar(g);
         vistaAutoPrincipal.pintar(g);
