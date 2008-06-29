@@ -65,8 +65,8 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
           		g.setPaint(Color.white);
           		g.setFont(new Font("Arial",Font.BOLD,18));
           		DecimalFormat porcentage = new DecimalFormat("0.00");
-          		g.drawString("Estado " + porcentage.format(auto.getPorcentageVidaUtilGeneral()*100) + " %",5, Escenario.ZONA_INFO -22);  
-        	   
+          		g.drawString("Estado Gral: " + porcentage.format(auto.getPorcentageVidaUtilGeneral()*100) + " %",5, Escenario.ZONA_INFO -44);  
+          		g.drawString("Estado Motor: " + porcentage.format(auto.getPorcentageVidaUtilMotor()*100) + " %",5, Escenario.ZONA_INFO -22); 
            }
          
            private void mostrarCombustible(Graphics h){
