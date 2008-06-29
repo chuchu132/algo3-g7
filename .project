@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>bin/res</name>
+			<type>2</type>
+			<location>C:/Users/ALE/Desktop/Java/eclipse/Workspace/TunningCarExperience/bin/res</location>
+		</link>
+	</linkedResources>
 </projectDescription>
