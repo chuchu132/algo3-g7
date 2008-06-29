@@ -150,5 +150,10 @@ public class Taller extends Observable{
 		
 		return taller;
 	}
+
+	public void deserialize(Element elemTaller) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
