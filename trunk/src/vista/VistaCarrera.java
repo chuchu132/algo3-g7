@@ -77,12 +77,28 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
 	
 }
 
-private void pintarCarrera(){
-	Graphics g = buffer.getGraphics();
-	vistaPista.setVelocidadFotograma((int)Math.round(principal.getVelocidad()));
-    vistaPista.pintar(g);
-    vistaAutoPrincipal.pintar(g);
-    	
+ private void pintarCarrera(){
+    	Graphics g = buffer.getGraphics();
+    	double vel = principal.getVelocidad()*3.6;
+    	if (vel==0)
+    		vistaPista.setVelocidadFotograma(0);
+    	if ((vel < 20)&&(vel>0))
+    		vistaPista.setVelocidadFotograma(8);
+    	if (( vel > 20)&&(vel<40))
+    		vistaPista.setVelocidadFotograma(6);
+    	if (( vel > 40)&&(vel<90))
+    		vistaPista.setVelocidadFotograma(4);
+    	if ((vel > 90)&& (vel<120))
+    		vistaPista.setVelocidadFotograma(3);
+    	if ((vel>120)&& (vel<160))
+    		vistaPista.setVelocidadFotograma(2);
+    	if (vel>160)
+    		vistaPista.setVelocidadFotograma(1);
+    				
+    	vistaPista.pintar(g);
+        vistaAutoPrincipal.pintar(g);
+        	
+   
 }
 
 @Override
