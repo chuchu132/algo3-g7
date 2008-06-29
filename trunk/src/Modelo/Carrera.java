@@ -9,7 +9,7 @@ import Excepciones.ProblemaTecnicoException;
 public class Carrera extends Observable{
 	private Pista pista;
 	private ArrayList<Auto> autos;
-	private double intervaloTiempo;
+	private final double INTERVALO_TIEMPO = 0.01;
 	private ArrayList<Double> posiciones;
 	
 	/** El auto del jugador va siempre en la posicion 0 de los arrays
@@ -18,13 +18,12 @@ public class Carrera extends Observable{
 	 * @param pista
 	 * @param autos
 	 * @param autoJugador
-	 * @param intervaloTiempo
+	 * @param INTERVALO_TIEMPO
 	 */
 	
-	public Carrera (Pista pista, ArrayList<Auto> autos,Auto autoJugador, double intervaloTiempo) {
+	public Carrera (Pista pista, ArrayList<Auto> autos,Auto autoJugador, double Premio) {
 		this.pista = pista;
 		this.autos = autos;
-		this.intervaloTiempo = intervaloTiempo;
 		this.posiciones = new ArrayList<Double>();
 		autos.add(0,autoJugador);
 		posiciones.add(new Double(0.0));
@@ -43,7 +42,7 @@ public class Carrera extends Observable{
 				   
 					try {
 					
-					autoTemp.simular(intervaloTiempo, pista);
+					autoTemp.simular(INTERVALO_TIEMPO, pista);
 					}
 					catch (ProblemaTecnicoException e) {
 						                                  e.printStackTrace();
@@ -65,7 +64,7 @@ public class Carrera extends Observable{
 				}
 				setChanged();
 				notifyObservers();
-				tiempo+=intervaloTiempo;
+				tiempo+=INTERVALO_TIEMPO;
 		}
 	}
 	
@@ -87,6 +86,23 @@ public class Carrera extends Observable{
 		}
 		return false;
 	 }
+	
+	private int numeroDelGanador(){
+		
+	Iterator<Double> it = posiciones.iterator();
+	double max = posiciones.get(0).doubleValue();
+	int posicionMax = 0;
+	int i= 0;
+	while(it.hasNext()){
+		i++;
+		double temp =getPosicion(i);
+		if( temp > max){
+			max = temp;
+			posicionMax = i;
+		}
+	}
+	return posicionMax;
+	}
 	
 	
 }

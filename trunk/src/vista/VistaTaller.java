@@ -27,10 +27,12 @@ import Modelo.Jugador;
 import Recursos.SpriteCache;
 
 public class VistaTaller extends JFrame{
-	private final int CANTIDAD_BOTONES = 5;
+	private final int CANTIDAD_BOTONES = 7;
 	private final int ANCHO_VENTANA = 640;
 	private final int ALTO_VENTANA = 480;
 	
+	private JButton botonGuardar;
+	private JButton botonAbandonar;
 	private JButton botonCarrera;
 	private JButton botonVerPista;
 	private JButton botonElegirAuto;
@@ -40,6 +42,8 @@ public class VistaTaller extends JFrame{
 	private JPanel panelDerecho;
 	private JLabel imagenAuto ;
 	private Jugador propietario;
+	private boolean yaCorrio = false;
+	
 	public VistaTaller (Jugador propietario) {
 		
 		ControladorVistaTaller controladorVistaTaller = new ControladorVistaTaller();
@@ -75,6 +79,12 @@ public class VistaTaller extends JFrame{
 		
 		botonCarrera = new JButton("Correr");
 		panelBotones.add(botonCarrera);
+		
+		botonGuardar = new JButton("Guardar Juego");
+		panelBotones.add(botonGuardar);
+		
+		botonAbandonar = new JButton("Abandonar Juego");
+		panelBotones.add(botonAbandonar);
 
 		/* panel derecho */
 		panelDerecho = new JPanel();
@@ -94,6 +104,11 @@ public class VistaTaller extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		
+	}
+	
+	public void yaCorrio(boolean yaCorrio){
+		
+		this.yaCorrio = yaCorrio;
 	}
 	
 	public void setImagenAuto(){

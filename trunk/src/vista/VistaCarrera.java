@@ -70,11 +70,11 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
 	});
     
 	ventana.setResizable(false);
-	setFocusable(true);
-    addKeyListener(controlador1);
-
-    mostrarCarrera();
 	
+	addKeyListener(controlador1);
+	
+    mostrarCarrera();
+    setFocusable(true);
 }
 
  private void pintarCarrera(){

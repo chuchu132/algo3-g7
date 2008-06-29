@@ -123,6 +123,10 @@ public class Auto extends Observable implements Vendible{
 		return ( ( motor.getPorcentajeVidaUtil() + caja.getPorcentajeVidaUtil() + tanque.getPorcentajeVidaUtil()+ carroceria.getPorcentajeVidaUtil() + sistemaCombustion.getPorcentajeVidaUtil() + (4*rueda.getPorcentajeVidaUtil() ) ) / 9 );
 		
 	}
+	
+	public double getPorcentageVidaUtilMotor(){
+		return motor.getPorcentajeVidaUtil();
+	}
 
 	public void subirCambio (){
 		if (!(caja instanceof  CajaAutomatica)) {
@@ -140,7 +144,7 @@ public class Auto extends Observable implements Vendible{
 
 	public String toString(){
 		//return (" Aceleracion " + aceleracion + " Velocidad " + velocidad + " Avance " + deltaAvance + "cambio " + caja.getCambioActual() + "rev act " +  motor.getRevolucionesActuales());
-		return "Auto: " + carroceria.getModelo() + ". Vida Útil: " + getPorcentageVidaUtilGeneral() + "%"; 
+		return "Auto: " + carroceria.getModelo() + ". Vida Útil Motor: " + getPorcentageVidaUtilMotor() + "%"; 
 	}
 
 	public Motor cambiarMotor(Motor otroMotor){
