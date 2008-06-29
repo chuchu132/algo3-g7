@@ -12,6 +12,13 @@ public class Pista {
 	   this.coeficienteAgarre = coeficiente;
 	   this.longitud = longitud;
    }
+   
+   public Pista(){
+	   double temp = (1 - Math.random());
+	   this.coeficienteAgarre = temp;
+	   this.longitud = (1000 * (temp + 0.1)); //longitud entre 100 y 1100 metros.
+	   
+   }
    public double getCoeficienteAgarre() {
 		
 		return coeficienteAgarre;
