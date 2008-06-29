@@ -16,7 +16,7 @@ public class Motor extends Autoparte implements Observer{
 	public final static double COEF_BAJAR_CAMBIO = 2.5;
 	public final static double COEF_SUBIR_CAMBIO = 0.4;
 	public final static int REVOLUCIONES_MINIMAS = 800; //es static porque es comun para todos los motores
-	private final double factorDeDesgaste = 0.001;
+	private final double factorDeDesgaste = 0.01;
 	
 	private final int DESACELERANDO = -1;
 	private final int FRENADO = 0;
