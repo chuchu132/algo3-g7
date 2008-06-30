@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 
 import org.dom4j.Document;
@@ -152,8 +153,70 @@ public class Taller extends Observable{
 	}
 
 	public void deserialize(Element elemTaller) {
-		// TODO Auto-generated method stub
+		Iterator it = elemTaller.elementIterator();
 		
+		Element elemListaAutos = (Element) it.next();
+		Element elemListaAutopartes = (Element) it.next();
+		Element elemAutoActual = (Element) it.next();
+		
+		this.cargarListaAutos(elemListaAutos);
+		this.cargarListaAutopartes(elemListaAutopartes);
+		this.autoActual.deserialize(elemAutoActual);
+			
 	}
+
+	private void cargarListaAutopartes(Element elemListaAutopartes) {
+		Iterator it = elemListaAutopartes.elementIterator();
+		while ( it.hasNext()){
+			Element elemAutoparte = (Element) it.next();
+			if (elemAutoparte.getName().equals("cajaAutomatica")){
+				CajaAutomatica autoParte = null;
+				autoParte.deserialize(elemAutoparte);
+				misAutopartes.add(autoParte);
+			}
+			if (elemAutoparte.getName().equals("cajaVelocidades")){
+				CajaVelocidades autoParte = null;
+				autoParte.deserialize(elemAutoparte);
+				misAutopartes.add(autoParte);
+			}
+			if (elemAutoparte.getName().equals("carroceria")){
+				Carroceria autoParte = null;
+				autoParte.deserialize(elemAutoparte);
+				misAutopartes.add(autoParte);
+			}
+			if (elemAutoparte.getName().equals("motor")) { 
+				Motor autoParte = null;
+				autoParte.deserialize(elemAutoparte);
+				misAutopartes.add(autoParte);
+			}
+			if (elemAutoparte.getName().equals("sistemaCombustion")) { 
+				SistemaCombustion autoParte = null;
+				autoParte.deserialize(elemAutoparte);
+				misAutopartes.add(autoParte);
+			}
+			if (elemAutoparte.getName().equals("tanqueCombustible")) { 
+				TanqueCombustible autoParte = null;
+				autoParte.deserialize(elemAutoparte);
+				misAutopartes.add(autoParte);
+			}
+			if (elemAutoparte.getName().equals("tipoRueda")) { 
+				TipoRueda autoParte = null;
+				autoParte.deserialize(elemAutoparte);
+				misAutopartes.add(autoParte);
+			}
+		}
+			
+	}
+
+	private void cargarListaAutos(Element elemListaAutos) {
+		Iterator it = elemListaAutos.elementIterator();
+		while ( it.hasNext()){
+			Element elemAuto = (Element) it.next();
+			Auto auto = null;
+			auto.deserialize(elemAuto);
+			misAutos.add(auto);		
+		}
+		
+	}	
 	
 }

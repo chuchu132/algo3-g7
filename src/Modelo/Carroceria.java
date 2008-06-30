@@ -55,6 +55,11 @@ public class Carroceria extends Autoparte{
 		carroceria.addAttribute("plusVelocidad",Double.toString(this.getPlusVelocidad()));
 		return carroceria;
 	}
+
+	public void deserialize(Element elemAutoparte) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

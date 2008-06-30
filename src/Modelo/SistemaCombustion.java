@@ -52,4 +52,10 @@ public class SistemaCombustion extends Autoparte{
 		sistemaCombustion.addAttribute("plusPotencia",Double.toString(this.getPlus()));
 		return sistemaCombustion;
 	}
+
+
+public void deserialize(Element elemAutoparte) {
+	// TODO Auto-generated method stub
+	
+}
 }

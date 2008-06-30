@@ -85,6 +85,12 @@ public class CajaVelocidades extends Autoparte{
 		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(cantidadCambios));
 		return cajaVelocidades;
 	}
+
+	public void deserialize(Element elemAutoparte) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 		
 }
