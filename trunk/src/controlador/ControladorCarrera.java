@@ -53,7 +53,7 @@ public class ControladorCarrera implements ActionListener, Escenario {
 				ArrayList<Auto> competidores = new ArrayList<Auto>();
 				competidores.add(new AutoPc());
 				Carrera picada = new Carrera(Juego.getPista(),competidores,miAuto,apuesta);
-				VistaCarrera 
+				//VistaCarrera 
 				if(picada.ganador() == miAuto){
 					jugador.sumarDinero(picada.getPremio());
 				}
@@ -112,10 +112,15 @@ public class ControladorCarrera implements ActionListener, Escenario {
 		return spriteCache;
 	}
 
+
+	public boolean imageUpdate(Image img, int infoflags, int x, int y,
+			int width, int height) {
 	
-	public boolean imageUpdate(Image arg0, int arg1, int arg2, int arg3,
-				return false;
+		return false;
 	}
+
+	
+	
 		 	
 	
 }
