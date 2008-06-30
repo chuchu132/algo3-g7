@@ -32,7 +32,7 @@ public class PrincipalPrueba  implements Escenario{
     private ArrayList<Auto> corredores;	
 	
 	public PrincipalPrueba(){
-		
+		Juego unJuego = new Juego();
 		spriteCache = new SpriteCache();
 		miSistemaCombustion = new SistemaCombustion(5,100,"Turbo",0.2,10000);
 		miMotor = new Motor(200,6,0.2,1000,400,10000);
@@ -45,12 +45,12 @@ public class PrincipalPrueba  implements Escenario{
 		miAuto =  new Auto(miMotor,miCaja,miSistemaCombustion,miCarro,miTanque,miRueda);
 	    miAuto.cargarCombustible(1000, new Nafta("Nafta de Prueba",98));
 	    miAuto.encender();
-	    unaPista = new Pista(1000,0.5);
+	   // unaPista = new Pista(1000,0.5);
 	    oponente = new AutoPc();
 	    oponente.encender();
 	    corredores = new ArrayList<Auto>();
 	    corredores.add(oponente);
-	    picada = new Carrera(unaPista,corredores,miAuto,100);
+	    picada = new Carrera(Juego.getPista(),corredores,miAuto,100);
 		controlAuto = new ControladorAuto(miAuto);
 		vistaCarrera = new VistaCarrera(controlAuto,this,picada);
 		picada.addObserver(vistaCarrera);
@@ -61,7 +61,7 @@ public class PrincipalPrueba  implements Escenario{
     public void run(){
     	picada.correr();
     }
-	@Override
+	
 	public boolean imageUpdate(Image img, int infoflags, int x, int y,int width, int height) {
 		return false;
 	}
