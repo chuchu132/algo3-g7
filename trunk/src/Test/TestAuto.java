@@ -36,12 +36,12 @@ public class TestAuto extends TestCase {
 
 
 	protected void setUp(){
-		miSistemaCombustion = new SistemaCombustion(5,100,"Turbo",0.2,1);
-		miMotor = new Motor(200,6,0.2,1000,400,1);
-		miCarro = new Carroceria(300,700,"Torino",1,0.1,1);
-		miCaja= new CajaVelocidades(5,200,80,1);
-		miTanque = new TanqueCombustible(100,70,1);
-		miRueda = new TipoRueda(100,20,0.9,1);
+		miSistemaCombustion = new SistemaCombustion(5,100,"Turbo",0.2,1000);
+		miMotor = new Motor(200,6,0.2,1000,400,9000);
+		miCarro = new Carroceria(300,700,"Torino",1,0.1,1000);
+		miCaja= new CajaVelocidades(5,200,80,1000);
+		miTanque = new TanqueCombustible(100,70,1000);
+		miRueda = new TipoRueda(100,20,0.9,1000);
 		miAuto =  new Auto(miMotor,miCaja,miSistemaCombustion,miCarro,miTanque,miRueda);
 	    unaPista = new Pista(100,0.1);
 	    nafta = new Nafta("Nafta de Prueba",98);
@@ -95,8 +95,10 @@ public class TestAuto extends TestCase {
 	public void testAcelerar(){
 		miAuto.cargarCombustible(13.1,nafta);
 		miAuto.encender();
+		
 		miAuto.subirCambio();
 		miAuto.acelerar();
+			
 		try{
 		miAuto.simular(1,unaPista);}
 		catch(ProblemaTecnicoException e){};		
@@ -155,11 +157,11 @@ public class TestAuto extends TestCase {
 		miAuto.encender();
 		miAuto.subirCambio();
 		miAuto.acelerar();
-		try{ miAuto.simular(1,unaPista);	     }
+		try{ miAuto.simular(0.1,unaPista);	     }
 	    catch (ProblemaTecnicoException e){ fail("No deberia lanzar una excepcion");}
 	    
-	    assertTrue(4.50 < miAuto.getAceleracion() && miAuto.getAceleracion() < 4.51);
-		assertTrue(4.50 < miAuto.getVelocidad() && miAuto.getVelocidad() < 4.51);
+	    assertTrue(8.84 < miAuto.getAceleracion() && miAuto.getAceleracion() < 8.86);
+	    assertTrue(0.87< miAuto.getVelocidad() && miAuto.getVelocidad() < 0.89);
 	    
 	    
 	   		

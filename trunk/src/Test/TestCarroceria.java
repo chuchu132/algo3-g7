@@ -16,34 +16,25 @@ public class TestCarroceria extends TestCase {
 }
 
 public void testSimular(){// prueba el metodo gastar de autoparte
-	 miCarro = new Carroceria(100,700,"Torino",1,0.1,1);
+	 miCarro = new Carroceria(100,700,"Torino",1,0.1,1000);
 	 try{
-	 miCarro.simular(100);
+	 miCarro.simular(10);
 	 }
 	 catch (ProblemaTecnicoException e) {}
-	 assertTrue(0.89 < miCarro.getVidaUtil() && miCarro.getVidaUtil()<0.91);
+
+	 assertTrue(0.89 < miCarro.getPorcentajeVidaUtil() && miCarro.getPorcentajeVidaUtil()<0.91);
 	try{
-	 miCarro.simular(450);
+	 miCarro.simular(50);
 	}
 	catch (ProblemaTecnicoException e){}
-	 assertTrue(0.44 < miCarro.getVidaUtil() && miCarro.getVidaUtil()<0.46);
+
+	 assertTrue(0.40 < miCarro.getPorcentajeVidaUtil() && miCarro.getPorcentajeVidaUtil()<0.41);
 	 }
  
  public void testGetPlusVelocidad(){//prueba el metodo getPlusVelocidad antes y despues de gastar la carroceria 
 	 miCarro = new Carroceria(100,700,"Torino",1,0.1,1);
 	 assertEquals(0.1,miCarro.getPlusVelocidad());
-	 /*try{
-	 miCarro.simular(100);
-	 }
-	 catch(ProblemaTecnicoException e){}
-	 
-	 assertTrue(0.089 < miCarro.getPlusVelocidad() && miCarro.getPlusVelocidad()<0.091);
-	 try{
-	 miCarro.simular(100);
-	 }
-	 catch (ProblemaTecnicoException e){}
-	 assertTrue(0.080 < miCarro.getPlusVelocidad() && miCarro.getPlusVelocidad()<0.082);
- }*/}
+	}
  
  
  
