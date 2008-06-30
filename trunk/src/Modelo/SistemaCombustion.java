@@ -57,10 +57,10 @@ public class SistemaCombustion extends Autoparte{
 
 
 public void deserialize(Element elemSistemaCombustion) {
-		Iterator it = elemSistemaCombustion.elementIterator();
-		this.cargar(it);
-		Attribute atrTipo = (Attribute) it.next();
-		Attribute atrPlusPotencia = (Attribute) it.next();
+		
+		this.cargar(elemSistemaCombustion);
+		Attribute atrTipo = elemSistemaCombustion.attribute(4);
+		Attribute atrPlusPotencia = elemSistemaCombustion.attribute(5);
 		
 		tipo = atrTipo.getValue();
 		plusPotencia = Double.parseDouble(atrPlusPotencia.getValue());

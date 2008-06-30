@@ -70,11 +70,11 @@ public abstract class Autoparte extends Observable implements Vendible {
 		autoParte.addAttribute("vidaUtilInicial",Float.toString(vidaUtilInicial));
 	}
 	
-	public void cargar(Iterator it){
-		Attribute atrPeso = (Attribute) it.next();
-		Attribute atrPrecio = (Attribute) it.next();
-		Attribute atrVidaUtil = (Attribute) it.next();
-		Attribute atrVidaUtilInicial = (Attribute) it.next();
+	public void cargar(Element elemAutoparte){
+		Attribute atrPeso = elemAutoparte.attribute(0);
+		Attribute atrPrecio = elemAutoparte.attribute(1);
+		Attribute atrVidaUtil = elemAutoparte.attribute(2);
+		Attribute atrVidaUtilInicial = elemAutoparte.attribute(3);
 		
 		this.peso = (Double.parseDouble(atrPeso.getValue()));
 		this.precio = (Double.parseDouble(atrPrecio.getValue()));

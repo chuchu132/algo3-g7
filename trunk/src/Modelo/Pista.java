@@ -41,9 +41,9 @@ public class Pista {
    }
    
    public void deserialize(Element elemPista) {
-	  Iterator it = elemPista.elementIterator();
-	  Attribute atrCoef = (Attribute) it.next();
-	  Attribute atrLongitud = (Attribute) it.next();
+	  
+	  Attribute atrCoef = elemPista.attribute(0);
+	  Attribute atrLongitud = elemPista.attribute(1);
 	  
 	  coeficienteAgarre = Double.parseDouble(atrCoef.getValue());
 	  longitud = Double.parseDouble(atrLongitud.getValue());
