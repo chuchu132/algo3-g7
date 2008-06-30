@@ -133,7 +133,9 @@ public class TanqueCombustible extends Autoparte{
 			this.grabar(tanqueCombustible);
 			tanqueCombustible.addAttribute("capacidadMaxima",Double.toString(capacidadMaxima));
 			tanqueCombustible.addAttribute("cantidadCombustible",Double.toString(this.cantidadCombustible()));
-			tanqueCombustible.add(this.getTipoNafta().serialize());
+			if (cantidadCombustible != 0 )
+				tanqueCombustible.add(this.getTipoNafta().serialize());
+			else tanqueCombustible.addElement("none");
 			return tanqueCombustible;
 		}
 	
@@ -146,7 +148,9 @@ public class TanqueCombustible extends Autoparte{
 		  	
 		  	capacidadMaxima = Double.parseDouble(atrCapacidadMaxima.getValue());
 		  	cantidadCombustible = Double.parseDouble(atrCantidadCombustible.getValue());
-		  	tipoNafta.deserialize(elemNafta);
+		  	if (!(elemNafta.getName().equals("none")))
+		  		tipoNafta.deserialize(elemNafta);
+		  	else tipoNafta = null;
 		
 	}
 }
