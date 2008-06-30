@@ -1,8 +1,11 @@
 package Modelo;
 
 import java.text.DecimalFormat;
+import java.util.Iterator;
 
 import Excepciones.ProblemaTecnicoException;
+
+import org.dom4j.Attribute;
 import org.dom4j.Element;
 import org.dom4j.Document;
 
@@ -82,12 +85,15 @@ public class CajaVelocidades extends Autoparte{
 		Document document = DocumentHelper.createDocument();
 		Element cajaVelocidades = document.addElement("cajaVelocidades");
 		this.grabar(cajaVelocidades);
-		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(cantidadCambios));
+		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(this.getCantidadCambios()));
 		return cajaVelocidades;
 	}
 
 	public void deserialize(Element elemAutoparte) {
-		// TODO Auto-generated method stub
+		Iterator it = elemAutoparte.elementIterator();
+		this.cargar(it);
+		Attribute atrCantidadDeCambios = (Attribute) it.next();
+		this.cantidadCambios = (Integer.parseInt(atrCantidadDeCambios.getValue()));
 		
 	}
 
