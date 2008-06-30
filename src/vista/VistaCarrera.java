@@ -21,6 +21,7 @@ import controlador.ControladorAuto;
 
 import Modelo.Auto;
 import Modelo.Carrera;
+import Modelo.Juego;
 import Modelo.Pista;
 
 import Recursos.SoundCache;
@@ -31,21 +32,18 @@ import Recursos.SoundCache;
 public class VistaCarrera extends Canvas implements Observer{
     private VistaPista vistaPista;
     private VistaAutoEnPista vistaAutoPrincipal;
-    private VistaAutoEnPista vistaAutoSecundario;
-   
+      
     private SoundCache soundCache;
 	private BufferedImage buffer;
-	private Auto principal,secundario;
+	private Auto principal;
  
 	
 	
-public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,Pista unaPista, Escenario escenario,Carrera picada){
+public VistaCarrera(ControladorAuto controlador1,Escenario escenario,Carrera picada){
 	
 	principal = controlador1.getAutoControlado();
-	secundario = controlador2.getAutoControlado();
 	vistaAutoPrincipal = new VistaAutoEnPista(escenario,principal, picada);
-	vistaAutoSecundario = new VistaAutoEnPista(escenario,secundario, picada);
-	vistaPista = new VistaPista(escenario,unaPista);
+	vistaPista = new VistaPista(escenario,Juego.getPista());
 	soundCache = new SoundCache();	     
 	picada.addObserver(this);
 	principal.addObserver(this);
