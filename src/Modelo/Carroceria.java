@@ -58,8 +58,8 @@ public class Carroceria extends Autoparte{
 		return carroceria;
 	}
 
-	public void deserialize(Element elemAutoparte) {
-		Iterator it = elemAutoparte.elementIterator();
+	public void deserialize(Element elemCarroceria) {
+		Iterator it = elemCarroceria.elementIterator();
 		this.cargar(it);
 		Attribute atrModelo = (Attribute) it.next();
 		Attribute atrColor = (Attribute) it.next();

@@ -89,8 +89,8 @@ public class CajaVelocidades extends Autoparte{
 		return cajaVelocidades;
 	}
 
-	public void deserialize(Element elemAutoparte) {
-		Iterator it = elemAutoparte.elementIterator();
+	public void deserialize(Element elemCaja) {
+		Iterator it = elemCaja.elementIterator();
 		this.cargar(it);
 		Attribute atrCantidadDeCambios = (Attribute) it.next();
 		this.cantidadCambios = (Integer.parseInt(atrCantidadDeCambios.getValue()));

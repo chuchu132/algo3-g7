@@ -58,8 +58,8 @@ public class TipoRueda extends Autoparte{
 	}
 
 
-	public void deserialize(Element elemAutoparte) {
-			Iterator it = elemAutoparte.elementIterator();
+	public void deserialize(Element elemRueda) {
+			Iterator it = elemRueda.elementIterator();
 			this.cargar(it);
 			Attribute atrCof = (Attribute) it.next();
 			
