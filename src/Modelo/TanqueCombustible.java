@@ -141,9 +141,10 @@ public class TanqueCombustible extends Autoparte{
 	
 	 public void deserialize(Element elemTanque) {
 		  	Iterator it = elemTanque.elementIterator();
-		  	this.cargar(it);
-		  	Attribute atrCapacidadMaxima = (Attribute) it.next();
-		  	Attribute atrCantidadCombustible = (Attribute) it.next();
+		  	
+		  	this.cargar(elemTanque);
+		  	Attribute atrCapacidadMaxima = elemTanque.attribute(4);
+		  	Attribute atrCantidadCombustible = elemTanque.attribute(5);
 		  	Element elemNafta = (Element) it.next();
 		  	
 		  	capacidadMaxima = Double.parseDouble(atrCapacidadMaxima.getValue());

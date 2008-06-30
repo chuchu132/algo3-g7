@@ -43,10 +43,10 @@ public class Nafta implements Vendible{
 		return nafta;
 	}
 	public void deserialize(Element elemNafta) {
-		Iterator it = elemNafta.elementIterator();
-		Attribute atrOctanaje = (Attribute) it.next();
-		Attribute atrNombre = (Attribute) it.next();
-		Attribute atrPrecio = (Attribute) it.next();
+		;
+		Attribute atrOctanaje = elemNafta.attribute(0);
+		Attribute atrNombre = elemNafta.attribute(1);
+		Attribute atrPrecio = elemNafta.attribute(2);
 		
 		octanaje = Integer.parseInt(atrOctanaje.getValue());
 		nombre = atrNombre.getValue();
