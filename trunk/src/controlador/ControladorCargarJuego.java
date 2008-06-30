@@ -24,7 +24,7 @@ public class ControladorCargarJuego extends JFrame implements ActionListener {
 		
 	}
 	public void actionPerformed(ActionEvent e) {
-		Juego unJuego = new Juego();
+		
 		vista.dispose();
 		JFileChooser selectorArchivo = new JFileChooser();
 		selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -38,8 +38,8 @@ public class ControladorCargarJuego extends JFrame implements ActionListener {
 					
 		
 			try {
-				unJuego.cargar(archivo.toString());
-				VistaTaller verTaller = new VistaTaller(unJuego.getJugador());
+				Juego.cargar(archivo.toString());
+				VistaTaller verTaller = new VistaTaller(Juego.getJugador());
 			} catch (IOException e1) {
 				avisarYVolver();
 			} catch (DocumentException e1) {

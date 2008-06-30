@@ -26,10 +26,17 @@ public class Juego {
 		 this.pista = new Pista();
 	}
 	
-	public Jugador getJugador(){
+	public static Jugador getJugador(){
 		return jugador;
 	}
 	
+	public static Pista getPista(){
+		return pista;
+	}
+	
+	public static void generarPista(){
+		pista = new Pista();
+	}
 	
 	public  static void guardar(String ruta) throws IOException {
 		Document document = DocumentHelper.createDocument();
