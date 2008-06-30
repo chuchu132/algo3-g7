@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.text.DecimalFormat;
 
 import Modelo.Auto;
+import Modelo.Carrera;
 import Recursos.SpriteCache;
 
 
@@ -26,15 +27,19 @@ private boolean velocidad = true;
 private boolean estado = true;
 private boolean combustible = true;
 private boolean cambioActual = true;
+private boolean tiempo = true;
+private boolean posicion = true;
+private Carrera carrera;
 
-public  VistaAutoEnPista(Escenario escenario, Auto auto) {
+public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
 	         this.escenario = escenario;
 	         this.auto= auto;
 	         spriteCache = escenario.getSpriteCache();
 	         fotogramaActual = 0;
 	         String modelo = auto.getModelo();
 	         spriteNames = new String[]{modelo + "/acelerando.jpg",modelo + "/frenando.jpg"};
-	        }	        
+	         this.carrera=carrera;
+		}	        
 	      
            private void actualizarFotograma(){
         	   if(auto.getEstado() == 1){
@@ -77,6 +82,23 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
          		g.drawString("Combustible " + cantidad.format(auto.cantidadCombustible()) + " L",5, Escenario.ZONA_INFO);  
            }
            
+           private void mostrarTiempo (Graphics h){
+        	   
+        	   Graphics2D g = (Graphics2D) h;
+        	   g.setPaint(Color.white);
+        	   g.setFont(new Font ("Arial", Font.BOLD, 18));
+        	   DecimalFormat segundos = new DecimalFormat ("0.00");
+        	   g.drawString("Tiempo : " + segundos.format(carrera.getTiempo()) +" seg", 10, 30);
+           }
+           
+           private void mostrarPosicion (Graphics h){
+        	   Graphics2D g = (Graphics2D) h;
+        	   g.setPaint(Color.white);
+        	   g.setFont(new Font ("Arial", Font.BOLD, 18));
+        	   DecimalFormat posicion = new DecimalFormat ("0.00");
+        	   g.drawString("Posicion : " + posicion.format(carrera.getPos()) +" mts", 10, 60);
+           }
+           
            
            public void pintar(Graphics g){
         	 if(velocidad){
@@ -89,6 +111,11 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
         	 if(cambioActual){
         		 mostrarCambioActual(g);
         	 }
+        	 if (tiempo){
+        		 mostrarTiempo(g);
+        	 }
+        	 if (posicion)
+        		 mostrarPosicion(g);
         	         	 
         	 actualizarFotograma(); 
 	    	 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), CENTRO ,ABAJO, escenario );
@@ -113,6 +140,14 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 		public void setCombustible(boolean combustible) {
 			this.combustible = combustible;
 		}
+		
+		public void setTiempo (boolean tiempo){
+			this.tiempo = tiempo;
+		}
+
+		public void setPosicion (boolean posicion){
+			this.posicion=posicion;
+		}
 
 		public boolean isVelocidad() {
 			return velocidad;
@@ -133,6 +168,14 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto) {
 		public void setCambioActual(boolean cambioActual) {
 			this.cambioActual = cambioActual;
 		}
+		
+		public boolean isTiempo (){
+	    	return tiempo;
+	    }
+	    
+	    public boolean isPosicion(){
+	    	return posicion;
+	    }
 	       
 	       
 }

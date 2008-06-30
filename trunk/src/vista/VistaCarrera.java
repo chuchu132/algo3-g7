@@ -43,8 +43,8 @@ public VistaCarrera(ControladorAuto controlador1, ControladorAuto controlador2,P
 	
 	principal = controlador1.getAutoControlado();
 	secundario = controlador2.getAutoControlado();
-	vistaAutoPrincipal = new VistaAutoEnPista(escenario,principal);
-	vistaAutoSecundario = new VistaAutoEnPista(escenario,secundario);
+	vistaAutoPrincipal = new VistaAutoEnPista(escenario,principal, picada);
+	vistaAutoSecundario = new VistaAutoEnPista(escenario,secundario, picada);
 	vistaPista = new VistaPista(escenario,unaPista);
 	soundCache = new SoundCache();	     
 	picada.addObserver(this);
