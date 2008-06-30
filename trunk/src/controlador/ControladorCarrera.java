@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -21,16 +22,24 @@ import Modelo.AutoPc;
 import Modelo.Carrera;
 import Modelo.Juego;
 import Modelo.Jugador;
+import Recursos.SoundCache;
+import Recursos.SpriteCache;
 
+import vista.Escenario;
+import vista.VistaCarrera;
 import vista.VistaTaller;
 
-public class ControladorCarrera implements ActionListener {
+public class ControladorCarrera implements ActionListener, Escenario {
 	
+	private SoundCache soundCache;
+	private SpriteCache spriteCache;
 	private Jugador jugador;
 	private VistaTaller vista;
     private double apuesta;
 	
 	public ControladorCarrera(Jugador jugador, VistaTaller vista) {
+		this.soundCache= new SoundCache();
+		this.spriteCache = new SpriteCache();
 		this.apuesta = 0.0;
 		this.jugador = jugador;
 		this.vista = vista;
@@ -44,7 +53,7 @@ public class ControladorCarrera implements ActionListener {
 				ArrayList<Auto> competidores = new ArrayList<Auto>();
 				competidores.add(new AutoPc());
 				Carrera picada = new Carrera(Juego.getPista(),competidores,miAuto,apuesta);
-				picada.correr();
+				VistaCarrera 
 				if(picada.ganador() == miAuto){
 					jugador.sumarDinero(picada.getPremio());
 				}
@@ -91,6 +100,21 @@ public class ControladorCarrera implements ActionListener {
 		 else {
 			 return false;
 		 	}
+	}
+
+
+	public SoundCache getSoundCache() {
+		return soundCache;
+	}
+
+
+	public SpriteCache getSpriteCache() {
+		return spriteCache;
+	}
+
+	
+	public boolean imageUpdate(Image arg0, int arg1, int arg2, int arg3,
+				return false;
 	}
 		 	
 	
