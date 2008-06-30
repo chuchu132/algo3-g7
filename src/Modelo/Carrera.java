@@ -11,7 +11,8 @@ public class Carrera extends Observable{
 	private ArrayList<Auto> autos;
 	private final double INTERVALO_TIEMPO = 0.01;
 	private ArrayList<Double> posiciones;
-	
+	private double tiempo=0;
+	private double posicion = 0;
 	/** El auto del jugador va siempre en la posicion 0 de los arrays
 	 * de esta forma cuando qeremos saber la pos de nuestro auto buscamos el corredor 0.
 	 * 
@@ -33,7 +34,7 @@ public class Carrera extends Observable{
 	}
 	
 	public synchronized void correr() {
-	    float tiempo=0; 			
+	    
 		while(!llegoAlguien()) {
 			int corredor = 0;
 			Iterator< Auto> it = autos.iterator(); 
@@ -49,11 +50,11 @@ public class Carrera extends Observable{
 						                                  autos.remove(corredor);// ver q pasa si el auto q explota es el del jugador
 					                                      } 
 										
-					double posicionAux = getPosicion(corredor) + autoTemp.getDeltaAvance();
+					posicion = getPosicion(corredor) + autoTemp.getDeltaAvance();
 				    posiciones.remove(corredor);
-				    posiciones.add(corredor, new Double(posicionAux));
+				    posiciones.add(corredor, new Double(posicion));
 			     	System.out.println("Auto "+ corredor + " " + autoTemp.toString());
-			     	System.out.println(" POS:" + posicionAux + " tiempo: " + tiempo);
+			     	System.out.println(" POS:" + posicion + " tiempo: " + tiempo);
 			     	corredor++;
 			    }
 				try{
@@ -77,6 +78,14 @@ public class Carrera extends Observable{
 			return 0.0;
 		}
 	}	
+	
+	public double getTiempo(){
+		return tiempo;
+	}
+	
+	public double getPos (){
+		return posicion;
+	}
 		
 	private boolean llegoAlguien(){
 		for(int corredor = 0; corredor < autos.size();corredor++){
