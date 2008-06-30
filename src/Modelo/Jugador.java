@@ -32,7 +32,7 @@ public class Jugador extends Observable{
 	//atributos
 	
 	private Taller miTaller;
-	private long miPlata;
+	private double miPlata;
 	private double litrosParaCargar;
 	
 	//contructor
@@ -106,7 +106,7 @@ public class Jugador extends Observable{
 		return miTaller;
 	}
 	
-	public long getPlata() {
+	public double getPlata() {
 		return miPlata;
 	}
 	
@@ -120,7 +120,7 @@ public class Jugador extends Observable{
 	   Document document = DocumentHelper.createDocument();
 	   Element jugador = document.addElement("jugador");
 	   jugador.add(this.getTaller().serialize());
-	   jugador.addAttribute("miPlata",Long.toString(this.miPlata));
+	   jugador.addAttribute("miPlata",Double.toString(this.miPlata));
 	   return jugador;
 	   
    }
@@ -129,9 +129,9 @@ public void deserialize(Element elemJugador) {
 	Iterator it = elemJugador.elementIterator();
 	
 	Element elemTaller = (Element) it.next();
-	Attribute atrPlata = (Attribute) it.next();
+	Attribute atrPlata = (Attribute) elemJugador.attribute(0);
 	
 	this.miTaller.deserialize(elemTaller);
-	this.miPlata = (Long.parseLong( atrPlata.getValue()));
+	this.miPlata = (Double.parseDouble( atrPlata.getValue()));
 	}
 }
