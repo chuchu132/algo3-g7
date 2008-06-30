@@ -15,11 +15,12 @@ import javax.swing.JFrame;
 
 public class VistaOpcionesAutoEnCarrera extends JDialog {
 	
-	private final int ANCHO = 200;
-	private final int ALTO = 230;
+	private final int ANCHO = 300;
+	private final int ALTO = 200;
 	private VistaAutoEnPista vistaAuto;
 	private ControladorOpcionesCarrera controlador;
 	private JCheckBox velocidad,estado,combustible,cambioActual,tiempo, posicion;
+	private JCheckBox mostrarAutos;
 	private JButton botonAceptar;
 	
 	public VistaOpcionesAutoEnCarrera(VistaAutoEnPista vistaAutoEnPista) {
@@ -47,6 +48,8 @@ public class VistaOpcionesAutoEnCarrera extends JDialog {
 	 contenedor.add(tiempo);
 	 posicion = new JCheckBox("Posicion", vistaAuto.isPosicion());
 	 contenedor.add(posicion);
+	 mostrarAutos = new JCheckBox ("Mostrar Autos", vistaAuto.isMostrarAutos());
+	 contenedor.add(mostrarAutos);
 	 
 	 contenedor.add(botonAceptar);
 	 
@@ -58,6 +61,8 @@ public class VistaOpcionesAutoEnCarrera extends JDialog {
 	 cambioActual.addItemListener(controlador);
 	 tiempo.addItemListener(controlador);
 	 posicion.addItemListener(controlador);
+	 mostrarAutos.addItemListener(controlador);
+	 
 	 setModal(true);
 	 setSize(ANCHO,ALTO);
 	 setResizable(false);
@@ -93,7 +98,11 @@ public class VistaOpcionesAutoEnCarrera extends JDialog {
 			if (e.getSource()==posicion){
 				vistaAuto.setPosicion(posicion.isSelected()?true:false);
 			}
+			if (e.getSource()==mostrarAutos){
+				vistaAuto.setMostrarAutos(mostrarAutos.isSelected()?true:false);
 			}
+		
+		}
 			
 		}
 		
