@@ -41,6 +41,7 @@ public class Carrera extends Observable{
 	
 	public synchronized void correr() {
 		double posicion;
+		autos.get(0).encender();
 		while(!llegoAlguien()) {
 			int corredor = 0;
 			Iterator< Auto> it = autos.iterator(); 

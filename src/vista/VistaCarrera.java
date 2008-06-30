@@ -61,11 +61,8 @@ public VistaCarrera(ControladorAuto controlador1,Escenario escenario,Carrera pic
 	
 	ventana.setBounds(0,0,Escenario.WIDTH,Escenario.HEIGHT);
 	ventana.setVisible(true);
-	ventana.addWindowListener( new WindowAdapter() {
-		public void windowClosing(WindowEvent e) {
-			System.exit(0);
-		}
-	});
+	ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	
     
 	ventana.setResizable(false);
 	
