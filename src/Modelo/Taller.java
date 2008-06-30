@@ -164,10 +164,7 @@ public class Taller extends Observable{
 		this.cargarListaAutopartes(elemListaAutopartes);
 		if (!(elemAutoActual.getName().equals("none")))
 			this.autoActual.deserialize(elemAutoActual);
-		else {
-			autoActual = null;
-		}
-					
+							
 	}
 
 	private void cargarListaAutopartes(Element elemListaAutopartes) {
