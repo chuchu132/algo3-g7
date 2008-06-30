@@ -29,6 +29,8 @@ private boolean combustible = true;
 private boolean cambioActual = true;
 private boolean tiempo = true;
 private boolean posicion = true;
+private boolean mostrarAutos = true;
+private boolean mostrarNombres = true;
 private Carrera carrera;
 
 public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
@@ -102,8 +104,8 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
            private void mostrarOponente (Graphics h){
         	   Graphics2D g = (Graphics2D) h;
         	   g.setPaint(Color.black);
-        	   g.fillRect(Escenario.WIDTH - 25, 55, 10, 100);
-        	   g.fillRect(Escenario.WIDTH - 55, 55, 10, 100);
+        	   g.fillRect(Escenario.WIDTH - 30, 155, 10, 100);
+        	   g.fillRect(Escenario.WIDTH - 75, 155, 10, 100);
         	   
            }
            
@@ -111,13 +113,19 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
         	   Graphics2D g = (Graphics2D) h;
         	   g.setPaint(Color.red);
         	   float pos1 = (float)carrera.getPosJugador();
-        	   float posImagen1 = 143 - (88*pos1)/1000;
+        	   float posImagen1 = 243 - (88*pos1)/1000;
         	   float pos2 = (float)carrera.getPosOponente();
-        	   float posImagen2 =  143 -(88*pos2)/1000;
-        	   g.fillOval(Escenario.WIDTH - 55, Math.round(posImagen1), 10, 10);
-        	   g.fillOval(Escenario.WIDTH - 25, Math.round(posImagen2), 10, 10);
+        	   float posImagen2 =  243 -(88*pos2)/1000;
+        	   g.fillOval(Escenario.WIDTH - 75, Math.round(posImagen1), 10, 10);
+        	   g.fillOval(Escenario.WIDTH - 30, Math.round(posImagen2), 10, 10);
            }
            
+           private void mostrarNombres (Graphics h){
+        	   Graphics2D g = (Graphics2D) h;
+        	   g.setColor(Color.white);
+        	   g.setFont(new Font ("Arial", Font.BOLD, 10));
+        	   g.drawString("Jug 1     Com", Escenario.WIDTH - 80, 150);
+           }
            
            public void pintar(Graphics g){
         	 if(velocidad){
@@ -135,9 +143,12 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
         	 }
         	 if (posicion)
         		 mostrarPosicion(g);
-        	 mostrarOponente (g);    
-        	 mostrarJugadores (g);   	 
-        	 actualizarFotograma(); 
+        	 if (mostrarAutos){
+        		 mostrarOponente (g);    
+        		 mostrarJugadores (g);
+        		 mostrarNombres(g);
+        	 }
+      	   	 actualizarFotograma(); 
 	    	 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), CENTRO ,ABAJO, escenario );
         	 } 
 	       
@@ -168,6 +179,11 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
 		public void setPosicion (boolean posicion){
 			this.posicion=posicion;
 		}
+		
+		public void setMostrarAutos (boolean mostrarAutos){
+			this.mostrarAutos=mostrarAutos;
+		}
+	
 
 		public boolean isVelocidad() {
 			return velocidad;
@@ -197,7 +213,10 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
 	    	return posicion;
 	    }
 	       
-	       
+	    public boolean isMostrarAutos(){
+	    	return mostrarAutos;
+	    }
+
 }
 
 
