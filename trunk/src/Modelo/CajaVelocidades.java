@@ -95,6 +95,11 @@ public class CajaVelocidades extends Autoparte{
 		Attribute atrCantidadDeCambios = (Attribute) it.next();
 		this.cantidadCambios = (Integer.parseInt(atrCantidadDeCambios.getValue()));
 		
+		this.cambioActual = 0;
+		
+		relaciones[0] = 0;
+		for(int i = 1; i < (cantidadCambios + 1); i++){ 
+			relaciones[i] = ((double)(cantidadCambios+1-i)/cantidadCambios );} 
 	}
 
 	
