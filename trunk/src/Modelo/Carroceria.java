@@ -1,10 +1,12 @@
 package Modelo;
 
 import java.text.DecimalFormat;
+import java.util.Iterator;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.Attribute;
 
 import Excepciones.ProblemaTecnicoException;
 
@@ -57,9 +59,16 @@ public class Carroceria extends Autoparte{
 	}
 
 	public void deserialize(Element elemAutoparte) {
-		// TODO Auto-generated method stub
+		Iterator it = elemAutoparte.elementIterator();
+		this.cargar(it);
+		Attribute atrModelo = (Attribute) it.next();
+		Attribute atrColor = (Attribute) it.next();
+		Attribute atrPlus = (Attribute) it.next();
+		
+		modelo = atrModelo.getValue();
+		color = Integer.parseInt(atrColor.getValue());
+		plusVelocidad = Double.parseDouble(atrPlus.getValue());		
 		
 	}
-	
-	
+		
 }

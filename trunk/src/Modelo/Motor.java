@@ -3,10 +3,12 @@ package Modelo;
 import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Iterator;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.Attribute;
 
 import Excepciones.MotorFundidoException;
 import Excepciones.ProblemaTecnicoException;
@@ -230,9 +232,18 @@ public class Motor extends Autoparte implements Observer{
 	}
 
 	public void deserialize(Element elemAutoparte) {
-		// TODO Auto-generated method stub
+		Iterator it = elemAutoparte.elementIterator();
+		this.cargar(it);
+		Attribute atrHP = (Attribute) it.next();
+		Attribute atrCilindros = (Attribute) it.next();
+		Attribute atrCubicaje = (Attribute) it.next();
+		
+		HP = Integer.parseInt(atrHP.getValue());
+		cilindros = Integer.parseInt(atrCilindros.getValue());
+		cubicaje = Double.parseDouble(atrCubicaje.getValue());		
 		
 	}
+	
 }
 
     
