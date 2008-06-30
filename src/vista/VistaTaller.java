@@ -22,6 +22,7 @@ import controlador.ControladorBotonAbandonar;
 import controlador.ControladorBotonCambiarAutoparte;
 import controlador.ControladorBotonCompra;
 import controlador.ControladorBotonElegirAuto;
+import controlador.ControladorGuardarJuego;
 
 
 import Modelo.Jugador;
@@ -83,7 +84,7 @@ public class VistaTaller extends JFrame{
 		
 		botonGuardar = new JButton("Guardar Juego");
 		panelBotones.add(botonGuardar);
-		
+		botonGuardar.addActionListener(new ControladorGuardarJuego());
 		botonAbandonar = new JButton("Abandonar Juego");
 		panelBotones.add(botonAbandonar);
 		botonAbandonar.addActionListener(new ControladorBotonAbandonar(this));
