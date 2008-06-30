@@ -69,7 +69,8 @@ public class Carrera extends Observable{
 				    posiciones.add(corredor, new Double(posicion));
 				    System.out.println ("Pos auto " + corredor + " " + posicion);
 				    corredor++;
-			    }
+				    tiempo+=INTERVALO_TIEMPO;
+				}
 				
 				try{
 				Thread.sleep(10);
@@ -79,7 +80,7 @@ public class Carrera extends Observable{
 				}
 				setChanged();
 				notifyObservers();
-				tiempo+=INTERVALO_TIEMPO;
+
 				}
 		}
 	}
