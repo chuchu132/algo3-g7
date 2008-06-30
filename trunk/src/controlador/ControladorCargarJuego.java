@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import org.dom4j.DocumentException;
 import org.xmlpull.v1.XmlPullParserException;
@@ -38,19 +39,18 @@ public class ControladorCargarJuego extends JFrame implements ActionListener {
 		
 			try {
 				unJuego.cargar(archivo.toString());
+				VistaTaller verTaller = new VistaTaller(unJuego.getJugador());
 			} catch (IOException e1) {
-				
+				avisarYVolver();
 			} catch (DocumentException e1) {
-				
+				avisarYVolver();
 			} catch (XmlPullParserException e1) {
-				
-			}
-	    
-			
-		    VistaTaller verTaller = new VistaTaller(unJuego.getJugador());
+				avisarYVolver();
+			}		    
 		}
 	}
-	private void lanzarCartel(){
-		
+	private void avisarYVolver(){
+		JOptionPane.showMessageDialog(null, "Se ha producido un error al cargar el archivo.", "ERROR", JOptionPane.ERROR_MESSAGE);
+		VistaJuego juego = new VistaJuego(); 
 	}
 }
