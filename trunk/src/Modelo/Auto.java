@@ -296,6 +296,8 @@ public class Auto extends Observable implements Vendible{
 		carroceria.deserialize(elemCarroceria);
 		tanque.deserialize(elemTanque);
 		rueda.deserialize(elemRueda);
+		
+		this.estado = FRENADO;
 	}
 		
 	

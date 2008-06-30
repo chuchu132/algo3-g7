@@ -146,8 +146,9 @@ public class Taller extends Observable{
 			if (autoparte instanceof TipoRueda)
 				autoPartes.add(((TipoRueda) autoparte).serialize());
 		}
-		
-		taller.add(this.getAutoActual().serialize());
+		if (autoActual != null)
+			taller.add(this.getAutoActual().serialize());
+		else taller.addElement("none");
 		
 		return taller;
 	}
@@ -161,8 +162,12 @@ public class Taller extends Observable{
 		
 		this.cargarListaAutos(elemListaAutos);
 		this.cargarListaAutopartes(elemListaAutopartes);
-		this.autoActual.deserialize(elemAutoActual);
-			
+		if (!(elemAutoActual.getName().equals("none")))
+			this.autoActual.deserialize(elemAutoActual);
+		else {
+			autoActual = null;
+		}
+					
 	}
 
 	private void cargarListaAutopartes(Element elemListaAutopartes) {
