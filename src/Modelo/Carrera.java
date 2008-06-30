@@ -15,6 +15,7 @@ public class Carrera extends Observable{
 	private double posicion = 0;
 	private double posicionAuto1 = 0;
 	private double posicionOponente = 0;
+	private int ganador;
 	/** El auto del jugador va siempre en la posicion 0 de los arrays
 	 * de esta forma cuando qeremos saber la pos de nuestro auto buscamos el corredor 0.
 	 * 
@@ -91,6 +92,16 @@ public class Carrera extends Observable{
 		return tiempo;
 	}
 	
+	public double getPremio(double apuestaXjugador){
+		return apuestaXjugador*autos.size();
+	}
+	
+	public Auto ganador(){
+		Auto winner = (Auto) autos.get(ganador);
+		return winner;
+		
+	}
+	
 	public double getPosJugador (){
 		return posicionAuto1;
 	}
@@ -102,13 +113,14 @@ public class Carrera extends Observable{
 	private boolean llegoAlguien(){
 		for(int corredor = 0; corredor < autos.size();corredor++){
 			if(getPosicion(corredor) > pista.getLongitud()){
+				ganador = corredor;
 				return true;
 		      }
 		}
 		return false;
 	 }
 	
-	private int numeroDelGanador(){
+	/*private int numeroDelGanador(){
 		
 	Iterator<Double> it = posiciones.iterator();
 	double max = posiciones.get(0).doubleValue();
@@ -123,7 +135,7 @@ public class Carrera extends Observable{
 		}
 	}
 	return posicionMax;
-	}
+	}*/
 	
 	
 }
