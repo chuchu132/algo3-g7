@@ -99,6 +99,25 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
         	   g.drawString("Posicion : " + posicion.format(carrera.getPosJugador()) +" mts", 10, 60);
            }
            
+           private void mostrarOponente (Graphics h){
+        	   Graphics2D g = (Graphics2D) h;
+        	   g.setPaint(Color.black);
+        	   g.fillRect(Escenario.WIDTH - 25, 55, 10, 100);
+        	   g.fillRect(Escenario.WIDTH - 55, 55, 10, 100);
+        	   
+           }
+           
+           private void mostrarJugadores (Graphics h){
+        	   Graphics2D g = (Graphics2D) h;
+        	   g.setPaint(Color.red);
+        	   float pos1 = (float)carrera.getPosJugador();
+        	   float posImagen1 = 143 - (88*pos1)/1000;
+        	   float pos2 = (float)carrera.getPosOponente();
+        	   float posImagen2 =  143 -(88*pos2)/1000;
+        	   g.fillOval(Escenario.WIDTH - 55, Math.round(posImagen1), 10, 10);
+        	   g.fillOval(Escenario.WIDTH - 25, Math.round(posImagen2), 10, 10);
+           }
+           
            
            public void pintar(Graphics g){
         	 if(velocidad){
@@ -116,7 +135,8 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
         	 }
         	 if (posicion)
         		 mostrarPosicion(g);
-        	         	 
+        	 mostrarOponente (g);    
+        	 mostrarJugadores (g);   	 
         	 actualizarFotograma(); 
 	    	 g.drawImage( spriteCache.getSprite(spriteNames[fotogramaActual]), CENTRO ,ABAJO, escenario );
         	 } 
