@@ -231,8 +231,8 @@ public class Motor extends Autoparte implements Observer{
 		return motor;
 	}
 
-	public void deserialize(Element elemAutoparte) {
-		Iterator it = elemAutoparte.elementIterator();
+	public void deserialize(Element elemMotor) {
+		Iterator it = elemMotor.elementIterator();
 		this.cargar(it);
 		Attribute atrHP = (Attribute) it.next();
 		Attribute atrCilindros = (Attribute) it.next();
