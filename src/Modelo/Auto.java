@@ -70,7 +70,7 @@ public class Auto extends Observable implements Vendible{
 	throws ProblemaTecnicoException{ 
 
 
-		aceleracion = (getFuerzaNeta(pista)/getPesoTotal()) * motor.getVidaUtil();
+		aceleracion = (getFuerzaNeta(pista)/getPesoTotal()) * (motor.getVidaUtil()/motor.getVidaUtilInicial());
 
 		if(velocidad + aceleracion * tiempo >= CERO){
 			velocidad += (aceleracion * tiempo);}

@@ -14,7 +14,7 @@ import Excepciones.RuedaRotaException;
 public class TipoRueda extends Autoparte{
    
 	double coeficienteAgarre;
-	private final double factorDeDesgaste = 0.00005;
+	private final double factorDeDesgaste = 100;
 	
     
 	public TipoRueda(double precio, double peso,double coeficiente, float vidaUtilInicial){

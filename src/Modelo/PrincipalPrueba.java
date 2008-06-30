@@ -33,14 +33,14 @@ public class PrincipalPrueba  implements Escenario{
 	public PrincipalPrueba(){
 		
 		spriteCache = new SpriteCache();
-		miSistemaCombustion = new SistemaCombustion(5,100,"Turbo",0.2,1);
-		miMotor = new Motor(200,6,0.2,1000,400,1);
+		miSistemaCombustion = new SistemaCombustion(5,100,"Turbo",0.2,10000);
+		miMotor = new Motor(200,6,0.2,1000,400,10000);
 		//miCarro = new Carroceria(300,700,"Porsche Cayman S",1,0.1,1);
-		miCarro = new Carroceria(300,700,"Ferrari F430",1,0.1,1);
+		miCarro = new Carroceria(300,700,"Ferrari F430",1,0.1,10000);
 		//miCarro = new Carroceria(300,700,"Lamborghini Gallardo",1,0.1,1);
-		miCaja= new CajaAutomatica(4,200,80,1);
-		miTanque = new TanqueCombustible(1000,70,1);
-		miRueda = new TipoRueda(100,20,0.9,1);
+		miCaja= new CajaAutomatica(4,200,80,10000);
+		miTanque = new TanqueCombustible(1000,70,10000);
+		miRueda = new TipoRueda(100,20,0.9,10000);
 		miAuto =  new Auto(miMotor,miCaja,miSistemaCombustion,miCarro,miTanque,miRueda);
 	    miAuto.cargarCombustible(1000, new Nafta("Nafta de Prueba",98));
 	    miAuto.encender();
