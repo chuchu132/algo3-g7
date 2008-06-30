@@ -17,6 +17,7 @@ public class Carrera extends Observable{
 	private double posicionOponente = 0;
 	private int ganador;
 	private double apuestaXjugador;
+	private double contador=3;
 	/** El auto del jugador va siempre en la posicion 0 de los arrays
 	 * de esta forma cuando qeremos saber la pos de nuestro auto buscamos el corredor 0.
 	 * 
@@ -45,7 +46,8 @@ public class Carrera extends Observable{
 			Iterator< Auto> it = autos.iterator(); 
 				while(it.hasNext()){
 					Auto autoTemp = it.next();
-				   
+					cuentaRegresiva();
+					if (contador<0){
 					try {
 					
 					autoTemp.simular(INTERVALO_TIEMPO, pista);
@@ -68,6 +70,7 @@ public class Carrera extends Observable{
 				    System.out.println ("Pos auto " + corredor + " " + posicion);
 				    corredor++;
 			    }
+				
 				try{
 				Thread.sleep(10);
 				}
@@ -77,7 +80,16 @@ public class Carrera extends Observable{
 				setChanged();
 				notifyObservers();
 				tiempo+=INTERVALO_TIEMPO;
+				}
 		}
+	}
+	
+	public void cuentaRegresiva(){
+		contador = contador - 0.01;
+	}
+
+	public double getCounter(){
+		return contador;
 	}
 	
 	

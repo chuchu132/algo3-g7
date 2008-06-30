@@ -127,7 +127,21 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
         	   g.drawString("Jug 1     Com", Escenario.WIDTH - 80, 150);
            }
            
+           private void cuentaRegresiva (Graphics h){
+        	   Graphics2D g = (Graphics2D) h;
+        	   g.setColor(Color.red);
+        	   g.setFont(new Font ("Arial", Font.BOLD, 40));
+        	   
+        	   double dato = carrera.getCounter();
+        	   DecimalFormat numero = new DecimalFormat ("0");
+        	   if ((dato>0)&&(dato<3))
+        	   g.drawString(numero.format(dato),350, 155);
+        	   
+           }
+           
+           
            public void pintar(Graphics g){
+        	 cuentaRegresiva(g);
         	 if(velocidad){
         	 mostrarVelocidad(g);}
         	 if(estado){
