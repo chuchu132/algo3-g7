@@ -14,7 +14,7 @@ import Excepciones.TanqueVacioException;
 public class SistemaCombustion extends Autoparte{
 	private String tipo;
 	private double plusPotencia; 
-	private final double factorDeDesgaste = 0.0000005;
+	private final double factorDeDesgaste = 10;
 	 /*
 	 * ej: si vale 0.1 a la potencia del motor la multiplicamos x 1,1
 	 * y obtenemos un 10% mas de potencia

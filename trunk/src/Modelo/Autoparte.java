@@ -45,6 +45,10 @@ public abstract class Autoparte extends Observable implements Vendible {
 	public double getVidaUtil() {
 		return vidaUtil;
 	}
+	
+	public double getVidaUtilInicial(){
+		return vidaUtilInicial;
+	}
 	/**
 	 * Si se gasta el 10% pongo 0.10
 	 * */

@@ -14,7 +14,7 @@ public class Carroceria extends Autoparte{
 	 private String modelo;
 	 private int color;
 	 private double plusVelocidad;
-	 private final double factorDeDesgaste = 0.0000001; 
+	 private final double factorDeDesgaste = 10; 
 	 
 	public Carroceria(double precio,double peso, String modelo, int color, double plus, long vidaUtilInicial ){
 		super(peso,precio, vidaUtilInicial);

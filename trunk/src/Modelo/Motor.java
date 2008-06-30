@@ -18,7 +18,7 @@ public class Motor extends Autoparte implements Observer{
 	public final static double COEF_BAJAR_CAMBIO = 2.5;
 	public final static double COEF_SUBIR_CAMBIO = 0.4;
 	public final static int REVOLUCIONES_MINIMAS = 800; //es static porque es comun para todos los motores
-	private final double factorDeDesgaste = 0.01;
+	private final double factorDeDesgaste = 120;
 	
 	private final int DESACELERANDO = -1;
 	private final int FRENADO = 0;
@@ -151,7 +151,8 @@ public class Motor extends Autoparte implements Observer{
     public void simular(double deltaTiempo, SistemaCombustion sistemaCombustion, TanqueCombustible tanqueCombustible) throws ProblemaTecnicoException {
     	
     	double consumoInstantaneo = 0;
-    	double desgaste = deltaTiempo*(revolucionesActuales/revolucionesMax)*factorDeDesgaste;
+    	double constanteDesgasteSecundario = (double)revolucionesActuales/revolucionesMax;
+    	double desgaste = deltaTiempo*constanteDesgasteSecundario*factorDeDesgaste;
         gastar(desgaste);
         
     	if(this.getVidaUtil() < getVidaUtilMinima()) {
