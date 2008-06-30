@@ -47,9 +47,12 @@ public class ControladorCarrera implements ActionListener, Escenario {
 
 	public void actionPerformed(ActionEvent arg0) {
 		Auto miAuto	= jugador.getTaller().getAutoActual();
-		//vista.dispose();
-	  if(miAuto != null){	
+		vista.dispose();
+		System.out.println("en action");
+	  if(miAuto != null){
+		  System.out.println(" hay auto");
 		if(apostar()){
+			System.out.println("aostando");
 				ArrayList<Auto> competidores = new ArrayList<Auto>();
 				competidores.add(new AutoPc());
 				Carrera picada = new Carrera(Juego.getPista(),competidores,miAuto,apuesta);
