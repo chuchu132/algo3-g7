@@ -1,8 +1,11 @@
 package Modelo;
 
+import java.util.Iterator;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.Attribute;
 
 public class Pista {
    private double coeficienteAgarre;
@@ -34,9 +37,17 @@ public class Pista {
 		pista.addAttribute("coeficienteAgarre",Double.toString(this.getCoeficienteAgarre()));
 		pista.addAttribute("longitud",Double.toString(this.getLongitud()));
 		return pista;
-	}
-public void deserialize(Element elemPista) {
-	// TODO Auto-generated method stub
-	
-}
+		
+   }
+   
+   public void deserialize(Element elemPista) {
+	  Iterator it = elemPista.elementIterator();
+	  Attribute atrCoef = (Attribute) it.next();
+	  Attribute atrLongitud = (Attribute) it.next();
+	  
+	  coeficienteAgarre = Double.parseDouble(atrCoef.getValue());
+	  longitud = Double.parseDouble(atrLongitud.getValue());
+	  
+   }
+   
 }

@@ -1,10 +1,12 @@
 package Modelo;
 
 import java.text.DecimalFormat;
+import java.util.Iterator;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.Attribute;
 
 import Excepciones.ProblemaTecnicoException;
 import Excepciones.RuedaRotaException;
@@ -47,18 +49,22 @@ public class TipoRueda extends Autoparte{
 			return ("Ruedas: Coficiente de Agarre: " + porcentage.format(getCoeficienteAgarre())  + " Vida Util: " + porcentage.format(100*getPorcentajeVidaUtil())+ " %");
 		}
 	
-	   public Element serialize(){
+	public Element serialize(){
 			Document document = DocumentHelper.createDocument();
 			Element ruedas = document.addElement("tipoRueda");
 			this.grabar(ruedas);
 			ruedas.addAttribute("coeficienteAgarre",Double.toString(this.getCoeficienteAgarre()));
 			return ruedas;
-		}
+	}
 
 
 	public void deserialize(Element elemAutoparte) {
-		// TODO Auto-generated method stub
-		
+			Iterator it = elemAutoparte.elementIterator();
+			this.cargar(it);
+			Attribute atrCof = (Attribute) it.next();
+			
+			coeficienteAgarre = Double.parseDouble(atrCof.getValue());
+					
 	}
 	
 }

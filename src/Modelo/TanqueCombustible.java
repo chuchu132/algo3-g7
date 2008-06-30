@@ -1,10 +1,12 @@
 package Modelo;
 
 import java.text.DecimalFormat;
+import java.util.Iterator;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.Attribute;
 
 import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
@@ -134,8 +136,17 @@ public class TanqueCombustible extends Autoparte{
 			tanqueCombustible.add(this.getTipoNafta().serialize());
 			return tanqueCombustible;
 		}
-	public void deserialize(Element elemAutoparte) {
-		// TODO Auto-generated method stub
+	
+	 public void deserialize(Element elemTanque) {
+		  	Iterator it = elemTanque.elementIterator();
+		  	this.cargar(it);
+		  	Attribute atrCapacidadMaxima = (Attribute) it.next();
+		  	Attribute atrCantidadCombustible = (Attribute) it.next();
+		  	Element elemNafta = (Element) it.next();
+		  	
+		  	capacidadMaxima = Double.parseDouble(atrCapacidadMaxima.getValue());
+		  	cantidadCombustible = Double.parseDouble(atrCantidadCombustible.getValue());
+		  	tipoNafta.deserialize(elemNafta);
 		
 	}
 }

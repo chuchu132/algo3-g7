@@ -1,10 +1,12 @@
 package Modelo;
 
 import java.text.DecimalFormat;
+import java.util.Iterator;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.Attribute;
 
 import Excepciones.ProblemaTecnicoException;
 import Excepciones.TanqueVacioException;
@@ -55,7 +57,15 @@ public class SistemaCombustion extends Autoparte{
 
 
 public void deserialize(Element elemAutoparte) {
-	// TODO Auto-generated method stub
-	
+		Iterator it = elemAutoparte.elementIterator();
+		this.cargar(it);
+		Attribute atrTipo = (Attribute) it.next();
+		Attribute atrPlusPotencia = (Attribute) it.next();
+		
+		tipo = atrTipo.getValue();
+		plusPotencia = Double.parseDouble(atrPlusPotencia.getValue());
+		
+	}
+
 }
-}
+
