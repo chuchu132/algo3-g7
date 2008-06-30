@@ -15,8 +15,8 @@ import javax.swing.JFrame;
 
 public class VistaOpcionesAutoEnCarrera extends JDialog {
 	
-	private final int ANCHO = 250;
-	private final int ALTO = 200;
+	private final int ANCHO = 200;
+	private final int ALTO = 230;
 	private VistaAutoEnPista vistaAuto;
 	private ControladorOpcionesCarrera controlador;
 	private JCheckBox velocidad,estado,combustible,cambioActual,tiempo, posicion;
@@ -26,7 +26,7 @@ public class VistaOpcionesAutoEnCarrera extends JDialog {
 	
 	 vistaAuto = vistaAutoEnPista;
 	 Container contenedor = getContentPane();
-	 contenedor.setLayout(new  GridLayout(5,1));
+	 contenedor.setLayout(new  GridLayout(7,1));
 	 
 	 botonAceptar = new JButton("Aceptar");
 	 botonAceptar.addActionListener( new ActionListener(){
@@ -56,6 +56,8 @@ public class VistaOpcionesAutoEnCarrera extends JDialog {
 	 combustible.addItemListener(controlador);
 	 estado.addItemListener(controlador);
 	 cambioActual.addItemListener(controlador);
+	 tiempo.addItemListener(controlador);
+	 posicion.addItemListener(controlador);
 	 setModal(true);
 	 setSize(ANCHO,ALTO);
 	 setResizable(false);
