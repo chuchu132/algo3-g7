@@ -22,8 +22,8 @@ public class Juego {
 	private static Pista pista;
 	
 	public Juego(){
-		Jugador jugador = new Jugador();
-		Pista pista = new Pista();
+		 this.jugador = new Jugador();
+		 this.pista = new Pista();
 	}
 	
 	public Jugador getJugador(){
@@ -31,7 +31,7 @@ public class Juego {
 	}
 	
 	
-	public static void guardar(String ruta) throws IOException {
+	public  static void guardar(String ruta) throws IOException {
 		Document document = DocumentHelper.createDocument();
 		Element raiz = document.addElement("Lista");
 		
@@ -48,7 +48,7 @@ public class Juego {
 		}
 	}
 	
-	public static void cargar(String ruta) throws IOException {
+	public static  void cargar(String ruta) throws IOException {
 		String rutaArchivo = ruta;
 		
 		if(rutaArchivo != null){
