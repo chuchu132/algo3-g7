@@ -24,7 +24,7 @@ public class TestMotor extends TestCase {
 	}
 
 	protected void setUp(){
-		miMotor = new Motor(200,6,0.2,1000,400,1);
+		miMotor = new Motor(200,6,0.2,1000,400,10000);
 		/*	PESO = 400
 		 *  HP= 200;
 		 *  cilindros = 6
@@ -95,12 +95,12 @@ public class TestMotor extends TestCase {
 		nafta = new Nafta("Nafta de Prueba",98);
 		miTanque.cargarCombustible(10.1, nafta);
 		miMotor.encender(miSistemaCombustion,miTanque);
-		assertEquals(0.0,miMotor.obtenerDeltaRevoluciones(10));
+		assertEquals(4650.0,miMotor.obtenerDeltaRevoluciones(1));
 		miCaja.subirCambio();
-		assertEquals(11625.0,miMotor.obtenerDeltaRevoluciones(10));
+		assertEquals(1162.50,miMotor.obtenerDeltaRevoluciones(1));
 		miCaja.subirCambio();
 		miCaja.subirCambio();
-		assertEquals(6975.0,miMotor.obtenerDeltaRevoluciones(10));
+		assertEquals(697.50,miMotor.obtenerDeltaRevoluciones(1));
 		
 	}
 		
@@ -112,12 +112,13 @@ public class TestMotor extends TestCase {
 		assertEquals(0.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSistemaCombustion));
 		
 		miCaja.subirCambio();
-		miMotor.acelerar(1);
+		miMotor.acelerar(0);
 		miMotor.estado = 1; //ACELERANDO
-		assertEquals(7440.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSistemaCombustion));
-		
-		miMotor.acelerar(3);
-		assertEquals(100.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSistemaCombustion));
+		assertEquals(13440.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSistemaCombustion));
+		miCaja.subirCambio();
+		miMotor.embragarSubir();
+		miMotor.acelerar(1);
+		assertEquals(10752.0,miMotor.getFuerzaInstantanea(miCaja, 100,miSistemaCombustion));
 	}
 	
 	public void testAcelerar(){ // prueba como varian las revoluciones del Motor segun el tiempo de aceleracion y el cambio
@@ -125,18 +126,18 @@ public class TestMotor extends TestCase {
 		miTanque.cargarCombustible(10.1, nafta);
 		miMotor.encender(miSistemaCombustion,miTanque);	
 		
-		miMotor.acelerar(1);
+		miMotor.acelerar(0.1);
 	
-		assertEquals(800,miMotor.getRevolucionesActuales() );
+		assertEquals(1265,miMotor.getRevolucionesActuales() );
 		
 		miCaja.subirCambio();
 		miMotor.acelerar(1);
-		assertEquals(1962,miMotor.getRevolucionesActuales() );
+		assertEquals(2427,miMotor.getRevolucionesActuales() );
 		
 		miCaja.subirCambio();
 		miCaja.subirCambio();
 		miMotor.acelerar(1);
-		assertEquals(2659,miMotor.getRevolucionesActuales() );
+		assertEquals(3124,miMotor.getRevolucionesActuales() );
 		
 	}
 	
@@ -264,7 +265,7 @@ public class TestMotor extends TestCase {
 	
 	public void testSimular3(){// prueba simular con el motor fundido
 		
-		miMotor.gastar(0.9);
+		miMotor.gastar(9900);
 		
 		miMotor.embragarSubir();
 		try{
