@@ -1,7 +1,9 @@
 package Modelo;
 
 import java.util.Observable;
+import java.util.Iterator;
 
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -62,6 +64,19 @@ public abstract class Autoparte extends Observable implements Vendible {
 		autoParte.addAttribute("precio",Double.toString(this.getPrecio()));
 		autoParte.addAttribute("vidaUtil",Float.toString(vidaUtil));
 		autoParte.addAttribute("vidaUtilInicial",Float.toString(vidaUtilInicial));
+	}
+	
+	public void cargar(Iterator it){
+		Attribute atrPeso = (Attribute) it.next();
+		Attribute atrPrecio = (Attribute) it.next();
+		Attribute atrVidaUtil = (Attribute) it.next();
+		Attribute atrVidaUtilInicial = (Attribute) it.next();
+		
+		this.peso = (Double.parseDouble(atrPeso.getValue()));
+		this.precio = (Double.parseDouble(atrPrecio.getValue()));
+		this.vidaUtil = (Float.parseFloat(atrVidaUtil.getValue()));
+		this.vidaUtilInicial = (Float.parseFloat(atrVidaUtilInicial.getValue()));		
+		
 	}
 	
 	//abstract public void simular(double tiempo)throws ProblemaTecnicoException;

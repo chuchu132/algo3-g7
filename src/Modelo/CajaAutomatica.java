@@ -3,10 +3,12 @@ package Modelo;
 import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Iterator;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.Attribute;
 
 public class CajaAutomatica extends CajaVelocidades implements Observer{
 
@@ -60,10 +62,6 @@ public class CajaAutomatica extends CajaVelocidades implements Observer{
 		this.grabar(cajaVelocidades);
 		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(this.getCantidadCambios()));
 		return cajaVelocidades;
-	}
-	public void deserialize(Element elemAutoparte) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 
