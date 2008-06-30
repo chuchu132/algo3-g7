@@ -15,8 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import com.sun.media.codec.video.cinepak.CineStore;
-
 import Excepciones.NoAlcanzaDineroException;
 import Modelo.Auto;
 import Modelo.AutoPc;
