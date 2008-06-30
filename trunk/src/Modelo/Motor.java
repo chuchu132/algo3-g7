@@ -241,7 +241,13 @@ public class Motor extends Autoparte implements Observer{
 		
 		HP = Integer.parseInt(atrHP.getValue());
 		cilindros = Integer.parseInt(atrCilindros.getValue());
-		cubicaje = Double.parseDouble(atrCubicaje.getValue());		
+		cubicaje = Double.parseDouble(atrCubicaje.getValue());	
+		this.fuerzaMaxima = HP * 50 + cilindros*cubicaje*1000;
+		this.encendido=false;
+		this.revolucionesMax = (int)(HP * 17 + 2800); 
+		this.revolucionesActuales = 0;
+		this.fuerzaInstantanea = 0;
+		this.estado = FRENADO;
 		
 	}
 	
