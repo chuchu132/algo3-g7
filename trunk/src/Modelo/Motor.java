@@ -155,8 +155,8 @@ public class Motor extends Autoparte implements Observer{
     	double desgaste = deltaTiempo*constanteDesgasteSecundario*factorDeDesgaste;
         gastar(desgaste);
         
-    	if(this.getVidaUtil() < getVidaUtilMinima()) {
-     	   throw new MotorFundidoException();
+    	if(this.getPorcentajeVidaUtil() < getVidaUtilMinima()) {
+     	   	throw new MotorFundidoException();
      	}
     	
        	
