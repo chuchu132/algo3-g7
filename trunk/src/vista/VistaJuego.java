@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controlador.ControladorBotonNuevo;
+import controlador.ControladorCargarJuego;
 
 import Modelo.Jugador;
 import Recursos.SpriteCache;
@@ -51,6 +52,7 @@ public class VistaJuego extends JFrame{
 		panelBotones.add(botonNuevo);
 		botonNuevo.addActionListener( new ControladorBotonNuevo(this));
 		panelBotones.add(botonCargar);
+		botonCargar.addActionListener(new ControladorCargarJuego(this));
 		panelBotones.add(botonSalir);
 		
 		panelPrincipal.setLayout(new BorderLayout());
