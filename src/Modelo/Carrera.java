@@ -16,6 +16,7 @@ public class Carrera extends Observable{
 	private double posicionAuto1 = 0;
 	private double posicionOponente = 0;
 	private int ganador;
+	private double apuestaXjugador;
 	/** El auto del jugador va siempre en la posicion 0 de los arrays
 	 * de esta forma cuando qeremos saber la pos de nuestro auto buscamos el corredor 0.
 	 * 
@@ -25,10 +26,11 @@ public class Carrera extends Observable{
 	 * @param INTERVALO_TIEMPO
 	 */
 	
-	public Carrera (Pista pista, ArrayList<Auto> autos,Auto autoJugador, double Premio) {
+	public Carrera (Pista pista, ArrayList<Auto> autos,Auto autoJugador, double apuestaXjugador) {
 		this.pista = pista;
 		this.autos = autos;
 		this.posiciones = new ArrayList<Double>();
+		this.apuestaXjugador = apuestaXjugador;
 		autos.add(0,autoJugador);
 		posiciones.add(new Double(0.0));
 		for(int i = 1; i<autos.size();i++){
@@ -92,8 +94,8 @@ public class Carrera extends Observable{
 		return tiempo;
 	}
 	
-	public double getPremio(double apuestaXjugador){
-		return apuestaXjugador*autos.size();
+	public double getPremio(){
+		return this.apuestaXjugador*autos.size();
 	}
 	
 	public Auto ganador(){
