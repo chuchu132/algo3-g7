@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,7 +40,12 @@ public class VistaJuego extends JFrame{
 		botonCargar = new JButton("Cargar Juego");
 		
 		botonSalir = new JButton("Salir");
-		
+		botonSalir.addActionListener(new ActionListener(){
+
+				public void actionPerformed(ActionEvent e) {
+				 System.exit(0);
+				}			
+		});
 
 		
 		panelBotones.add(botonNuevo);
