@@ -54,5 +54,11 @@ public class TipoRueda extends Autoparte{
 			ruedas.addAttribute("coeficienteAgarre",Double.toString(this.getCoeficienteAgarre()));
 			return ruedas;
 		}
+
+
+	public void deserialize(Element elemAutoparte) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

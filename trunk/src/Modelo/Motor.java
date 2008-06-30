@@ -228,6 +228,11 @@ public class Motor extends Autoparte implements Observer{
 		motor.addAttribute("cubicaje",Double.toString(cubicaje));
 		return motor;
 	}
+
+	public void deserialize(Element elemAutoparte) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
     

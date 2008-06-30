@@ -61,6 +61,10 @@ public class CajaAutomatica extends CajaVelocidades implements Observer{
 		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(this.getCantidadCambios()));
 		return cajaVelocidades;
 	}
+	public void deserialize(Element elemAutoparte) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

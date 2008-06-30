@@ -276,6 +276,11 @@ public class Auto extends Observable implements Vendible{
 		return auto;
 		
 	}
+
+	public void deserialize(Element elemAutoActual) {
+		
+		
+	}
 		
 	
 }

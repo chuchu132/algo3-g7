@@ -134,4 +134,8 @@ public class TanqueCombustible extends Autoparte{
 			tanqueCombustible.add(this.getTipoNafta().serialize());
 			return tanqueCombustible;
 		}
+	public void deserialize(Element elemAutoparte) {
+		// TODO Auto-generated method stub
+		
+	}
 }

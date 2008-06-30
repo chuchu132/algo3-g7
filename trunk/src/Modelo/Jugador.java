@@ -8,6 +8,7 @@ import java.util.Observable;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.Attribute;
 
 import Excepciones.NoAlcanzaDineroException;
 import Excepciones.NoExisteAutoException;
@@ -124,14 +125,13 @@ public class Jugador extends Observable{
 	   
    }
 
-public Jugador deserialize(Element elemJugador) {
+public void deserialize(Element elemJugador) {
 	Iterator it = elemJugador.elementIterator();
 	
 	Element elemTaller = (Element) it.next();
-	Element elemPlata = (Element) it.next();
+	Attribute atrPlata = (Attribute) it.next();
 	
 	this.miTaller.deserialize(elemTaller);
-	miPlata = (Long.parseLong( elemPlata.attribute(1).getValue()));
-	return null;
-}
+	this.miPlata = (Long.parseLong( atrPlata.getValue()));
+	}
 }

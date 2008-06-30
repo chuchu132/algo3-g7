@@ -35,8 +35,8 @@ public class Pista {
 		pista.addAttribute("longitud",Double.toString(this.getLongitud()));
 		return pista;
 	}
-public Pista deserialize(Element elemPista) {
+public void deserialize(Element elemPista) {
 	// TODO Auto-generated method stub
-	return null;
+	
 }
 }
