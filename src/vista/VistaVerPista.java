@@ -21,28 +21,27 @@ public class VistaVerPista extends JFrame{
 		super.setResizable(false);
 		String spriteName;
 		SpriteCache spriteCache = new SpriteCache();
-		JLabel longPista, coefPista;
+		JLabel longPista, coefPista, fondo;
 		ImageIcon imagen;
 		Container contenedor = getContentPane();
-		contenedor.setLayout(new GridLayout(2, 1));
+		contenedor.setLayout(new GridLayout(3, 1));
 		Double longitud = Juego.getPista().getLongitud();
 		DecimalFormat porcentajeLong = new DecimalFormat("0.00");
 		String longitudString = porcentajeLong.format(longitud).toString();
 		Double coeficienteAgarre = Juego.getPista().getCoeficienteAgarre();
 		if (coeficienteAgarre<0.33)
-			spriteName = "nieve/Pista0.jpg";
+			spriteName = "nieve";
 		else if (coeficienteAgarre<0.66)
-			spriteName = "lluvia/Pista0.jpg";
+			spriteName = "lluvia";
 			 else
-				 spriteName = "despejado/Pista0.jpg";
-		DecimalFormat porcentajeCoef = new DecimalFormat("0.00");
-		String coeficienteAgarreString = porcentajeCoef.format(coeficienteAgarre).toString();
-		
-		longPista = new JLabel (longitudString);
+				 spriteName = "despejado";
+		longPista = new JLabel ("Longitud de la pista " +longitudString+ " mts");
 		contenedor.add(longPista);
-		imagen = (ImageIcon) spriteCache.getSprite(spriteName);
-		coefPista = new JLabel (coeficienteAgarreString, imagen , 0);
+		imagen = new ImageIcon(spriteCache.getSprite(spriteName + "/Pista0.jpg"));
+		coefPista = new JLabel ("Condiciones climatológicas: " + spriteName);
 		contenedor.add(coefPista);
+		fondo = new JLabel (imagen);
+		contenedor.add(fondo);
 		super.setAlwaysOnTop(true);
 		super.setVisible(true);
 	}
