@@ -53,9 +53,8 @@ public class Carrera extends Observable{
 					posicion = getPosicion(corredor) + autoTemp.getDeltaAvance();
 				    posiciones.remove(corredor);
 				    posiciones.add(corredor, new Double(posicion));
-			     	System.out.println("Auto "+ corredor + " " + autoTemp.toString());
-			     	System.out.println(" POS:" + posicion + " tiempo: " + tiempo);
-			     	corredor++;
+				    System.out.println ("Pos auto " + corredor + " " + posicion);
+				    corredor++;
 			    }
 				try{
 				Thread.sleep(10);

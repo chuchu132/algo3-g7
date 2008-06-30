@@ -28,6 +28,7 @@ public class PrincipalPrueba  implements Escenario{
 
 	private ControladorAuto controlAuto;
 	private VistaCarrera vistaCarrera;
+	private AutoPc oponente;
     private ArrayList<Auto> corredores;	
 	
 	public PrincipalPrueba(){
@@ -45,7 +46,10 @@ public class PrincipalPrueba  implements Escenario{
 	    miAuto.cargarCombustible(1000, new Nafta("Nafta de Prueba",98));
 	    miAuto.encender();
 	    unaPista = new Pista(1000,0.5);
-   	    corredores = new ArrayList<Auto>();
+	    oponente = new AutoPc();
+	    oponente.encender();
+	    corredores = new ArrayList<Auto>();
+	    corredores.add(oponente);
 	    picada = new Carrera(unaPista,corredores,miAuto,100);
 		controlAuto = new ControladorAuto(miAuto);
 		vistaCarrera = new VistaCarrera(controlAuto,controlAuto,unaPista,this,picada);
