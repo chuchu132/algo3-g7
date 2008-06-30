@@ -48,20 +48,16 @@ public class Juego {
 		}
 	}
 	
-	public static  void cargar(String ruta) throws IOException {
+	public static  void cargar(String ruta) throws IOException,DocumentException,XmlPullParserException {
 		String rutaArchivo = ruta;
 		
 		if(rutaArchivo != null){
 			File aFile = new File(rutaArchivo);
 			XPP3Reader xmlReader = new XPP3Reader();
 			Document doc = null;
-			try {
+			
 				doc = xmlReader.read(aFile);
-			} catch (DocumentException e) {
-				e.printStackTrace();
-			} catch (XmlPullParserException e) {
-				e.printStackTrace();
-			}
+			
 			
 			Element element = doc.getRootElement();
 			Iterator it = element.elementIterator();
