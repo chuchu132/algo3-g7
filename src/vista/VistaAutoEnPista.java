@@ -31,7 +31,6 @@ private boolean cambioActual = true;
 private boolean tiempo = true;
 private boolean posicion = true;
 private boolean mostrarAutos = true;
-private boolean mostrarNombres = true;
 private Carrera carrera;
 
 public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
