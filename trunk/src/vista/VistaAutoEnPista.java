@@ -96,7 +96,7 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
         	   g.setPaint(Color.white);
         	   g.setFont(new Font ("Arial", Font.BOLD, 18));
         	   DecimalFormat posicion = new DecimalFormat ("0.00");
-        	   g.drawString("Posicion : " + posicion.format(carrera.getPos()) +" mts", 10, 60);
+        	   g.drawString("Posicion : " + posicion.format(carrera.getPosJugador()) +" mts", 10, 60);
            }
            
            
