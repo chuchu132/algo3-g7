@@ -21,6 +21,15 @@ public class Juego {
 	private static Jugador jugador;
 	private static Pista pista;
 	
+	public Juego(){
+		Jugador jugador = new Jugador();
+		Pista pista = new Pista();
+	}
+	
+	public Jugador getJugador(){
+		return jugador;
+	}
+	
 	
 	public static void guardar(String ruta) throws IOException {
 		Document document = DocumentHelper.createDocument();
@@ -60,8 +69,8 @@ public class Juego {
 			Element elemJugador = (Element)it.next();
 			Element elemPista = (Element)it.next();
 			
-			jugador = jugador.deserialize(elemJugador);
-			pista = pista.deserialize(elemPista);
+			jugador.deserialize(elemJugador);
+			pista.deserialize(elemPista);
 		}
 	}
 	
