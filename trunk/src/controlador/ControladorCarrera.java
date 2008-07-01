@@ -58,7 +58,9 @@ public class ControladorCarrera implements ActionListener, Escenario {
 				ControladorAuto controladorAuto = new ControladorAuto(miAuto); 
 				Carrera picada = new Carrera(Juego.getPista(),competidores,miAuto,apuesta);
 			    VistaCarrera vistaCarrera= new VistaCarrera(controladorAuto,this,picada); 
-			     picada.correr();				   
+			    picada.addObserver(vistaCarrera);
+				miAuto.addObserver(vistaCarrera);  
+			    picada.correr();				   
 			    if(picada.ganador() == miAuto){
 					jugador.sumarDinero(picada.getPremio());
 				}
