@@ -40,10 +40,7 @@ public class VistaPista {
 		 }
 		 
 	 }
-	 /**
-	  * revisar no se bien como funciona
-	  * 
-	  * */
+	 
 	 private void actualizarFotograma(){
 		    t++;
 		if(velocidadFotograma !=0){

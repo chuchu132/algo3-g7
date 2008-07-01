@@ -8,14 +8,12 @@ import java.awt.Image;
 import java.util.Observable;
 import java.util.Observer;
 
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+
 
 //import controlador.ControladorBotonCambiarAuto;
 import controlador.ControladorBotonAbandonar;
@@ -23,7 +21,6 @@ import controlador.ControladorBotonCambiarAutoparte;
 import controlador.ControladorBotonCompra;
 import controlador.ControladorBotonElegirAuto;
 import controlador.ControladorBotonVerPista;
-import controlador.ControladorCargarJuego;
 import controlador.ControladorCarrera;
 import controlador.ControladorGuardarJuego;
 
