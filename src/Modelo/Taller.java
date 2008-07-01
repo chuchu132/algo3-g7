@@ -29,6 +29,8 @@ public class Taller extends Observable{
 		Element elemListaAutos = (Element) it.next();
 		Element elemListaAutopartes = (Element) it.next();
 		Element elemAutoActual = (Element) it.next();
+		misAutopartes = new ArrayList<Autoparte>();
+		misAutos = new ArrayList<Auto>();
 		
 		this.cargarListaAutos(elemListaAutos);
 		this.cargarListaAutopartes(elemListaAutopartes);
