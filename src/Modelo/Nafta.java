@@ -22,6 +22,16 @@ public class Nafta implements Vendible{
 		precio = cost;
 	}	
 	
+	public Nafta(Element elemNafta) {
+		Attribute atrOctanaje = elemNafta.attribute(0);
+		Attribute atrNombre = elemNafta.attribute(1);
+		Attribute atrPrecio = elemNafta.attribute(2);
+		
+		octanaje = Integer.parseInt(atrOctanaje.getValue());
+		nombre = atrNombre.getValue();
+		precio = Double.parseDouble(atrPrecio.getValue());		
+	
+	}
 	public int getOctanaje(){
 		return octanaje;
 	}
@@ -42,8 +52,9 @@ public class Nafta implements Vendible{
 		nafta.addAttribute("precio",Double.toString(this.getPrecio()));
 		return nafta;
 	}
+	/*
 	public void deserialize(Element elemNafta) {
-		;
+		
 		Attribute atrOctanaje = elemNafta.attribute(0);
 		Attribute atrNombre = elemNafta.attribute(1);
 		Attribute atrPrecio = elemNafta.attribute(2);
@@ -53,4 +64,5 @@ public class Nafta implements Vendible{
 		precio = Double.parseDouble(atrPrecio.getValue());		
 		
 	}
+	*/
 }

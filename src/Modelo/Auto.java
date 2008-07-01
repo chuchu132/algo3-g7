@@ -55,6 +55,34 @@ public class Auto extends Observable implements Vendible{
 
 	}
 
+	public Auto(Element elemAuto) {
+		Iterator it = elemAuto.elementIterator();
+		
+		Element elemMotor = (Element)it.next();
+		Element elemCaja = (Element) it.next();
+		Element elemSistemaCombustion = (Element) it.next();
+		Element elemCarroceria = (Element) it.next();
+		Element elemTanque = (Element) it.next();
+		Element elemRueda = (Element) it.next();
+		
+		this.motor = new Motor(elemMotor);
+		this.addObserver(motor);
+		if (elemCaja.getName().equals("CajaVelocidades"))
+			{
+			this.caja = new CajaVelocidades(elemCaja);
+			}
+		else{
+			this.caja = new CajaAutomatica(elemCaja);
+			motor.addObserver((CajaAutomatica)this.caja);
+		}
+		this.sistemaCombustion = new SistemaCombustion(elemSistemaCombustion);
+		this.carroceria = new Carroceria(elemCarroceria);
+		this.tanque = new TanqueCombustible (elemTanque);
+		this.rueda = new TipoRueda(elemRueda);
+		
+		this.estado = FRENADO;
+	}
+
 	public void encender(){
 		motor.encender(sistemaCombustion, tanque);
 	}
@@ -278,6 +306,7 @@ public class Auto extends Observable implements Vendible{
 		
 	}
 
+	/*
 	public void deserialize(Element elemAuto) {
 		Iterator it = elemAuto.elementIterator();
 		
@@ -299,6 +328,7 @@ public class Auto extends Observable implements Vendible{
 		
 		this.estado = FRENADO;
 	}
+	*/
 		
 	
 }

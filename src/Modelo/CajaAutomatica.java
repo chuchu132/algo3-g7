@@ -20,6 +20,11 @@ public class CajaAutomatica extends CajaVelocidades implements Observer{
         
 
 	}
+	
+	public CajaAutomatica(Element elemCaja) {
+		super(elemCaja);
+	}
+
 	public String toString(){
 		DecimalFormat porcentage = new DecimalFormat("0.00");
 		return ("Caja Automatica. " + " Vida Util: " + porcentage.format(100*this.getPorcentajeVidaUtil())+ "%" );

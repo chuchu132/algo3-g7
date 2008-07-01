@@ -24,6 +24,15 @@ public class TipoRueda extends Autoparte{
 	}
 	
 	
+	public TipoRueda(Element elemRueda) {
+		
+		super(elemRueda);
+		Attribute atrCof = elemRueda.attribute(4);
+		
+		coeficienteAgarre = Double.parseDouble(atrCof.getValue());
+	}
+
+
 	public double getCoeficienteAgarre() {
 		return coeficienteAgarre;
 	}
@@ -57,7 +66,7 @@ public class TipoRueda extends Autoparte{
 			return ruedas;
 	}
 
-
+/*
 	public void deserialize(Element elemRueda) {
 			
 			this.cargar(elemRueda);
@@ -66,5 +75,6 @@ public class TipoRueda extends Autoparte{
 			coeficienteAgarre = Double.parseDouble(atrCof.getValue());
 					
 	}
+	*/
 	
 }

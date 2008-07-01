@@ -23,6 +23,20 @@ public class Taller extends Observable{
 		misAutos = new ArrayList<Auto>();
 	}
 	
+	public Taller(Element elemTaller) {
+		Iterator it = elemTaller.elementIterator();
+		
+		Element elemListaAutos = (Element) it.next();
+		Element elemListaAutopartes = (Element) it.next();
+		Element elemAutoActual = (Element) it.next();
+		
+		this.cargarListaAutos(elemListaAutos);
+		this.cargarListaAutopartes(elemListaAutopartes);
+		if (!(elemAutoActual.getName().equals("none")))
+			autoActual = new Auto(elemAutoActual);
+			
+	}
+
 	public void agregarAuto(Auto newAuto) throws NotAutoException{
 		if (newAuto instanceof Auto)
 			misAutos.add(newAuto);
@@ -163,7 +177,7 @@ public class Taller extends Observable{
 		this.cargarListaAutos(elemListaAutos);
 		this.cargarListaAutopartes(elemListaAutopartes);
 		if (!(elemAutoActual.getName().equals("none")))
-			this.autoActual.deserialize(elemAutoActual);
+			this.autoActual = new Auto(elemAutoActual);
 							
 	}
 
@@ -172,38 +186,31 @@ public class Taller extends Observable{
 		while ( it.hasNext()){
 			Element elemAutoparte = (Element) it.next();
 			if (elemAutoparte.getName().equals("cajaAutomatica")){
-				CajaAutomatica autoParte = null;
-				autoParte.deserialize(elemAutoparte);
+				CajaAutomatica autoParte = new CajaAutomatica(elemAutoparte);
 				misAutopartes.add(autoParte);
 			}
 			if (elemAutoparte.getName().equals("cajaVelocidades")){
-				CajaVelocidades autoParte = null;
-				autoParte.deserialize(elemAutoparte);
+				CajaVelocidades autoParte = new CajaVelocidades(elemAutoparte);
 				misAutopartes.add(autoParte);
 			}
 			if (elemAutoparte.getName().equals("carroceria")){
-				Carroceria autoParte = null;
-				autoParte.deserialize(elemAutoparte);
+				Carroceria autoParte = new Carroceria(elemAutoparte);
 				misAutopartes.add(autoParte);
 			}
 			if (elemAutoparte.getName().equals("motor")) { 
-				Motor autoParte = null;
-				autoParte.deserialize(elemAutoparte);
+				Motor autoParte = new Motor(elemAutoparte);
 				misAutopartes.add(autoParte);
 			}
 			if (elemAutoparte.getName().equals("sistemaCombustion")) { 
-				SistemaCombustion autoParte = null;
-				autoParte.deserialize(elemAutoparte);
+				SistemaCombustion autoParte = new SistemaCombustion(elemAutoparte);
 				misAutopartes.add(autoParte);
 			}
 			if (elemAutoparte.getName().equals("tanqueCombustible")) { 
-				TanqueCombustible autoParte = null;
-				autoParte.deserialize(elemAutoparte);
+				TanqueCombustible autoParte = new TanqueCombustible(elemAutoparte);
 				misAutopartes.add(autoParte);
 			}
 			if (elemAutoparte.getName().equals("tipoRueda")) { 
-				TipoRueda autoParte = null;
-				autoParte.deserialize(elemAutoparte);
+				TipoRueda autoParte = new TipoRueda(elemAutoparte);
 				misAutopartes.add(autoParte);
 			}
 		}
@@ -214,8 +221,7 @@ public class Taller extends Observable{
 		Iterator it = elemListaAutos.elementIterator();
 		while ( it.hasNext()){
 			Element elemAuto = (Element) it.next();
-			Auto auto = null;
-			auto.deserialize(elemAuto);
+			Auto auto = new Auto(elemAuto);
 			misAutos.add(auto);		
 		}
 		

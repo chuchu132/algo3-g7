@@ -60,6 +60,23 @@ public class Motor extends Autoparte implements Observer{
 		//this.sistemaCombustion = new SistemaCombustion(0,0,"Comun de Fabrica",0,5);;
 	}
 		
+	public Motor(Element elemMotor) {
+		super(elemMotor);
+		Attribute atrHP = elemMotor.attribute(4);
+		Attribute atrCilindros = elemMotor.attribute(5);
+		Attribute atrCubicaje = elemMotor.attribute(6);
+		
+		HP = Integer.parseInt(atrHP.getValue());
+		cilindros = Integer.parseInt(atrCilindros.getValue());
+		cubicaje = Double.parseDouble(atrCubicaje.getValue());	
+		this.fuerzaMaxima = HP * 50 + cilindros*cubicaje*1000;
+		this.encendido=false;
+		this.revolucionesMax = (int)(HP * 17 + 2800); 
+		this.revolucionesActuales = 0;
+		this.fuerzaInstantanea = 0;
+		this.estado = FRENADO;
+	}
+
 	public int getRevolucionesActuales() {
 		return revolucionesActuales;
 	}
@@ -231,7 +248,7 @@ public class Motor extends Autoparte implements Observer{
 		motor.addAttribute("cubicaje",Double.toString(cubicaje));
 		return motor;
 	}
-
+/*
 	public void deserialize(Element elemMotor) {
 		
 		this.cargar(elemMotor);
@@ -250,6 +267,7 @@ public class Motor extends Autoparte implements Observer{
 		this.estado = FRENADO;
 		
 	}
+*/
 	
 }
 

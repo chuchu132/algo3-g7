@@ -23,6 +23,20 @@ public class Carroceria extends Autoparte{
 		this.plusVelocidad= plus;
 		
 	}
+	
+	
+	public Carroceria(Element elemCarroceria) {
+		super(elemCarroceria);
+		Attribute atrModelo = elemCarroceria.attribute(4);
+		Attribute atrColor = elemCarroceria.attribute(5);
+		Attribute atrPlus = elemCarroceria.attribute(6);
+		
+		this.modelo = atrModelo.getValue();
+		this.color = Integer.parseInt(atrColor.getValue());
+		this.plusVelocidad = Double.parseDouble(atrPlus.getValue());		
+		
+	}
+
 
 	public String toString(){
 	  DecimalFormat porcentage = new DecimalFormat("0.00");
@@ -58,6 +72,7 @@ public class Carroceria extends Autoparte{
 		return carroceria;
 	}
 
+	/*
 	public void deserialize(Element elemCarroceria) {
 		this.cargar(elemCarroceria);
 		Attribute atrModelo = elemCarroceria.attribute(4);
@@ -69,5 +84,6 @@ public class Carroceria extends Autoparte{
 		plusVelocidad = Double.parseDouble(atrPlus.getValue());		
 		
 	}
+	*/
 		
 }
