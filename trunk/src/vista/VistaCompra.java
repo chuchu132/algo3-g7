@@ -1,7 +1,7 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -21,13 +21,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
-import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
-
 import controlador.ControladorCompraAuto;
 import controlador.ControladorCompraAutoparte;
 import controlador.ControladorCompraNafta;
-
-
 
 import Modelo.Jugador;
 import Modelo.Producto;
@@ -223,8 +219,7 @@ private String[] getListaDe(int tipoProducto){
 
 public void update(Observable o, Object arg) {
 	setLabelPlata(this.labelDinero);
-	//repaint();
-	//show();
+	
 }
 	
 }

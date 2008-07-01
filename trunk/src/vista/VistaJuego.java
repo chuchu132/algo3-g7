@@ -1,7 +1,6 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,11 +13,10 @@ import javax.swing.JPanel;
 import controlador.ControladorBotonNuevo;
 import controlador.ControladorCargarJuego;
 
-import Modelo.Jugador;
 import Recursos.SpriteCache;
 
 public class VistaJuego extends JFrame{
-	private final int CANTIDAD_BOTONES = 3;
+	
 	private final int ANCHO_VENTANA = 640;
 	private final int ALTO_VENTANA = 480;
 	
