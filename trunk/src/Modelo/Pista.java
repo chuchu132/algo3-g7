@@ -22,6 +22,15 @@ public class Pista {
 	   this.longitud = (1000 * (temp + 0.1)); //longitud entre 100 y 1100 metros.
 	   
    }
+   
+   public Pista(Element elemPista){
+	  Attribute atrCoef = elemPista.attribute(0);
+	  Attribute atrLongitud = elemPista.attribute(1);
+	  
+	  coeficienteAgarre = Double.parseDouble(atrCoef.getValue());
+	  longitud = Double.parseDouble(atrLongitud.getValue());
+		    
+   }
    public double getCoeficienteAgarre() {
 		
 		return coeficienteAgarre;
@@ -39,7 +48,7 @@ public class Pista {
 		return pista;
 		
    }
-   
+  /* 
    public void deserialize(Element elemPista) {
 	  
 	  Attribute atrCoef = elemPista.attribute(0);
@@ -49,5 +58,6 @@ public class Pista {
 	  longitud = Double.parseDouble(atrLongitud.getValue());
 	  
    }
+   */
    
 }

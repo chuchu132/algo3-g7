@@ -31,6 +31,21 @@ public class CajaVelocidades extends Autoparte{
 			relaciones[i] = ((double)(cantidadCambios+1-i)/cantidadCambios );} 
 	}
 
+	public CajaVelocidades(Element elemCaja) {
+		super(elemCaja);
+		this.cambioActual = 0;
+		Attribute atrCantidadDeCambios = elemCaja.attribute(4);
+		this.cantidadCambios = (Integer.parseInt(atrCantidadDeCambios.getValue()));
+		relaciones = new double [cantidadCambios + 1];
+		
+		
+		relaciones[0] = 0;
+		for(int i = 1; i < (cantidadCambios + 1); i++){ 
+			relaciones[i] = ((double)(cantidadCambios+1-i)/cantidadCambios );
+			}
+
+	}
+
 	public String toString(){
 		DecimalFormat porcentage = new DecimalFormat("0.00");
 		return ("Caja " + cantidadCambios + " Velocidades." + " Vida Util: " + porcentage.format(100*super.getPorcentajeVidaUtil()) + " %.");
@@ -88,7 +103,7 @@ public class CajaVelocidades extends Autoparte{
 		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(this.getCantidadCambios()));
 		return cajaVelocidades;
 	}
-
+/*
 	public void deserialize(Element elemCaja) {
 		this.cargar(elemCaja);
 		Attribute atrCantidadDeCambios = elemCaja.attribute(4);
@@ -103,6 +118,7 @@ public class CajaVelocidades extends Autoparte{
 			}
 		
 	}
+*/
 
 	
 		

@@ -26,6 +26,21 @@ public class TanqueCombustible extends Autoparte{
 		this.cantidadCombustible = 0.0;
 		
 	}
+	public TanqueCombustible(Element elemTanque) {
+		super(elemTanque);
+	  	Iterator it = elemTanque.elementIterator();
+	  	  	
+	  	Attribute atrCapacidadMaxima = elemTanque.attribute(4);
+	  	Attribute atrCantidadCombustible = elemTanque.attribute(5);
+	  	Element elemNafta = (Element) it.next();
+	  	
+	  	this.capacidadMaxima = Double.parseDouble(atrCapacidadMaxima.getValue());
+	  	this.cantidadCombustible = Double.parseDouble(atrCantidadCombustible.getValue());
+	  	if (!(elemNafta.getName().equals("none")))
+	  		tipoNafta = new Nafta(elemNafta);
+	  			
+	}
+	
 	/**
 	 * Este metodo recibe X cantidad de un Tipo de Combustible primero verifica que no rebalse el tanque,
 	 * luego hace un promedio para calcular el octanage resultante la cuenta es:  
@@ -138,7 +153,7 @@ public class TanqueCombustible extends Autoparte{
 			else tanqueCombustible.addElement("none");
 			return tanqueCombustible;
 		}
-	
+	/*
 	 public void deserialize(Element elemTanque) {
 		  	Iterator it = elemTanque.elementIterator();
 		  	
@@ -154,4 +169,5 @@ public class TanqueCombustible extends Autoparte{
 		  	else tipoNafta = null;
 		
 	}
+	*/
 }

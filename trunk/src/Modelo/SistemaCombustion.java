@@ -26,7 +26,17 @@ public class SistemaCombustion extends Autoparte{
    }
 
    
-   public void quemarCombustible(double cantidadCombustible, TanqueCombustible tanque)throws TanqueVacioException{
+   public SistemaCombustion(Element elemSistemaCombustion) {
+		super(elemSistemaCombustion);
+		Attribute atrTipo = elemSistemaCombustion.attribute(4);
+		Attribute atrPlusPotencia = elemSistemaCombustion.attribute(5);
+		
+		this.tipo = atrTipo.getValue();
+		this.plusPotencia = Double.parseDouble(atrPlusPotencia.getValue());
+   }
+
+
+public void quemarCombustible(double cantidadCombustible, TanqueCombustible tanque)throws TanqueVacioException{
 	   tanque.darCombustible(cantidadCombustible);
 	  }
    
@@ -55,7 +65,7 @@ public class SistemaCombustion extends Autoparte{
 		return sistemaCombustion;
 	}
 
-
+/*
 public void deserialize(Element elemSistemaCombustion) {
 		
 		this.cargar(elemSistemaCombustion);
@@ -66,6 +76,7 @@ public void deserialize(Element elemSistemaCombustion) {
 		plusPotencia = Double.parseDouble(atrPlusPotencia.getValue());
 		
 	}
+*/
 
 }
 

@@ -24,6 +24,20 @@ public abstract class Autoparte extends Observable implements Vendible {
 		
 	}
 	
+	public Autoparte (Element elemAutoparte){
+		Attribute atrPeso = elemAutoparte.attribute(1);
+		Attribute atrPrecio = elemAutoparte.attribute(2);
+		Attribute atrVidaUtil = elemAutoparte.attribute(3);
+		Attribute atrVidaUtilInicial = elemAutoparte.attribute(4);
+		
+		this.peso = (Double.parseDouble(atrPeso.getValue()));
+		this.precio = (Double.parseDouble(atrPrecio.getValue()));
+		this.vidaUtil = (Float.parseFloat(atrVidaUtil.getValue()));
+		this.vidaUtilInicial = (Float.parseFloat(atrVidaUtilInicial.getValue()));		
+		
+	}
+	
+	
 	public double getPorcentajeVidaUtil() {
 		return (vidaUtil)/vidaUtilInicial;
 	}
@@ -69,12 +83,12 @@ public abstract class Autoparte extends Observable implements Vendible {
 		autoParte.addAttribute("vidaUtil",Float.toString(vidaUtil));
 		autoParte.addAttribute("vidaUtilInicial",Float.toString(vidaUtilInicial));
 	}
-	
+/*	
 	public void cargar(Element elemAutoparte){
-		Attribute atrPeso = elemAutoparte.attribute(0);
-		Attribute atrPrecio = elemAutoparte.attribute(1);
-		Attribute atrVidaUtil = elemAutoparte.attribute(2);
-		Attribute atrVidaUtilInicial = elemAutoparte.attribute(3);
+		Attribute atrPeso = elemAutoparte.attribute(1);
+		Attribute atrPrecio = elemAutoparte.attribute(2);
+		Attribute atrVidaUtil = elemAutoparte.attribute(3);
+		Attribute atrVidaUtilInicial = elemAutoparte.attribute(4);
 		
 		this.peso = (Double.parseDouble(atrPeso.getValue()));
 		this.precio = (Double.parseDouble(atrPrecio.getValue()));
@@ -82,6 +96,7 @@ public abstract class Autoparte extends Observable implements Vendible {
 		this.vidaUtilInicial = (Float.parseFloat(atrVidaUtilInicial.getValue()));		
 		
 	}
+	*/
 	
 	//abstract public void simular(double tiempo)throws ProblemaTecnicoException;
 	

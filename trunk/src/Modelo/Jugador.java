@@ -42,6 +42,17 @@ public class Jugador extends Observable{
 		miPlata = plataInicial;
 	}
 	
+	public Jugador(Element elemJugador){
+		Iterator it = elemJugador.elementIterator();
+		
+		Element elemTaller = (Element) it.next();
+		Attribute atrPlata = (Attribute) elemJugador.attribute(0);
+		
+		miTaller = new Taller(elemTaller);
+		miPlata = (Double.parseDouble( atrPlata.getValue()));
+		}
+	
+	
 	public double getLitrosParaCargar() {
 		return litrosParaCargar;
 	}
@@ -124,7 +135,7 @@ public class Jugador extends Observable{
 	   return jugador;
 	   
    }
-
+/*
 public void deserialize(Element elemJugador) {
 	Iterator it = elemJugador.elementIterator();
 	
@@ -134,4 +145,5 @@ public void deserialize(Element elemJugador) {
 	this.miTaller.deserialize(elemTaller);
 	this.miPlata = (Double.parseDouble( atrPlata.getValue()));
 	}
+*/
 }

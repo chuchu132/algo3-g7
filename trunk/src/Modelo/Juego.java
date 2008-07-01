@@ -72,8 +72,8 @@ public class Juego {
 			Element elemJugador = (Element)it.next();
 			Element elemPista = (Element)it.next();
 			
-			jugador.deserialize(elemJugador);
-			pista.deserialize(elemPista);
+			jugador = new Jugador(elemJugador);
+			pista = new Pista(elemPista);
 		}
 	}
 	
