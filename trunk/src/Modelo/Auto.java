@@ -46,8 +46,6 @@ public class Auto extends Observable implements Vendible{
 		this.tanque = tanque;
 		caja.addObserver(this.motor);
 		this.conectarTanque(tanque);
-		if( sistemaCombustion != null){
-			this.cambiarSitemaCombustion(sistemaCombustion);}
 		this.sistemaCombustion = sistemaCombustion;
 		this.carroceria = carroceria;
 		this.rueda = rueda;
