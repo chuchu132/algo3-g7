@@ -35,6 +35,7 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 		
 		pAux = new Producto(2,parteCarroceria,nombreCarroceriaTipo3,
 						descripcionCarroceriaTipo3,precioCarroceriaTipo3);
+		listaAutopartes.add(pAux);
 		
 		pAux = new Producto(3,parteRuedas,nombreTipoRuedaTipo1,
 						descripcionTipoRuedaTipo1, precioTipoRuedaTipo1);
