@@ -65,18 +65,5 @@ public void quemarCombustible(double cantidadCombustible, TanqueCombustible tanq
 		return sistemaCombustion;
 	}
 
-/*
-public void deserialize(Element elemSistemaCombustion) {
-		
-		this.cargar(elemSistemaCombustion);
-		Attribute atrTipo = elemSistemaCombustion.attribute(4);
-		Attribute atrPlusPotencia = elemSistemaCombustion.attribute(5);
-		
-		tipo = atrTipo.getValue();
-		plusPotencia = Double.parseDouble(atrPlusPotencia.getValue());
-		
-	}
-*/
-
 }
 
