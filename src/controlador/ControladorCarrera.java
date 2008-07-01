@@ -71,7 +71,7 @@ public class ControladorCarrera implements ActionListener, Escenario {
 					hiloCarrera.start();
 					/**
 					 * Esto en teoria anda.. pero en la practica no :(
-					 *  lo q hace es armar toda la carrera crear la vista
+					 *  lo q hace es armar toda la carrera crea r la vista
 					 *  q se va a actualizar cada vez q simulen todos los autos
 					 *  y en otro hilo // se esta corriendo la carrera (se esta ejecutando el ciclo de simular)
 					 *  
@@ -106,6 +106,7 @@ public class ControladorCarrera implements ActionListener, Escenario {
 	  else{
 		  JOptionPane.showMessageDialog(null,"Para correr necesitas un auto.","SIN AUTO",JOptionPane.ERROR_MESSAGE);
 	  }
+	  Juego.generarPista();
 	  VistaTaller vistaTaller = new VistaTaller(jugador);
 	}
 	
