@@ -5,10 +5,8 @@ import java.util.ArrayList;
 
 
 import Excepciones.NoAlcanzaDineroException;
-import Excepciones.NumeroAutoInexistenteException;
-import Excepciones.NumeroAutoparteInexistenteException;
 import Excepciones.ProductoInexistenteException;
-import Excepciones.TipoNaftaInexistenteException;
+
 
 
 public class Vendedor {
