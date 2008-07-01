@@ -5,8 +5,6 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.Attribute;
 
-import java.util.Iterator;
-
 public class Nafta implements Vendible{
 	private int octanaje;
 	private String nombre;
@@ -52,17 +50,5 @@ public class Nafta implements Vendible{
 		nafta.addAttribute("precio",Double.toString(this.getPrecio()));
 		return nafta;
 	}
-	/*
-	public void deserialize(Element elemNafta) {
-		
-		Attribute atrOctanaje = elemNafta.attribute(0);
-		Attribute atrNombre = elemNafta.attribute(1);
-		Attribute atrPrecio = elemNafta.attribute(2);
-		
-		octanaje = Integer.parseInt(atrOctanaje.getValue());
-		nombre = atrNombre.getValue();
-		precio = Double.parseDouble(atrPrecio.getValue());		
-		
-	}
-	*/
+	
 }

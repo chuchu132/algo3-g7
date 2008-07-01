@@ -11,12 +11,10 @@ import org.dom4j.Element;
 import org.dom4j.Attribute;
 
 import Excepciones.NoAlcanzaDineroException;
-import Excepciones.NoExisteAutoException;
 import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;
 
 
-//import java.util.ArrayList;
 
 public class Jugador extends Observable{
 	
@@ -135,15 +133,5 @@ public class Jugador extends Observable{
 	   return jugador;
 	   
    }
-/*
-public void deserialize(Element elemJugador) {
-	Iterator it = elemJugador.elementIterator();
-	
-	Element elemTaller = (Element) it.next();
-	Attribute atrPlata = (Attribute) elemJugador.attribute(0);
-	
-	this.miTaller.deserialize(elemTaller);
-	this.miPlata = (Double.parseDouble( atrPlata.getValue()));
-	}
-*/
+
 }

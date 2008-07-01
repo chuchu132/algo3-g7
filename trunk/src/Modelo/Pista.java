@@ -1,6 +1,6 @@
 package Modelo;
 
-import java.util.Iterator;
+
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -48,16 +48,6 @@ public class Pista {
 		return pista;
 		
    }
-  /* 
-   public void deserialize(Element elemPista) {
-	  
-	  Attribute atrCoef = elemPista.attribute(0);
-	  Attribute atrLongitud = elemPista.attribute(1);
-	  
-	  coeficienteAgarre = Double.parseDouble(atrCoef.getValue());
-	  longitud = Double.parseDouble(atrLongitud.getValue());
-	  
-   }
-   */
+
    
 }
