@@ -47,7 +47,6 @@ public class TanqueCombustible extends Autoparte{
 	 * OctInicial * VolInicial   +  OctanageDeX * X
 	 * ------------------------------------------------                   
 	 *                  (VolInicial + X)
-	 * Dependiendo de que valor toma la mezcla de Naftas se las estandariza.
 	 * */
 	
 	
@@ -153,21 +152,5 @@ public class TanqueCombustible extends Autoparte{
 			else tanqueCombustible.addElement("none");
 			return tanqueCombustible;
 		}
-	/*
-	 public void deserialize(Element elemTanque) {
-		  	Iterator it = elemTanque.elementIterator();
-		  	
-		  	this.cargar(elemTanque);
-		  	Attribute atrCapacidadMaxima = elemTanque.attribute(4);
-		  	Attribute atrCantidadCombustible = elemTanque.attribute(5);
-		  	Element elemNafta = (Element) it.next();
-		  	
-		  	capacidadMaxima = Double.parseDouble(atrCapacidadMaxima.getValue());
-		  	cantidadCombustible = Double.parseDouble(atrCantidadCombustible.getValue());
-		  	if (!(elemNafta.getName().equals("none")))
-		  		tipoNafta.deserialize(elemNafta);
-		  	else tipoNafta = null;
-		
-	}
-	*/
+
 }

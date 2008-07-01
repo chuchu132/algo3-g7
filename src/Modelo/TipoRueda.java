@@ -1,7 +1,7 @@
 package Modelo;
 
 import java.text.DecimalFormat;
-import java.util.Iterator;
+
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -66,15 +66,5 @@ public class TipoRueda extends Autoparte{
 			return ruedas;
 	}
 
-/*
-	public void deserialize(Element elemRueda) {
-			
-			this.cargar(elemRueda);
-			Attribute atrCof = elemRueda.attribute(4);
-			
-			coeficienteAgarre = Double.parseDouble(atrCof.getValue());
-					
-	}
-	*/
 	
 }
