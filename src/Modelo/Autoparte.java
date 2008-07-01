@@ -1,14 +1,11 @@
 package Modelo;
 
 import java.util.Observable;
-import java.util.Iterator;
+
 
 import org.dom4j.Attribute;
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
-//import Excepciones.ProblemaTecnicoException;
 
 public abstract class Autoparte extends Observable implements Vendible {
 	private double peso;
@@ -63,9 +60,7 @@ public abstract class Autoparte extends Observable implements Vendible {
 	public double getVidaUtilInicial(){
 		return vidaUtilInicial;
 	}
-	/**
-	 * Si se gasta el 10% pongo 0.10
-	 * */
+	
 	public void gastar(double desgaste){
 		if(vidaUtil - desgaste >= 0)
 			vidaUtil -= desgaste;

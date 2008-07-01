@@ -1,7 +1,7 @@
 package Modelo;
 
 import java.text.DecimalFormat;
-import java.util.Iterator;
+
 
 import Excepciones.ProblemaTecnicoException;
 
@@ -10,7 +10,7 @@ import org.dom4j.Element;
 import org.dom4j.Document;
 
 import org.dom4j.*;
-import org.dom4j.io.*;
+
 
 
 public class CajaVelocidades extends Autoparte{
@@ -103,22 +103,6 @@ public class CajaVelocidades extends Autoparte{
 		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(this.getCantidadCambios()));
 		return cajaVelocidades;
 	}
-/*
-	public void deserialize(Element elemCaja) {
-		this.cargar(elemCaja);
-		Attribute atrCantidadDeCambios = elemCaja.attribute(4);
-		this.cantidadCambios = (Integer.parseInt(atrCantidadDeCambios.getValue()));
-		
-		this.cambioActual = 0;
-		
-		relaciones = new double [cantidadCambios + 1];
-		relaciones[0] = 0;
-		for(int i = 1; i < (cantidadCambios + 1); i++){ 
-			relaciones[i] = ((double)(cantidadCambios+1-i)/cantidadCambios );
-			}
-		
-	}
-*/
 
 	
 		

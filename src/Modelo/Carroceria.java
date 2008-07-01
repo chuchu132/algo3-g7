@@ -72,18 +72,5 @@ public class Carroceria extends Autoparte{
 		return carroceria;
 	}
 
-	/*
-	public void deserialize(Element elemCarroceria) {
-		this.cargar(elemCarroceria);
-		Attribute atrModelo = elemCarroceria.attribute(4);
-		Attribute atrColor = elemCarroceria.attribute(5);
-		Attribute atrPlus = elemCarroceria.attribute(6);
-		
-		modelo = atrModelo.getValue();
-		color = Integer.parseInt(atrColor.getValue());
-		plusVelocidad = Double.parseDouble(atrPlus.getValue());		
-		
-	}
-	*/
-		
+			
 }

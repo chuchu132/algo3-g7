@@ -21,11 +21,7 @@ public class Carrera extends Observable implements Runnable{
 	/** El auto del jugador va siempre en la posicion 0 de los arrays
 	 * de esta forma cuando qeremos saber la pos de nuestro auto buscamos el corredor 0.
 	 * 
-	 * @param pista
-	 * @param autos
-	 * @param autoJugador
-	 * @param INTERVALO_TIEMPO
-	 */
+	  */
 	
 	public Carrera (Pista pista, ArrayList<Auto> autos,Auto autoJugador, double apuestaXjugador) {
 		this.pista = pista;
