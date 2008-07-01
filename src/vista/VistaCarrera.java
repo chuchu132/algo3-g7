@@ -12,6 +12,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -32,7 +33,7 @@ import Recursos.SoundCache;
 public class VistaCarrera extends Canvas implements Observer{
     private VistaPista vistaPista;
     private VistaAutoEnPista vistaAutoPrincipal;
-      
+    private JDialog ventana;  
     private SoundCache soundCache;
 	private BufferedImage buffer;
 	private Auto principal;
@@ -49,8 +50,8 @@ public VistaCarrera(ControladorAuto controlador1,Escenario escenario,Carrera pic
 	principal.addObserver(this);
 	
 	buffer = new BufferedImage(Escenario.WIDTH,Escenario.HEIGHT, BufferedImage.TYPE_INT_RGB);
-	JFrame ventana = new JFrame("CARRERA");
-	
+	ventana = new JDialog();
+	ventana.setTitle("CARRERA");
 	crearMenu(ventana);	
 	
 	JPanel panel = (JPanel) ventana.getContentPane();
@@ -65,7 +66,7 @@ public VistaCarrera(ControladorAuto controlador1,Escenario escenario,Carrera pic
 	
     
 	ventana.setResizable(false);
-	
+	ventana.setModal(true);
 	addKeyListener(controlador1);
 	
     mostrarCarrera();
@@ -95,7 +96,7 @@ public VistaCarrera(ControladorAuto controlador1,Escenario escenario,Carrera pic
    
 }
 
-@Override
+
 public void update(Observable arg0, Object arg1) {
 	mostrarCarrera();
 	
@@ -111,7 +112,7 @@ public void mostrarCarrera(){
 	
 }
 
-private void crearMenu(JFrame ventana){
+private void crearMenu(JDialog ventana){
 	
 	JMenuItem elementoVer = new JMenuItem("Opciones Vista");
     elementoVer.setMnemonic('V');
@@ -126,6 +127,10 @@ private void crearMenu(JFrame ventana){
 	ventana.setJMenuBar(barra);  
 	barra.add(elementoVer);
 	
+}
+
+public void eliminarVentana(){
+	ventana.dispose();
 }
 
 }
