@@ -6,7 +6,7 @@ import java.util.Observable;
 
 import Excepciones.ProblemaTecnicoException;
 
-public class Carrera extends Observable{
+public class Carrera extends Observable implements Runnable{
 	private Pista pista;
 	private ArrayList<Auto> autos;
 	private final double INTERVALO_TIEMPO = 0.01;
@@ -53,10 +53,13 @@ public class Carrera extends Observable{
 					
 					autoTemp.simular(INTERVALO_TIEMPO, pista);
 					}
-					catch (ProblemaTecnicoException e) {
-						                                  e.printStackTrace();
-						                                  autos.remove(corredor);// ver q pasa si el auto q explota es el del jugador
-					                                      } 
+					catch (ProblemaTecnicoException e) {  
+						if(corredor == 0){
+						 throw e; }
+						else{
+						      autos.remove(corredor);
+					        }
+					}
 										
 					if (corredor == 0){					
 						posicionAuto1 = getPosicion(corredor) + autoTemp.getDeltaAvance();
@@ -79,11 +82,12 @@ public class Carrera extends Observable{
 				catch (InterruptedException e) {				
 					e.printStackTrace();
 				}
+			}
 				setChanged();
 				notifyObservers();
 
-				}
 		}
+		
 	}
 	
 	public void cuentaRegresiva(){
@@ -135,23 +139,13 @@ public class Carrera extends Observable{
 		}
 		return false;
 	 }
+
 	
-	/*private int numeroDelGanador(){
+	public void run() {
+		this.correr();
 		
-	Iterator<Double> it = posiciones.iterator();
-	double max = posiciones.get(0).doubleValue();
-	int posicionMax = 0;
-	int i= 0;
-	while(it.hasNext()){
-		i++;
-		double temp =getPosicion(i);
-		if( temp > max){
-			max = temp;
-			posicionMax = i;
-		}
 	}
-	return posicionMax;
-	}*/
+	
 	
 	
 }

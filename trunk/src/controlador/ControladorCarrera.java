@@ -16,7 +16,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import com.ibm.media.ShowDocumentEvent;
+
+import Excepciones.MotorFundidoException;
 import Excepciones.NoAlcanzaDineroException;
+import Excepciones.ProblemaTecnicoException;
+import Excepciones.RuedaRotaException;
+import Excepciones.TanqueVacioException;
 import Modelo.Auto;
 import Modelo.AutoPc;
 import Modelo.Carrera;
@@ -57,15 +63,41 @@ public class ControladorCarrera implements ActionListener, Escenario {
 				competidores.add(new AutoPc());
 				ControladorAuto controladorAuto = new ControladorAuto(miAuto); 
 				Carrera picada = new Carrera(Juego.getPista(),competidores,miAuto,apuesta);
-			    VistaCarrera vistaCarrera= new VistaCarrera(controladorAuto,this,picada); 
-			    picada.addObserver(vistaCarrera);
-				miAuto.addObserver(vistaCarrera);  
-			    picada.correr();				   
-			    if(picada.ganador() == miAuto){
-					jugador.sumarDinero(picada.getPremio());
+				 
+				VistaCarrera vistaCarrera= new VistaCarrera(controladorAuto,this,picada);
+				try{
+					Thread hiloCarrera = new Thread(picada);
+				
+					hiloCarrera.start();
+					/**
+					 * Esto en teoria anda.. pero en la practica no :(
+					 *  lo q hace es armar toda la carrera crear la vista
+					 *  q se va a actualizar cada vez q simulen todos los autos
+					 *  y en otro hilo // se esta corriendo la carrera (se esta ejecutando el ciclo de simular)
+					 *  
+					 *  Lo problemas q encontre y no pude resolver:
+					 *  1) La pantalla qda mal no escucha teclado ni se pinta bien.
+					 *  2) Las excepciones q tira picada.run() (Heredan todas de RuntimeException xq sino no podia usar la interfaz  Runnable)
+					 *    no las cachan los catchs.. es como q explotan en otro lado y no se enteran.
+					 * */
+					while(hiloCarrera.isAlive()){
+						
+					}
+				   vistaCarrera.eliminarVentana();
+
+					if(picada.ganador() == miAuto){
+						double premio = picada.getPremio();
+						jugador.sumarDinero(premio);
+						JOptionPane.showMessageDialog(null, "Felicitaciones ganaste: Algo$ " + premio, "GANADOR",JOptionPane.INFORMATION_MESSAGE);
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "Esta vez perdiste, volve a intentarlo.", "PERDEDOR",JOptionPane.ERROR_MESSAGE);
+					}
 				}
-				
-				
+				catch (MotorFundidoException mex){ lanzarCartel("Se fundio el motor.");}
+				catch (RuedaRotaException rrex){ lanzarCartel("Se rompio una rueda.");}
+				catch (TanqueVacioException tvex){ lanzarCartel("No tiene combustible.");}
+				catch (ProblemaTecnicoException ptex) {lanzarCartel("Desperfecto Mecanico no Identificado.");}
 			}
 		else{
 			JOptionPane.showMessageDialog(null,"La carrera fue suspendida.",null,JOptionPane.INFORMATION_MESSAGE);
@@ -76,6 +108,12 @@ public class ControladorCarrera implements ActionListener, Escenario {
 	  }
 	  VistaTaller vistaTaller = new VistaTaller(jugador);
 	}
+	
+	
+	private void lanzarCartel(String problema){
+		JOptionPane.showMessageDialog(null,"Debes abandonar la carrera. Problema: " + problema,"PROBLEMA TECNICO",JOptionPane.ERROR_MESSAGE);
+	}
+	
 	
 	private boolean apostar(){
 		double monto; 
