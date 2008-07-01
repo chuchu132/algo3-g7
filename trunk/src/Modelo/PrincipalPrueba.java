@@ -53,8 +53,7 @@ public class PrincipalPrueba  implements Escenario{
 	    picada = new Carrera(Juego.getPista(),corredores,miAuto,100);
 		controlAuto = new ControladorAuto(miAuto);
 		vistaCarrera = new VistaCarrera(controlAuto,this,picada);
-		picada.addObserver(vistaCarrera);
-		miAuto.addObserver(vistaCarrera);
+		
 		
 	}
 	
