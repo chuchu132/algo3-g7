@@ -47,7 +47,6 @@ public class VistaTaller extends JFrame{
 	private JPanel panelDerecho;
 	private JLabel imagenAuto ;
 	private Jugador propietario;
-	private boolean yaCorrio = false;
 	
 	public VistaTaller (Jugador propietario) {
 		
@@ -113,11 +112,7 @@ public class VistaTaller extends JFrame{
 		
 	}
 	
-	public void yaCorrio(boolean yaCorrio){
 		
-		this.yaCorrio = yaCorrio;
-	}
-	
 	public void setImagenAuto(){
 		SpriteCache cargadorImagen = new SpriteCache();
 		ImageIcon imagen;

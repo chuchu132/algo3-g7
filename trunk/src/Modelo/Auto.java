@@ -304,29 +304,7 @@ public class Auto extends Observable implements Vendible{
 		
 	}
 
-	/*
-	public void deserialize(Element elemAuto) {
-		Iterator it = elemAuto.elementIterator();
-		
-		Element elemMotor = (Element)it.next();
-		Element elemCaja = (Element) it.next();
-		Element elemSistemaCombustion = (Element) it.next();
-		Element elemCarroceria = (Element) it.next();
-		Element elemTanque = (Element) it.next();
-		Element elemRueda = (Element) it.next();
-		
-		motor.deserialize(elemMotor);
-		if ( elemCaja.getName().equals("cajaVelocidades"))
-			caja.deserialize(elemCaja);
-		else ((CajaAutomatica) caja).deserialize(elemCaja);
-		sistemaCombustion.deserialize(elemSistemaCombustion);
-		carroceria.deserialize(elemCarroceria);
-		tanque.deserialize(elemTanque);
-		rueda.deserialize(elemRueda);
-		
-		this.estado = FRENADO;
-	}
-	*/
+	
 		
 	
 }
