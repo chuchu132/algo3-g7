@@ -31,7 +31,7 @@ public class SistemaCombustion extends Autoparte{
 		Attribute atrTipo = elemSistemaCombustion.attribute(4);
 		Attribute atrPlusPotencia = elemSistemaCombustion.attribute(5);
 		
-		this.tipo = atrTipo.getValue();
+		this.tipo = (String) atrTipo.getValue();
 		this.plusPotencia = Double.parseDouble(atrPlusPotencia.getValue());
    }
 
