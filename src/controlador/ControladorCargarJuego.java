@@ -24,11 +24,14 @@ public class ControladorCargarJuego extends JFrame implements ActionListener {
 		
 	}
 	public void actionPerformed(ActionEvent e) {
-		
+		   
 		vista.dispose();
 		JFileChooser selectorArchivo = new JFileChooser();
+		selectorArchivo.setApproveButtonText("Cargar");
+		selectorArchivo.setDialogTitle("Cargar  Juego");
 		selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		int resultado = selectorArchivo.showSaveDialog(this);
+		
 		if( resultado == JFileChooser.CANCEL_OPTION){
 			vista = new VistaJuego();
 		} 
