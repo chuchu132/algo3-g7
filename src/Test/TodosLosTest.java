@@ -10,6 +10,7 @@ public class TodosLosTest {
 		TestRunner.run(TestTanqueCombustible.class);
 		TestRunner.run(TestMotor.class);
 		TestRunner.run(TestAuto.class);
+		TestRunner.run(TestCompraVenta.class);
 	
 	}
 }
