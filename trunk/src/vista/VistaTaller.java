@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.JobAttributes;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -12,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -106,10 +108,17 @@ public class VistaTaller extends JFrame{
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
-		
+		chequearGameOver();
 	}
 	
-		
+	private void chequearGameOver(){
+		if(propietario.getPlata() < 50.0){
+			JOptionPane.showMessageDialog(null, "No te alcanza la plata para seguir corriendo.", "FIN DEL JUEGO", JOptionPane.ERROR_MESSAGE);
+			VistaJuego pantallaPrincipal = new VistaJuego();
+			this.dispose();
+		}
+	}
+	
 	public void setImagenAuto(){
 		SpriteCache cargadorImagen = new SpriteCache();
 		ImageIcon imagen;
