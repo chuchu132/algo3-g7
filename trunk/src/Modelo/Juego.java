@@ -22,8 +22,8 @@ public class Juego {
 	private static Pista pista;
 	
 	public Juego(){
-		 this.jugador = new Jugador();
-		 this.pista = new Pista();
+		 jugador = new Jugador();
+		 pista = new Pista();
 	}
 	
 	public static Jugador getJugador(){

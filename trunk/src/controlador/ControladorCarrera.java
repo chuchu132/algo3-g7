@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import com.ibm.media.ShowDocumentEvent;
 
 import Excepciones.MotorFundidoException;
 import Excepciones.NoAlcanzaDineroException;
@@ -41,6 +40,9 @@ public class ControladorCarrera implements ActionListener, Escenario {
 	private SpriteCache spriteCache;
 	private Jugador jugador;
 	private VistaTaller vista;
+	private VistaCarrera vistacarrera;
+	private Carrera picada;
+	private Auto miAuto;
     private double apuesta;
 	
 	public ControladorCarrera(Jugador jugador, VistaTaller vista) {
@@ -52,7 +54,7 @@ public class ControladorCarrera implements ActionListener, Escenario {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		Auto miAuto	= jugador.getTaller().getAutoActual();
+		miAuto	= jugador.getTaller().getAutoActual();
 		vista.dispose();
 		
 	  if(miAuto != null){
@@ -62,12 +64,12 @@ public class ControladorCarrera implements ActionListener, Escenario {
 				ArrayList<Auto> competidores = new ArrayList<Auto>();
 				competidores.add(new AutoPc());
 				ControladorAuto controladorAuto = new ControladorAuto(miAuto); 
-				Carrera picada = new Carrera(Juego.getPista(),competidores,miAuto,apuesta);
-				 
-				VistaCarrera vistaCarrera= new VistaCarrera(controladorAuto,this,picada);
+				picada = new Carrera(Juego.getPista(),competidores,miAuto,apuesta);
+				VistaTaller vistaTaller = new VistaTaller(jugador);	
+				vistacarrera= new VistaCarrera(controladorAuto,this,picada);
 				try{
 					Thread hiloCarrera = new Thread(picada);
-				
+					picada.setControlador(this);
 					hiloCarrera.start();
 					/**
 					 * Esto en teoria anda.. pero en la practica no :(
@@ -80,6 +82,7 @@ public class ControladorCarrera implements ActionListener, Escenario {
 					 *  2) Las excepciones q tira picada.run() (Heredan todas de RuntimeException xq sino no podia usar la interfaz  Runnable)
 					 *    no las cachan los catchs.. es como q explotan en otro lado y no se enteran.
 					 * */
+					/*
 					while(hiloCarrera.isAlive()){
 						
 					}
@@ -92,7 +95,7 @@ public class ControladorCarrera implements ActionListener, Escenario {
 					}
 					else{
 						JOptionPane.showMessageDialog(null, "Esta vez perdiste, volve a intentarlo.", "PERDEDOR",JOptionPane.ERROR_MESSAGE);
-					}
+					}*/
 				}
 				catch (MotorFundidoException mex){ lanzarCartel("Se fundio el motor.");}
 				catch (RuedaRotaException rrex){ lanzarCartel("Se rompio una rueda.");}
@@ -107,10 +110,32 @@ public class ControladorCarrera implements ActionListener, Escenario {
 		  JOptionPane.showMessageDialog(null,"Para correr necesitas un auto.","SIN AUTO",JOptionPane.ERROR_MESSAGE);
 	  }
 	  Juego.generarPista();
-	  VistaTaller vistaTaller = new VistaTaller(jugador);
 	}
 	
+	public void ganador()
+	{
+		vistacarrera.eliminarVentana();
+
+		if(picada.ganador() == miAuto){
+			double premio = picada.getPremio();
+			jugador.sumarDinero(premio);
+			JOptionPane.showMessageDialog(null, "Felicitaciones ganaste: Algo$ " + premio, "GANADOR",JOptionPane.INFORMATION_MESSAGE);
+			
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Esta vez perdiste, volve a intentarlo.", "PERDEDOR",JOptionPane.ERROR_MESSAGE);
+		}
+	}
 	
+	public void perder(Exception ex)
+	{
+		if (ex instanceof MotorFundidoException){ lanzarCartel("Se fundio el motor.");}
+		else if (ex instanceof RuedaRotaException){ lanzarCartel("Se rompio una rueda.");}
+		else if (ex instanceof TanqueVacioException){ lanzarCartel("No tiene combustible.");}
+		else if (ex instanceof ProblemaTecnicoException) {lanzarCartel("Desperfecto Mecanico no Identificado.");}
+		vistacarrera.eliminarVentana();
+
+	}
 	private void lanzarCartel(String problema){
 		JOptionPane.showMessageDialog(null,"Debes abandonar la carrera. Problema: " + problema,"PROBLEMA TECNICO",JOptionPane.ERROR_MESSAGE);
 	}
