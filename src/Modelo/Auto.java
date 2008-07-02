@@ -83,6 +83,9 @@ public class Auto extends Observable implements Vendible{
 
 	public void encender(){
 		motor.encender(sistemaCombustion, tanque);
+		velocidad = 0;
+		deltaAvance = 0;
+		aceleracion = 0;
 	}
 
 	private double getFuerzaNeta(Pista pista){
