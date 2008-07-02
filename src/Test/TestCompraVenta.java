@@ -1,6 +1,8 @@
 package Test;
 
 import Excepciones.NoAlcanzaDineroException;
+import Excepciones.NotAutoException;
+import Modelo.AutoPc;
 import Modelo.CajaVelocidades;
 import Modelo.Jugador;
 import Modelo.Vendedor;
@@ -30,7 +32,7 @@ public class TestCompraVenta extends TestCase {
 			e.printStackTrace();
 		}
 		
-		assertEquals(0, unJugador.getPlata());
+		assertEquals(0.0, unJugador.getPlata());
 		
 	}
 	
@@ -42,19 +44,25 @@ public class TestCompraVenta extends TestCase {
 			e.printStackTrace();
 		}
 		
-		assertEquals(0, unJugador.getPlata());
+		assertEquals(0.0, unJugador.getPlata());
 	}
 	
 	public void testCompraNafta() {
+		try {
+			unJugador.getTaller().agregarAuto(new AutoPc());
+			unJugador.getTaller().elegirAuto(0);
+		} catch (NotAutoException e1) {
+				e1.printStackTrace();
+		}
 		unJugador.setPlata(150); //le ponemos dinero sufieciente para poder comprar
 		unJugador.setLitrosParaCargar(50); //se cargaran 50 listros
 		try {
-			unJugador.comprarProducto(NAFTAS, 0); //0 es la auto tipo 1
+			unJugador.comprarProducto(NAFTAS, 0); 
 		} catch (NoAlcanzaDineroException e) { //el producto cuesta 3 por litro
 			e.printStackTrace();
 		}
 		
-		assertEquals(0, unJugador.getPlata());
+		assertEquals(0.0, unJugador.getPlata());
 	}
 	
 }
