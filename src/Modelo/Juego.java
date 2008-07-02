@@ -18,27 +18,27 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public class Juego {
 	
-	private static Jugador jugador;
-	private static Pista pista;
+	private Jugador jugador;
+	private Pista pista;
 	
 	public Juego(){
 		 jugador = new Jugador();
 		 pista = new Pista();
 	}
 	
-	public static Jugador getJugador(){
+	public Jugador getJugador(){
 		return jugador;
 	}
 	
-	public static Pista getPista(){
+	public Pista getPista(){
 		return pista;
 	}
 	
-	public static void generarPista(){
+	public void generarPista(){
 		pista = new Pista();
 	}
 	
-	public  static void guardar(String ruta) throws IOException {
+	public void guardar(String ruta) throws IOException {
 		Document document = DocumentHelper.createDocument();
 		Element raiz = document.addElement("Lista");
 		
@@ -55,7 +55,7 @@ public class Juego {
 		}
 	}
 	
-	public static  void cargar(String ruta) throws IOException,DocumentException,XmlPullParserException {
+	public void cargar(String ruta) throws IOException,DocumentException,XmlPullParserException {
 		String rutaArchivo = ruta;
 		
 		if(rutaArchivo != null){
