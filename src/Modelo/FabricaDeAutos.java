@@ -43,8 +43,8 @@ public class FabricaDeAutos extends FabricaDeProductosVendibles {
 	/* ======================== AUTOS ==================== */
 	private final String tipoAuto = "Auto";
 	/* Auto Tipo 1 */
-	private final String descripcionAutoTipo1 = "descripcion";
-	private final String nombreAutoTipo1 = "Auto 1";
+	private final String descripcionAutoTipo1 = " ";
+	private final String nombreAutoTipo1 = "Ferrari F430";
 	private final double precioAutoTipo1 = 20000;
 	
 	public Auto crearAutoTipo1() {
@@ -65,7 +65,7 @@ public class FabricaDeAutos extends FabricaDeProductosVendibles {
 	
 	/* Auto Tipo 2 */
 	private final String descripcionAutoTipo2 = "go speed racer";
-	private final String nombreAutoTipo2 = "Match 5";
+	private final String nombreAutoTipo2 = "Porsche Cayman S";
 	private final double precioAutoTipo2 = 30000;
 	
 	private Auto crearAutoTipo2() {

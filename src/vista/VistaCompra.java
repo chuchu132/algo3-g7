@@ -134,7 +134,7 @@ public class VistaCompra extends JDialog implements Observer {
 		listaAutoparteVendedor.setVisibleRowCount(FILAS_LISTA);
 		listaAutoparteVendedor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		listaAutoparteVendedor.setFixedCellWidth(ANCHO_LISTA);
+		listaAutoparteVendedor.setFixedCellWidth(ANCHO_LISTA + 80);
 		
 		
 		
