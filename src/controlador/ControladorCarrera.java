@@ -65,7 +65,7 @@ public class ControladorCarrera implements ActionListener, Escenario {
 				competidores.add(new AutoPc());
 				ControladorAuto controladorAuto = new ControladorAuto(miAuto); 
 				picada = new Carrera(Juego.getPista(),competidores,miAuto,apuesta);
-				VistaTaller vistaTaller = new VistaTaller(jugador);	
+				
 				vistacarrera= new VistaCarrera(controladorAuto,this,picada);
 				try{
 					Thread hiloCarrera = new Thread(picada);
@@ -109,7 +109,7 @@ public class ControladorCarrera implements ActionListener, Escenario {
 	  else{
 		  JOptionPane.showMessageDialog(null,"Para correr necesitas un auto.","SIN AUTO",JOptionPane.ERROR_MESSAGE);
 	  }
-	  Juego.generarPista();
+	  
 	}
 	
 	public void ganador()
@@ -125,6 +125,8 @@ public class ControladorCarrera implements ActionListener, Escenario {
 		else{
 			JOptionPane.showMessageDialog(null, "Esta vez perdiste, volve a intentarlo.", "PERDEDOR",JOptionPane.ERROR_MESSAGE);
 		}
+		Juego.generarPista();
+		VistaTaller vistaTaller = new VistaTaller(jugador);	
 	}
 	
 	public void perder(Exception ex)
@@ -134,6 +136,8 @@ public class ControladorCarrera implements ActionListener, Escenario {
 		else if (ex instanceof TanqueVacioException){ lanzarCartel("No tiene combustible.");}
 		else if (ex instanceof ProblemaTecnicoException) {lanzarCartel("Desperfecto Mecanico no Identificado.");}
 		vistacarrera.eliminarVentana();
+		Juego.generarPista();
+		VistaTaller vistaTaller = new VistaTaller(jugador);	
 
 	}
 	private void lanzarCartel(String problema){

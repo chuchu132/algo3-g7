@@ -100,7 +100,7 @@ public void update(Observable arg0, Object arg1) {
 	
 }
 
-public void paint(Graphics g) {
+public synchronized void paint(Graphics g) {
     g.drawImage(buffer,0,0,this);
 	     }
 
