@@ -65,7 +65,7 @@ public class Auto extends Observable implements Vendible{
 		
 		this.motor = new Motor(elemMotor);
 		this.addObserver(motor);
-		if (elemCaja.getName().equals("CajaVelocidades"))
+		if (elemCaja.getName().equals("cajaVelocidades"))
 			{
 			this.caja = new CajaVelocidades(elemCaja);
 			}
