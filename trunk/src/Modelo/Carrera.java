@@ -38,7 +38,7 @@ public class Carrera extends Observable implements Runnable{
 			}
 	}
 	
-	public synchronized void correr() throws ProblemaTecnicoException{
+	public void correr() throws ProblemaTecnicoException{
 		double posicion;
 		autos.get(0).encender();
 		while(!llegoAlguien()) {
