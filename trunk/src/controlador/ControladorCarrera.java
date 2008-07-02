@@ -104,10 +104,12 @@ public class ControladorCarrera implements ActionListener, Escenario {
 			}
 		else{
 			JOptionPane.showMessageDialog(null,"La carrera fue suspendida.",null,JOptionPane.INFORMATION_MESSAGE);
+			VistaTaller vistaTaller = new VistaTaller(jugador);
 		}
 	  }
 	  else{
 		  JOptionPane.showMessageDialog(null,"Para correr necesitas un auto.","SIN AUTO",JOptionPane.ERROR_MESSAGE);
+		  VistaTaller vistaTaller = new VistaTaller(jugador);
 	  }
 	  
 	}
