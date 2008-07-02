@@ -20,7 +20,7 @@ public class Carrera extends Observable implements Runnable{
 	private int ganador;
 	private double apuestaXjugador;
 	private double contador=3;
-	
+	private ControladorCarrera controlador;
 	/** El auto del jugador va siempre en la posicion 0 de los arrays
 	 * de esta forma cuando qeremos saber la pos de nuestro auto buscamos el corredor 0.
 	 * 
@@ -140,10 +140,20 @@ public class Carrera extends Observable implements Runnable{
 	 }
 
 	
-	public void run() {
-		this.correr();
+	public void run() throws ProblemaTecnicoException {
+		try
+		{
+			this.correr();
+			controlador.ganador();
+		} catch(ProblemaTecnicoException e) 
+		{  
+			controlador.perder(e);
+		}
 	}
 
+	public void setControlador(ControladorCarrera controlador) {
+		this.controlador = controlador;
+	}
 	
 	
 	
