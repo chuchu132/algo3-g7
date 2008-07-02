@@ -182,10 +182,10 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	public final String parteRuedas = "Ruedas";
 	/* Caracteristicas RuedasTipo1 */
 	
-	private final String nombreTipoRuedaTipo1 = "Ruedas 1";
+	private final String nombreTipoRuedaTipo1 = "Ruedas Nieve";
 	private final double precioTipoRuedaTipo1 = 400;
 	private final double pesoTipoRuedaTipo1 = 100;
-	private final double coeficienteAgarreTipoRuedaTipo1 = 0.1;
+	private final double coeficienteAgarreTipoRuedaTipo1 = 0.99;
 	private final float vidaUtilTipoRuedaTipo1 = 12000;
 	private final String descripcionTipoRuedaTipo1 = "no resbalan";
 	
@@ -196,10 +196,10 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 
 	/* Caracteristicas RuedasTipo2 */
 	
-	private final String nombreTipoRuedaTipo2 = "Ruedas 2";
+	private final String nombreTipoRuedaTipo2 = "Ruedas Lluvia";
 	private final double precioTipoRuedaTipo2 = 480;
 	private final double pesoTipoRuedaTipo2 = 98;
-	private final double coeficienteAgarreTipoRuedaTipo2 = 0.09;
+	private final double coeficienteAgarreTipoRuedaTipo2 = 0.80;
 	private final float vidaUtilTipoRuedaTipo2 = 12500;
 	private final String descripcionTipoRuedaTipo2 = "Excelentes";
 	
@@ -211,10 +211,10 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 
 	/* Caracteristicas RuedasTipo3 */
 	
-	private final String nombreTipoRuedaTipo3 = "Ruedas 3";
+	private final String nombreTipoRuedaTipo3 = "Ruedas Comun";
 	private final double precioTipoRuedaTipo3 = 340;
 	private final double pesoTipoRuedaTipo3 = 160;
-	private final double coeficienteAgarreTipoRuedaTipo3 = 0.15;
+	private final double coeficienteAgarreTipoRuedaTipo3 = 0.70;
 	private final float vidaUtilTipoRuedaTipo3 = 11200;
 	private final String descripcionTipoRuedaTipo3 = "Buena";
 	
@@ -234,9 +234,9 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	private final double pesoMotorTipo1 = 1000;
 	private final int hpMotorTipo1 = 500;
 	private final int cilindrosMotorTipo1 = 8;
-	private final double cubicajeMotorTipo1 = 3.5; 
-	private final float vidaUtilMotorTipo1 = 12000;
-	private final String descripcionMotorTipo1 = "Gran vida util";
+	private final double cubicajeMotorTipo1 = 0.4; 
+	private final float vidaUtilMotorTipo1 = 9000;
+	private final String descripcionMotorTipo1 = "Vida util Media";
 	
 	public Motor crearMotorTipo1(){
 		return new Motor (hpMotorTipo1, cilindrosMotorTipo1, cubicajeMotorTipo1,
@@ -246,11 +246,11 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	/* Caracteristicas MotorTipo 2 */
 	
 	private final String nombreMotorTipo2 = "Motor 2";
-	private final double precioMotorTipo2 = 5000;
+	private final double precioMotorTipo2 = 3000;
 	private final double pesoMotorTipo2 = 1000;
-	private final int hpMotorTipo2 = 500;
-	private final int cilindrosMotorTipo2 = 8;
-	private final double cubicajeMotorTipo2 = 3.5; 
+	private final int hpMotorTipo2 = 300;
+	private final int cilindrosMotorTipo2 = 6;
+	private final double cubicajeMotorTipo2 = 0.4; 
 	private final float vidaUtilMotorTipo2 = 12000;
 	private final String descripcionMotorTipo2 = "Gran vida util";
 	
@@ -262,13 +262,13 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	/* Caracteristicas MotorTipo 3 */
 	
 	private final String nombreMotorTipo3 = "Motor 3";
-	private final double precioMotorTipo3 = 5000;
+	private final double precioMotorTipo3 = 2500;
 	private final double pesoMotorTipo3 = 1000;
-	private final int hpMotorTipo3 = 500;
+	private final int hpMotorTipo3 = 400;
 	private final int cilindrosMotorTipo3 = 8;
-	private final double cubicajeMotorTipo3 = 3.5; 
-	private final float vidaUtilMotorTipo3 = 12000;
-	private final String descripcionMotorTipo3 = "Gran vida util";
+	private final double cubicajeMotorTipo3 = 0.5; 
+	private final float vidaUtilMotorTipo3 = 5000;
+	private final String descripcionMotorTipo3 = "Poca vida util";
 	
 	public Motor crearMotorTipo3(){
 		return new Motor (hpMotorTipo3, cilindrosMotorTipo3, cubicajeMotorTipo3,
@@ -279,11 +279,11 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	private final String parteTanque = "Tanque";
 	/*Caracteristicas TanqueTipo1 */
 	
-	private final String nombreTanqueTipo1 = "Tanque 1";
+	private final String nombreTanqueTipo1 = "Tanque 60 L";
 	private final double precioTanqueTipo1 = 100;
 	private final double capacidadMaximaTanqueTipo1 = 60;
 	private final float vidaUtilTanqueTipo1 = 12000;
-	private final String descripcionTanqueTipo1 = "Gran vida util y economico";
+	private final String descripcionTanqueTipo1 = "Gran vida util";
 	
 	public TanqueCombustible crearTanqueTipo1(){
 		return new TanqueCombustible (precioTanqueTipo1, capacidadMaximaTanqueTipo1,
@@ -292,11 +292,11 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	
 	/*Caracteristicas TanqueTipo2 */
 	
-	private final String nombreTanqueTipo2 = "Tanque 2";
-	private final double precioTanqueTipo2 = 100;
-	private final double capacidadMaximaTanqueTipo2 = 60;
+	private final String nombreTanqueTipo2 = "Tanque 40L";
+	private final double precioTanqueTipo2 = 150;
+	private final double capacidadMaximaTanqueTipo2 = 40;
 	private final float vidaUtilTanqueTipo2 = 12000;
-	private final String descripcionTanqueTipo2 = "Gran vida util y economico";
+	private final String descripcionTanqueTipo2 = "Gran vida util y liviano";
 	
 	public TanqueCombustible crearTanqueTipo2(){
 		return new TanqueCombustible (precioTanqueTipo2, capacidadMaximaTanqueTipo2,
@@ -305,11 +305,11 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	
 	/*Caracteristicas TanqueTipo1 3 */
 	
-	private final String nombreTanqueTipo3 = "Tanque 3";
-	private final double precioTanqueTipo3 = 100;
-	private final double capacidadMaximaTanqueTipo3 = 60;
+	private final String nombreTanqueTipo3 = "Tanque 20L";
+	private final double precioTanqueTipo3 = 200;
+	private final double capacidadMaximaTanqueTipo3 = 20;
 	private final float vidaUtilTanqueTipo3 = 12000;
-	private final String descripcionTanqueTipo3 = "Gran vida util y economico";
+	private final String descripcionTanqueTipo3 = "Gran vida util y muy liviano";
 	
 	public TanqueCombustible crearTanqueTipo3(){
 		return new TanqueCombustible (precioTanqueTipo3, capacidadMaximaTanqueTipo3,
@@ -322,10 +322,10 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	/*Caracteristicas SistemaCombustionTipo1 */
 	
 	private final String nombreSistemaCombustionTipo1 = "Sistema de Combustion 1";
-	private final double precioSistemaCombustionTipo1 = 200;
+	private final double precioSistemaCombustionTipo1 = 100;
 	private final double pesoSistemaCombustionTipo1 = 10;
 	private final String tipoSistemaCombustionTipo1 = "Inyeccion";
-	private final double plusSistemaCombustionTipo1 = 0.09;
+	private final double plusSistemaCombustionTipo1 = 0.1;
 	private final float vidaUtilSistemaCombustionTipo1 = 12000;
 	private final String descripcionSistemaCombustionTipo1 = "gran vida util";
 	
@@ -340,8 +340,8 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	private final String nombreSistemaCombustionTipo2 = "Sistema de Combustion 2";
 	private final double precioSistemaCombustionTipo2 = 200;
 	private final double pesoSistemaCombustionTipo2 = 10;
-	private final String tipoSistemaCombustionTipo2 = "Inyeccion";
-	private final double plusSistemaCombustionTipo2 = 0.09;
+	private final String tipoSistemaCombustionTipo2 = "Turbo";
+	private final double plusSistemaCombustionTipo2 = 0.15;
 	private final float vidaUtilSistemaCombustionTipo2 = 12000;
 	private final String descripcionSistemaCombustionTipo2 = "gran vida util";
 	
@@ -354,12 +354,12 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	/*Caracteristicas SistemaCombustionTipo3 */
 	
 	private final String nombreSistemaCombustionTipo3 = "Sistema de Combustion 3";
-	private final double precioSistemaCombustionTipo3 = 200;
-	private final double pesoSistemaCombustionTipo3 = 10;
-	private final String tipoSistemaCombustionTipo3 = "Inyeccion";
-	private final double plusSistemaCombustionTipo3 = 0.09;
-	private final float vidaUtilSistemaCombustionTipo3 = 12000;
-	private final String descripcionSistemaCombustionTipo3 = "gran vida util";
+	private final double precioSistemaCombustionTipo3 = 400;
+	private final double pesoSistemaCombustionTipo3 = 40;
+	private final String tipoSistemaCombustionTipo3 = "Nitro";
+	private final double plusSistemaCombustionTipo3 = 0.35;
+	private final float vidaUtilSistemaCombustionTipo3 = 5000;
+	private final String descripcionSistemaCombustionTipo3 = "Poca vida util, aumenta mucho la potencia.";
 	
 	public SistemaCombustion crearSistemaTipo3(){
 		return new SistemaCombustion (precioSistemaCombustionTipo3, pesoSistemaCombustionTipo3,
@@ -371,7 +371,7 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	public final String parteCajaVelocidades = "Caja de velocidades";
 	/*caracteristicas CajaVelocidadesTipo1 */
 	
-	private final String nombreCajaVelocidadesTipo1 = "Caja de Velocidades 1";
+	private final String nombreCajaVelocidadesTipo1 = "Caja de Velocidades 5ta";
 	private final int cantidadCambiosCajaVelocidadesTipo1 = 5;
 	private final double pesoCajaVelocidadesTipo1 = 500;
 	private final double precioCajaVelocidadesTipo1 = 800;
@@ -386,12 +386,12 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	
 	/*caracteristicas CajaVelocidadesTipo2 */
 	
-	private final String nombreCajaVelocidadesTipo2 = "Caja de Velocidades 2";
-	private final int cantidadCambiosCajaVelocidadesTipo2 = 5;
+	private final String nombreCajaVelocidadesTipo2 = "Caja de Velocidades 4ta";
+	private final int cantidadCambiosCajaVelocidadesTipo2 = 4;
 	private final double pesoCajaVelocidadesTipo2 = 500;
 	private final double precioCajaVelocidadesTipo2 = 800;
 	private final float vidaUtilCajaVelocidadesTipo2  =12000;
-	private final String descripcionCajaVelocidadesTipo2 = "5 cambios";
+	private final String descripcionCajaVelocidadesTipo2 = "4 cambios";
 	
 	public CajaVelocidades crearCajaTipo2(){
 		return new CajaVelocidades (cantidadCambiosCajaVelocidadesTipo2,
@@ -401,12 +401,12 @@ public class FabricaDeAutopartes extends FabricaDeProductosVendibles{
 	
 	/*caracteristicas CajaVelocidadesTipo3 */
 	
-	private final String nombreCajaVelocidadesTipo3 = "Caja de Velocidades 3";
-	private final int cantidadCambiosCajaVelocidadesTipo3 = 5;
+	private final String nombreCajaVelocidadesTipo3 = "Caja de Velocidades 3ra";
+	private final int cantidadCambiosCajaVelocidadesTipo3 = 3;
 	private final double pesoCajaVelocidadesTipo3 = 500;
 	private final double precioCajaVelocidadesTipo3 = 800;
 	private final float vidaUtilCajaVelocidadesTipo3  =12000;
-	private final String descripcionCajaVelocidadesTipo3 = "5 cambios";
+	private final String descripcionCajaVelocidadesTipo3 = "3 cambios";
 	
 	public CajaVelocidades crearCajaTipo3(){
 		return new CajaVelocidades (cantidadCambiosCajaVelocidadesTipo3,
