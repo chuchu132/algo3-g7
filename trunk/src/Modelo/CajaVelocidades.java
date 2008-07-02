@@ -98,7 +98,7 @@ public class CajaVelocidades extends Autoparte{
 	
 	public Element serialize(){
 		Document document = DocumentHelper.createDocument();
-		Element cajaVelocidades = document.addElement("CajaVelocidades");
+		Element cajaVelocidades = document.addElement("cajaVelocidades");
 		this.grabar(cajaVelocidades);
 		cajaVelocidades.addAttribute("cantidadDeCambios",Integer.toString(this.getCantidadCambios()));
 		return cajaVelocidades;
