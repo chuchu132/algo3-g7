@@ -108,7 +108,7 @@ public class VistaTaller extends JFrame{
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
-		chequearGameOver();
+		//chequearGameOver();
 	}
 	
 	private void chequearGameOver(){
