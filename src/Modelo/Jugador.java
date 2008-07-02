@@ -49,13 +49,12 @@ public class Jugador extends Observable{
 		miTaller = new Taller(elemTaller);
 		miPlata = (Double.parseDouble( atrPlata.getValue()));
 		}
-	
+
 	
 	public double getLitrosParaCargar() {
 		return litrosParaCargar;
 	}
 
-	//lo llamaria el controlador
 	public void setLitrosParaCargar(double litrosParaCargar) {
 		this.litrosParaCargar = litrosParaCargar;
 	}
@@ -110,9 +109,14 @@ public class Jugador extends Observable{
 	    notifyObservers();
 	 }
 	}
-	
+	 
 	public Taller getTaller(){
 		return miTaller;
+	}
+	
+	//este setter se usa en un test
+	public void setPlata(long plata) {
+		miPlata = plata;
 	}
 	
 	public double getPlata() {
