@@ -17,33 +17,35 @@ import vista.VistaTaller;
 import Modelo.Juego;
 
 public class ControladorCargarJuego extends JFrame implements ActionListener {
-	VistaJuego vista;
-	   
+
+	private static final long serialVersionUID = 1L;
+	private VistaJuego vista;
+
 	public  ControladorCargarJuego(VistaJuego vista){
-	  this.vista = vista;	 
-		
+		this.vista = vista;	 
+
 	}
 	public void actionPerformed(ActionEvent e) {
-		   
+
 		vista.dispose();
 		JFileChooser selectorArchivo = new JFileChooser();
 		selectorArchivo.setApproveButtonText("Cargar");
 		selectorArchivo.setDialogTitle("Cargar  Juego");
 		selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		int resultado = selectorArchivo.showSaveDialog(this);
-		
+
 		if( resultado == JFileChooser.CANCEL_OPTION){
 			vista = new VistaJuego();
 		} 
 		else
 		{  
 			File archivo = selectorArchivo.getSelectedFile();
-					
-		
+
+
 			try {
 				Juego juego = new Juego();
 				juego.cargar(archivo.toString());
-				VistaTaller verTaller = new VistaTaller(juego);
+				new VistaTaller(juego);
 			} catch (IOException e1) {
 				avisarYVolver();
 			} catch (DocumentException e1) {
@@ -55,6 +57,6 @@ public class ControladorCargarJuego extends JFrame implements ActionListener {
 	}
 	private void avisarYVolver(){
 		JOptionPane.showMessageDialog(null, "Se ha producido un error al cargar el archivo.", "ERROR", JOptionPane.ERROR_MESSAGE);
-		VistaJuego juego = new VistaJuego(); 
+		new VistaJuego(); 
 	}
 }

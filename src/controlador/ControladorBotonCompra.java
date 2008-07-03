@@ -10,14 +10,14 @@ import Modelo.Jugador;
 public class ControladorBotonCompra implements ActionListener{
 
 	private Jugador jugador;
-	
+
 	public ControladorBotonCompra(Jugador jugador) {
 		this.jugador = jugador;
-		}
-	
+	}
+
 	public void actionPerformed(ActionEvent arg0) {
-		VistaCompra ventanaCompra = new VistaCompra(jugador);	
-		
+		new VistaCompra(jugador);	
+
 	}
 
 }
