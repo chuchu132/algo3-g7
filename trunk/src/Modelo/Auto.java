@@ -41,7 +41,7 @@ public class Auto extends Observable implements Vendible{
 		this.caja = caja;
 		if(caja instanceof CajaAutomatica){
 			motor.addObserver((CajaAutomatica)this.caja);
-			
+
 		}
 		this.tanque = tanque;
 		caja.addObserver(this.motor);
@@ -55,20 +55,20 @@ public class Auto extends Observable implements Vendible{
 
 	public Auto(Element elemAuto) {
 		Iterator it = elemAuto.elementIterator();
-		
+
 		Element elemMotor = (Element)it.next();
 		Element elemCaja = (Element) it.next();
 		Element elemSistemaCombustion = (Element) it.next();
 		Element elemCarroceria = (Element) it.next();
 		Element elemTanque = (Element) it.next();
 		Element elemRueda = (Element) it.next();
-		
+
 		this.motor = new Motor(elemMotor);
 		this.addObserver(motor);
 		if (elemCaja.getName().equals("cajaVelocidades"))
-			{
+		{
 			this.caja = new CajaVelocidades(elemCaja);
-			}
+		}
 		else{
 			this.caja = new CajaAutomatica(elemCaja);
 			motor.addObserver((CajaAutomatica)this.caja);
@@ -77,7 +77,7 @@ public class Auto extends Observable implements Vendible{
 		this.carroceria = new Carroceria(elemCarroceria);
 		this.tanque = new TanqueCombustible (elemTanque);
 		this.rueda = new TipoRueda(elemRueda);
-		
+
 		this.estado = FRENADO;
 	}
 
@@ -140,21 +140,21 @@ public class Auto extends Observable implements Vendible{
 	public void cargarCombustible(double litros, Nafta nafta){
 		tanque.cargarCombustible(litros,nafta);
 	}
-	
+
 	public void vaciarTanque(){
 		tanque.vaciarTanque();
 	}
-	
+
 	public double getPesoTotal() {
 		return ( motor.getPeso() + caja.getPeso() + tanque.getPeso()+ carroceria.getPeso() + sistemaCombustion.getPeso() + (4*rueda.getPeso()) );
 
 	}
-	
+
 	public double getPorcentageVidaUtilGeneral(){
 		return ( ( motor.getPorcentajeVidaUtil() + caja.getPorcentajeVidaUtil() + tanque.getPorcentajeVidaUtil()+ carroceria.getPorcentajeVidaUtil() + sistemaCombustion.getPorcentajeVidaUtil() + (4*rueda.getPorcentajeVidaUtil() ) ) / 9 );
-		
+
 	}
-	
+
 	public double getPorcentageVidaUtilMotor(){
 		return motor.getPorcentajeVidaUtil();
 	}
@@ -174,7 +174,7 @@ public class Auto extends Observable implements Vendible{
 	}
 
 	public String toString(){
-			return "Auto: " + carroceria.getModelo() + ". Vida Útil Motor: " + getPorcentageVidaUtilMotor()*100 + "%"; 
+		return "Auto: " + carroceria.getModelo() + ". Vida Útil Motor: " + getPorcentageVidaUtilMotor()*100 + "%"; 
 	}
 
 	public Motor cambiarMotor(Motor otroMotor){
@@ -288,11 +288,11 @@ public class Auto extends Observable implements Vendible{
 	public String getModelo(){
 		return carroceria.getModelo();
 	}
-	
+
 	public int getCambioActual(){
 		return caja.getCambioActual();
 	}
-	
+
 	public Element serialize(){
 		Document document = DocumentHelper.createDocument();
 		Element auto = document.addElement("auto");
@@ -305,10 +305,10 @@ public class Auto extends Observable implements Vendible{
 		auto.add(this.tanque.serialize());
 		auto.add(this.rueda.serialize());
 		return auto;
-		
+
 	}
 
-	
-		
-	
+
+
+
 }
