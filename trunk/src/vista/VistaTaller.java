@@ -116,7 +116,7 @@ public class VistaTaller extends JFrame{
 	private void chequearGameOver(){
 		if(propietario.getPlata() < 50.0){
 			JOptionPane.showMessageDialog(null, "No te alcanza la plata para seguir corriendo.", "FIN DEL JUEGO", JOptionPane.ERROR_MESSAGE);
-			VistaJuego pantallaPrincipal = new VistaJuego();
+			new VistaJuego();
 			this.dispose();
 		}
 	}

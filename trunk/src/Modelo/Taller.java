@@ -12,31 +12,31 @@ import Excepciones.NoExisteAutoException;
 import Excepciones.NotAutoException;
 import Excepciones.NotAutoparteException;;
 public class Taller extends Observable{
-	
+
 	ArrayList<Auto> misAutos;
 	ArrayList<Autoparte> misAutopartes;
 	Auto autoActual;
-	
+
 	public Taller(){
 		autoActual = null;
 		misAutopartes = new ArrayList<Autoparte>();
 		misAutos = new ArrayList<Auto>();
 	}
-	
+
 	public Taller(Element elemTaller) {
 		Iterator it = elemTaller.elementIterator();
-		
+
 		Element elemListaAutos = (Element) it.next();
 		Element elemListaAutopartes = (Element) it.next();
 		Element elemAutoActual = (Element) it.next();
 		misAutopartes = new ArrayList<Autoparte>();
 		misAutos = new ArrayList<Auto>();
-		
+
 		this.cargarListaAutos(elemListaAutos);
 		this.cargarListaAutopartes(elemListaAutopartes);
 		if (!(elemAutoActual.getName().equals("none")))
 			autoActual = new Auto(elemAutoActual);
-			
+
 	}
 
 	public void agregarAuto(Auto newAuto) throws NotAutoException{
@@ -44,74 +44,74 @@ public class Taller extends Observable{
 			misAutos.add(newAuto);
 		else{
 			throw new NotAutoException();
-			}
+		}
 		if(autoActual == null){
 			autoActual=newAuto;
 		}
 	}
-		
+
 	public void elegirAuto(int auto) {
 		try{
 			autoActual = misAutos.get(auto);
 		}
 		catch (IndexOutOfBoundsException e){
 			autoActual = null;
-			}
+		}
 		setChanged();
 		notifyObservers();
 	}
-		
-	
+
+
 	public void cargarNaftaAlAutoActual(double litros,Nafta nafta){
-		
+
 		autoActual.cargarCombustible(litros, nafta);
-		
+
 	}
-	
+
 	public void vaciarTanqueAutoActual(){
 		autoActual.vaciarTanque();
 	}
 
-	
+
 	public void agregarAutoparte(Autoparte parte)throws NotAutoparteException{
 		if (parte instanceof Autoparte){
-				misAutopartes.add(parte);
+			misAutopartes.add(parte);
 		}
 		else throw new NotAutoparteException();
 	}
-	
+
 	public void cambiarParte(int indice)throws NotAutoparteException,NoExisteAutoException{
 		Autoparte parte = null;
 		Autoparte unaParte;
 		try{
-		 parte = misAutopartes.remove(indice);
-				
-		
-		if (parte instanceof CajaVelocidades){
-			unaParte = autoActual.cambiarCaja((CajaVelocidades)parte);
-		}
-		else if (parte instanceof Carroceria){
-			unaParte = autoActual.cambiarCarroceria((Carroceria)parte);
-		}
-		else if (parte instanceof Motor){
-			unaParte = autoActual.cambiarMotor((Motor)parte);
-		}
-		
-		else if (parte instanceof TipoRueda){
-			unaParte = autoActual.cambiarRueda((TipoRueda)parte);
-		}
-		
-		else if (parte instanceof SistemaCombustion){
-			unaParte = autoActual.cambiarSitemaCombustion((SistemaCombustion)parte);
-		}
-		
-		else if (parte instanceof TanqueCombustible){
-			unaParte = autoActual.cambiarTanque((TanqueCombustible)parte);
-					
-		}
-		else throw new NotAutoparteException();
-		
-		
+			parte = misAutopartes.remove(indice);
+
+
+			if (parte instanceof CajaVelocidades){
+				unaParte = autoActual.cambiarCaja((CajaVelocidades)parte);
+			}
+			else if (parte instanceof Carroceria){
+				unaParte = autoActual.cambiarCarroceria((Carroceria)parte);
+			}
+			else if (parte instanceof Motor){
+				unaParte = autoActual.cambiarMotor((Motor)parte);
+			}
+
+			else if (parte instanceof TipoRueda){
+				unaParte = autoActual.cambiarRueda((TipoRueda)parte);
+			}
+
+			else if (parte instanceof SistemaCombustion){
+				unaParte = autoActual.cambiarSitemaCombustion((SistemaCombustion)parte);
+			}
+
+			else if (parte instanceof TanqueCombustible){
+				unaParte = autoActual.cambiarTanque((TanqueCombustible)parte);
+
+			}
+			else throw new NotAutoparteException();
+
+
 			agregarAutoparte(unaParte);
 			setChanged();
 			notifyObservers();
@@ -119,24 +119,24 @@ public class Taller extends Observable{
 		catch (IndexOutOfBoundsException e) {}
 		catch (NullPointerException e2){
 			misAutopartes.add(indice, parte);
-			  throw new NoExisteAutoException();
+			throw new NoExisteAutoException();
 		}
-				
+
 	}
-	
+
 	public ArrayList<Autoparte> getListaDeMisAutopartes() {
 		return misAutopartes;
 	}
 
 	public ArrayList<Auto> getListaDeMisAutos() {
 		return misAutos;
-		
+
 	}
-	
+
 	public Auto getAutoActual(){
 		return autoActual;
 	}
-	
+
 	public Element serialize(){
 		Document document = DocumentHelper.createDocument();
 		Element taller = document.addElement("taller");
@@ -144,7 +144,7 @@ public class Taller extends Observable{
 		for (Auto auto : this.misAutos) {
 			autos.add(auto.serialize());
 		}
-		
+
 		Element autoPartes = taller.addElement("autopartes");
 		for (Autoparte autoparte : this.misAutopartes){
 			if (autoparte instanceof CajaAutomatica)
@@ -165,22 +165,22 @@ public class Taller extends Observable{
 		if (autoActual != null)
 			taller.add(this.getAutoActual().serialize());
 		else taller.addElement("none");
-		
+
 		return taller;
 	}
 
 	public void deserialize(Element elemTaller) {
 		Iterator it = elemTaller.elementIterator();
-		
+
 		Element elemListaAutos = (Element) it.next();
 		Element elemListaAutopartes = (Element) it.next();
 		Element elemAutoActual = (Element) it.next();
-		
+
 		this.cargarListaAutos(elemListaAutos);
 		this.cargarListaAutopartes(elemListaAutopartes);
 		if (!(elemAutoActual.getName().equals("none")))
 			this.autoActual = new Auto(elemAutoActual);
-							
+
 	}
 
 	private void cargarListaAutopartes(Element elemListaAutopartes) {
@@ -216,7 +216,7 @@ public class Taller extends Observable{
 				misAutopartes.add(autoParte);
 			}
 		}
-			
+
 	}
 
 	private void cargarListaAutos(Element elemListaAutos) {
@@ -226,7 +226,7 @@ public class Taller extends Observable{
 			Auto auto = new Auto(elemAuto);
 			misAutos.add(auto);		
 		}
-		
+
 	}	
-	
+
 }

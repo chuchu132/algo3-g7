@@ -12,23 +12,23 @@ import Excepciones.ProblemaTecnicoException;
 import Excepciones.RuedaRotaException;
 
 public class TipoRueda extends Autoparte{
-   
+
 	double coeficienteAgarre;
 	private final double factorDeDesgaste = 100;
-	
-    
+
+
 	public TipoRueda(double precio, double peso,double coeficiente, float vidaUtilInicial){
 		super(peso,precio, vidaUtilInicial);
 		this.coeficienteAgarre = coeficiente;
-	
+
 	}
-	
-	
+
+
 	public TipoRueda(Element elemRueda) {
-		
+
 		super(elemRueda);
 		Attribute atrCof = elemRueda.attribute(4);
-		
+
 		coeficienteAgarre = Double.parseDouble(atrCof.getValue());
 	}
 
@@ -36,9 +36,9 @@ public class TipoRueda extends Autoparte{
 	public double getCoeficienteAgarre() {
 		return coeficienteAgarre;
 	}
-    
+
 	//cuando baja la vida util la rueda pierde agarre
-	
+
 	public void simular(double tiempo)throws ProblemaTecnicoException {
 		double desgaste;
 		double porcentage;
@@ -52,19 +52,19 @@ public class TipoRueda extends Autoparte{
 		if( getVidaUtil() < getVidaUtilMinima() ){
 			throw new RuedaRotaException();}
 	}
-	
+
 	public String toString(){
-		  DecimalFormat porcentage = new DecimalFormat("0.00");
-			return ("Ruedas: Coficiente de Agarre: " + porcentage.format(getCoeficienteAgarre())  + " Vida Util: " + porcentage.format(100*getPorcentajeVidaUtil())+ " %");
-		}
-	
-	public Element serialize(){
-			Document document = DocumentHelper.createDocument();
-			Element ruedas = document.addElement("tipoRueda");
-			this.grabar(ruedas);
-			ruedas.addAttribute("coeficienteAgarre",Double.toString(this.getCoeficienteAgarre()));
-			return ruedas;
+		DecimalFormat porcentage = new DecimalFormat("0.00");
+		return ("Ruedas: Coficiente de Agarre: " + porcentage.format(getCoeficienteAgarre())  + " Vida Util: " + porcentage.format(100*getPorcentajeVidaUtil())+ " %");
 	}
 
-	
+	public Element serialize(){
+		Document document = DocumentHelper.createDocument();
+		Element ruedas = document.addElement("tipoRueda");
+		this.grabar(ruedas);
+		ruedas.addAttribute("coeficienteAgarre",Double.toString(this.getCoeficienteAgarre()));
+		return ruedas;
+	}
+
+
 }
