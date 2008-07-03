@@ -27,6 +27,7 @@ import controlador.ControladorCarrera;
 import controlador.ControladorGuardarJuego;
 
 
+import Modelo.Juego;
 import Modelo.Jugador;
 import Recursos.SpriteCache;
 
@@ -45,15 +46,16 @@ public class VistaTaller extends JFrame{
 	private JPanel panelBotones;
 	private JPanel panelDerecho;
 	private JLabel imagenAuto ;
+	
 	private Jugador propietario;
 	
-	public VistaTaller (Jugador propietario) {
+	public VistaTaller (Juego juego) {
 		
 		ControladorVistaTaller controladorVistaTaller = new ControladorVistaTaller();
 		
-		this.propietario = propietario;
-		this.propietario.addObserver(controladorVistaTaller);
-		this.propietario.getTaller().addObserver(controladorVistaTaller);
+		propietario =  juego.getJugador();
+		propietario.addObserver(controladorVistaTaller);
+		propietario.getTaller().addObserver(controladorVistaTaller);
 		/* titulo ventana */
 		setTitle("TALLER");
 		
@@ -78,15 +80,15 @@ public class VistaTaller extends JFrame{
 		panelBotones.add(botonElegirAuto);
 		
 		botonVerPista = new JButton("Ver Pista");
-		botonVerPista.addActionListener (new ControladorBotonVerPista (propietario));
+		botonVerPista.addActionListener (new ControladorBotonVerPista (juego));
 		panelBotones.add(botonVerPista);
 		
 		botonCarrera = new JButton("Correr");
 		panelBotones.add(botonCarrera);
-		botonCarrera.addActionListener(new ControladorCarrera(propietario,this));
+		botonCarrera.addActionListener(new ControladorCarrera(juego,this));
 		botonGuardar = new JButton("Guardar Juego");
 		panelBotones.add(botonGuardar);
-		botonGuardar.addActionListener(new ControladorGuardarJuego());
+		botonGuardar.addActionListener(new ControladorGuardarJuego(juego));
 		botonAbandonar = new JButton("Abandonar Juego");
 		panelBotones.add(botonAbandonar);
 		botonAbandonar.addActionListener(new ControladorBotonAbandonar(this));

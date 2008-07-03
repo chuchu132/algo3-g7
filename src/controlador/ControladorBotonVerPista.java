@@ -6,18 +6,19 @@ import java.awt.event.ActionListener;
 import vista.VistaCompra;
 import vista.VistaVerPista;
 
+import Modelo.Juego;
 import Modelo.Jugador;
 
 public class ControladorBotonVerPista implements ActionListener{
 
-	private Jugador jugador;
+	private Juego juego;
 	
-	public ControladorBotonVerPista(Jugador jugador) {
-		this.jugador = jugador;
+	public ControladorBotonVerPista(Juego juego) {
+		this.juego = juego;
 		}
 	
 	public void actionPerformed(ActionEvent arg0) {
-		VistaVerPista ventanaVerPista = new VistaVerPista(jugador);	
+		VistaVerPista ventanaVerPista = new VistaVerPista(juego);	
 		
 	}
 

@@ -44,12 +44,14 @@ public class ControladorCarrera implements ActionListener, Escenario {
 	private Carrera picada;
 	private Auto miAuto;
     private double apuesta;
+	private Juego juego;
 	
-	public ControladorCarrera(Jugador jugador, VistaTaller vista) {
+	public ControladorCarrera(Juego juego, VistaTaller vista) {
+		this.juego = juego;
 		this.soundCache= new SoundCache();
 		this.spriteCache = new SpriteCache();
 		this.apuesta = 0.0;
-		this.jugador = jugador;
+		this.jugador = juego.getJugador();
 		this.vista = vista;
 	}
 
@@ -64,9 +66,9 @@ public class ControladorCarrera implements ActionListener, Escenario {
 				ArrayList<Auto> competidores = new ArrayList<Auto>();
 				competidores.add(new AutoPc());
 				ControladorAuto controladorAuto = new ControladorAuto(miAuto); 
-				picada = new Carrera(Juego.getPista(),competidores,miAuto,apuesta);
+				picada = new Carrera(juego.getPista(),competidores,miAuto,apuesta);
 				
-				vistacarrera= new VistaCarrera(controladorAuto,this,picada);
+				vistacarrera= new VistaCarrera(controladorAuto,this,picada,juego.getPista());
 				try{
 					Thread hiloCarrera = new Thread(picada);
 					picada.setControlador(this);
@@ -104,12 +106,12 @@ public class ControladorCarrera implements ActionListener, Escenario {
 			}
 		else{
 			JOptionPane.showMessageDialog(null,"La carrera fue suspendida.",null,JOptionPane.INFORMATION_MESSAGE);
-			VistaTaller vistaTaller = new VistaTaller(jugador);
+			VistaTaller vistaTaller = new VistaTaller(juego);
 		}
 	  }
 	  else{
 		  JOptionPane.showMessageDialog(null,"Para correr necesitas un auto.","SIN AUTO",JOptionPane.ERROR_MESSAGE);
-		  VistaTaller vistaTaller = new VistaTaller(jugador);
+		  VistaTaller vistaTaller = new VistaTaller(juego);
 	  }
 	  
 	}
@@ -127,8 +129,8 @@ public class ControladorCarrera implements ActionListener, Escenario {
 		else{
 			JOptionPane.showMessageDialog(null, "Esta vez perdiste, volve a intentarlo.", "PERDEDOR",JOptionPane.ERROR_MESSAGE);
 		}
-		Juego.generarPista();
-		VistaTaller vistaTaller = new VistaTaller(jugador);	
+		juego.generarPista();
+		VistaTaller vistaTaller = new VistaTaller(juego);	
 	}
 	
 	public void perder(Exception ex)
@@ -138,8 +140,8 @@ public class ControladorCarrera implements ActionListener, Escenario {
 		else if (ex instanceof TanqueVacioException){ lanzarCartel("No tiene combustible.");}
 		else if (ex instanceof ProblemaTecnicoException) {lanzarCartel("Desperfecto Mecanico no Identificado.");}
 		vistacarrera.eliminarVentana();
-		Juego.generarPista();
-		VistaTaller vistaTaller = new VistaTaller(jugador);	
+		juego.generarPista();
+		VistaTaller vistaTaller = new VistaTaller(juego);	
 
 	}
 	private void lanzarCartel(String problema){

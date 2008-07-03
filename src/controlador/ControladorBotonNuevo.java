@@ -20,7 +20,7 @@ public class ControladorBotonNuevo implements ActionListener {
 		Juego unJuego = new Juego();
 		vista.dispose();
 			
-		VistaTaller verTaller = new VistaTaller(unJuego.getJugador()); 
+		VistaTaller verTaller = new VistaTaller(unJuego); 
 	}
 
 }
