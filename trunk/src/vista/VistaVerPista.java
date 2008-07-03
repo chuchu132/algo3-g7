@@ -12,11 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Modelo.Juego;
-import Modelo.Jugador;
 import Recursos.SpriteCache;
 
 public class VistaVerPista extends JDialog{
 	
+	private static final long serialVersionUID = 1L;
+
 	public VistaVerPista(Juego juego){
 	  	JPanel panelLabels = new JPanel();
 	  	panelLabels.setLayout(new GridLayout(2,1));

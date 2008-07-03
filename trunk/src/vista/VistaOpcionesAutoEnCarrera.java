@@ -13,7 +13,9 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 public class VistaOpcionesAutoEnCarrera extends JDialog {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	private final int ANCHO = 150;
 	private final int ALTO = 150;
 	private VistaAutoEnPista vistaAuto;
@@ -21,73 +23,73 @@ public class VistaOpcionesAutoEnCarrera extends JDialog {
 	private JCheckBox velocidad,estado,combustible,cambioActual,tiempo, posicion;
 	private JCheckBox mostrarAutos;
 	private JButton botonAceptar;
-	
+
 	public VistaOpcionesAutoEnCarrera(VistaAutoEnPista vistaAutoEnPista) {
-	
-	 vistaAuto = vistaAutoEnPista;
-	 Container contenedor = getContentPane();
-	 contenedor.setLayout(new  GridLayout(8,1));
-	 
-	 botonAceptar = new JButton("Aceptar");
-	 botonAceptar.addActionListener( new ActionListener(){
+
+		vistaAuto = vistaAutoEnPista;
+		Container contenedor = getContentPane();
+		contenedor.setLayout(new  GridLayout(8,1));
+
+		botonAceptar = new JButton("Aceptar");
+		botonAceptar.addActionListener( new ActionListener(){
 
 			public void actionPerformed(ActionEvent arg0) {
-					cerrarVentana();
+				cerrarVentana();
 			}
-	 });
-	 velocidad = new JCheckBox("Velocidad",vistaAuto.isVelocidad());
-	 contenedor.add(velocidad);
-	 estado = new JCheckBox("Estado",vistaAuto.isEstado());
-	 contenedor.add(estado);
-	 combustible = new JCheckBox("Combustible",vistaAuto.isCombustible());
-	 contenedor.add(combustible);
-	 cambioActual = new JCheckBox("Cambio Actual",vistaAuto.isCambioActual());
-	 contenedor.add(cambioActual);
-	 tiempo = new JCheckBox ("Tiempo", vistaAuto.isTiempo());
-	 contenedor.add(tiempo);
-	 posicion = new JCheckBox("Posicion", vistaAuto.isPosicion());
-	 contenedor.add(posicion);
-	 mostrarAutos = new JCheckBox ("Mostrar Autos", vistaAuto.isMostrarAutos());
-	 contenedor.add(mostrarAutos);
-	 
-	 contenedor.add(botonAceptar);
-	 
-	 controlador = new ControladorOpcionesCarrera();
-	 
-	 velocidad.addItemListener(controlador);
-	 combustible.addItemListener(controlador);
-	 estado.addItemListener(controlador);
-	 cambioActual.addItemListener(controlador);
-	 tiempo.addItemListener(controlador);
-	 posicion.addItemListener(controlador);
-	 mostrarAutos.addItemListener(controlador);
-	 
-	 setModal(true);
-	 setSize(ANCHO,ALTO);
-	 setResizable(false);
-	 setTitle("DATOS");
-	 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	 setLocation(0,0);
-	 setVisible(true);
+		});
+		velocidad = new JCheckBox("Velocidad",vistaAuto.isVelocidad());
+		contenedor.add(velocidad);
+		estado = new JCheckBox("Estado",vistaAuto.isEstado());
+		contenedor.add(estado);
+		combustible = new JCheckBox("Combustible",vistaAuto.isCombustible());
+		contenedor.add(combustible);
+		cambioActual = new JCheckBox("Cambio Actual",vistaAuto.isCambioActual());
+		contenedor.add(cambioActual);
+		tiempo = new JCheckBox ("Tiempo", vistaAuto.isTiempo());
+		contenedor.add(tiempo);
+		posicion = new JCheckBox("Posicion", vistaAuto.isPosicion());
+		contenedor.add(posicion);
+		mostrarAutos = new JCheckBox ("Mostrar Autos", vistaAuto.isMostrarAutos());
+		contenedor.add(mostrarAutos);
+
+		contenedor.add(botonAceptar);
+
+		controlador = new ControladorOpcionesCarrera();
+
+		velocidad.addItemListener(controlador);
+		combustible.addItemListener(controlador);
+		estado.addItemListener(controlador);
+		cambioActual.addItemListener(controlador);
+		tiempo.addItemListener(controlador);
+		posicion.addItemListener(controlador);
+		mostrarAutos.addItemListener(controlador);
+
+		setModal(true);
+		setSize(ANCHO,ALTO);
+		setResizable(false);
+		setTitle("DATOS");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocation(0,0);
+		setVisible(true);
 	}
-	
+
 	private void cerrarVentana() {
 		this.dispose();
-		
+
 	}
-	
+
 	private class ControladorOpcionesCarrera implements ItemListener{
 
 		public void itemStateChanged(ItemEvent e) {
 			if(e.getSource() == velocidad){
 				vistaAuto.setVelocidad(	velocidad.isSelected()?	true: false);
-				}
+			}
 			if(e.getSource() == estado){
 				vistaAuto.setEstado(estado.isSelected()? true: false);
-				}
+			}
 			if(e.getSource() == combustible){
 				vistaAuto.setCombustible(combustible.isSelected()? true : false);
-				}
+			}
 			if(e.getSource() == cambioActual){
 				vistaAuto.setCambioActual(cambioActual.isSelected()? true: false);
 			}
@@ -100,11 +102,11 @@ public class VistaOpcionesAutoEnCarrera extends JDialog {
 			if (e.getSource()==mostrarAutos){
 				vistaAuto.setMostrarAutos(mostrarAutos.isSelected()?true:false);
 			}
-		
+
 		}
-			
-		}
-		
+
+	}
+
 }
-	
+
 
