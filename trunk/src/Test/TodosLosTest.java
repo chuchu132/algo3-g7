@@ -11,6 +11,7 @@ public class TodosLosTest {
 		TestRunner.run(TestMotor.class);
 		TestRunner.run(TestAuto.class);
 		TestRunner.run(TestCompraVenta.class);
+		TestRunner.run(TestGuardar.class);
 	
 	}
 }

@@ -248,6 +248,29 @@ public class Motor extends Autoparte implements Observer{
 		motor.addAttribute("cubicaje",Double.toString(cubicaje));
 		return motor;
 	}
-
+	/* Los metodos de a continuacion no se usaran en el juego, pero si seran usados
+	 * para la prueba de guardar y cargar
+	 */
+	
+	public int getHP(){
+		return HP;
+	}
+	
+	public int getCilindros(){
+		return cilindros;
+	}
+	
+	public double getCubicaje(){
+		return cubicaje;
+	}
+	
+	public double getFuerzaMaxima(){
+		return fuerzaMaxima;
+	}
+	
+	public boolean getEstado(){
+		return encendido;
+	}
+	
 }
 

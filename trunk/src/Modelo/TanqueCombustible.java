@@ -152,5 +152,11 @@ public class TanqueCombustible extends Autoparte{
 		else tanqueCombustible.addElement("none");
 		return tanqueCombustible;
 	}
-
+	 /* el siguiente metodo no se usa en el juego, pero si en la prueba de grabar
+	  * y cargar  
+	  */
+	 
+	 public double getCapacidadMaxima(){
+		 return capacidadMaxima;
+	 }
 }
