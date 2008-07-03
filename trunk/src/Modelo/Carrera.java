@@ -92,7 +92,7 @@ public class Carrera extends Observable implements Runnable{
 		contador = contador - 0.01;
 	}
 
-	public double getCounter(){
+	public double getContador(){
 		return contador;
 	}
 
@@ -115,8 +115,7 @@ public class Carrera extends Observable implements Runnable{
 	}
 
 	public Auto ganador(){
-		Auto winner = (Auto) autos.get(ganador);
-		return winner;
+		return (Auto) autos.get(ganador);		
 
 	}
 

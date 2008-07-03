@@ -19,8 +19,8 @@ public class VistaVerPista extends JDialog{
 	private static final long serialVersionUID = 1L;
 
 	public VistaVerPista(Juego juego){
-	  	JPanel panelLabels = new JPanel();
-	  	panelLabels.setLayout(new GridLayout(2,1));
+	  	JPanel panelEtiquetas = new JPanel();
+	  	panelEtiquetas.setLayout(new GridLayout(2,1));
 		
 	  	String spriteName;
 		SpriteCache spriteCache = new SpriteCache();
@@ -41,14 +41,14 @@ public class VistaVerPista extends JDialog{
 			 else
 				 spriteName = "despejado";
 		longPista = new JLabel ("Longitud de la pista " +longitudString+ " mts");
-		panelLabels.add(longPista);
+		panelEtiquetas.add(longPista);
 		imagen = new ImageIcon(spriteCache.getSprite(spriteName + "/Pista0.jpg"));
 		coefPista = new JLabel ("Condiciones climatológicas: " + spriteName);
-		panelLabels.add(coefPista);
+		panelEtiquetas.add(coefPista);
 	
 		fondo = new JLabel (imagen);
 		
-		contenedor.add(panelLabels,BorderLayout.NORTH);
+		contenedor.add(panelEtiquetas,BorderLayout.NORTH);
 		contenedor.add(fondo,BorderLayout.SOUTH);
 		setTitle("Siguiente Pista");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
