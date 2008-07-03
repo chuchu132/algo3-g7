@@ -169,19 +169,6 @@ public class Taller extends Observable{
 		return taller;
 	}
 
-	public void deserialize(Element elemTaller) {
-		Iterator it = elemTaller.elementIterator();
-
-		Element elemListaAutos = (Element) it.next();
-		Element elemListaAutopartes = (Element) it.next();
-		Element elemAutoActual = (Element) it.next();
-
-		this.cargarListaAutos(elemListaAutos);
-		this.cargarListaAutopartes(elemListaAutopartes);
-		if (!(elemAutoActual.getName().equals("none")))
-			this.autoActual = new Auto(elemAutoActual);
-
-	}
 
 	private void cargarListaAutopartes(Element elemListaAutopartes) {
 		Iterator it = elemListaAutopartes.elementIterator();
