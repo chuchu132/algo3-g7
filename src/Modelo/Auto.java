@@ -83,6 +83,7 @@ public class Auto extends Observable implements Vendible{
 
 	public void encender(){
 		motor.encender(sistemaCombustion, tanque);
+		caja.setCambio(0);
 		velocidad = 0;
 		deltaAvance = 0;
 		aceleracion = 0;
