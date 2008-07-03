@@ -3,7 +3,6 @@ package Test;
 import Excepciones.NoAlcanzaDineroException;
 import Excepciones.NotAutoException;
 import Modelo.AutoPc;
-import Modelo.CajaVelocidades;
 import Modelo.Jugador;
 import Modelo.Vendedor;
 import junit.framework.TestCase;

@@ -9,7 +9,7 @@ public class Nafta implements Vendible{
 	private int octanaje;
 	private String nombre;
 	private double precio;
-	
+
 	public Nafta(String name,int oct){
 		octanaje = oct;
 		nombre = name;
@@ -19,29 +19,29 @@ public class Nafta implements Vendible{
 		nombre = name;
 		precio = cost;
 	}	
-	
+
 	public Nafta(Element elemNafta) {
 		Attribute atrOctanaje = elemNafta.attribute(0);
 		Attribute atrNombre = elemNafta.attribute(1);
 		Attribute atrPrecio = elemNafta.attribute(2);
-		
+
 		octanaje = Integer.parseInt(atrOctanaje.getValue());
 		nombre = atrNombre.getValue();
 		precio = Double.parseDouble(atrPrecio.getValue());		
-	
+
 	}
 	public int getOctanaje(){
 		return octanaje;
 	}
-	
+
 	public String getNombre(){
 		return nombre;
 	}
-	
+
 	public double getPrecio(){
 		return precio;
 	}
-	
+
 	public Element serialize(){
 		Document document = DocumentHelper.createDocument();
 		Element nafta = document.addElement("nafta");
@@ -50,5 +50,5 @@ public class Nafta implements Vendible{
 		nafta.addAttribute("precio",Double.toString(this.getPrecio()));
 		return nafta;
 	}
-	
+
 }
