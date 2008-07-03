@@ -27,33 +27,35 @@ import Modelo.Jugador;
 
 public class VistaCambiarAutoparte extends JDialog {
 
+	private static final long serialVersionUID = 1L;
+
 	private final int FILAS_LISTA = 23;
 	private final int ALTO_VENTANA = 480;
 	private final int ANCHO_VENTANA = 640;
-	
+
 	private final int ANCHO_LISTA = 400;
 	private Jugador jugador;
 	private JList listaAutopartes;
-    private JPanel panelPrincipal;
+	private JPanel panelPrincipal;
 	private JPanel panel;
-    private JScrollPane scroll;
-	
-    public VistaCambiarAutoparte(Jugador jugador) {
+	private JScrollPane scroll;
+
+	public VistaCambiarAutoparte(Jugador jugador) {
 		this.jugador = jugador;
 		panelPrincipal= new JPanel();
-		
+
 		setTitle("CAMBIAR AUTOPARTE");
-		
+
 		crearPanel();
-	    add(panelPrincipal,BorderLayout.CENTER);	    
+		add(panelPrincipal,BorderLayout.CENTER);	    
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	    setModal(true);
+		setModal(true);
 		setSize(ANCHO_VENTANA, ALTO_VENTANA);
 		setResizable(false);
-		
-	    setVisible(true);
+
+		setVisible(true);
 	}
-	
+
 	String[] getListaAutopartes(){
 		ArrayList<Autoparte> listaTemp = jugador.getTaller().getListaDeMisAutopartes();
 		String[] listaNombreAutoparte = new String[listaTemp.size()];
@@ -61,76 +63,76 @@ public class VistaCambiarAutoparte extends JDialog {
 		int i=0;
 		while (it.hasNext()) {
 			Autoparte parte = (Autoparte) it.next();
-		    listaNombreAutoparte[i] = parte.toString();
+			listaNombreAutoparte[i] = parte.toString();
 			i++;
 		}
 		return listaNombreAutoparte;
 	}
 
-   private void cerrarVentana(){
-	   this.dispose();
-   }	
-	
-   private void crearPanel(){
-	   JButton botonCambiar,botonSalir;
-	   JPanel panelBotones = new JPanel();
-	   JLabel etiqueta = new JLabel("Seleccione una Autoparte: ");
-		
+	private void cerrarVentana(){
+		this.dispose();
+	}	
+
+	private void crearPanel(){
+		JButton botonCambiar,botonSalir;
+		JPanel panelBotones = new JPanel();
+		JLabel etiqueta = new JLabel("Seleccione una Autoparte: ");
+
 		panel = new JPanel();
-	   
-	    listaAutopartes = crearLista();
-		
+
+		listaAutopartes = crearLista();
+
 		panelPrincipal.setLayout(new BorderLayout());
 		panelBotones.setLayout(new FlowLayout());
-		
+
 		panelPrincipal.add(etiqueta,BorderLayout.NORTH);
-		
+
 		this.scroll = new JScrollPane(listaAutopartes);
-    	panel.add(scroll,BorderLayout.CENTER);
-		
-    	panelPrincipal.add(panel,BorderLayout.CENTER);
-    	
+		panel.add(scroll,BorderLayout.CENTER);
+
+		panelPrincipal.add(panel,BorderLayout.CENTER);
+
 		botonCambiar =  new JButton("Cambiar");
 		botonCambiar.addActionListener(new ControladorCambiarAutoparte(jugador,listaAutopartes,this));
-		
+
 		botonSalir = new JButton("Salir");
 		botonSalir.addActionListener(new ActionListener(){
-						public void actionPerformed(ActionEvent e) {
-							 cerrarVentana();
+			public void actionPerformed(ActionEvent e) {
+				cerrarVentana();
 			}
-			
+
 		});
-		
+
 		panelBotones.add(botonCambiar);
 		panelBotones.add(botonSalir);
-		
+
 		panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
-	 
-	   	   
-   }
-   
-   private JList crearLista(){
-	  JList listaAutopartes;
-	  
-	   listaAutopartes = new JList(getListaAutopartes());
-	   listaAutopartes.setVisibleRowCount(FILAS_LISTA);
-	   listaAutopartes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-	   listaAutopartes.setFixedCellWidth(ANCHO_LISTA);
-		
-	    return listaAutopartes;
-	   
-   }
-   
-   public void resetearLista(){
-	  
-	   panel.remove(scroll);
-	   listaAutopartes = crearLista();
-	   scroll = new JScrollPane(listaAutopartes);
-	   panel.add(scroll,BorderLayout.CENTER);
-	   repaint();
-	   show();
-	   
-	   
-   }
-   
+
+
+	}
+
+	private JList crearLista(){
+		JList listaAutopartes;
+
+		listaAutopartes = new JList(getListaAutopartes());
+		listaAutopartes.setVisibleRowCount(FILAS_LISTA);
+		listaAutopartes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaAutopartes.setFixedCellWidth(ANCHO_LISTA);
+
+		return listaAutopartes;
+
+	}
+
+	public void resetearLista(){
+
+		panel.remove(scroll);
+		listaAutopartes = crearLista();
+		scroll = new JScrollPane(listaAutopartes);
+		panel.add(scroll,BorderLayout.CENTER);
+		repaint();
+		show();
+
+
+	}
+
 }

@@ -7,8 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -28,6 +26,8 @@ import Modelo.Taller;
 
 
 public class VistaCambiarAuto extends JDialog {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private final int ANCHO_VENTANA = 640;
 	private final int ALTO_VENTANA = 480;
