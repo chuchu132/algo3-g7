@@ -64,6 +64,12 @@ public class SistemaCombustion extends Autoparte{
 		sistemaCombustion.addAttribute("plusPotencia",Double.toString(this.getPlus()));
 		return sistemaCombustion;
 	}
-
+	/* el metodo getTipo no se usa en el juego, pero es necesarios para la prueba
+	 * de guardar y cargar
+	 * */
+	   
+	public String getTipo(){
+		   return tipo;
+	   }	
 }
 

@@ -308,7 +308,37 @@ public class Auto extends Observable implements Vendible{
 
 	}
 
-
+	
+	/* los siguientes metodos seran usados para probar grabar y cargar, no seran
+	 * utilizados durante el juego
+	 */
+	
+	public Motor getMotor(){
+		return this.motor;
+	}
+	
+	public CajaVelocidades getCaja(){
+		return this.caja;
+	}
+	
+	public SistemaCombustion getSistemaCombustion(){
+		return this.sistemaCombustion;
+	}
+	
+	public Carroceria getCarroceria(){
+		return this.carroceria;
+	}
+	
+	public TanqueCombustible getTanque(){
+		return this.tanque;
+	}
+	
+	public TipoRueda getRueda(){
+		return this.rueda;
+	}
+	
+	
+	
 
 
 }

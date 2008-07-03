@@ -73,7 +73,7 @@ public abstract class Autoparte extends Observable implements Vendible {
 	}
 
 	public void grabar(Element autoParte){
-		autoParte.addAttribute("peso",Double.toString(this.getPeso()));
+		autoParte.addAttribute("peso",Double.toString(this.peso));
 		autoParte.addAttribute("precio",Double.toString(this.getPrecio()));
 		autoParte.addAttribute("vidaUtil",Float.toString(vidaUtil));
 		autoParte.addAttribute("vidaUtilInicial",Float.toString(vidaUtilInicial));
