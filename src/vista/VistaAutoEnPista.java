@@ -135,7 +135,7 @@ public class VistaAutoEnPista {
 		g.setColor(Color.red);
 		g.setFont(new Font ("Arial", Font.BOLD, 40));
 
-		double dato = carrera.getCounter();
+		double dato = carrera.getContador();
 		DecimalFormat numero = new DecimalFormat ("0");
 		if ((dato>0)&&(dato<3))
 			g.drawString(numero.format(dato),350, 155);
