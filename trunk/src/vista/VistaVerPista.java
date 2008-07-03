@@ -17,7 +17,7 @@ import Recursos.SpriteCache;
 
 public class VistaVerPista extends JDialog{
 	
-	public VistaVerPista(Jugador jugador){
+	public VistaVerPista(Juego juego){
 	  	JPanel panelLabels = new JPanel();
 	  	panelLabels.setLayout(new GridLayout(2,1));
 		
@@ -28,10 +28,10 @@ public class VistaVerPista extends JDialog{
 		Container contenedor = getContentPane();
 		contenedor.setLayout(new BorderLayout());
 		
-		Double longitud = Juego.getPista().getLongitud();
+		Double longitud = juego.getPista().getLongitud();
 		DecimalFormat porcentajeLong = new DecimalFormat("0.00");
 		String longitudString = porcentajeLong.format(longitud).toString();
-		Double coeficienteAgarre = Juego.getPista().getCoeficienteAgarre();
+		Double coeficienteAgarre = juego.getPista().getCoeficienteAgarre();
 		
 		if (coeficienteAgarre<0.33)
 			spriteName = "nieve";

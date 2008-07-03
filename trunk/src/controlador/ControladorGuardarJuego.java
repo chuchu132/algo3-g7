@@ -15,7 +15,11 @@ import vista.VistaTaller;
 
 public class ControladorGuardarJuego extends JFrame  implements ActionListener {
  
+   	private Juego juego;
    	
+   	public ControladorGuardarJuego(Juego juego){
+   		this.juego = juego;
+   	}
 
 	public void actionPerformed(ActionEvent arg0) {
 		
@@ -25,7 +29,7 @@ public class ControladorGuardarJuego extends JFrame  implements ActionListener {
 		if( resultado != JFileChooser.CANCEL_OPTION){
 			File archivo = selectorArchivo.getSelectedFile();
 			try{
-			Juego.guardar(archivo.toString());
+			juego.guardar(archivo.toString());
 			}
 			catch (IOException e){
 				JOptionPane.showMessageDialog(null,"Se ha producido un error al guardar el juego.","ERROR" ,JOptionPane.ERROR_MESSAGE);

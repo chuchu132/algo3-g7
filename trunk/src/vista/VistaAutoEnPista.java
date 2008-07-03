@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import Modelo.Auto;
 import Modelo.Carrera;
 import Modelo.Juego;
+import Modelo.Pista;
 import Recursos.SpriteCache;
 
 
@@ -32,9 +33,11 @@ private boolean tiempo = true;
 private boolean posicion = true;
 private boolean mostrarAutos = true;
 private Carrera carrera;
+private Pista pista;
 
-public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
-	         this.escenario = escenario;
+public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera,Pista pista) {
+	        this.pista = pista;
+			this.escenario = escenario;
 	         this.auto= auto;
 	         spriteCache = escenario.getSpriteCache();
 	         fotogramaActual = 0;
@@ -112,7 +115,7 @@ public  VistaAutoEnPista(Escenario escenario, Auto auto, Carrera carrera) {
            private void mostrarJugadores (Graphics h){
         	   Graphics2D g = (Graphics2D) h;
         	   g.setPaint(Color.red);
-        	   float longitudPista =(float) Juego.getPista().getLongitud();
+        	   float longitudPista =(float) pista.getLongitud();
         	   float pos1 = (float)carrera.getPosJugador();
         	   float posImagen1 = 243 - (88*pos1)/longitudPista;
         	   float pos2 = (float)carrera.getPosOponente();

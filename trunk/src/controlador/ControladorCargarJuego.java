@@ -43,7 +43,7 @@ public class ControladorCargarJuego extends JFrame implements ActionListener {
 			try {
 				Juego juego = new Juego();
 				juego.cargar(archivo.toString());
-				VistaTaller verTaller = new VistaTaller(juego.getJugador());
+				VistaTaller verTaller = new VistaTaller(juego);
 			} catch (IOException e1) {
 				avisarYVolver();
 			} catch (DocumentException e1) {

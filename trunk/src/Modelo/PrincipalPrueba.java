@@ -50,9 +50,9 @@ public class PrincipalPrueba  implements Escenario{
 	    oponente.encender();
 	    corredores = new ArrayList<Auto>();
 	    corredores.add(oponente);
-	    picada = new Carrera(Juego.getPista(),corredores,miAuto,100);
+	    picada = new Carrera(unJuego.getPista(),corredores,miAuto,100);
 		controlAuto = new ControladorAuto(miAuto);
-		vistaCarrera = new VistaCarrera(controlAuto,this,picada);
+		vistaCarrera = new VistaCarrera(controlAuto,this,picada,unJuego.getPista());
 		
 		
 	}
