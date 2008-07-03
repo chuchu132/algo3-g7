@@ -137,8 +137,14 @@ public class Carrera extends Observable implements Runnable{
 		return false;
 	}
 
-
-	public void run() throws ProblemaTecnicoException {
+/**
+ * Debido a que la carrera se corre en otro hilo que no es el del programa principal
+ * las excepciones no eran atrapadas, entonces tuvimos que poner el ControladorCarrera
+ * (el que sabe que hacer cuando se rompe algo o cuando un jugador gana) dentro de la clase 
+ * Carrera, que si bien sabemos que esta mal que el modelo sepa o tenga cosas de los controladores, 
+ * fue la unica solucion que encontramos al problema.
+ * */
+	public void run() {
 		try
 		{
 			this.correr();
