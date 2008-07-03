@@ -8,17 +8,17 @@ import vista.VistaCambiarAutoparte;
 import Modelo.Jugador;
 
 public class ControladorBotonCambiarAutoparte implements ActionListener {
-     private Jugador jugador;
-  
-	 public ControladorBotonCambiarAutoparte(Jugador jugador){
-		 this.jugador = jugador;
-		 
-	 }
+	private Jugador jugador;
+
+	public ControladorBotonCambiarAutoparte(Jugador jugador){
+		this.jugador = jugador;
+
+	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		
-		VistaCambiarAutoparte ventana = new VistaCambiarAutoparte(jugador); 
-		
+
+		new VistaCambiarAutoparte(jugador); 
+
 	}
 
 }
